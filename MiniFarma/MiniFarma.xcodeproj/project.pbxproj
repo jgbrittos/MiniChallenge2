@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		45464FDA1B5BD36000A3DB45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45464FD91B5BD36000A3DB45 /* AppDelegate.swift */; };
-		45464FDC1B5BD36000A3DB45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45464FDB1B5BD36000A3DB45 /* ViewController.swift */; };
-		45464FDF1B5BD36000A3DB45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45464FDD1B5BD36000A3DB45 /* Main.storyboard */; };
 		45464FE11B5BD36000A3DB45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45464FE01B5BD36000A3DB45 /* Images.xcassets */; };
 		45464FE41B5BD36000A3DB45 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45464FE21B5BD36000A3DB45 /* LaunchScreen.xib */; };
 		45464FF01B5BD36000A3DB45 /* MiniFarmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45464FEF1B5BD36000A3DB45 /* MiniFarmaTests.swift */; };
+		454650161B5BE07600A3DB45 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454650151B5BE07600A3DB45 /* iPhone.storyboard */; };
+		454650181B5BE09100A3DB45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454650171B5BE09100A3DB45 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +29,13 @@
 		45464FD41B5BD36000A3DB45 /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45464FD81B5BD36000A3DB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45464FD91B5BD36000A3DB45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		45464FDB1B5BD36000A3DB45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		45464FDE1B5BD36000A3DB45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45464FE01B5BD36000A3DB45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		45464FE31B5BD36000A3DB45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		45464FE91B5BD36000A3DB45 /* MiniFarmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniFarmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45464FEE1B5BD36000A3DB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45464FEF1B5BD36000A3DB45 /* MiniFarmaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFarmaTests.swift; sourceTree = "<group>"; };
+		454650151B5BE07600A3DB45 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		454650171B5BE09100A3DB45 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +77,12 @@
 		45464FD61B5BD36000A3DB45 /* MiniFarma */ = {
 			isa = PBXGroup;
 			children = (
-				45464FD91B5BD36000A3DB45 /* AppDelegate.swift */,
-				45464FDB1B5BD36000A3DB45 /* ViewController.swift */,
-				45464FDD1B5BD36000A3DB45 /* Main.storyboard */,
-				45464FE01B5BD36000A3DB45 /* Images.xcassets */,
-				45464FE21B5BD36000A3DB45 /* LaunchScreen.xib */,
+				4546500F1B5BE02300A3DB45 /* Assets */,
+				454650101B5BE02B00A3DB45 /* Bridge */,
+				454650111B5BE03300A3DB45 /* Controlador */,
+				454650131B5BE04400A3DB45 /* Internacionalizacao */,
+				454650121B5BE03D00A3DB45 /* Modelo */,
+				454650141B5BE05100A3DB45 /* Storyboard */,
 				45464FD71B5BD36000A3DB45 /* Supporting Files */,
 			);
 			path = MiniFarma;
@@ -110,6 +111,53 @@
 				45464FEE1B5BD36000A3DB45 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4546500F1B5BE02300A3DB45 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				45464FE01B5BD36000A3DB45 /* Images.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		454650101B5BE02B00A3DB45 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Bridge;
+			sourceTree = "<group>";
+		};
+		454650111B5BE03300A3DB45 /* Controlador */ = {
+			isa = PBXGroup;
+			children = (
+				45464FD91B5BD36000A3DB45 /* AppDelegate.swift */,
+				454650171B5BE09100A3DB45 /* ViewController.swift */,
+			);
+			name = Controlador;
+			sourceTree = "<group>";
+		};
+		454650121B5BE03D00A3DB45 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Modelo;
+			sourceTree = "<group>";
+		};
+		454650131B5BE04400A3DB45 /* Internacionalizacao */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Internacionalizacao;
+			sourceTree = "<group>";
+		};
+		454650141B5BE05100A3DB45 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				454650151B5BE07600A3DB45 /* iPhone.storyboard */,
+				45464FE21B5BD36000A3DB45 /* LaunchScreen.xib */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,8 +240,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45464FDF1B5BD36000A3DB45 /* Main.storyboard in Resources */,
 				45464FE41B5BD36000A3DB45 /* LaunchScreen.xib in Resources */,
+				454650161B5BE07600A3DB45 /* iPhone.storyboard in Resources */,
 				45464FE11B5BD36000A3DB45 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45464FDC1B5BD36000A3DB45 /* ViewController.swift in Sources */,
+				454650181B5BE09100A3DB45 /* ViewController.swift in Sources */,
 				45464FDA1B5BD36000A3DB45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,14 +284,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		45464FDD1B5BD36000A3DB45 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				45464FDE1B5BD36000A3DB45 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		45464FE21B5BD36000A3DB45 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -411,6 +451,7 @@
 				45464FF51B5BD36000A3DB45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45464FF61B5BD36000A3DB45 /* Build configuration list for PBXNativeTarget "MiniFarmaTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +460,7 @@
 				45464FF81B5BD36000A3DB45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

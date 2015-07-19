@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  MiniFarma
+
+  Created by João Gabriel de Britto e Silva on 19/07/15.
+  Copyright (c) 2015 João Gabriel de Britto e Silva. All rights reserved.
+*/
+
+/// MARK: - Internacionalização
+LABELTESTE = "Esse é um label de teste";
+
+
+/// MARK: - Acessibilidade
+LABELTESTE_ACESSIBILIDADE_LABEL = "Label de teste";
+LABELTESTE_ACESSIBILIDADE_HINT = "Esse é um label de teste";
