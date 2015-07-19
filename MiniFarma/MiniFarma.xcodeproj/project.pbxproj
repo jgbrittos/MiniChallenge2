@@ -7,46 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45464FDA1B5BD36000A3DB45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45464FD91B5BD36000A3DB45 /* AppDelegate.swift */; };
-		45464FE11B5BD36000A3DB45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45464FE01B5BD36000A3DB45 /* Images.xcassets */; };
-		45464FE41B5BD36000A3DB45 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45464FE21B5BD36000A3DB45 /* LaunchScreen.xib */; };
-		45464FF01B5BD36000A3DB45 /* MiniFarmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45464FEF1B5BD36000A3DB45 /* MiniFarmaTests.swift */; };
-		454650161B5BE07600A3DB45 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454650151B5BE07600A3DB45 /* iPhone.storyboard */; };
-		454650181B5BE09100A3DB45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454650171B5BE09100A3DB45 /* ViewController.swift */; };
+		453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961241B5BE35D0097DEDB /* AppDelegate.swift */; };
+		453961271B5BE35D0097DEDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961261B5BE35D0097DEDB /* ViewController.swift */; };
+		4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453961281B5BE35D0097DEDB /* Main.storyboard */; };
+		4539612C1B5BE35D0097DEDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4539612B1B5BE35D0097DEDB /* Images.xcassets */; };
+		4539612F1B5BE35D0097DEDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4539612D1B5BE35D0097DEDB /* LaunchScreen.xib */; };
+		4539613B1B5BE35D0097DEDB /* MiniFarmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539613A1B5BE35D0097DEDB /* MiniFarmaTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		45464FEA1B5BD36000A3DB45 /* PBXContainerItemProxy */ = {
+		453961351B5BE35D0097DEDB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 45464FCC1B5BD36000A3DB45 /* Project object */;
+			containerPortal = 453961171B5BE35D0097DEDB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 45464FD31B5BD36000A3DB45;
+			remoteGlobalIDString = 4539611E1B5BE35D0097DEDB;
 			remoteInfo = MiniFarma;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		45464FD41B5BD36000A3DB45 /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		45464FD81B5BD36000A3DB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45464FD91B5BD36000A3DB45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		45464FE01B5BD36000A3DB45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		45464FE31B5BD36000A3DB45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		45464FE91B5BD36000A3DB45 /* MiniFarmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniFarmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		45464FEE1B5BD36000A3DB45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45464FEF1B5BD36000A3DB45 /* MiniFarmaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFarmaTests.swift; sourceTree = "<group>"; };
-		454650151B5BE07600A3DB45 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		454650171B5BE09100A3DB45 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		453961231B5BE35D0097DEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		453961241B5BE35D0097DEDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		453961261B5BE35D0097DEDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		453961291B5BE35D0097DEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4539612B1B5BE35D0097DEDB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4539612E1B5BE35D0097DEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		453961341B5BE35D0097DEDB /* MiniFarmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniFarmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		453961391B5BE35D0097DEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4539613A1B5BE35D0097DEDB /* MiniFarmaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFarmaTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		45464FD11B5BD36000A3DB45 /* Frameworks */ = {
+		4539611C1B5BE35D0097DEDB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45464FE61B5BD36000A3DB45 /* Frameworks */ = {
+		453961311B5BE35D0097DEDB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,106 +56,114 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		45464FCB1B5BD36000A3DB45 = {
+		453961161B5BE35D0097DEDB = {
 			isa = PBXGroup;
 			children = (
-				45464FD61B5BD36000A3DB45 /* MiniFarma */,
-				45464FEC1B5BD36000A3DB45 /* MiniFarmaTests */,
-				45464FD51B5BD36000A3DB45 /* Products */,
+				453961211B5BE35D0097DEDB /* MiniFarma */,
+				453961371B5BE35D0097DEDB /* MiniFarmaTests */,
+				453961201B5BE35D0097DEDB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		45464FD51B5BD36000A3DB45 /* Products */ = {
+		453961201B5BE35D0097DEDB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				45464FD41B5BD36000A3DB45 /* MiniFarma.app */,
-				45464FE91B5BD36000A3DB45 /* MiniFarmaTests.xctest */,
+				4539611F1B5BE35D0097DEDB /* MiniFarma.app */,
+				453961341B5BE35D0097DEDB /* MiniFarmaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		45464FD61B5BD36000A3DB45 /* MiniFarma */ = {
+		453961211B5BE35D0097DEDB /* MiniFarma */ = {
 			isa = PBXGroup;
 			children = (
-				4546500F1B5BE02300A3DB45 /* Assets */,
-				454650101B5BE02B00A3DB45 /* Bridge */,
-				454650111B5BE03300A3DB45 /* Controlador */,
-				454650131B5BE04400A3DB45 /* Internacionalizacao */,
-				454650121B5BE03D00A3DB45 /* Modelo */,
-				454650141B5BE05100A3DB45 /* Storyboard */,
-				45464FD71B5BD36000A3DB45 /* Supporting Files */,
+				453961441B5BE3A50097DEDB /* Assets */,
+				453961491B5BE3C60097DEDB /* BancoDeDados */,
+				453961451B5BE3AB0097DEDB /* Bridge */,
+				453961461B5BE3B00097DEDB /* Controlador */,
+				453961471B5BE3B80097DEDB /* Internacionalizacao */,
+				453961481B5BE3C00097DEDB /* Modelo */,
+				4539614A1B5BE3F80097DEDB /* Storyboard */,
+				453961221B5BE35D0097DEDB /* Supporting Files */,
 			);
 			path = MiniFarma;
 			sourceTree = "<group>";
 		};
-		45464FD71B5BD36000A3DB45 /* Supporting Files */ = {
+		453961221B5BE35D0097DEDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				45464FD81B5BD36000A3DB45 /* Info.plist */,
+				453961231B5BE35D0097DEDB /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		45464FEC1B5BD36000A3DB45 /* MiniFarmaTests */ = {
+		453961371B5BE35D0097DEDB /* MiniFarmaTests */ = {
 			isa = PBXGroup;
 			children = (
-				45464FEF1B5BD36000A3DB45 /* MiniFarmaTests.swift */,
-				45464FED1B5BD36000A3DB45 /* Supporting Files */,
+				4539613A1B5BE35D0097DEDB /* MiniFarmaTests.swift */,
+				453961381B5BE35D0097DEDB /* Supporting Files */,
 			);
 			path = MiniFarmaTests;
 			sourceTree = "<group>";
 		};
-		45464FED1B5BD36000A3DB45 /* Supporting Files */ = {
+		453961381B5BE35D0097DEDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				45464FEE1B5BD36000A3DB45 /* Info.plist */,
+				453961391B5BE35D0097DEDB /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4546500F1B5BE02300A3DB45 /* Assets */ = {
+		453961441B5BE3A50097DEDB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				45464FE01B5BD36000A3DB45 /* Images.xcassets */,
+				4539612B1B5BE35D0097DEDB /* Images.xcassets */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
 		};
-		454650101B5BE02B00A3DB45 /* Bridge */ = {
+		453961451B5BE3AB0097DEDB /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Bridge;
 			sourceTree = "<group>";
 		};
-		454650111B5BE03300A3DB45 /* Controlador */ = {
+		453961461B5BE3B00097DEDB /* Controlador */ = {
 			isa = PBXGroup;
 			children = (
-				45464FD91B5BD36000A3DB45 /* AppDelegate.swift */,
-				454650171B5BE09100A3DB45 /* ViewController.swift */,
+				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
+				453961261B5BE35D0097DEDB /* ViewController.swift */,
 			);
 			name = Controlador;
 			sourceTree = "<group>";
 		};
-		454650121B5BE03D00A3DB45 /* Modelo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Modelo;
-			sourceTree = "<group>";
-		};
-		454650131B5BE04400A3DB45 /* Internacionalizacao */ = {
+		453961471B5BE3B80097DEDB /* Internacionalizacao */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Internacionalizacao;
 			sourceTree = "<group>";
 		};
-		454650141B5BE05100A3DB45 /* Storyboard */ = {
+		453961481B5BE3C00097DEDB /* Modelo */ = {
 			isa = PBXGroup;
 			children = (
-				454650151B5BE07600A3DB45 /* iPhone.storyboard */,
-				45464FE21B5BD36000A3DB45 /* LaunchScreen.xib */,
+			);
+			name = Modelo;
+			sourceTree = "<group>";
+		};
+		453961491B5BE3C60097DEDB /* BancoDeDados */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BancoDeDados;
+			sourceTree = "<group>";
+		};
+		4539614A1B5BE3F80097DEDB /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				453961281B5BE35D0097DEDB /* Main.storyboard */,
+				4539612D1B5BE35D0097DEDB /* LaunchScreen.xib */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -163,13 +171,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		45464FD31B5BD36000A3DB45 /* MiniFarma */ = {
+		4539611E1B5BE35D0097DEDB /* MiniFarma */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 45464FF31B5BD36000A3DB45 /* Build configuration list for PBXNativeTarget "MiniFarma" */;
+			buildConfigurationList = 4539613E1B5BE35D0097DEDB /* Build configuration list for PBXNativeTarget "MiniFarma" */;
 			buildPhases = (
-				45464FD01B5BD36000A3DB45 /* Sources */,
-				45464FD11B5BD36000A3DB45 /* Frameworks */,
-				45464FD21B5BD36000A3DB45 /* Resources */,
+				4539611B1B5BE35D0097DEDB /* Sources */,
+				4539611C1B5BE35D0097DEDB /* Frameworks */,
+				4539611D1B5BE35D0097DEDB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -177,46 +185,46 @@
 			);
 			name = MiniFarma;
 			productName = MiniFarma;
-			productReference = 45464FD41B5BD36000A3DB45 /* MiniFarma.app */;
+			productReference = 4539611F1B5BE35D0097DEDB /* MiniFarma.app */;
 			productType = "com.apple.product-type.application";
 		};
-		45464FE81B5BD36000A3DB45 /* MiniFarmaTests */ = {
+		453961331B5BE35D0097DEDB /* MiniFarmaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 45464FF61B5BD36000A3DB45 /* Build configuration list for PBXNativeTarget "MiniFarmaTests" */;
+			buildConfigurationList = 453961411B5BE35D0097DEDB /* Build configuration list for PBXNativeTarget "MiniFarmaTests" */;
 			buildPhases = (
-				45464FE51B5BD36000A3DB45 /* Sources */,
-				45464FE61B5BD36000A3DB45 /* Frameworks */,
-				45464FE71B5BD36000A3DB45 /* Resources */,
+				453961301B5BE35D0097DEDB /* Sources */,
+				453961311B5BE35D0097DEDB /* Frameworks */,
+				453961321B5BE35D0097DEDB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				45464FEB1B5BD36000A3DB45 /* PBXTargetDependency */,
+				453961361B5BE35D0097DEDB /* PBXTargetDependency */,
 			);
 			name = MiniFarmaTests;
 			productName = MiniFarmaTests;
-			productReference = 45464FE91B5BD36000A3DB45 /* MiniFarmaTests.xctest */;
+			productReference = 453961341B5BE35D0097DEDB /* MiniFarmaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		45464FCC1B5BD36000A3DB45 /* Project object */ = {
+		453961171B5BE35D0097DEDB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
-				ORGANIZATIONNAME = "João Gabriel de Britto e Silva";
+				ORGANIZATIONNAME = JGBrittoS;
 				TargetAttributes = {
-					45464FD31B5BD36000A3DB45 = {
+					4539611E1B5BE35D0097DEDB = {
 						CreatedOnToolsVersion = 6.4;
 					};
-					45464FE81B5BD36000A3DB45 = {
+					453961331B5BE35D0097DEDB = {
 						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 45464FD31B5BD36000A3DB45;
+						TestTargetID = 4539611E1B5BE35D0097DEDB;
 					};
 				};
 			};
-			buildConfigurationList = 45464FCF1B5BD36000A3DB45 /* Build configuration list for PBXProject "MiniFarma" */;
+			buildConfigurationList = 4539611A1B5BE35D0097DEDB /* Build configuration list for PBXProject "MiniFarma" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -224,29 +232,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 45464FCB1B5BD36000A3DB45;
-			productRefGroup = 45464FD51B5BD36000A3DB45 /* Products */;
+			mainGroup = 453961161B5BE35D0097DEDB;
+			productRefGroup = 453961201B5BE35D0097DEDB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				45464FD31B5BD36000A3DB45 /* MiniFarma */,
-				45464FE81B5BD36000A3DB45 /* MiniFarmaTests */,
+				4539611E1B5BE35D0097DEDB /* MiniFarma */,
+				453961331B5BE35D0097DEDB /* MiniFarmaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		45464FD21B5BD36000A3DB45 /* Resources */ = {
+		4539611D1B5BE35D0097DEDB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45464FE41B5BD36000A3DB45 /* LaunchScreen.xib in Resources */,
-				454650161B5BE07600A3DB45 /* iPhone.storyboard in Resources */,
-				45464FE11B5BD36000A3DB45 /* Images.xcassets in Resources */,
+				4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */,
+				4539612F1B5BE35D0097DEDB /* LaunchScreen.xib in Resources */,
+				4539612C1B5BE35D0097DEDB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45464FE71B5BD36000A3DB45 /* Resources */ = {
+		453961321B5BE35D0097DEDB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,38 +264,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		45464FD01B5BD36000A3DB45 /* Sources */ = {
+		4539611B1B5BE35D0097DEDB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				454650181B5BE09100A3DB45 /* ViewController.swift in Sources */,
-				45464FDA1B5BD36000A3DB45 /* AppDelegate.swift in Sources */,
+				453961271B5BE35D0097DEDB /* ViewController.swift in Sources */,
+				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45464FE51B5BD36000A3DB45 /* Sources */ = {
+		453961301B5BE35D0097DEDB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45464FF01B5BD36000A3DB45 /* MiniFarmaTests.swift in Sources */,
+				4539613B1B5BE35D0097DEDB /* MiniFarmaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		45464FEB1B5BD36000A3DB45 /* PBXTargetDependency */ = {
+		453961361B5BE35D0097DEDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 45464FD31B5BD36000A3DB45 /* MiniFarma */;
-			targetProxy = 45464FEA1B5BD36000A3DB45 /* PBXContainerItemProxy */;
+			target = 4539611E1B5BE35D0097DEDB /* MiniFarma */;
+			targetProxy = 453961351B5BE35D0097DEDB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		45464FE21B5BD36000A3DB45 /* LaunchScreen.xib */ = {
+		453961281B5BE35D0097DEDB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				45464FE31B5BD36000A3DB45 /* Base */,
+				453961291B5BE35D0097DEDB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4539612D1B5BE35D0097DEDB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4539612E1B5BE35D0097DEDB /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -295,7 +311,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		45464FF11B5BD36000A3DB45 /* Debug */ = {
+		4539613C1B5BE35D0097DEDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -339,7 +355,7 @@
 			};
 			name = Debug;
 		};
-		45464FF21B5BD36000A3DB45 /* Release */ = {
+		4539613D1B5BE35D0097DEDB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,7 +392,7 @@
 			};
 			name = Release;
 		};
-		45464FF41B5BD36000A3DB45 /* Debug */ = {
+		4539613F1B5BE35D0097DEDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -387,7 +403,7 @@
 			};
 			name = Debug;
 		};
-		45464FF51B5BD36000A3DB45 /* Release */ = {
+		453961401B5BE35D0097DEDB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -398,7 +414,7 @@
 			};
 			name = Release;
 		};
-		45464FF71B5BD36000A3DB45 /* Debug */ = {
+		453961421B5BE35D0097DEDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -417,7 +433,7 @@
 			};
 			name = Debug;
 		};
-		45464FF81B5BD36000A3DB45 /* Release */ = {
+		453961431B5BE35D0097DEDB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -435,34 +451,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		45464FCF1B5BD36000A3DB45 /* Build configuration list for PBXProject "MiniFarma" */ = {
+		4539611A1B5BE35D0097DEDB /* Build configuration list for PBXProject "MiniFarma" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				45464FF11B5BD36000A3DB45 /* Debug */,
-				45464FF21B5BD36000A3DB45 /* Release */,
+				4539613C1B5BE35D0097DEDB /* Debug */,
+				4539613D1B5BE35D0097DEDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		45464FF31B5BD36000A3DB45 /* Build configuration list for PBXNativeTarget "MiniFarma" */ = {
+		4539613E1B5BE35D0097DEDB /* Build configuration list for PBXNativeTarget "MiniFarma" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				45464FF41B5BD36000A3DB45 /* Debug */,
-				45464FF51B5BD36000A3DB45 /* Release */,
+				4539613F1B5BE35D0097DEDB /* Debug */,
+				453961401B5BE35D0097DEDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		45464FF61B5BD36000A3DB45 /* Build configuration list for PBXNativeTarget "MiniFarmaTests" */ = {
+		453961411B5BE35D0097DEDB /* Build configuration list for PBXNativeTarget "MiniFarmaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				45464FF71B5BD36000A3DB45 /* Debug */,
-				45464FF81B5BD36000A3DB45 /* Release */,
+				453961421B5BE35D0097DEDB /* Debug */,
+				453961431B5BE35D0097DEDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 45464FCC1B5BD36000A3DB45 /* Project object */;
+	rootObject = 453961171B5BE35D0097DEDB /* Project object */;
 }
