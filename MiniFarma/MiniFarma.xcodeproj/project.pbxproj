@@ -19,6 +19,7 @@
 		4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4539615B1B5BEEA30097DEDB /* FMResultSet.m */; };
 		453961601B5BEEC20097DEDB /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */; };
 		453961621B5BEED30097DEDB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453961611B5BEED30097DEDB /* CoreLocation.framework */; };
+		4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4539616C1B5BF1950097DEDB /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		453961611B5BEED30097DEDB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		453961631B5BEF740097DEDB /* FMDB-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDB-Bridging-Header.h"; sourceTree = "<group>"; };
+		4539616B1B5BF1950097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		4539616D1B5BF1AE0097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 				453961491B5BE3C60097DEDB /* BancoDeDados */,
 				453961451B5BE3AB0097DEDB /* Bridge */,
 				453961461B5BE3B00097DEDB /* Controlador */,
+				453961671B5BF0A00097DEDB /* DAO */,
 				4539614B1B5BE4D70097DEDB /* Framework */,
 				453961471B5BE3B80097DEDB /* Internacionalizacao */,
 				453961481B5BE3C00097DEDB /* Modelo */,
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				453961521B5BE5370097DEDB /* Localizable.strings */,
+				4539616C1B5BF1950097DEDB /* InfoPlist.strings */,
 			);
 			name = Internacionalizacao;
 			sourceTree = "<group>";
@@ -180,12 +185,7 @@
 		453961491B5BE3C60097DEDB /* BancoDeDados */ = {
 			isa = PBXGroup;
 			children = (
-				453961561B5BEEA30097DEDB /* FMDatabase.h */,
-				453961571B5BEEA30097DEDB /* FMDatabase.m */,
-				453961581B5BEEA30097DEDB /* FMDatabaseAdditions.h */,
-				453961591B5BEEA30097DEDB /* FMDatabaseAdditions.m */,
-				4539615A1B5BEEA30097DEDB /* FMResultSet.h */,
-				4539615B1B5BEEA30097DEDB /* FMResultSet.m */,
+				453961661B5BF06D0097DEDB /* FMDB */,
 			);
 			name = BancoDeDados;
 			sourceTree = "<group>";
@@ -206,6 +206,26 @@
 				4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */,
 			);
 			name = Framework;
+			sourceTree = "<group>";
+		};
+		453961661B5BF06D0097DEDB /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				453961561B5BEEA30097DEDB /* FMDatabase.h */,
+				453961571B5BEEA30097DEDB /* FMDatabase.m */,
+				453961581B5BEEA30097DEDB /* FMDatabaseAdditions.h */,
+				453961591B5BEEA30097DEDB /* FMDatabaseAdditions.m */,
+				4539615A1B5BEEA30097DEDB /* FMResultSet.h */,
+				4539615B1B5BEEA30097DEDB /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		453961671B5BF0A00097DEDB /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DAO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +312,7 @@
 				453961501B5BE5370097DEDB /* Localizable.strings in Resources */,
 				4539612F1B5BE35D0097DEDB /* LaunchScreen.xib in Resources */,
 				4539612C1B5BE35D0097DEDB /* Images.xcassets in Resources */,
+				4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +383,15 @@
 				453961531B5BE53B0097DEDB /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4539616C1B5BF1950097DEDB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4539616B1B5BF1950097DEDB /* pt-BR */,
+				4539616D1B5BF1AE0097DEDB /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
