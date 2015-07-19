@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MiniChallenge2.xcodeproj">
+      location = "self:MiniFarma.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,15 +1,15 @@
 //
-//  MiniChallenge2Tests.swift
-//  MiniChallenge2Tests
+//  MiniFarmaTests.swift
+//  MiniFarmaTests
 //
-//  Created by João Gabriel de Britto e Silva on 05/07/15.
-//  Copyright (c) 2015 joaogabriel. All rights reserved.
+//  Created by João Gabriel de Britto e Silva on 19/07/15.
+//  Copyright (c) 2015 João Gabriel de Britto e Silva. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class MiniChallenge2Tests: XCTestCase {
+class MiniFarmaTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
