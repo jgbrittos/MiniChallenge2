@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var labelTeste: UILabel!
+    @IBOutlet weak var textFieldTeste: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

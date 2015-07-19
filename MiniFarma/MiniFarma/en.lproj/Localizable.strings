@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  MiniFarma
+
+  Created by João Gabriel de Britto e Silva on 19/07/15.
+  Copyright (c) 2015 JGBrittoS. All rights reserved.
+*/
+
+///MARK: - Componentes
+LABELTESTE = "This is a test label";
+TEXTFIELDTESTE = "This is a test textfield";
+
+
+///MARK: - Acessibilidade
+LABELTESTE_ACESSIBILIDADE_LABEL = "This is a test label";
+LABELTESTE_ACESSIBILIDADE_HINT = "This is a test label to test accessibility";
+
+TEXTFIELDTESTE_ACESSIBILIDADE_LABEL = "This is a test textfield";
+TEXTFIELDTESTE_ACESSIBILIDADE_HINT = "This is a test textfield to test accessibility";

@@ -23,9 +23,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MX0-Uf-MWa">
+                                <rect key="frame" x="16" y="318" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MX0-Uf-MWa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="5HV-eq-crE"/>
+                            <constraint firstItem="MX0-Uf-MWa" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="6f5-Lq-Wu4"/>
+                            <constraint firstItem="MX0-Uf-MWa" firstAttribute="top" secondItem="q8j-wb-48R" secondAttribute="bottom" constant="8" id="GEc-dC-wyH"/>
                             <constraint firstItem="q8j-wb-48R" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ccO-bV-abR"/>
                             <constraint firstItem="q8j-wb-48R" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="coe-te-38j"/>
                             <constraint firstAttribute="centerY" secondItem="q8j-wb-48R" secondAttribute="centerY" constant="0.5" id="kom-dU-xKb"/>
@@ -33,6 +41,7 @@
                     </view>
                     <connections>
                         <outlet property="labelTeste" destination="q8j-wb-48R" id="u54-0H-MoV"/>
+                        <outlet property="textFieldTeste" destination="MX0-Uf-MWa" id="Orf-y8-Ch9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

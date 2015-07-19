@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  MiniFarma
+
+  Created by João Gabriel de Britto e Silva on 19/07/15.
+  Copyright (c) 2015 JGBrittoS. All rights reserved.
+*/
+
+/*
+  Padrão para internacionalização de componentes da view - Labels, ImageView
+    <NOME_DO_COMPONENTE_EM_CAPS_LOCK> = "mensagem"
+ 
+  Padrão para internacionalização da acessibilidade
+    <NOME_DO_COMPONENTE_EM_CAPS_LOCK>_ACESSIBILIDADE_LABEL = "mensagem rápida que explica o que é o componente"
+    <NOME_DO_COMPONENTE_EM_CAPS_LOCK>_ACESSIBILIDADE_HINT = "mensagem que explica para que o componente serve"
+    
+    Padrão para componentes selecionáveis da view - TextField, UISwitch, Botão
+    <NOME_DO_COMPONENTE_EM_CAPS_LOCK> = "mensagem que explica pra que serve aquele campo selesionável"
+*/
+
+///MARK: - Componentes
+LABELTESTE = "Esse é o label de teste";
+TEXTFIELDTESTE = "Esse é o textfield  de teste";
+
+
+///MARK: - Acessibilidade
+LABELTESTE_ACESSIBILIDADE_LABEL = "Esse é o label de teste";
+LABELTESTE_ACESSIBILIDADE_HINT = "Esse é o label de teste para testar a acessibilidade";
+
+TEXTFIELDTESTE_ACESSIBILIDADE_LABEL = "Esse é o textfield de teste";
+TEXTFIELDTESTE_ACESSIBILIDADE_HINT = "Esse é o textfield de teste para testar a acessibilidade";
