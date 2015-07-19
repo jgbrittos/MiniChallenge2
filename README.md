@@ -1,4 +1,4 @@
-# MiniChallenge2
+# Mini Farma
 ### Este é projeto do Segundo Mini Challenge do projeto BEPiD
 
 
