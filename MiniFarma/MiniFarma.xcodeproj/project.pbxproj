@@ -22,6 +22,8 @@
 		4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4539616C1B5BF1950097DEDB /* InfoPlist.strings */; };
 		45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */; };
 		45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */; };
+		45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5351B5C334A00AA2860 /* Remedio.swift */; };
+		45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5371B5C335100AA2860 /* Alerta.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		4539616D1B5BF1AE0097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemediosViewController.swift; sourceTree = "<group>"; };
 		45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertaViewController.swift; sourceTree = "<group>"; };
+		45DAB5351B5C334A00AA2860 /* Remedio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remedio.swift; sourceTree = "<group>"; };
+		45DAB5371B5C335100AA2860 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 		453961481B5BE3C00097DEDB /* Modelo */ = {
 			isa = PBXGroup;
 			children = (
+				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
+				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 			);
 			name = Modelo;
 			sourceTree = "<group>";
@@ -342,7 +348,9 @@
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
 				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
 				45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */,
+				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
+				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
 				4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
