@@ -8,7 +8,7 @@
 
 ///MARK: - Componentes
 LABELTESTE = "This is a test label";
-TEXTFIELDTESTE = "This is a test textfield";
+TEXTFIELDTESTE = "This is a place holder for test textfield";
 
 
 ///MARK: - Acessibilidade

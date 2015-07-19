@@ -41,6 +41,7 @@
 		4539614D1B5BE5160097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		453961511B5BE5370097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		453961531B5BE53B0097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		453961551B5BEDA80097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +313,7 @@
 			children = (
 				453961291B5BE35D0097DEDB /* Base */,
 				4539614C1B5BE5160097DEDB /* pt-BR */,
+				453961551B5BEDA80097DEDB /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
