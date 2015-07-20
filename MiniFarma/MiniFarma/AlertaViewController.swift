@@ -11,7 +11,7 @@ import UIKit
 class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableViewAlerta: UITableView!
-    @IBOutlet weak var segmentedControlAtividadeRemedios: UISegmentedControl!
+    @IBOutlet weak var segmentedControlAtividadeAlertas: UISegmentedControl!
     
     let alertasAtivos = ["Novalgina", "Resfenol"]
     let alertasInativos = ["Viagra","Tylenol","Dorflex"]
@@ -28,13 +28,18 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.alertasDaVez = self.alertasAtivos
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.segmentedControlAtividadeAlertas.setTitle(NSLocalizedString("SEGMENTEDCONTROLALERTAATIVO", comment: "Alerta ativo"), forSegmentAtIndex: 0)
+        self.segmentedControlAtividadeAlertas.setTitle(NSLocalizedString("SEGMENTEDCONTROLALERTAINATIVO", comment: "Alerta inativo"), forSegmentAtIndex: 1)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func alteraDadosDaTabelaAlerta(sender: AnyObject) {
-        switch segmentedControlAtividadeRemedios.selectedSegmentIndex {
+        switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
         case 0:
             self.alertasDaVez = self.alertasAtivos
             break

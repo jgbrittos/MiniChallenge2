@@ -30,6 +30,9 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         let rvc = self.tabBarController?.tabBar.items as! [UITabBarItem]
         rvc.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
         rvc.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
+        
+        self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO", comment: "Remédio válido"), forSegmentAtIndex: 0)
+        self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOINVALIDO", comment: "Remédio inválido"), forSegmentAtIndex: 1)
     }
     
     override func didReceiveMemoryWarning() {

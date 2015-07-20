@@ -19,16 +19,19 @@
 */
 
 ///MARK: - Componentes
-LABELTESTE = "Esse é o label de teste";
-TEXTFIELDTESTE = "Esse é o placeholder textfield de teste";
-
 TABBARREMEDIOS = "Remédios";
 TABBARALERTAS = "Alertas";
 
+SEGMENTEDCONTROLREMEDIOVALIDO = "Válido";
+SEGMENTEDCONTROLREMEDIOINVALIDO = "Vencido";
+
+SEGMENTEDCONTROLALERTAATIVO = "Ativo";
+SEGMENTEDCONTROLALERTAINATIVO = "Inativo";
 
 ///MARK: - Acessibilidade
-LABELTESTE_ACESSIBILIDADE_LABEL = "Esse é o label de teste";
-LABELTESTE_ACESSIBILIDADE_HINT = "Esse é o label de teste para testar a acessibilidade";
 
-TEXTFIELDTESTE_ACESSIBILIDADE_LABEL = "Esse é o textfield de teste";
-TEXTFIELDTESTE_ACESSIBILIDADE_HINT = "Esse é o textfield de teste para testar a acessibilidade";
+TABBARREMEDIOS_ACESSIBILIDADE_LABEL = "Lista de remédios";
+TABBARREMEDIOS_ACESSIBILIDADE_HINT = "Essa é a lista de remédios que você possui cadastrados";
+
+TABBARALERTAS_ACESSIBILIDADE_LABEL = "Lista de alertas";
+TABBARALERTAS_ACESSIBILIDADE_HINT = "Essa é a lista de alertas que você possui cadastrados";
