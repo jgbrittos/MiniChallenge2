@@ -11,4 +11,3 @@ import UIKit
 class Remedio: NSObject {
    
 }
-//teste
