@@ -26,6 +26,12 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.dadosDaVez = self.remediosValidos
     }
 
+    override func viewWillAppear(animated: Bool) {
+        let rvc = self.tabBarController?.tabBar.items as! [UITabBarItem]
+        rvc.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
+        rvc.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

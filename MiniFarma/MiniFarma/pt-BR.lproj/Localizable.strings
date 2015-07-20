@@ -22,6 +22,9 @@
 LABELTESTE = "Esse é o label de teste";
 TEXTFIELDTESTE = "Esse é o placeholder textfield de teste";
 
+TABBARREMEDIOS = "Remédios";
+TABBARALERTAS = "Alertas";
+
 
 ///MARK: - Acessibilidade
 LABELTESTE_ACESSIBILIDADE_LABEL = "Esse é o label de teste";

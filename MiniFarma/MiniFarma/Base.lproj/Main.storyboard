@@ -170,11 +170,11 @@
             </objects>
             <point key="canvasLocation" x="40" y="1462"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Remédios-->
         <scene sceneID="vZp-Nd-fP4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ajf-DO-aVx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="Ocr-hH-gxW"/>
+                    <tabBarItem key="tabBarItem" title="Remédios" id="Ocr-hH-gxW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dbb-Gg-U1P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -189,11 +189,11 @@
             </objects>
             <point key="canvasLocation" x="858" y="1091"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Alertas-->
         <scene sceneID="YJk-Us-cZS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="78M-WM-zU2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="sAS-Tz-fF4"/>
+                    <tabBarItem key="tabBarItem" title="Alertas" id="sAS-Tz-fF4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QNP-JE-iSc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
