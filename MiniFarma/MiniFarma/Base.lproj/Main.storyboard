@@ -151,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="1664" y="1833"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar Customizada Controller-->
         <scene sceneID="4wK-Cp-r0w">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TGd-nj-MoU" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TGd-nj-MoU" customClass="TabBarCustomizadaController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DmT-WH-1fs">

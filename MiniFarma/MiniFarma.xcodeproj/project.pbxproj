@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4522B7D41B5E85060053DD8E /* logo_azul.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D21B5E85060053DD8E /* logo_azul.png */; };
 		4522B7D51B5E85060053DD8E /* logo_vermelho.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D31B5E85060053DD8E /* logo_vermelho.png */; };
+		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
 		453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961241B5BE35D0097DEDB /* AppDelegate.swift */; };
 		453961271B5BE35D0097DEDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961261B5BE35D0097DEDB /* ViewController.swift */; };
 		4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453961281B5BE35D0097DEDB /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		4522B7D21B5E85060053DD8E /* logo_azul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_azul.png; sourceTree = "<group>"; };
 		4522B7D31B5E85060053DD8E /* logo_vermelho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_vermelho.png; sourceTree = "<group>"; };
+		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
 		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		453961231B5BE35D0097DEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		453961241B5BE35D0097DEDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				453961261B5BE35D0097DEDB /* ViewController.swift */,
 				45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */,
 				45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */,
+				4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */,
 			);
 			name = Controlador;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				453961271B5BE35D0097DEDB /* ViewController.swift in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
 				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
+				4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */,
 				45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */,
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
