@@ -125,6 +125,7 @@
 				4539614B1B5BE4D70097DEDB /* Framework */,
 				453961471B5BE3B80097DEDB /* Internacionalizacao */,
 				453961481B5BE3C00097DEDB /* Modelo */,
+				453961281B5BE35D0097DEDB /* Main.storyboard */,
 				4539614A1B5BE3F80097DEDB /* Storyboard */,
 				453961221B5BE35D0097DEDB /* Supporting Files */,
 			);
@@ -215,7 +216,6 @@
 		4539614A1B5BE3F80097DEDB /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				453961281B5BE35D0097DEDB /* Main.storyboard */,
 				4539612D1B5BE35D0097DEDB /* LaunchScreen.xib */,
 			);
 			name = Storyboard;

@@ -105,9 +105,9 @@ class TabBarCustomizadaController: UITabBarController {
                 self.botaoAdicionaRemedio.center = self.centroInicialPadrao
                 self.botaoAdicionaAlerta.center = self.centroInicialPadrao
                 
-                //                self.botaoAdicionaFarmacia.removeFromSuperview()
-                //                self.botaoAdicionaRemedio.removeFromSuperview()
-                //                self.botaoAdicionaAlerta.removeFromSuperview()
+                self.botaoAdicionaFarmacia.removeFromSuperview()
+                self.botaoAdicionaRemedio.removeFromSuperview()
+                self.botaoAdicionaAlerta.removeFromSuperview()
                 
                 }, completion: nil)
         }
