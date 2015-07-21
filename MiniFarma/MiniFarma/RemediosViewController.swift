@@ -37,6 +37,20 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         rvc.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "teste")
         rvc.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "teste")
         
+        
+        let button = UIButton()
+        let buttonImage = UIImage(named: "logo_azul.png")
+        let buttonImageVer = UIImage(named: "logo_vermelho.png")
+        button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
+        button.frame = CGRectMake(0.0, 0.0, 50, 50)
+        
+        button.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
+        button.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
+        
+        button.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
+
+        self.tabBarController?.tabBar.addSubview(button)
+        
         self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO", comment: "Remédio válido"), forSegmentAtIndex: 0)
         self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOINVALIDO", comment: "Remédio inválido"), forSegmentAtIndex: 1)
         
