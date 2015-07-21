@@ -13,18 +13,9 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableViewRemedios: UITableView!
     @IBOutlet weak var segmentedControlValidadeRemedios: UISegmentedControl!
     
-    let remediosValidos = ["Tylenol","Resfenol","Dorflex","Torsillax","Novalgina"]
+    let remediosValidos = ["Tylenol","Resfenol","Dorflex","Torsillax","Novalgina","Tylenol","Resfenol","Dorflex","Torsillax","Novalgina"]
     let remediosVencidos = ["Pasallix","Viagra"]
     var dadosDaVez = Array<String>()
-    
-    let botaoAdicionaFarmacia = UIButton()
-    let botaoAdicionaRemedio = UIButton()
-    let botaoAdicionaAlerta = UIButton()
-    
-    let tamanhoPadraoBotao = CGRectMake(0, 0, 50, 50)
-    let centroInicialPadrao = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, UIScreen.mainScreen().bounds.height-49)//NUMERO MAGICO 49 = ALTURA DA TAB BAR
-    
-    var botoesNaoEstaoVisiveis: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,101 +24,11 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.dataSource = self
         
         self.dadosDaVez = self.remediosValidos
-        
-        self.criaBotoesDeOcoes()
     }
 
     override func viewWillAppear(animated: Bool) {
-        let rvc = self.tabBarController?.tabBar.items as! [UITabBarItem]
-        rvc.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
-        rvc.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
-        
-        rvc.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "teste")
-        rvc.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "teste")
-        
-        rvc.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "teste")
-        rvc.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "teste")
-        
-        
-        let button = UIButton()
-        let buttonImage = UIImage(named: "logo_azul.png")
-        let buttonImageVer = UIImage(named: "logo_vermelho.png")
-        button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
-        button.frame = CGRectMake(0.0, 0.0, 60, 60)
-        
-        button.addTarget(self, action: Selector("animacao:"), forControlEvents: UIControlEvents.TouchUpInside)
-        
-        button.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
-        button.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
-        
-        button.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
-
-        self.tabBarController?.tabBar.addSubview(button)
-        
         self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO", comment: "Remédio válido"), forSegmentAtIndex: 0)
         self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOINVALIDO", comment: "Remédio inválido"), forSegmentAtIndex: 1)
-        
-    }
-    
-    func criaBotoesDeOcoes(){
-        
-        let buttonImage = UIImage(named: "logo_azul.png")
-        let buttonImageVer = UIImage(named: "logo_vermelho.png")
-        
-        botaoAdicionaFarmacia.frame = tamanhoPadraoBotao
-        botaoAdicionaFarmacia.center = centroInicialPadrao
-        botaoAdicionaFarmacia.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
-        botaoAdicionaFarmacia.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
-        
-        botaoAdicionaRemedio.frame = tamanhoPadraoBotao
-        botaoAdicionaRemedio.center = centroInicialPadrao
-        botaoAdicionaRemedio.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
-        botaoAdicionaRemedio.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
-        
-        botaoAdicionaAlerta.frame = tamanhoPadraoBotao
-        botaoAdicionaAlerta.center = centroInicialPadrao
-        botaoAdicionaAlerta.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
-        botaoAdicionaAlerta.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
-    }
-    
-    func animacao(sender: AnyObject){
-        
-        if botoesNaoEstaoVisiveis {
-            UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
-                self.botoesNaoEstaoVisiveis = false
-                
-                self.view.addSubview(self.botaoAdicionaFarmacia)
-                self.view.addSubview(self.botaoAdicionaRemedio)
-                self.view.addSubview(self.botaoAdicionaAlerta)
-                
-                self.botaoAdicionaFarmacia.center.x -= 100
-                self.botaoAdicionaFarmacia.center.y -= 100
-                
-                self.botaoAdicionaRemedio.center.y -= 150
-                
-                self.botaoAdicionaAlerta.center.x += 100
-                self.botaoAdicionaAlerta.center.y -= 100
-                
-                }, completion: nil)
-        }else{
-            UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
-                self.botoesNaoEstaoVisiveis = true
-                
-                self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
-                self.botaoAdicionaRemedio.center = self.centroInicialPadrao
-                self.botaoAdicionaAlerta.center = self.centroInicialPadrao
-                
-//                self.botaoAdicionaFarmacia.removeFromSuperview()
-//                self.botaoAdicionaRemedio.removeFromSuperview()
-//                self.botaoAdicionaAlerta.removeFromSuperview()
-                
-                }, completion: nil)
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func alteraDadosDaTabelaRemedios(sender: AnyObject) {

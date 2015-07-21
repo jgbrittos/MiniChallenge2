@@ -43,6 +43,7 @@
 		4522B7D21B5E85060053DD8E /* logo_azul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_azul.png; sourceTree = "<group>"; };
 		4522B7D31B5E85060053DD8E /* logo_vermelho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_vermelho.png; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
+		4522B7E01B5EC0CA0053DD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		453961231B5BE35D0097DEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		453961241B5BE35D0097DEDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -400,6 +401,7 @@
 			children = (
 				4539612E1B5BE35D0097DEDB /* Base */,
 				4539614D1B5BE5160097DEDB /* pt-BR */,
+				4522B7E01B5EC0CA0053DD8E /* en */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
