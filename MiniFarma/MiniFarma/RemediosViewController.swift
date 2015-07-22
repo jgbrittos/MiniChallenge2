@@ -14,7 +14,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var segmentedControlValidadeRemedios: UISegmentedControl!
     
     let remediosValidos = ["Tylenol","Resfenol","Dorflex","Torsillax","Novalgina","Tylenol","Resfenol","Dorflex","Torsillax","Novalgina"]
-    let remediosVencidos = ["Pasallix","Viagra"]
+    let remediosVencidos = ["Pasallix","Viagra","Resfenol"]
     var dadosDaVez = Array<String>()
     
     override func viewDidLoad() {
@@ -24,14 +24,18 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.dataSource = self
         
         self.dadosDaVez = self.remediosValidos
+        self.tableViewRemedios.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func viewWillAppear(animated: Bool) {
-        self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO", comment: "Remédio válido"), forSegmentAtIndex: 0)
-        self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOINVALIDO", comment: "Remédio inválido"), forSegmentAtIndex: 1)
+        self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO",
+            comment: "Remédio válido"), forSegmentAtIndex: 0)
+        self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOINVALIDO",
+            comment: "Remédio inválido"), forSegmentAtIndex: 1)
     }
     
     @IBAction func alteraDadosDaTabelaRemedios(sender: AnyObject) {
+        self.dadosDaVez = Array<String>()
         switch segmentedControlValidadeRemedios.selectedSegmentIndex {
             case 0:
                 self.dadosDaVez = self.remediosValidos
@@ -44,7 +48,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                 println("Algo ocorreu no método alteraDadosDaTabelaRemedios na classe RemediosViewController!")
                 break
         }
-        
+
         self.tableViewRemedios.reloadData()
     }
     
@@ -53,18 +57,23 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dadosDaVez.count
+        //Adiciona-se uma linha para o botão não ficar em cima de uma célula
+        return self.dadosDaVez.count+1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = self.tableViewRemedios.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as! UITableViewCell
-        
-        cell.textLabel?.text = self.dadosDaVez[indexPath.row]
-        cell.detailTextLabel?.text = self.dadosDaVez[indexPath.row]
-        
-        return cell
 
+        if indexPath.row == self.dadosDaVez.count {
+            let cell = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) as! UITableViewCell
+            cell.userInteractionEnabled = false //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
+            cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)//Removendo a linha de baixo da última célula
+            return cell
+        }else{
+            let cell = self.tableViewRemedios.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as! UITableViewCell
+            cell.textLabel?.text = self.dadosDaVez[indexPath.row]
+            cell.detailTextLabel?.text = self.dadosDaVez[indexPath.row]
+            return cell
+        }
     }
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

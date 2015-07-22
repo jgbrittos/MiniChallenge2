@@ -31,7 +31,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4sQ-Ys-Mg8">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Z0Y-ec-Hce" detailTextLabel="Kbs-FU-gKx" style="IBUITableViewCellStyleSubtitle" id="2Or-lK-khe">
@@ -54,6 +54,13 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaBranca" id="Qf8-5c-PhX">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qf8-5c-PhX" id="rcF-H7-BYx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -63,7 +70,7 @@
                             <constraint firstItem="4sQ-Ys-Mg8" firstAttribute="top" secondItem="UDi-B8-Cyq" secondAttribute="bottom" constant="8" id="3Ca-Aw-lEC"/>
                             <constraint firstAttribute="trailing" secondItem="4sQ-Ys-Mg8" secondAttribute="trailing" id="I2x-aq-pn4"/>
                             <constraint firstItem="4sQ-Ys-Mg8" firstAttribute="leading" secondItem="BQo-n2-hBk" secondAttribute="leading" id="OSD-TT-1bT"/>
-                            <constraint firstAttribute="bottom" secondItem="4sQ-Ys-Mg8" secondAttribute="bottom" id="OvZ-rV-oq5"/>
+                            <constraint firstAttribute="bottom" secondItem="4sQ-Ys-Mg8" secondAttribute="bottom" constant="49" id="OvZ-rV-oq5"/>
                             <constraint firstItem="UDi-B8-Cyq" firstAttribute="top" secondItem="V4r-ps-BVs" secondAttribute="bottom" constant="8" id="Pim-nf-As2"/>
                             <constraint firstItem="UDi-B8-Cyq" firstAttribute="leading" secondItem="BQo-n2-hBk" secondAttribute="leadingMargin" id="jxa-n6-Daj"/>
                         </constraints>
@@ -104,7 +111,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-AE-bxS">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="S1g-PT-TAq" detailTextLabel="Zrl-iW-PPs" style="IBUITableViewCellStyleSubtitle" id="Gky-IV-g2f">
@@ -127,6 +134,13 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaBranca" id="jGf-D7-FaX">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGf-D7-FaX" id="9rw-sA-CRu">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -137,7 +151,7 @@
                             <constraint firstAttribute="trailing" secondItem="gmx-AE-bxS" secondAttribute="trailing" id="Maf-yV-ifk"/>
                             <constraint firstItem="9VZ-Ew-X34" firstAttribute="leading" secondItem="d3h-Tf-dS0" secondAttribute="leadingMargin" id="NFF-gc-A68"/>
                             <constraint firstItem="9VZ-Ew-X34" firstAttribute="top" secondItem="MgU-nh-kGK" secondAttribute="bottom" constant="8" id="Rke-su-fe2"/>
-                            <constraint firstAttribute="bottom" secondItem="gmx-AE-bxS" secondAttribute="bottom" id="egz-Lp-zcJ"/>
+                            <constraint firstAttribute="bottom" secondItem="gmx-AE-bxS" secondAttribute="bottom" constant="49" id="egz-Lp-zcJ"/>
                             <constraint firstItem="gmx-AE-bxS" firstAttribute="top" secondItem="9VZ-Ew-X34" secondAttribute="bottom" constant="8" id="mAR-aS-6N0"/>
                         </constraints>
                     </view>

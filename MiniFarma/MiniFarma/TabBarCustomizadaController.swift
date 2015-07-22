@@ -39,19 +39,11 @@ class TabBarCustomizadaController: UITabBarController {
         
         abas.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "teste")
         abas.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "teste")
-    }
-    /*            
-    self.tabBar.bringSubviewToFront(button)
-    self.view.sendSubviewToBack(self.botaoAdicionaFarmacia)
-    self.view.sendSubviewToBack(self.botaoAdicionaRemedio)
-    self.view.sendSubviewToBack(self.botaoAdicionaAlerta)
-    */
-    func criaBotoesDeOpcoes(){
         
-        self.botaoMaisOpcoes.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin
-            | UIViewAutoresizing.FlexibleLeftMargin
-            | UIViewAutoresizing.FlexibleBottomMargin
-            | UIViewAutoresizing.FlexibleTopMargin
+//        self.botaoMaisOpcoes.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin
+//            | UIViewAutoresizing.FlexibleLeftMargin
+//            | UIViewAutoresizing.FlexibleBottomMargin
+//            | UIViewAutoresizing.FlexibleTopMargin
         
         self.botaoMaisOpcoes.frame = CGRectMake(0.0, 0.0, 60, 60)
         self.botaoMaisOpcoes.addTarget(self, action: Selector("fazAnimacaoDeBotoesDeOpcoes:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -60,6 +52,9 @@ class TabBarCustomizadaController: UITabBarController {
         self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
         self.botaoMaisOpcoes.layer.zPosition = 2
         self.tabBar.addSubview(botaoMaisOpcoes)
+    }
+ 
+  func criaBotoesDeOpcoes(){
         
         self.botaoAdicionaFarmacia.frame = tamanhoPadraoBotao
         self.botaoAdicionaFarmacia.center = centroInicialPadrao

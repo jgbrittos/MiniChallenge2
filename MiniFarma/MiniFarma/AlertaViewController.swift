@@ -26,16 +26,12 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableViewAlerta.dataSource = self
         
         self.alertasDaVez = self.alertasAtivos
+        self.tableViewAlerta.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func viewWillAppear(animated: Bool) {
         self.segmentedControlAtividadeAlertas.setTitle(NSLocalizedString("SEGMENTEDCONTROLALERTAATIVO", comment: "Alerta ativo"), forSegmentAtIndex: 0)
         self.segmentedControlAtividadeAlertas.setTitle(NSLocalizedString("SEGMENTEDCONTROLALERTAINATIVO", comment: "Alerta inativo"), forSegmentAtIndex: 1)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func alteraDadosDaTabelaAlerta(sender: AnyObject) {
@@ -60,28 +56,40 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.alertasDaVez.count
+        return self.alertasDaVez.count+1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = self.tableViewAlerta.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as! UITableViewCell
-        
-        cell.textLabel?.text = self.alertasDaVez[indexPath.row]
-        cell.detailTextLabel?.text = self.alertasDaVez[indexPath.row]
-        
-        return cell
+        if indexPath.row == self.alertasDaVez.count {
+            let cell = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) as! UITableViewCell
+            cell.userInteractionEnabled = false //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
+            cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)//Removendo a linha de baixo da última célula
+            return cell
+        }else{
+            let cell = self.tableViewAlerta.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as! UITableViewCell
+            cell.textLabel?.text = self.alertasDaVez[indexPath.row]
+            cell.detailTextLabel?.text = self.alertasDaVez[indexPath.row]
+            return cell
+        }
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
-    */
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        var tomei = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            //Ação para quando o usuário tomou um remédio
+        })
+        var apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            //Ação para quando o usuário quer apagar um remédio
+        })
+        
+        tomei.backgroundColor = UIColor(red: CGFloat(3/255.0), green: CGFloat(144/255.0), blue: CGFloat(178/255.0), alpha: CGFloat(1))
+        apagar.backgroundColor = UIColor(red: CGFloat(237/255.0), green: CGFloat(37/255.0), blue: CGFloat(73/255.0), alpha: CGFloat(1))
+        
+        return [apagar, tomei]
+    }
 
 }
