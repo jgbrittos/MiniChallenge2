@@ -12,8 +12,6 @@ class TelaInicialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor.blueColor()
-
     }
     
     @IBAction func teste(sender: AnyObject) {
