@@ -70,6 +70,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let cell = self.tableViewAlerta.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as! UITableViewCell
             cell.textLabel?.text = self.alertasDaVez[indexPath.row]
             cell.detailTextLabel?.text = self.alertasDaVez[indexPath.row]
+            cell.accessoryType = .DisclosureIndicator
             return cell
         }
         

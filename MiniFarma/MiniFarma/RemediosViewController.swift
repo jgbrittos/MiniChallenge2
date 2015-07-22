@@ -72,6 +72,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = self.tableViewRemedios.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexPath) as! UITableViewCell
             cell.textLabel?.text = self.dadosDaVez[indexPath.row]
             cell.detailTextLabel?.text = self.dadosDaVez[indexPath.row]
+            cell.accessoryType = .DisclosureIndicator
             return cell
         }
     }

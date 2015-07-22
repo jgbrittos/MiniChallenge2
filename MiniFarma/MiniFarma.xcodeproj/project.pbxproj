@@ -129,7 +129,7 @@
 				453961451B5BE3AB0097DEDB /* Bridge */,
 				4539614B1B5BE4D70097DEDB /* Framework */,
 				453961471B5BE3B80097DEDB /* Internacionalizacao */,
-				4539614A1B5BE3F80097DEDB /* Storyboard */,
+				4539614A1B5BE3F80097DEDB /* Launch Screen */,
 				453961221B5BE35D0097DEDB /* Supporting Files */,
 			);
 			path = MiniFarma;
@@ -206,12 +206,12 @@
 			name = BancoDeDados;
 			sourceTree = "<group>";
 		};
-		4539614A1B5BE3F80097DEDB /* Storyboard */ = {
+		4539614A1B5BE3F80097DEDB /* Launch Screen */ = {
 			isa = PBXGroup;
 			children = (
 				4539612D1B5BE35D0097DEDB /* LaunchScreen.xib */,
 			);
-			name = Storyboard;
+			name = "Launch Screen";
 			sourceTree = "<group>";
 		};
 		4539614B1B5BE4D70097DEDB /* Framework */ = {
