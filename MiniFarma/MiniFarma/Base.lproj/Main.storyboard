@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Z0Y-ec-Hce" detailTextLabel="Kbs-FU-gKx" style="IBUITableViewCellStyleSubtitle" id="2Or-lK-khe">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celulaRemedio" textLabel="Z0Y-ec-Hce" detailTextLabel="Kbs-FU-gKx" style="IBUITableViewCellStyleSubtitle" id="2Or-lK-khe">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Or-lK-khe" id="k7o-y5-q2c">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -114,7 +114,7 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="S1g-PT-TAq" detailTextLabel="Zrl-iW-PPs" style="IBUITableViewCellStyleSubtitle" id="Gky-IV-g2f">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celulaAlerta" textLabel="S1g-PT-TAq" detailTextLabel="Zrl-iW-PPs" style="IBUITableViewCellStyleSubtitle" id="Gky-IV-g2f">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gky-IV-g2f" id="5Ex-td-2fs">
                                             <autoresizingMask key="autoresizingMask"/>

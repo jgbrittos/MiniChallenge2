@@ -10,6 +10,11 @@ import UIKit
 
 class TabBarCustomizadaController: UITabBarController {
     
+    //MARK: - Propriedades
+    var botoesNaoEstaoVisiveis: Bool = true
+    let tamanhoPadraoBotao = CGRectMake(0, 0, 50, 50)
+    let centroInicialPadrao = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, UIScreen.mainScreen().bounds.height-49)//NUMERO MAGICO 49 = ALTURA DA TAB BAR
+    
     let botaoMaisOpcoes = UIButton()
     let botaoAdicionaFarmacia = UIButton()
     let botaoAdicionaRemedio = UIButton()
@@ -18,11 +23,7 @@ class TabBarCustomizadaController: UITabBarController {
     let buttonImage = UIImage(named: "logo_azul.png")
     let buttonImageVer = UIImage(named: "logo_vermelho.png")
     
-    let tamanhoPadraoBotao = CGRectMake(0, 0, 50, 50)
-    let centroInicialPadrao = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, UIScreen.mainScreen().bounds.height-49)//NUMERO MAGICO 49 = ALTURA DA TAB BAR
-    
-    var botoesNaoEstaoVisiveis: Bool = true
-    
+    //MARK:- Inicialização da view
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +31,7 @@ class TabBarCustomizadaController: UITabBarController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        internacionalizaTabBar()
+        self.internacionalizaTabBar()
         
         self.botaoMaisOpcoes.frame = CGRectMake(0.0, 0.0, 60, 60)
         self.botaoMaisOpcoes.addTarget(self, action: Selector("fazAnimacaoDeBotoesDeOpcoes:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -39,18 +40,6 @@ class TabBarCustomizadaController: UITabBarController {
         self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
         self.botaoMaisOpcoes.layer.zPosition = 1
         self.tabBar.addSubview(botaoMaisOpcoes)
-    }
- 
-    func internacionalizaTabBar(){
-        let abas = self.tabBar.items as! [UITabBarItem]
-        abas.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
-        abas.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
-        
-        abas.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "Aba remédios")
-        abas.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "Aba remédios")
-        
-        abas.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "Aba alertas")
-        abas.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "Aba alertas")
     }
     
     func criaBotoesDeOpcoes(){
@@ -71,8 +60,21 @@ class TabBarCustomizadaController: UITabBarController {
         self.botaoAdicionaAlerta.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
     }
     
-    func fazAnimacaoDeBotoesDeOpcoes(sender: AnyObject){
+    //MARK:- Internacionalização
+    func internacionalizaTabBar(){
+        let abas = self.tabBar.items as! [UITabBarItem]
+        abas.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
+        abas.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
         
+        abas.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "Aba remédios")
+        abas.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "Aba remédios")
+        
+        abas.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "Aba alertas")
+        abas.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "Aba alertas")
+    }
+    
+    //MARK:- Ação do Botão '+'
+    func fazAnimacaoDeBotoesDeOpcoes(sender: AnyObject){
         if botoesNaoEstaoVisiveis {
             UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
                 self.botoesNaoEstaoVisiveis = false

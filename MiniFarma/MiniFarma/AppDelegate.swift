@@ -18,19 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboard: UIStoryboard!
+        let telaInicial: UIViewController!
         
         let vetor = ["asd","asd"]
         
         if vetor.count == 2 {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let telaInicial = storyboard.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-            self.window?.rootViewController = telaInicial
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
+            telaInicial = storyboard.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
         }else{
-            let storyboard = UIStoryboard(name: "Inicial", bundle: nil)
-            let telaInicial = storyboard.instantiateViewControllerWithIdentifier("InicialStoryboard") as! TelaInicialViewController
-            self.window?.rootViewController = telaInicial
+            storyboard = UIStoryboard(name: "Inicial", bundle: nil)
+            telaInicial = storyboard.instantiateViewControllerWithIdentifier("InicialStoryboard") as! TelaInicialViewController
         }
         
+        self.window?.rootViewController = telaInicial
         self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
         
