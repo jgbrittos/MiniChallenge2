@@ -16,6 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let vetor = ["asd","asd"]
+        
+        if vetor.count == 2 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let telaInicial = storyboard.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+            self.window?.rootViewController = telaInicial
+        }else{
+            let storyboard = UIStoryboard(name: "Inicial", bundle: nil)
+            let telaInicial = storyboard.instantiateViewControllerWithIdentifier("InicialStoryboard") as! TelaInicialViewController
+            self.window?.rootViewController = telaInicial
+        }
+        
+        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

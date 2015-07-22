@@ -168,7 +168,7 @@
         <!--Tab Bar Customizada Controller-->
         <scene sceneID="4wK-Cp-r0w">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TGd-nj-MoU" customClass="TabBarCustomizadaController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarInicial" automaticallyAdjustsScrollViewInsets="NO" id="TGd-nj-MoU" customClass="TabBarCustomizadaController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DmT-WH-1fs">
