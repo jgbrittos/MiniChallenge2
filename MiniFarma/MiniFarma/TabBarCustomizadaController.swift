@@ -30,31 +30,30 @@ class TabBarCustomizadaController: UITabBarController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        let abas = self.tabBar.items as! [UITabBarItem]
-        abas.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
-        abas.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
-        
-        abas.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "teste")
-        abas.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "teste")
-        
-        abas.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "teste")
-        abas.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "teste")
-        
-//        self.botaoMaisOpcoes.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin
-//            | UIViewAutoresizing.FlexibleLeftMargin
-//            | UIViewAutoresizing.FlexibleBottomMargin
-//            | UIViewAutoresizing.FlexibleTopMargin
+        internacionalizaTabBar()
         
         self.botaoMaisOpcoes.frame = CGRectMake(0.0, 0.0, 60, 60)
         self.botaoMaisOpcoes.addTarget(self, action: Selector("fazAnimacaoDeBotoesDeOpcoes:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoMaisOpcoes.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
         self.botaoMaisOpcoes.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
         self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
-        self.botaoMaisOpcoes.layer.zPosition = 2
+        self.botaoMaisOpcoes.layer.zPosition = 1
         self.tabBar.addSubview(botaoMaisOpcoes)
     }
  
-  func criaBotoesDeOpcoes(){
+    func internacionalizaTabBar(){
+        let abas = self.tabBar.items as! [UITabBarItem]
+        abas.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
+        abas.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
+        
+        abas.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "Aba remédios")
+        abas.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "Aba remédios")
+        
+        abas.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "Aba alertas")
+        abas.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "Aba alertas")
+    }
+    
+    func criaBotoesDeOpcoes(){
         
         self.botaoAdicionaFarmacia.frame = tamanhoPadraoBotao
         self.botaoAdicionaFarmacia.center = centroInicialPadrao
