@@ -13,11 +13,6 @@ class TelaInicialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    @IBAction func teste(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UIViewController
-        self.navigationController?.pushViewController(storyboard, animated: true)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

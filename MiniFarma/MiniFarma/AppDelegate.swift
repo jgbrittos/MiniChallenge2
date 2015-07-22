@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let vetor = ["asd","asd"]
         
-        if vetor.count == 2 {
+        if vetor.count == 1 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let telaInicial = storyboard.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
             self.window?.rootViewController = telaInicial

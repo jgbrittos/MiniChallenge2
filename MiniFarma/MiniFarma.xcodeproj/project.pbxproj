@@ -120,15 +120,15 @@
 			isa = PBXGroup;
 			children = (
 				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
-				45E8CD821B5FD92F00190FA1 /* Tela Inicial */,
+				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
+				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				453961441B5BE3A50097DEDB /* Assets */,
+				45E8CD821B5FD92F00190FA1 /* Tutorial */,
+				453961461B5BE3B00097DEDB /* Lista Inicial */,
 				453961491B5BE3C60097DEDB /* BancoDeDados */,
 				453961451B5BE3AB0097DEDB /* Bridge */,
-				453961461B5BE3B00097DEDB /* Controlador */,
-				453961671B5BF0A00097DEDB /* DAO */,
 				4539614B1B5BE4D70097DEDB /* Framework */,
 				453961471B5BE3B80097DEDB /* Internacionalizacao */,
-				453961481B5BE3C00097DEDB /* Modelo */,
 				4539614A1B5BE3F80097DEDB /* Storyboard */,
 				453961221B5BE35D0097DEDB /* Supporting Files */,
 			);
@@ -178,7 +178,7 @@
 			name = Bridge;
 			sourceTree = "<group>";
 		};
-		453961461B5BE3B00097DEDB /* Controlador */ = {
+		453961461B5BE3B00097DEDB /* Lista Inicial */ = {
 			isa = PBXGroup;
 			children = (
 				453961281B5BE35D0097DEDB /* Main.storyboard */,
@@ -186,7 +186,7 @@
 				45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */,
 				45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */,
 			);
-			name = Controlador;
+			name = "Lista Inicial";
 			sourceTree = "<group>";
 		};
 		453961471B5BE3B80097DEDB /* Internacionalizacao */ = {
@@ -196,15 +196,6 @@
 				4539616C1B5BF1950097DEDB /* InfoPlist.strings */,
 			);
 			name = Internacionalizacao;
-			sourceTree = "<group>";
-		};
-		453961481B5BE3C00097DEDB /* Modelo */ = {
-			isa = PBXGroup;
-			children = (
-				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
-				45DAB5371B5C335100AA2860 /* Alerta.swift */,
-			);
-			name = Modelo;
 			sourceTree = "<group>";
 		};
 		453961491B5BE3C60097DEDB /* BancoDeDados */ = {
@@ -245,20 +236,13 @@
 			name = FMDB;
 			sourceTree = "<group>";
 		};
-		453961671B5BF0A00097DEDB /* DAO */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = DAO;
-			sourceTree = "<group>";
-		};
-		45E8CD821B5FD92F00190FA1 /* Tela Inicial */ = {
+		45E8CD821B5FD92F00190FA1 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
 				45E8CD831B5FD94F00190FA1 /* Inicial.storyboard */,
 				45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */,
 			);
-			name = "Tela Inicial";
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
