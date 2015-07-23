@@ -12,6 +12,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="mr0-4n-OuI">
+                            <rect key="frame" x="0.0" y="130" width="600" height="206"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdZ-P4-buW">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <items>
+                                        <barButtonItem title="OK" id="8sF-F5-oDc">
+                                            <connections>
+                                                <action selector="salvaIntervalo:" destination="k4H-rj-AFt" id="ehL-GP-Rwc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </items>
+                                </toolbar>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4QU-kX-x6p">
+                                    <rect key="frame" x="0.0" y="44" width="600" height="162"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="162" id="iso-jF-gHj"/>
+                                    </constraints>
+                                </pickerView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="4QU-kX-x6p" firstAttribute="top" secondItem="mr0-4n-OuI" secondAttribute="top" constant="44" id="7I7-Sb-DFE"/>
+                                <constraint firstItem="bdZ-P4-buW" firstAttribute="top" secondItem="mr0-4n-OuI" secondAttribute="top" id="FSL-Fw-uUG"/>
+                                <constraint firstItem="4QU-kX-x6p" firstAttribute="leading" secondItem="mr0-4n-OuI" secondAttribute="leading" id="KhB-mP-2Ru"/>
+                                <constraint firstItem="bdZ-P4-buW" firstAttribute="leading" secondItem="mr0-4n-OuI" secondAttribute="leading" id="PHh-ea-oyJ"/>
+                                <constraint firstAttribute="centerX" secondItem="bdZ-P4-buW" secondAttribute="centerX" id="PRo-nw-hhD"/>
+                                <constraint firstAttribute="centerX" secondItem="4QU-kX-x6p" secondAttribute="centerX" id="gIe-3G-neX"/>
+                                <constraint firstAttribute="trailing" secondItem="4QU-kX-x6p" secondAttribute="trailing" id="irD-uJ-VVp"/>
+                                <constraint firstAttribute="trailing" secondItem="bdZ-P4-buW" secondAttribute="trailing" id="j5C-Z0-o5D"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" id="nfH-CV-c3M">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -26,9 +59,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Intervalos" id="dN9-sn-taQ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="bef-lb-Nbn"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3hu-GF-mhi"/>
+                        <barButtonItem key="leftBarButtonItem" title="OK" id="bef-lb-Nbn"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3hu-GF-mhi">
+                            <connections>
+                                <action selector="adicionarIntervalo:" destination="k4H-rj-AFt" id="KEB-Ll-PNp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pickerViewIntervalos" destination="4QU-kX-x6p" id="Tad-TB-at0"/>
+                        <outlet property="toolBarPickerView" destination="bdZ-P4-buW" id="Kq3-3E-dWi"/>
+                        <outlet property="viewComPickerViewEToolbar" destination="mr0-4n-OuI" id="MIz-eF-0BB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i9p-pU-g72" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
