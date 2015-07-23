@@ -18,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
+        var documentDiretory: NSString = paths[0] as! NSString
+        
+        self.pathDatabase = documentDiretory.stringByAppendingPathComponent("Minifarma.sqlite")
+        
+        var fileManager: NSFileManager = NSFileManager.defaultManager()
+        
+        var success: Bool = fileManager.fileExistsAtPath(self.pathDatabase as String)
+        
+        if(!success) {
+            
+            var databasePathFromApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent("Minifarma.sqlite")
+            
+            fileManager.copyItemAtPath(databasePathFromApp as String, toPath: self.pathDatabase as String, error: nil)
+        }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
@@ -42,23 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Copiando BD para pasta Documents
         
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
-        var documentDiretory: NSString = paths[0] as! NSString
         
-        self.pathDatabase = documentDiretory.stringByAppendingPathComponent("Minifarma.sqlite")
-        
-        var fileManager: NSFileManager = NSFileManager.defaultManager()
-        
-        var success: Bool = fileManager.fileExistsAtPath(self.pathDatabase as String)
-        
-        if(!success) {
-            
-            var databasePathFromApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent("Minifarma.sqlite")
-            
-            fileManager.copyItemAtPath(databasePathFromApp as String, toPath: self.pathDatabase as String, error: nil)
-            
-            
-        }
 
         
         

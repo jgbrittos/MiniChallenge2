@@ -29,6 +29,7 @@
 		45E8CD841B5FD94F00190FA1 /* Inicial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E8CD831B5FD94F00190FA1 /* Inicial.storyboard */; };
 		45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */; };
 		8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FC9E8541B61297800E46761 /* Minifarma.sqlite */; };
+		8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		45E8CD831B5FD94F00190FA1 /* Inicial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inicial.storyboard; sourceTree = "<group>"; };
 		45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelaInicialViewController.swift; sourceTree = "<group>"; };
 		8FC9E8541B61297800E46761 /* Minifarma.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minifarma.sqlite; sourceTree = "<group>"; };
+		8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemedioDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
 				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
+				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
 				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				453961441B5BE3A50097DEDB /* Assets */,
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
@@ -363,6 +366,7 @@
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
 				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
+				8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */,
 				4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
