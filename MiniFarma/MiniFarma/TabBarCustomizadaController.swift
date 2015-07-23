@@ -114,10 +114,7 @@ class TabBarCustomizadaController: UITabBarController {
         println("chamaStoryboardIntervalo")
 
         let storyboardIntervalo = UIStoryboard(name: "Intervalo", bundle: nil)
-//        let intervaloNC = storyboardIntervalo.instantiateViewControllerWithIdentifier("NavigationControllerIntervalo") as! UINavigationController
-//        let intervaloTVC = storyboardIntervalo.instantiateViewControllerWithIdentifier("InicioIntervalo") as! UIViewController
-        let intervaloTVC = storyboardIntervalo.instantiateInitialViewController() as! UIViewController
-//        intervaloNC.pushViewController(intervaloTVC, animated:false)
-        self.presentViewController(intervaloTVC, animated:true, completion:nil)
+        let intervaloNC = storyboardIntervalo.instantiateViewControllerWithIdentifier("NavigationControllerIntervalo") as! UINavigationController
+        self.presentViewController(intervaloNC, animated:true, completion:nil)
     }
 }
