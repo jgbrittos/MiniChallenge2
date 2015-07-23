@@ -49,10 +49,56 @@ class RemedioDAO: NSObject {
             
             var idRemedio: NSString = result.stringForColumn("id_remedio")
             var nome: NSString = result.stringForColumn("nome")
+            var dataValidade: NSString
+            var numeroQuantidade:NSString
+            var unidadeQuantidade: NSString
             
-            println(NSString(format:"id: %@ nome do remedio: %@", idRemedio, nome))
+            if(result.stringForColumn("data_validade") != nil){
+                dataValidade = result.stringForColumn("data_validade")
+            }
+            if(result.stringForColumn("numero_quantidade") != nil){
+                numeroQuantidade = result.stringForColumn("numero_quantidade")
+            }
+            if(result.stringForColumn("unidade_quantidade") != nil){
+                unidadeQuantidade = result.stringForColumn("unidade_quantidade")
+            }
+            if(result.stringForColumn("") != nil){
+                
+            }
+            if(result.stringForColumn("") != nil){
+                
+            }
+            if(result.stringForColumn("") != nil){
+
+            }
             
-            let remedio = Remedio()
+            var preco: NSString = result.stringForColumn("preco")
+            var numeroDose: NSString = result.stringForColumn("numero_dose")
+            var unidadeDose: NSString = result.stringForColumn("unidade_dose")
+            var fotoRemedio: NSString = result.stringForColumn("foto_remedio")
+            var fotoReceita: NSString = result.stringForColumn("foto_receita")
+            var vencido: NSString = result.stringForColumn("vencido")
+            var idFarmacia: NSString = result.stringForColumn("id_farmacia")
+            var idCategoria: NSString = result.stringForColumn("id_categoria")
+            var idLocal: NSString = result.stringForColumn("id_local")
+            var idIntervalo: NSString = result.stringForColumn("id_intervalo")
+
+            
+            //var dateString = "01-02-2010"
+            var dataValidadeFormato = NSDateFormatter()
+            dataValidadeFormato.dateFormat = "dd-MM-yyyy"
+            var dataValidadeDate = dataValidadeFormato.dateFromString(dataValidade as String)
+            
+            
+            
+            
+            let remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome, dataValidade: dataValidadeDate!, numeroQuantidade: numeroQuantidade.integerValue, unidadeQuantidade: unidadeQuantidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, unidadeDose: unidadeDose.integerValue, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            
+            
+            //let remedioss = Remedio(idRemedio: <#Int#>, nomeRemedio: <#NSString#>, dataValidade: <#NSDate#>, numeroQuantidade: <#Int#>, unidadeQuantidade: <#Int#>, preco: <#Double#>, numeroDose: <#Int#>, unidadeDose: <#Int#>, fotoRemedio: <#NSString#>, fotoReceita: <#NSString#>, vencido: <#Int#>, idFarmacia: <#Int#>, idCategoria: <#Int#>, idLocal: <#Int#>, idIntervalo: <#Int#>)
+            
+            println(NSString(format:"id: %@ nome do remedio: %@ %@", idRemedio, nome, remedio))
+
             
             self.remedioArray.addObject(remedio)
             
