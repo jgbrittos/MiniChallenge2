@@ -51,6 +51,7 @@ class TabBarCustomizadaController: UITabBarController {
         
         self.botaoAdicionaRemedio.frame = tamanhoPadraoBotao
         self.botaoAdicionaRemedio.center = centroInicialPadrao
+        self.botaoAdicionaRemedio.addTarget(self, action: Selector("chamaStoryboardIntervalo:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoAdicionaRemedio.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
         self.botaoAdicionaRemedio.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
         
@@ -107,5 +108,16 @@ class TabBarCustomizadaController: UITabBarController {
                     self.botaoAdicionaAlerta.removeFromSuperview()
                 })
         }
+    }
+    
+    func chamaStoryboardIntervalo(sender: UIButton){
+        println("chamaStoryboardIntervalo")
+
+        let storyboardIntervalo = UIStoryboard(name: "Intervalo", bundle: nil)
+//        let intervaloNC = storyboardIntervalo.instantiateViewControllerWithIdentifier("NavigationControllerIntervalo") as! UINavigationController
+//        let intervaloTVC = storyboardIntervalo.instantiateViewControllerWithIdentifier("InicioIntervalo") as! UIViewController
+        let intervaloTVC = storyboardIntervalo.instantiateInitialViewController() as! UIViewController
+//        intervaloNC.pushViewController(intervaloTVC, animated:false)
+        self.presentViewController(intervaloTVC, animated:true, completion:nil)
     }
 }
