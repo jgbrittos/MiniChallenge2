@@ -11,9 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
-
+    var window: UIWindow?   //    @property (strong, nonatomic) UIWindow *window;
+    var pathDatabase:NSString = ""
+    var dataBase:FMDatabase?
+    
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -33,6 +35,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
+        
+        
+        
+        
+        
+        //Copiando BD para pasta Documents
+        
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
+        var documentDiretory: NSString = paths[0] as! NSString
+        
+        self.pathDatabase = documentDiretory.stringByAppendingPathComponent("Minifarma.sqlite")
+        
+        var fileManager: NSFileManager = NSFileManager.defaultManager()
+        
+        var success: Bool = fileManager.fileExistsAtPath(self.pathDatabase as String)
+        
+        if(!success) {
+            
+            var databasePathFromApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent("Minifarma.sqlite")
+            
+            fileManager.copyItemAtPath(databasePathFromApp as String, toPath: self.pathDatabase as String, error: nil)
+            
+            
+        }
+
+        
+        
+        
+        
+        
         
         return true
     }
