@@ -39,7 +39,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.pickerViewIntervalos.delegate = self
         self.pickerViewIntervalos.dataSource = self
-        
+
         self.tableViewIntervalos.delegate = self
         self.tableViewIntervalos.dataSource = self
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
@@ -90,14 +90,17 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.intervalos.append(novoIntervalo)
         self.viewComPickerViewEToolbar.hidden = true
         self.pickerViewIntervalosNaoEstaVisivel = true
+        self.tableViewIntervalos.frame.size.height += CGFloat(250)
         self.tableViewIntervalos.reloadData()
     }
     
     @IBAction func adicionarIntervalo(sender: AnyObject) {
         if self.pickerViewIntervalosNaoEstaVisivel {
+            self.tableViewIntervalos.frame.size.height -= CGFloat(260)
             self.pickerViewIntervalosNaoEstaVisivel = false
             self.viewComPickerViewEToolbar.hidden = false
         }else{
+            self.tableViewIntervalos.frame.size.height += CGFloat(260)
             self.pickerViewIntervalosNaoEstaVisivel = true
             self.viewComPickerViewEToolbar.hidden = true
         }
@@ -139,6 +142,5 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     //MARK:- AJUSTAR A TOOLBAR NA VIEW
-    //MARK:- AJUSTAR AS CELULAS DA TABELA QUANDO A VIEW APARECE
     
 }
