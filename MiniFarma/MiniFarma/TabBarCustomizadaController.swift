@@ -23,10 +23,12 @@ class TabBarCustomizadaController: UITabBarController {
     let buttonImage = UIImage(named: "logo_azul.png")
     let buttonImageVer = UIImage(named: "logo_vermelho.png")
     
+    var informacaoDeOutraTela = String()
+    
     //MARK:- Inicialização da view
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println("\(informacaoDeOutraTela)")
         self.criaBotoesDeOpcoes()
     }
 

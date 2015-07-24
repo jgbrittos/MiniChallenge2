@@ -191,9 +191,9 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     @IBAction func selecionouIntervalo(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-//        let storyboardIntervalo = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UITabBarController
-//        self.presentViewController(storyboardIntervalo, animated:true, completion:nil)
+        let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
+        let telaInicial = storyboardMain.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+        telaInicial.informacaoDeOutraTela = self.numeroIntervalo + " " + self.unidadeIntervalo
+        self.presentViewController(telaInicial, animated: true, completion: nil)
     }
-
 }
