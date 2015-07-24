@@ -10,9 +10,11 @@ import UIKit
 
 class IntervaloViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    //MARK:- Propriedades
     var numerosPickerViewIntervalos = Array<String>()
     var unidadesPickerViewIntervalos = Array<String>()
     var pickerViewIntervalosNaoEstaVisivel: Bool = true
+    var celulaSelecionada = Int()
     
     @IBOutlet weak var tableViewIntervalos: UITableView!
     @IBOutlet weak var viewComPickerViewEToolbar: UIView!
@@ -24,17 +26,21 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     var numeroIntervalo = String()
     var unidadeIntervalo = String()
     
-    let TAMANHO_VIEW:CGFloat = 260.0
-    
+    //MARK:- Inicialização
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UITableViewCell.appearance().tintColor = UIColor.redColor()
         self.numerosPickerViewIntervalos = ["1","2","3","4","5","6","7","8","9","10",
             "11","12","13","14","15","16","17","18","19","20",
             "21","22","23","24","25","26","27","28","29","30","31"] as [String]
         self.unidadesPickerViewIntervalos = ["minuto(s)", "hora(s)", "dia(s)","semana(s)", "mes(es)"] as [String]
         self.pickerViewIntervalos.backgroundColor = UIColor.lightGrayColor()
         
+        self.numeroIntervalo = self.numerosPickerViewIntervalos[0]
+        self.unidadeIntervalo = self.unidadesPickerViewIntervalos[0]
+        
+        self.viewComPickerViewEToolbar.backgroundColor = UIColor.clearColor()
+
         self.intervalos = ["2 hora(s)", "4 hora(s)", "6 hora(s)","8 hora(s)","12 hora(s)","1 dia(s)","2 dia(s)","5 dia(s)","1 semana(s)","2 semana(s)","3 semana(s)"]
         
         self.pickerViewIntervalos.delegate = self
@@ -48,62 +54,8 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.viewComPickerViewEToolbar.frame = CGRectMake(0, self.tableViewIntervalos.frame.size.height - self.TAMANHO_VIEW, self.tableViewIntervalos.frame.size.width, self.TAMANHO_VIEW)
-        self.viewComPickerViewEToolbar.backgroundColor = UIColor.clearColor()
-        
         self.view.addSubview(self.viewComPickerViewEToolbar)
         self.viewComPickerViewEToolbar.hidden = true
-    }
-    
-    // MARK: - Table view data source
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.intervalos.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
-        
-        // Configure the cell...
-        cell.textLabel?.text = self.intervalos[indexPath.row]
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            self.intervalos.removeAtIndex(indexPath.row)
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        }
-    }
-    
-    @IBAction func salvaIntervalo(sender: AnyObject) {
-        let novoIntervalo = self.numeroIntervalo + " " + self.unidadeIntervalo
-        self.intervalos.append(novoIntervalo)
-        self.viewComPickerViewEToolbar.hidden = true
-        self.pickerViewIntervalosNaoEstaVisivel = true
-        self.tableViewIntervalos.frame.size.height += CGFloat(250)
-        self.tableViewIntervalos.reloadData()
-    }
-    
-    @IBAction func adicionarIntervalo(sender: AnyObject) {
-        if self.pickerViewIntervalosNaoEstaVisivel {
-            self.tableViewIntervalos.frame.size.height -= CGFloat(260)
-            self.pickerViewIntervalosNaoEstaVisivel = false
-            self.viewComPickerViewEToolbar.hidden = false
-        }else{
-            self.tableViewIntervalos.frame.size.height += CGFloat(260)
-            self.pickerViewIntervalosNaoEstaVisivel = true
-            self.viewComPickerViewEToolbar.hidden = true
-        }
     }
     
     //MARK:- PickerView de Intervalos
@@ -141,6 +93,76 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         println("\(numeroIntervalo) \(unidadeIntervalo)")
     }
 
-    //MARK:- AJUSTAR A TOOLBAR NA VIEW
+    // MARK: - Table view data source
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.intervalos.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let celulaIntervalos = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        
+        // Configure the cell...
+        celulaIntervalos.textLabel?.text = self.intervalos[indexPath.row]
+        if self.celulaSelecionada == indexPath.row {
+            celulaIntervalos.accessoryType = .Checkmark
+            
+        }else{
+            celulaIntervalos.accessoryType = .None
+        }
+        return celulaIntervalos
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.intervalos.removeAtIndex(indexPath.row)
+            // Delete the row from the data source
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.celulaSelecionada = indexPath.row
+        self.tableViewIntervalos.reloadData()
+    }
+    
+    //MARK:- Controle da view do pickerView
+    @IBAction func salvaIntervalo(sender: AnyObject) {
+        let novoIntervalo = self.numeroIntervalo + " " + self.unidadeIntervalo
+        self.intervalos.append(novoIntervalo)
+        self.viewComPickerViewEToolbar.hidden = true
+        self.pickerViewIntervalosNaoEstaVisivel = true
+        self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
+        self.tableViewIntervalos.reloadData()
+    }
+    
+    @IBAction func adicionarIntervalo(sender: AnyObject) {
+        self.pickerViewIntervalos.selectRow(0, inComponent: 0, animated: true)
+        self.pickerViewIntervalos.selectRow(0, inComponent: 1, animated: true)
+        
+        if self.pickerViewIntervalosNaoEstaVisivel {
+            self.tableViewIntervalos.frame.size.height -= CGFloat(self.viewComPickerViewEToolbar.frame.height)
+            self.pickerViewIntervalosNaoEstaVisivel = false
+            self.viewComPickerViewEToolbar.hidden = false
+        }else{
+            self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
+            self.pickerViewIntervalosNaoEstaVisivel = true
+            self.viewComPickerViewEToolbar.hidden = true
+        }
+    }
+    
+    @IBAction func cancelarAdicaoIntervalo(sender: AnyObject) {
+        self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
+        self.pickerViewIntervalosNaoEstaVisivel = true
+        self.viewComPickerViewEToolbar.hidden = true
+    }
+
 }

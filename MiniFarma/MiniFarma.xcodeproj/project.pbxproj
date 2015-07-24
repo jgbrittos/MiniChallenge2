@@ -30,7 +30,6 @@
 		45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5351B5C334A00AA2860 /* Remedio.swift */; };
 		45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5371B5C335100AA2860 /* Alerta.swift */; };
 		45E0764E1B61187600B0E7B6 /* Intervalo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E076501B61187600B0E7B6 /* Intervalo.storyboard */; };
-		45E076561B611AB800B0E7B6 /* IntervaloTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E076551B611AB800B0E7B6 /* IntervaloTableViewController.swift */; };
 		45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */; };
 		45E8CD8D1B60163400190FA1 /* Inicial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E8CD8F1B60163400190FA1 /* Inicial.storyboard */; };
 /* End PBXBuildFile section */
@@ -83,7 +82,6 @@
 		45DAB5351B5C334A00AA2860 /* Remedio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remedio.swift; sourceTree = "<group>"; };
 		45DAB5371B5C335100AA2860 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		45E0764F1B61187600B0E7B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intervalo.storyboard; sourceTree = "<group>"; };
-		45E076551B611AB800B0E7B6 /* IntervaloTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloTableViewController.swift; sourceTree = "<group>"; };
 		45E076591B612DDB00B0E7B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Intervalo.strings; sourceTree = "<group>"; };
 		45E0765A1B612DDF00B0E7B6 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Intervalo.strings"; sourceTree = "<group>"; };
 		45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelaInicialViewController.swift; sourceTree = "<group>"; };
@@ -255,10 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				45E076501B61187600B0E7B6 /* Intervalo.storyboard */,
-				45E076551B611AB800B0E7B6 /* IntervaloTableViewController.swift */,
+				45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */,
 				45BB4AE31B61666B00E24F80 /* Intervalo.swift */,
 				45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */,
-				45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */,
 			);
 			name = Intervalo;
 			sourceTree = "<group>";
@@ -387,7 +384,6 @@
 				4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */,
 				45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */,
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
-				45E076561B611AB800B0E7B6 /* IntervaloTableViewController.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
 				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
 				45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */,

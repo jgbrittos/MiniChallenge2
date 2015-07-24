@@ -31,19 +31,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfb-iQ-o3d">
                                 <rect key="frame" x="0.0" y="394" width="600" height="206"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2s-5c-Fcm">
-                                        <rect key="frame" x="0.0" y="44" width="600" height="162"/>
-                                    </pickerView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGA-81-q1E">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <items>
-                                            <barButtonItem title="OK" id="Ini-DM-MWr">
+                                            <barButtonItem systemItem="save" id="Ini-DM-MWr">
                                                 <connections>
                                                     <action selector="salvaIntervalo:" destination="e4l-EY-Rbj" id="Hmt-CF-hl1"/>
                                                 </connections>
                                             </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="mgc-UK-APx"/>
+                                            <barButtonItem systemItem="cancel" id="lHK-7C-bc7">
+                                                <connections>
+                                                    <action selector="cancelarAdicaoIntervalo:" destination="e4l-EY-Rbj" id="OiU-DN-ftw"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2s-5c-Fcm">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="162"/>
+                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -52,6 +58,7 @@
                                     <constraint firstAttribute="trailing" secondItem="U2s-5c-Fcm" secondAttribute="trailing" id="J09-Tc-8gD"/>
                                     <constraint firstAttribute="height" constant="206" id="Wjg-s5-rkq"/>
                                     <constraint firstItem="PGA-81-q1E" firstAttribute="top" secondItem="Nfb-iQ-o3d" secondAttribute="top" id="aJT-dg-HPo"/>
+                                    <constraint firstItem="U2s-5c-Fcm" firstAttribute="top" secondItem="PGA-81-q1E" secondAttribute="bottom" id="gG2-va-2Pk"/>
                                     <constraint firstItem="PGA-81-q1E" firstAttribute="leading" secondItem="Nfb-iQ-o3d" secondAttribute="leading" id="oyg-mX-3oX"/>
                                     <constraint firstItem="U2s-5c-Fcm" firstAttribute="leading" secondItem="Nfb-iQ-o3d" secondAttribute="leading" id="vsH-1L-nrL"/>
                                 </constraints>
