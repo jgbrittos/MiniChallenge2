@@ -33,6 +33,8 @@ class Remedio: NSObject {
     
     }
     
+    
+    //Remedio do banco
     init(idRemedio:Int, nomeRemedio:NSString, dataValidade:NSDate, numeroQuantidade: Int, unidadeQuantidade:Int, preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:NSString,fotoReceita:NSString,vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
         
         self.idRemedio = idRemedio
@@ -51,8 +53,26 @@ class Remedio: NSObject {
         self.idLocal = idLocal
         self.idIntervalo = idIntervalo
         
-        
     }
     
+    //Remedio criado
+    init(nomeRemedio:NSString, dataValidade:NSDate, numeroQuantidade: Int, unidadeQuantidade:Int, preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:NSString,fotoReceita:NSString,vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
+        
+        self.nomeRemedio = nomeRemedio
+        self.dataValidade = dataValidade
+        self.numeroQuantidade = numeroQuantidade
+        self.unidadeQuantidade = unidadeQuantidade
+        self.preco = preco
+        self.numeroDose = numeroDose
+        self.unidadeDose = unidadeDose
+        self.fotoRemedio = fotoRemedio
+        self.fotoReceita = fotoReceita
+        self.vencido = vencido
+        self.idFarmacia = idFarmacia
+        self.idCategoria = idCategoria
+        self.idLocal = idLocal
+        self.idIntervalo = idIntervalo
+    }
+
     
 }
