@@ -29,33 +29,58 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK:- Inicialização
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.viewComPickerViewEToolbar)
+        self.viewComPickerViewEToolbar.hidden = true
+        
+        //Customizando a view do picker view
+        self.viewComPickerViewEToolbar.backgroundColor = UIColor.clearColor()
+        
+        //Customizando a Tool Bar
+        self.toolBarPickerView.translucent = true
+        self.toolBarPickerView.backgroundColor = UIColor.blueColor()
+        self.toolBarPickerView.tintColor = UIColor.blackColor()
+        
+        //Customizando a cor do Checkmark
         UITableViewCell.appearance().tintColor = UIColor.redColor()
+        
+        //Criando e Customizando o picker view
+        self.pickerViewIntervalos.backgroundColor = UIColor.lightGrayColor()
+        
+        //Definindo os números do picker view
         self.numerosPickerViewIntervalos = ["1","2","3","4","5","6","7","8","9","10",
             "11","12","13","14","15","16","17","18","19","20",
             "21","22","23","24","25","26","27","28","29","30","31"] as [String]
-        self.unidadesPickerViewIntervalos = ["minuto(s)", "hora(s)", "dia(s)","semana(s)", "mes(es)"] as [String]
-        self.pickerViewIntervalos.backgroundColor = UIColor.lightGrayColor()
         
+        //Definindo as unidades do picker view
+        //A SEREM INTERNACIONALIZADAS
+        self.unidadesPickerViewIntervalos = ["minuto(s)", "hora(s)", "dia(s)","semana(s)", "mes(es)"] as [String]
+        
+        //Definindo as variaveis de intervalo como o primeiro do picker view para evitar problemas
+        //de o usuario não selecionar nenhuma opção e salvar vazio
         self.numeroIntervalo = self.numerosPickerViewIntervalos[0]
         self.unidadeIntervalo = self.unidadesPickerViewIntervalos[0]
         
-        self.viewComPickerViewEToolbar.backgroundColor = UIColor.clearColor()
-
-        self.intervalos = ["2 hora(s)", "4 hora(s)", "6 hora(s)","8 hora(s)","12 hora(s)","1 dia(s)","2 dia(s)","5 dia(s)","1 semana(s)","2 semana(s)","3 semana(s)"]
-        
+        //Delegates
         self.pickerViewIntervalos.delegate = self
         self.pickerViewIntervalos.dataSource = self
 
         self.tableViewIntervalos.delegate = self
         self.tableViewIntervalos.dataSource = self
+        
+        //Definindo dados da table view
+        //BUSCAR DO BANCO DE DADOS
+        self.intervalos = ["2 hora(s)", "4 hora(s)", "6 hora(s)","8 hora(s)","12 hora(s)","1 dia(s)","2 dia(s)","5 dia(s)","1 semana(s)","2 semana(s)","3 semana(s)"]
+        
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
         self.tableViewIntervalos.tableFooterView = UIView(frame: CGRectZero)
         
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.view.addSubview(self.viewComPickerViewEToolbar)
-        self.viewComPickerViewEToolbar.hidden = true
+        //Precisa ser antes da view carregar para dar tempo do picker view existir antes de setar
+        //que ele deve comecar o seletor no começo
+        
     }
     
     //MARK:- PickerView de Intervalos
@@ -134,7 +159,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableViewIntervalos.reloadData()
     }
     
-    //MARK:- Controle da view do pickerView
+    //MARK:- Controles da view
     @IBAction func salvaIntervalo(sender: AnyObject) {
         let novoIntervalo = self.numeroIntervalo + " " + self.unidadeIntervalo
         self.intervalos.append(novoIntervalo)
@@ -163,6 +188,12 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
         self.pickerViewIntervalosNaoEstaVisivel = true
         self.viewComPickerViewEToolbar.hidden = true
+    }
+
+    @IBAction func selecionouIntervalo(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+//        let storyboardIntervalo = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UITabBarController
+//        self.presentViewController(storyboardIntervalo, animated:true, completion:nil)
     }
 
 }

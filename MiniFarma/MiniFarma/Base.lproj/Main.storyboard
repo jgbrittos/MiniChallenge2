@@ -168,7 +168,6 @@
         <!--Tab Bar Customizada Controller-->
         <scene sceneID="4wK-Cp-r0w">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YRY-ad-D1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="TabBarInicial" automaticallyAdjustsScrollViewInsets="NO" id="TGd-nj-MoU" customClass="TabBarCustomizadaController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -181,13 +180,13 @@
                         <segue destination="78M-WM-zU2" kind="relationship" relationship="viewControllers" id="Gyi-2O-Btm"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YRY-ad-D1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40" y="1462"/>
         </scene>
         <!--Remédios-->
         <scene sceneID="vZp-Nd-fP4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4lX-C6-vCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ajf-DO-aVx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Remédios" id="Ocr-hH-gxW"/>
                     <toolbarItems/>
@@ -200,13 +199,13 @@
                         <segue destination="3VX-6E-BgF" kind="relationship" relationship="rootViewController" id="HEe-Bk-mDh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4lX-C6-vCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="858" y="1091"/>
         </scene>
         <!--Alertas-->
         <scene sceneID="YJk-Us-cZS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x3x-Y9-eTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="78M-WM-zU2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Alertas" id="sAS-Tz-fF4"/>
                     <toolbarItems/>
@@ -219,6 +218,7 @@
                         <segue destination="vea-wD-2al" kind="relationship" relationship="rootViewController" id="Byb-Oo-YqB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x3x-Y9-eTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="852" y="1833"/>
         </scene>

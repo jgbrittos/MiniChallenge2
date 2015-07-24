@@ -77,44 +77,50 @@ class TabBarCustomizadaController: UITabBarController {
     //MARK:- Ação do Botão '+'
     func fazAnimacaoDeBotoesDeOpcoes(sender: AnyObject){
         if botoesNaoEstaoVisiveis {
-            UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
-                self.botoesNaoEstaoVisiveis = false
-                
-                self.view.addSubview(self.botaoAdicionaFarmacia)
-                self.view.addSubview(self.botaoAdicionaRemedio)
-                self.view.addSubview(self.botaoAdicionaAlerta)
-                
-                self.botaoAdicionaFarmacia.center.x -= 100//DEFINIR ESSES VALORES COM BASE NO TAMANHO DA TELA
-                self.botaoAdicionaFarmacia.center.y -= 100
-                
-                self.botaoAdicionaRemedio.center.y -= 150
-                
-                self.botaoAdicionaAlerta.center.x += 100
-                self.botaoAdicionaAlerta.center.y -= 100
-                
-                }, completion: nil)
-
+            self.fazBotoesApareceremAnimadamente()
         }else{
-            UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
-                self.botoesNaoEstaoVisiveis = true
-                
-                self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
-                self.botaoAdicionaRemedio.center = self.centroInicialPadrao
-                self.botaoAdicionaAlerta.center = self.centroInicialPadrao
-
-                }, completion: {(value: Bool) in
-                    self.botaoAdicionaFarmacia.removeFromSuperview()
-                    self.botaoAdicionaRemedio.removeFromSuperview()
-                    self.botaoAdicionaAlerta.removeFromSuperview()
-                })
+            self.fazBotoesDesaparecerem()
         }
     }
     
+    func fazBotoesApareceremAnimadamente(){
+        UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
+            self.botoesNaoEstaoVisiveis = false
+            
+            self.view.addSubview(self.botaoAdicionaFarmacia)
+            self.view.addSubview(self.botaoAdicionaRemedio)
+            self.view.addSubview(self.botaoAdicionaAlerta)
+            
+            self.botaoAdicionaFarmacia.center.x -= 100//DEFINIR ESSES VALORES COM BASE NO TAMANHO DA TELA
+            self.botaoAdicionaFarmacia.center.y -= 100
+            
+            self.botaoAdicionaRemedio.center.y -= 150
+            
+            self.botaoAdicionaAlerta.center.x += 100
+            self.botaoAdicionaAlerta.center.y -= 100
+            
+            }, completion: nil)
+    }
+    
+    func fazBotoesDesaparecerem(){
+        UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
+            self.botoesNaoEstaoVisiveis = true
+            
+            self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
+            self.botaoAdicionaRemedio.center = self.centroInicialPadrao
+            self.botaoAdicionaAlerta.center = self.centroInicialPadrao
+            
+            }, completion: {(value: Bool) in
+                self.botaoAdicionaFarmacia.removeFromSuperview()
+                self.botaoAdicionaRemedio.removeFromSuperview()
+                self.botaoAdicionaAlerta.removeFromSuperview()
+        })
+    }
+    
     func chamaStoryboardIntervalo(sender: UIButton){
-        println("chamaStoryboardIntervalo")
-
-        let storyboardIntervalo = UIStoryboard(name: "Intervalo", bundle: nil)
-        let intervaloNC = storyboardIntervalo.instantiateViewControllerWithIdentifier("NavigationControllerIntervalo") as! UINavigationController
-        self.presentViewController(intervaloNC, animated:true, completion:nil)
+        self.fazBotoesDesaparecerem()
+        let storyboardIntervalo = UIStoryboard(name: "Intervalo", bundle: nil).instantiateInitialViewController() as! UINavigationController
+//        let intervaloNC = storyboardIntervalo.instantiateViewControllerWithIdentifier("NavigationControllerIntervalo") as! UINavigationController
+        self.presentViewController(storyboardIntervalo, animated:true, completion:nil)
     }
 }

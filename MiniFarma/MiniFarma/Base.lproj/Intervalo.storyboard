@@ -76,7 +76,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Intervalos" id="D8E-LY-OM9">
-                        <barButtonItem key="leftBarButtonItem" title="OK" id="h4m-7b-LEd"/>
+                        <barButtonItem key="leftBarButtonItem" title="OK" id="h4m-7b-LEd">
+                            <connections>
+                                <action selector="selecionouIntervalo:" destination="e4l-EY-Rbj" id="VOF-bj-FUh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YYG-m0-oXI">
                             <connections>
                                 <action selector="adicionarIntervalo:" destination="e4l-EY-Rbj" id="tpv-ix-NYw"/>
