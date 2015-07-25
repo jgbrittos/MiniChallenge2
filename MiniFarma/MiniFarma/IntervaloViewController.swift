@@ -54,7 +54,12 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //Definindo as unidades do picker view
         //A SEREM INTERNACIONALIZADAS
-        self.unidadesPickerViewIntervalos = ["minuto(s)", "hora(s)", "dia(s)","semana(s)", "mes(es)"] as [String]
+        self.unidadesPickerViewIntervalos = [
+            NSLocalizedString("UNIDADES_MINUTO", comment: "Minuto(s)"),
+            NSLocalizedString("UNIDADES_HORA", comment: "Hora(s)"),
+            NSLocalizedString("UNIDADES_DIA", comment: "Dia(s)"),
+            NSLocalizedString("UNIDADES_SEMANA", comment: "Semana(s)"),
+            NSLocalizedString("UNIDADES_MES", comment: "Mes(es)")] as [String]
         
         //Definindo as variaveis de intervalo como o primeiro do picker view para evitar problemas
         //de o usuario não selecionar nenhuma opção e salvar vazio
