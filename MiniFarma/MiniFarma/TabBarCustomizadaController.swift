@@ -13,7 +13,7 @@ class TabBarCustomizadaController: UITabBarController {
     //MARK: - Propriedades
     var botoesNaoEstaoVisiveis: Bool = true
     let tamanhoPadraoBotao = CGRectMake(0, 0, 50, 50)
-    let centroInicialPadrao = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, UIScreen.mainScreen().bounds.height-49)//NUMERO MAGICO 49 = ALTURA DA TAB BAR
+    var centroInicialPadrao = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, UIScreen.mainScreen().bounds.height-49)//NUMERO MAGICO 49 = ALTURA DA TAB BAR
     
     let botaoMaisOpcoes = UIButton()
     let botaoAdicionaFarmacia = UIButton()
@@ -44,21 +44,31 @@ class TabBarCustomizadaController: UITabBarController {
         self.tabBar.addSubview(botaoMaisOpcoes)
     }
     
+    override func viewWillLayoutSubviews() {
+        let orientacaoDoDispositivo = UIApplication.sharedApplication().statusBarOrientation as UIInterfaceOrientation
+        
+        if orientacaoDoDispositivo == .Portrait {
+            self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
+        } else if orientacaoDoDispositivo == .LandscapeLeft || orientacaoDoDispositivo == .LandscapeRight {
+            self.botaoMaisOpcoes.center.x = UIScreen.mainScreen().bounds.width/2.0
+        }
+    }
+    
     func criaBotoesDeOpcoes(){
         
         self.botaoAdicionaFarmacia.frame = tamanhoPadraoBotao
-        self.botaoAdicionaFarmacia.center = centroInicialPadrao
+        self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
         self.botaoAdicionaFarmacia.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
         self.botaoAdicionaFarmacia.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
         
         self.botaoAdicionaRemedio.frame = tamanhoPadraoBotao
-        self.botaoAdicionaRemedio.center = centroInicialPadrao
+        self.botaoAdicionaRemedio.center = self.centroInicialPadrao
         self.botaoAdicionaRemedio.addTarget(self, action: Selector("chamaStoryboardIntervalo:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoAdicionaRemedio.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
         self.botaoAdicionaRemedio.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
         
         self.botaoAdicionaAlerta.frame = tamanhoPadraoBotao
-        self.botaoAdicionaAlerta.center = centroInicialPadrao
+        self.botaoAdicionaAlerta.center = self.centroInicialPadrao
         self.botaoAdicionaAlerta.setBackgroundImage(buttonImageVer, forState:UIControlState.Normal)
         self.botaoAdicionaAlerta.setBackgroundImage(buttonImage, forState:UIControlState.Highlighted)
     }

@@ -25,6 +25,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     var intervalos = Array<String>()
     var numeroIntervalo = String()
     var unidadeIntervalo = String()
+    var intervaloSelecionado = String()
     
     //MARK:- Inicialização
     override func viewDidLoad() {
@@ -53,7 +54,6 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
             "21","22","23","24","25","26","27","28","29","30","31"] as [String]
         
         //Definindo as unidades do picker view
-        //A SEREM INTERNACIONALIZADAS
         self.unidadesPickerViewIntervalos = [
             NSLocalizedString("UNIDADES_MINUTO", comment: "Minuto(s)"),
             NSLocalizedString("UNIDADES_HORA", comment: "Hora(s)"),
@@ -161,6 +161,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.celulaSelecionada = indexPath.row
+        self.intervaloSelecionado = self.intervalos[indexPath.row]
         self.tableViewIntervalos.reloadData()
     }
     
@@ -198,7 +199,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func selecionouIntervalo(sender: AnyObject) {
         let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
         let telaInicial = storyboardMain.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-        telaInicial.informacaoDeOutraTela = self.numeroIntervalo + " " + self.unidadeIntervalo
+        telaInicial.informacaoDeOutraTela = self.intervaloSelecionado
         self.presentViewController(telaInicial, animated: true, completion: nil)
     }
 }
