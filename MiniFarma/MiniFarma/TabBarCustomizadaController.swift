@@ -28,6 +28,8 @@ class TabBarCustomizadaController: UITabBarController {
     //MARK:- Inicialização da view
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("dispositivoIraRotacionar:"), name:UIDeviceOrientationDidChangeNotification, object: nil)
         println("\(informacaoDeOutraTela)")
         self.criaBotoesDeOpcoes()
     }
@@ -44,14 +46,18 @@ class TabBarCustomizadaController: UITabBarController {
         self.tabBar.addSubview(botaoMaisOpcoes)
     }
     
-    override func viewWillLayoutSubviews() {
-        let orientacaoDoDispositivo = UIApplication.sharedApplication().statusBarOrientation as UIInterfaceOrientation
+    func dispositivoIraRotacionar(notificacao: NSNotification){
         
-        if orientacaoDoDispositivo == .Portrait {
-            self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
-        } else if orientacaoDoDispositivo == .LandscapeLeft || orientacaoDoDispositivo == .LandscapeRight {
-            self.botaoMaisOpcoes.center.x = UIScreen.mainScreen().bounds.width/2.0
-        }
+        self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
+        
+        self.centroInicialPadrao = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, UIScreen.mainScreen().bounds.height-49)
+        
+        self.fazBotoesDesaparecerem(animadamente: false)
+        
+        self.botaoAdicionaAlerta.center = self.centroInicialPadrao
+        self.botaoAdicionaRemedio.center = self.centroInicialPadrao
+        self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
+
     }
     
     func criaBotoesDeOpcoes(){
@@ -91,7 +97,7 @@ class TabBarCustomizadaController: UITabBarController {
         if botoesNaoEstaoVisiveis {
             self.fazBotoesApareceremAnimadamente()
         }else{
-            self.fazBotoesDesaparecerem()
+            self.fazBotoesDesaparecerem(animadamente:true)
         }
     }
     
@@ -114,14 +120,14 @@ class TabBarCustomizadaController: UITabBarController {
             }, completion: nil)
     }
     
-    func fazBotoesDesaparecerem(){
+    func fazBotoesDesaparecerem(animadamente _animadamente: Bool){
         UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
             self.botoesNaoEstaoVisiveis = true
-            
-            self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
-            self.botaoAdicionaRemedio.center = self.centroInicialPadrao
-            self.botaoAdicionaAlerta.center = self.centroInicialPadrao
-            
+            if _animadamente {
+                self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
+                self.botaoAdicionaRemedio.center = self.centroInicialPadrao
+                self.botaoAdicionaAlerta.center = self.centroInicialPadrao
+            }
             }, completion: {(value: Bool) in
                 self.botaoAdicionaFarmacia.removeFromSuperview()
                 self.botaoAdicionaRemedio.removeFromSuperview()
@@ -130,7 +136,7 @@ class TabBarCustomizadaController: UITabBarController {
     }
     
     func chamaStoryboardIntervalo(sender: UIButton){
-        self.fazBotoesDesaparecerem()
+        self.fazBotoesDesaparecerem(animadamente: false)
         let storyboardIntervalo = UIStoryboard(name: "Intervalo", bundle: nil).instantiateInitialViewController() as! UINavigationController
 //        let intervaloNC = storyboardIntervalo.instantiateViewControllerWithIdentifier("NavigationControllerIntervalo") as! UINavigationController
         self.presentViewController(storyboardIntervalo, animated:true, completion:nil)
