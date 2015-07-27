@@ -56,7 +56,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         //de o usuario não selecionar nenhuma opção e salvar vazio
         self.numeroIntervalo = self.numerosPickerViewIntervalos[0]
         self.unidadeIntervalo = self.unidadesPickerViewIntervalos[0]
-        
+
         //Delegates
         self.pickerViewIntervalos.delegate = self
         self.pickerViewIntervalos.dataSource = self
@@ -66,7 +66,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //Definindo dados da table view
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
-        
+        self.intervaloSelecionado = self.intervalos[0] as Intervalo
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
         self.tableViewIntervalos.tableFooterView = UIView(frame: CGRectZero)
         
@@ -155,10 +155,10 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        self.celulaSelecionada = indexPath.row
         self.intervaloSelecionado = self.intervalos[indexPath.row]
-        let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
-        let telaInicial = storyboardMain.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-        telaInicial.informacaoDeOutraTela = self.intervaloSelecionado
-        self.presentViewController(telaInicial, animated: true, completion: nil)
+        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
+        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
+        telaAdicionarRemedio.intervalo = self.intervaloSelecionado!
+        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
 //        self.tableViewIntervalos.reloadData()
     }
     
@@ -197,9 +197,8 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     @IBAction func selecionouIntervalo(sender: AnyObject) {
-        let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
-        let telaInicial = storyboardMain.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-        telaInicial.informacaoDeOutraTela = nil
-        self.presentViewController(telaInicial, animated: true, completion: nil)
+        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
+        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
+        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
     }
 }

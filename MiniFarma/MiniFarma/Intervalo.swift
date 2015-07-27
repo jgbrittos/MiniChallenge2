@@ -14,6 +14,10 @@ class Intervalo: NSObject {
     var numero = Int()
     var unidade = String()
     
+    override init(){
+        
+    }
+    
     init(numero: Int, unidade: String) {
         self.numero = numero
         self.unidade = unidade

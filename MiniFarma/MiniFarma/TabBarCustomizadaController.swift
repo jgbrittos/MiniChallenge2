@@ -140,8 +140,7 @@ class TabBarCustomizadaController: UITabBarController {
     
     func chamaStoryboardIntervalo(sender: UIButton){
         self.fazBotoesDesaparecerem(animadamente: false)
-        let storyboardIntervalo = UIStoryboard(name: "Intervalo", bundle: nil).instantiateInitialViewController() as! UINavigationController
-//        let intervaloNC = storyboardIntervalo.instantiateViewControllerWithIdentifier("NavigationControllerIntervalo") as! UINavigationController
-        self.presentViewController(storyboardIntervalo, animated:true, completion:nil)
+        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        self.presentViewController(storyboardRemedio, animated:true, completion:nil)
     }
 }
