@@ -60,8 +60,6 @@ class CategoriaDAO: NSObject {
             
             var categoria = Categoria(idCategoria: idCategoria.toInt()!, nomeCategoria: nome)
             
-            println(NSString(format:"id: %@ nome da categoria: %@", idCategoria, nome))
-            
             self.categoriaArray.addObject(categoria)
             
         }
