@@ -8,35 +8,49 @@
 
 import UIKit
 
-class RemedioDAO: NSObject {
+class RemedioDAO: DAO {
    
-    var remedioArray: NSMutableArray = []
-    var bancoDeDados: FMDatabase
-    var caminhoBancoDeDados: NSString
+    var remedios = [Remedio]()
     
     override init(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        self.caminhoBancoDeDados = appDelegate.caminhoBancoDeDados
-        self.bancoDeDados = FMDatabase.databaseWithPath(self.caminhoBancoDeDados as String) as! FMDatabase
+        super.init()
     }
  
-    func inserirRemedio(remed: Remedio) -> Bool{
+    override func inserir(objeto: AnyObject?) -> Bool {
     
-            self.bancoDeDados.open()
+        self.bancoDeDados.open()
         
-            let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade_quantidade, preco, numero_dose, unidade_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?)", withArgumentsInArray: [remed.nomeRemedio,remed.dataValidade,remed.numeroQuantidade,remed.unidadeQuantidade,remed.preco,remed.numeroDose, remed.unidadeDose, remed.fotoRemedio, remed.fotoReceita,remed.vencido,remed.idFarmacia,remed.idCategoria,remed.idLocal,remed.idIntervalo])
+        let remedio: Remedio = objeto as! Remedio
         
-            println("%@", self.bancoDeDados.lastErrorMessage())
-        
-            self.bancoDeDados.close()
-            return inseridoComSucesso
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade_quantidade, preco, numero_dose, unidade_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [
+            remedio.nomeRemedio,
+            remedio.dataValidade,
+            remedio.numeroQuantidade,
+            remedio.unidadeQuantidade,
+            remedio.preco,
+            remedio.numeroDose,
+            remedio.unidadeDose,
+            remedio.fotoRemedio,
+            remedio.fotoReceita,
+            remedio.vencido,
+            remedio.idFarmacia,
+            remedio.idCategoria,
+            remedio.idLocal,
+            remedio.idIntervalo])
+    
+        println("%@", self.bancoDeDados.lastErrorMessage())
+    
+        self.bancoDeDados.close()
+        return inseridoComSucesso
     }
     
-    func deletarRemedio(remed: Remedio) -> Bool{
+    override func deletar(objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
-        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(remed.idRemedio)])
+        let remedio: Remedio = objeto as! Remedio
+        
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(remedio.idRemedio)])
         println("%@", self.bancoDeDados.lastErrorMessage())
         
         self.bancoDeDados.close()
@@ -45,9 +59,9 @@ class RemedioDAO: NSObject {
         
     }
 
-    func buscarRemedios() -> NSArray{
+    override func buscarTodos() -> [AnyObject] {
         
-        let usuarioArray = NSMutableArray()
+//        let usuarioArray = NSMutableArray()
         self.bancoDeDados.open()
         
         var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
@@ -118,17 +132,17 @@ class RemedioDAO: NSObject {
                 idIntervalo = result.stringForColumn("id_intervalo")
             }
             
-            let remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome, dataValidade: dataValidadeDate, numeroQuantidade: numeroQuantidade.integerValue, unidadeQuantidade: unidadeQuantidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, unidadeDose: unidadeDose.integerValue, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidadeDate, numeroQuantidade: numeroQuantidade.integerValue, unidadeQuantidade: unidadeQuantidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, unidadeDose: unidadeDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
             
-                println(NSString(format:"id: %@ nome do remedio: %@ %@", idRemedio, nome, remedio))
+            println("id: \(idRemedio) nome do remedio: \(nome) --- REMEDIO: \(remedio)")
 
-            self.remedioArray.addObject(remedio)
+            self.remedios.append(remedio)
             
         }
         
         self.bancoDeDados.close()
         
-        return remedioArray
+        return self.remedios
         
     }
 }

@@ -22,6 +22,7 @@
 		453961601B5BEEC20097DEDB /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */; };
 		453961621B5BEED30097DEDB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453961611B5BEED30097DEDB /* CoreLocation.framework */; };
 		4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4539616C1B5BF1950097DEDB /* InfoPlist.strings */; };
+		457409B51B66991400CC71EF /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457409B41B66991400CC71EF /* DAO.swift */; };
 		45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE31B61666B00E24F80 /* Intervalo.swift */; };
 		45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */; };
 		45BB4AE81B61883300E24F80 /* IntervaloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */; };
@@ -76,6 +77,7 @@
 		453961631B5BEF740097DEDB /* FMDB-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDB-Bridging-Header.h"; sourceTree = "<group>"; };
 		4539616B1B5BF1950097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4539616D1B5BF1AE0097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		457409B41B66991400CC71EF /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		45BB4AE31B61666B00E24F80 /* Intervalo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intervalo.swift; sourceTree = "<group>"; };
 		45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloDAO.swift; sourceTree = "<group>"; };
 		45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloViewController.swift; sourceTree = "<group>"; };
@@ -136,12 +138,12 @@
 			isa = PBXGroup;
 			children = (
 				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
-				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
-				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
+				457409B41B66991400CC71EF /* DAO.swift */,
 				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
 				45E0764B1B61184E00B0E7B6 /* Intervalo */,
+				457409B61B669A9400CC71EF /* Remedio */,
 				453961441B5BE3A50097DEDB /* Assets */,
 				453961491B5BE3C60097DEDB /* BancoDeDados */,
 				453961451B5BE3AB0097DEDB /* Bridge */,
@@ -253,6 +255,15 @@
 				4539615B1B5BEEA30097DEDB /* FMResultSet.m */,
 			);
 			name = FMDB;
+			sourceTree = "<group>";
+		};
+		457409B61B669A9400CC71EF /* Remedio */ = {
+			isa = PBXGroup;
+			children = (
+				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
+				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
+			);
+			name = Remedio;
 			sourceTree = "<group>";
 		};
 		45E0764B1B61184E00B0E7B6 /* Intervalo */ = {
@@ -392,6 +403,7 @@
 				45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */,
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
+				457409B51B66991400CC71EF /* DAO.swift in Sources */,
 				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
 				8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */,
 				45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */,

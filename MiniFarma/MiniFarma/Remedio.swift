@@ -11,31 +11,30 @@ import UIKit
 class Remedio: NSObject {
     
     var idRemedio:Int = 0
-    var nomeRemedio:NSString = ""
+    var nomeRemedio:String = ""
     var dataValidade: NSDate
     var numeroQuantidade:Int = 0
     var unidadeQuantidade: Int = 0
     var preco: Double = 0
     var numeroDose: Int = 0
     var unidadeDose: Int = 0
-    var fotoRemedio: NSString = ""
-    var fotoReceita: NSString = ""
+    var fotoRemedio: String = ""
+    var fotoReceita: String = ""
     var vencido: Int = 0
     var idFarmacia: Int = 0
     var idCategoria: Int = 0
     var idLocal: Int = 0
     var idIntervalo: Int = 0
     
-    
-    
     override init() {
         self.dataValidade = NSDate()
     
     }
     
-    
     //Remedio do banco
-    init(idRemedio:Int, nomeRemedio:NSString, dataValidade:NSDate, numeroQuantidade: Int, unidadeQuantidade:Int, preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:NSString,fotoReceita:NSString,vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
+    init(idRemedio:Int, nomeRemedio:String, dataValidade:NSDate, numeroQuantidade: Int,
+        unidadeQuantidade:Int, preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:String,
+        fotoReceita:String,vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
         
         self.idRemedio = idRemedio
         self.nomeRemedio = nomeRemedio
@@ -56,7 +55,9 @@ class Remedio: NSObject {
     }
     
     //Remedio criado
-    init(nomeRemedio:NSString, dataValidade:NSDate, numeroQuantidade: Int, unidadeQuantidade:Int, preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:NSString,fotoReceita:NSString,vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
+    init(nomeRemedio:String, dataValidade:NSDate, numeroQuantidade: Int, unidadeQuantidade:Int,
+        preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:String,fotoReceita:String,
+        vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
         
         self.nomeRemedio = nomeRemedio
         self.dataValidade = dataValidade
