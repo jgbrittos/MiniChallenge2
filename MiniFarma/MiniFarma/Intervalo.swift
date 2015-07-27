@@ -10,7 +10,7 @@ import UIKit
 
 class Intervalo: NSObject {
    
-    var id_intervalo = Int()
+    var idIntervalo = Int()
     var numero = Int()
     var unidade = String()
     
@@ -19,8 +19,8 @@ class Intervalo: NSObject {
         self.unidade = unidade
     }
     
-    init(id_intervalo: Int, numero: Int, unidade: String) {
-        self.id_intervalo = id_intervalo
+    init(idIntervalo: Int, numero: Int, unidade: String) {
+        self.idIntervalo = idIntervalo
         self.numero = numero
         self.unidade = unidade
     }

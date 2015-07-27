@@ -139,11 +139,11 @@
 			children = (
 				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
 				457409B41B66991400CC71EF /* DAO.swift */,
-				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
 				45E0764B1B61184E00B0E7B6 /* Intervalo */,
 				457409B61B669A9400CC71EF /* Remedio */,
+				457409B71B66A1E300CC71EF /* Alerta */,
 				453961441B5BE3A50097DEDB /* Assets */,
 				453961491B5BE3C60097DEDB /* BancoDeDados */,
 				453961451B5BE3AB0097DEDB /* Bridge */,
@@ -264,6 +264,14 @@
 				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
 			);
 			name = Remedio;
+			sourceTree = "<group>";
+		};
+		457409B71B66A1E300CC71EF /* Alerta */ = {
+			isa = PBXGroup;
+			children = (
+				45DAB5371B5C335100AA2860 /* Alerta.swift */,
+			);
+			name = Alerta;
 			sourceTree = "<group>";
 		};
 		45E0764B1B61184E00B0E7B6 /* Intervalo */ = {

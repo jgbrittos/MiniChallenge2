@@ -23,14 +23,14 @@ class TabBarCustomizadaController: UITabBarController {
     let buttonImage = UIImage(named: "logo_azul.png")
     let buttonImageVer = UIImage(named: "logo_vermelho.png")
     
-    var informacaoDeOutraTela = String()
+    var informacaoDeOutraTela: Intervalo?
     
     //MARK:- Inicialização da view
     override func viewDidLoad() {
         super.viewDidLoad()
         UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("dispositivoIraRotacionar:"), name:UIDeviceOrientationDidChangeNotification, object: nil)
-        println("\(informacaoDeOutraTela)")
+        println("\(informacaoDeOutraTela?.numero) \(informacaoDeOutraTela?.unidade)")
         self.criaBotoesDeOpcoes()
     }
 

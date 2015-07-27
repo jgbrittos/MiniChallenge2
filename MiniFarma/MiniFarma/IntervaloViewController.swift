@@ -11,21 +11,23 @@ import UIKit
 class IntervaloViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
 
     //MARK:- Propriedades
+    @IBOutlet weak var tableViewIntervalos: UITableView!
+    @IBOutlet weak var viewComPickerViewEToolbar: UIView!
+    @IBOutlet weak var pickerViewIntervalos: UIPickerView!
+    @IBOutlet weak var toolBarPickerView: UIToolbar!
+    
+    let viewDoPickerView = UIView()
+    
     var numerosPickerViewIntervalos = Array<String>()
     var unidadesPickerViewIntervalos = Array<String>()
     var pickerViewIntervalosNaoEstaVisivel: Bool = true
     var celulaSelecionada = Int()
     
-    @IBOutlet weak var tableViewIntervalos: UITableView!
-    @IBOutlet weak var viewComPickerViewEToolbar: UIView!
-    @IBOutlet weak var pickerViewIntervalos: UIPickerView!
-    let viewDoPickerView = UIView()
-    @IBOutlet weak var toolBarPickerView: UIToolbar!
-    
-    var intervalos = Array<String>()
+    let intervaloDAO = IntervaloDAO()
+    var intervalos = [Intervalo]()
     var numeroIntervalo = String()
     var unidadeIntervalo = String()
-    var intervaloSelecionado = String()
+    var intervaloSelecionado: Intervalo?
     
     //MARK:- Inicialização
     override func viewDidLoad() {
@@ -34,19 +36,8 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.view.addSubview(self.viewComPickerViewEToolbar)
         self.viewComPickerViewEToolbar.hidden = true
         
-        //Customizando a view do picker view
-        self.viewComPickerViewEToolbar.backgroundColor = UIColor.clearColor()
-        
-        //Customizando a Tool Bar
-        self.toolBarPickerView.translucent = true
-        self.toolBarPickerView.backgroundColor = UIColor.blueColor()
-        self.toolBarPickerView.tintColor = UIColor.blackColor()
-        
         //Customizando a cor do Checkmark
         UITableViewCell.appearance().tintColor = UIColor.redColor()
-        
-        //Criando e Customizando o picker view
-        self.pickerViewIntervalos.backgroundColor = UIColor.lightGrayColor()
         
         //Definindo os números do picker view
         self.numerosPickerViewIntervalos = ["1","2","3","4","5","6","7","8","9","10",
@@ -74,8 +65,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableViewIntervalos.dataSource = self
         
         //Definindo dados da table view
-        //BUSCAR DO BANCO DE DADOS
-        self.intervalos = ["2 hora(s)", "4 hora(s)", "6 hora(s)","8 hora(s)","12 hora(s)","1 dia(s)","2 dia(s)","5 dia(s)","1 semana(s)","2 semana(s)","3 semana(s)"]
+        self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
         
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
         self.tableViewIntervalos.tableFooterView = UIView(frame: CGRectZero)
@@ -136,14 +126,16 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let celulaIntervalos = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
         
-        // Configure the cell...
-        celulaIntervalos.textLabel?.text = self.intervalos[indexPath.row]
+        let intervalo = self.intervalos[indexPath.row]
+        
+        celulaIntervalos.textLabel?.text = String(intervalo.numero) + " " + intervalo.unidade
+        
         if self.celulaSelecionada == indexPath.row {
             celulaIntervalos.accessoryType = .Checkmark
-            
         }else{
             celulaIntervalos.accessoryType = .None
         }
+        
         return celulaIntervalos
     }
     
@@ -153,8 +145,9 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            let intervalo = self.intervalos[indexPath.row]
             self.intervalos.removeAtIndex(indexPath.row)
-            // Delete the row from the data source
+            intervaloDAO.deletar(intervalo)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
@@ -167,8 +160,11 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //MARK:- Controles da view
     @IBAction func salvaIntervalo(sender: AnyObject) {
-        let novoIntervalo = self.numeroIntervalo + " " + self.unidadeIntervalo
+        
+        let novoIntervalo = Intervalo(numero: self.numeroIntervalo.toInt()!, unidade: self.unidadeIntervalo)
         self.intervalos.append(novoIntervalo)
+        intervaloDAO.inserir(novoIntervalo)
+        
         self.viewComPickerViewEToolbar.hidden = true
         self.pickerViewIntervalosNaoEstaVisivel = true
         self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
