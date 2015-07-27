@@ -22,3 +22,10 @@ TABBARREMEDIOS_ACESSIBILIDADE_HINT = "This is a list of all of your registered m
 
 TABBARALERTAS_ACESSIBILIDADE_LABEL = "Alert's list";
 TABBARALERTAS_ACESSIBILIDADE_HINT = "This is a list of all of your registered alerts";
+
+//MARK: - Intervalo
+UNIDADES_MINUTO = "minute(s)";
+UNIDADES_HORA = "hour(s)";
+UNIDADES_DIA = "day(s)";
+UNIDADES_SEMANA = "week(s)";
+UNIDADES_MES = "month(s)";

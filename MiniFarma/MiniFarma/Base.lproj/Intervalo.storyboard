@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UNO-GX-Zwb">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Intervalos-->
+        <scene sceneID="tWl-VT-HP9">
+            <objects>
+                <viewController storyboardIdentifier="InicioIntervalo" id="e4l-EY-Rbj" customClass="IntervaloViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gAt-dx-OKt"/>
+                        <viewControllerLayoutGuide type="bottom" id="BeU-cd-jjH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8qP-uu-Hlb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8ah-5y-yvP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celula" id="1hv-xy-RFa">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1hv-xy-RFa" id="M0d-EY-kge">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfb-iQ-o3d">
+                                <rect key="frame" x="0.0" y="394" width="600" height="206"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGA-81-q1E">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <items>
+                                            <barButtonItem systemItem="save" id="Ini-DM-MWr">
+                                                <connections>
+                                                    <action selector="salvaIntervalo:" destination="e4l-EY-Rbj" id="Hmt-CF-hl1"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="mgc-UK-APx"/>
+                                            <barButtonItem systemItem="cancel" id="lHK-7C-bc7">
+                                                <connections>
+                                                    <action selector="cancelarAdicaoIntervalo:" destination="e4l-EY-Rbj" id="OiU-DN-ftw"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2s-5c-Fcm">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="162"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="U2s-5c-Fcm" secondAttribute="bottom" id="6XQ-y8-ngP"/>
+                                    <constraint firstAttribute="trailing" secondItem="PGA-81-q1E" secondAttribute="trailing" id="Eed-7G-fLV"/>
+                                    <constraint firstAttribute="trailing" secondItem="U2s-5c-Fcm" secondAttribute="trailing" id="J09-Tc-8gD"/>
+                                    <constraint firstAttribute="height" constant="206" id="Wjg-s5-rkq"/>
+                                    <constraint firstItem="PGA-81-q1E" firstAttribute="top" secondItem="Nfb-iQ-o3d" secondAttribute="top" id="aJT-dg-HPo"/>
+                                    <constraint firstItem="U2s-5c-Fcm" firstAttribute="top" secondItem="PGA-81-q1E" secondAttribute="bottom" id="gG2-va-2Pk"/>
+                                    <constraint firstItem="PGA-81-q1E" firstAttribute="leading" secondItem="Nfb-iQ-o3d" secondAttribute="leading" id="oyg-mX-3oX"/>
+                                    <constraint firstItem="U2s-5c-Fcm" firstAttribute="leading" secondItem="Nfb-iQ-o3d" secondAttribute="leading" id="vsH-1L-nrL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8ah-5y-yvP" secondAttribute="trailing" id="5Mp-7H-um0"/>
+                            <constraint firstItem="8ah-5y-yvP" firstAttribute="top" secondItem="8qP-uu-Hlb" secondAttribute="top" id="7Tz-O1-Y3N"/>
+                            <constraint firstItem="BeU-cd-jjH" firstAttribute="top" secondItem="8ah-5y-yvP" secondAttribute="bottom" id="DCd-LN-FAv"/>
+                            <constraint firstAttribute="trailing" secondItem="Nfb-iQ-o3d" secondAttribute="trailing" id="FBz-qt-5fu"/>
+                            <constraint firstItem="BeU-cd-jjH" firstAttribute="top" secondItem="Nfb-iQ-o3d" secondAttribute="bottom" id="boI-mT-cjW"/>
+                            <constraint firstItem="8ah-5y-yvP" firstAttribute="leading" secondItem="8qP-uu-Hlb" secondAttribute="leading" id="qMW-kr-2Ir"/>
+                            <constraint firstItem="Nfb-iQ-o3d" firstAttribute="leading" secondItem="8qP-uu-Hlb" secondAttribute="leading" id="vpq-Jd-8Fq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Intervalos" id="D8E-LY-OM9">
+                        <barButtonItem key="leftBarButtonItem" title="OK" id="h4m-7b-LEd">
+                            <connections>
+                                <action selector="selecionouIntervalo:" destination="e4l-EY-Rbj" id="VOF-bj-FUh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YYG-m0-oXI">
+                            <connections>
+                                <action selector="adicionarIntervalo:" destination="e4l-EY-Rbj" id="tpv-ix-NYw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pickerViewIntervalos" destination="U2s-5c-Fcm" id="xoi-3U-rBM"/>
+                        <outlet property="tableViewIntervalos" destination="8ah-5y-yvP" id="lvm-TN-6RM"/>
+                        <outlet property="toolBarPickerView" destination="PGA-81-q1E" id="fdx-Ya-HRT"/>
+                        <outlet property="viewComPickerViewEToolbar" destination="Nfb-iQ-o3d" id="wLx-bN-fpt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="seX-hM-CXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5507" y="680"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="95n-LP-0zH">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationControllerIntervalo" automaticallyAdjustsScrollViewInsets="NO" id="UNO-GX-Zwb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="10T-OQ-04w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e4l-EY-Rbj" kind="relationship" relationship="rootViewController" id="joY-NQ-bAS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="azV-aV-ng9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4742" y="680"/>
+        </scene>
+    </scenes>
+</document>

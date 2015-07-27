@@ -35,3 +35,11 @@ TABBARREMEDIOS_ACESSIBILIDADE_HINT = "Essa é a lista de remédios que você pos
 
 TABBARALERTAS_ACESSIBILIDADE_LABEL = "Lista de alertas";
 TABBARALERTAS_ACESSIBILIDADE_HINT = "Essa é a lista de alertas que você possui cadastrados";
+
+
+//MARK: - Intervalo
+UNIDADES_MINUTO = "minuto(s)";
+UNIDADES_HORA = "hora(s)";
+UNIDADES_DIA = "dia(s)";
+UNIDADES_SEMANA = "semana(s)";
+UNIDADES_MES = "mes(es)";
