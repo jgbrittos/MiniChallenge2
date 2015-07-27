@@ -46,9 +46,8 @@ class CategoriaDAO: NSObject {
     }
     
     
-    func buscarCategorias() -> NSArray{
+    func buscarCategorias() -> NSArray {
         
-        let categoriaArray = NSMutableArray()
         self.dataBase.open()
         
         var result: FMResultSet = self.dataBase.executeQuery("SELECT * FROM Categoria Order By id_categoria", withArgumentsInArray: nil)
@@ -61,8 +60,7 @@ class CategoriaDAO: NSObject {
             
             var categoria = Categoria(idCategoria: idCategoria.integerValue, nomeCategoria: nome)
             
-            
-            println(NSString(format:"id: %@ nome da categoria: %@ %@", idCategoria, nome))
+            println(NSString(format:"id: %@ nome da categoria: %@", idCategoria, nome))
             
             self.categoriaArray.addObject(categoria)
             
@@ -70,10 +68,8 @@ class CategoriaDAO: NSObject {
         
         self.dataBase.close()
         
-        return categoriaArray
+        return self.categoriaArray
         
     }
-    
-    
     
 }
