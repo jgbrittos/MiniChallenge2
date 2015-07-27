@@ -28,6 +28,10 @@
 		45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5371B5C335100AA2860 /* Alerta.swift */; };
 		45E8CD841B5FD94F00190FA1 /* Inicial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E8CD831B5FD94F00190FA1 /* Inicial.storyboard */; };
 		45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */; };
+		8F29EA7C1B62BED30072ACDF /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F29EA7B1B62BED30072ACDF /* Categoria.swift */; };
+		8F29EA801B62BF050072ACDF /* Categoria.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F29EA7F1B62BF050072ACDF /* Categoria.storyboard */; };
+		8F9E39F51B62D90800502086 /* CategoriaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E39F41B62D90800502086 /* CategoriaDAO.swift */; };
+		8F9E39F71B62DCB400502086 /* CategoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9E39F61B62DCB400502086 /* CategoriaTableViewController.swift */; };
 		8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FC9E8541B61297800E46761 /* Minifarma.sqlite */; };
 		8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +82,10 @@
 		45DAB5371B5C335100AA2860 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		45E8CD831B5FD94F00190FA1 /* Inicial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Inicial.storyboard; sourceTree = "<group>"; };
 		45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelaInicialViewController.swift; sourceTree = "<group>"; };
+		8F29EA7B1B62BED30072ACDF /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
+		8F29EA7F1B62BF050072ACDF /* Categoria.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categoria.storyboard; sourceTree = "<group>"; };
+		8F9E39F41B62D90800502086 /* CategoriaDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaDAO.swift; sourceTree = "<group>"; };
+		8F9E39F61B62DCB400502086 /* CategoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaTableViewController.swift; sourceTree = "<group>"; };
 		8FC9E8541B61297800E46761 /* Minifarma.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minifarma.sqlite; sourceTree = "<group>"; };
 		8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemedioDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +135,7 @@
 				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
 				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
 				45DAB5371B5C335100AA2860 /* Alerta.swift */,
+				8F29EA821B62BF290072ACDF /* Categoria */,
 				453961441B5BE3A50097DEDB /* Assets */,
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
@@ -251,6 +260,17 @@
 			name = Tutorial;
 			sourceTree = "<group>";
 		};
+		8F29EA821B62BF290072ACDF /* Categoria */ = {
+			isa = PBXGroup;
+			children = (
+				8F29EA7F1B62BF050072ACDF /* Categoria.storyboard */,
+				8F9E39F61B62DCB400502086 /* CategoriaTableViewController.swift */,
+				8F9E39F41B62D90800502086 /* CategoriaDAO.swift */,
+				8F29EA7B1B62BED30072ACDF /* Categoria.swift */,
+			);
+			name = Categoria;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -331,6 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F29EA801B62BF050072ACDF /* Categoria.storyboard in Resources */,
 				8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */,
 				4522B7D41B5E85060053DD8E /* logo_azul.png in Resources */,
 				4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */,
@@ -360,8 +381,11 @@
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
 				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
+				8F9E39F71B62DCB400502086 /* CategoriaTableViewController.swift in Sources */,
 				45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */,
 				4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */,
+				8F9E39F51B62D90800502086 /* CategoriaDAO.swift in Sources */,
+				8F29EA7C1B62BED30072ACDF /* Categoria.swift in Sources */,
 				45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */,
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,

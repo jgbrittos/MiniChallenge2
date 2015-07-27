@@ -29,7 +29,7 @@ class RemedioDAO: NSObject {
     
         
             self.dataBase.open()
-            let inseridoComSucesso = self.dataBase.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade_quantidade, preco, numero_dose, unidade_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?)", withArgumentsInArray: [remed.nomeRemedio,remed.dataValidade,remed.numeroQuantidade,remed.unidadeQuantidade,remed.preco,remed.numeroDose, remed.unidadeDose, remed.fotoRemedio, remed.fotoReceita,remed.vencido,remed.idFarmacia,remed.idCategoria,remed.idLocal,remed.idIntervalo])
+            let inseridoComSucesso = self.dataBase.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade_quantidade, preco, numero_dose, unidade_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [remed.nomeRemedio,remed.dataValidade,remed.numeroQuantidade,remed.unidadeQuantidade,remed.preco,remed.numeroDose, remed.unidadeDose, remed.fotoRemedio, remed.fotoReceita,remed.vencido,remed.idFarmacia,remed.idCategoria,remed.idLocal,remed.idIntervalo])
             println("%@", self.dataBase.lastErrorMessage())
         
             self.dataBase.close()
@@ -128,18 +128,11 @@ class RemedioDAO: NSObject {
             }
             
             
-
-            
-            //Remedio(idRemedio: <#Int#>, nomeRemedio: <#NSString#>, dataValidade: <#NSDate#>, numeroQuantidade: <#Int#>, unidadeQuantidade: <#Int#>, preco: <#Double#>, numeroDose: <#Int#>, unidadeDose: <#Int#>, fotoRemedio: <#NSString#>, fotoReceita: <#NSString#>, vencido: <#Int#>, idFarmacia: <#Int#>, idCategoria: <#Int#>, idLocal: <#Int#>, idIntervalo: <#Int#>)
-            
-            
-            
             
             let remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome, dataValidade: dataValidadeDate, numeroQuantidade: numeroQuantidade.integerValue, unidadeQuantidade: unidadeQuantidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, unidadeDose: unidadeDose.integerValue, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
             
             
                 println(NSString(format:"id: %@ nome do remedio: %@ %@", idRemedio, nome, remedio))
-
             
             self.remedioArray.addObject(remedio)
             
