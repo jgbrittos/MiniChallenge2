@@ -79,16 +79,25 @@ class CategoriaTableViewController: UITableViewController {
         
         
         var alerta:UIAlertController?
-        alerta = UIAlertController(title: "Nova Categoria",
-            message: "Digite o nome da nova categoria",
+        alerta = UIAlertController(title: NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"),
+            message: NSLocalizedString("MENSAGEMALERTA", comment: "Mensagem do Alerta"),
             preferredStyle: .Alert)
         alerta!.addTextFieldWithConfigurationHandler(
             {(textField: UITextField!) in
-                textField.placeholder = "Digite o texto"
+                textField.placeholder = NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta")
+                textField.accessibilityLabel = NSLocalizedString("CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL", comment: "Alerta")
+                textField.accessibilityHint = NSLocalizedString("CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT", comment: "Alerta")
         })
         
+        alerta?.accessibilityLabel = NSLocalizedString("TITULOALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
+        alerta?.accessibilityHint = NSLocalizedString("TITULOALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
+        
       
-        let acaoAlerta = UIAlertAction(title: "Criar",
+        alerta!.addAction(UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"), style: .Default, handler: { (action: UIAlertAction!) in
+
+        }))
+        
+        let acaoAlerta = UIAlertAction(title: NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta"),
             style: UIAlertActionStyle.Default,
             handler: {[weak self]
                 (paramAction:UIAlertAction!) in
@@ -97,7 +106,7 @@ class CategoriaTableViewController: UITableViewController {
                     let textoDigitado = theTextField[0].text
                     
                     if (textoDigitado == ""){
-                        let alertaErro: UIAlertController = UIAlertController(title: "Erro", message: "Campo de texto vazio", preferredStyle: .Alert)
+                        let alertaErro: UIAlertController = UIAlertController(title: NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), message: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), preferredStyle: .Alert)
                         alertaErro.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                         self!.presentViewController(alertaErro, animated: true, completion: nil)
 
