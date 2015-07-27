@@ -13,12 +13,13 @@ class TelaInicialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let remedio = Remedio()
-        let remedioDAO = RemedioDAO()
+        let categoriaDAO = CategoriaDAO()
+        let categoria = Categoria(nomeCategoria: "teste")
         
-        remedioDAO.inserirRemedio(remedio)
-        remedioDAO.deletarRemedio(remedio)
-        remedioDAO.buscarRemedios()
+        
+        categoriaDAO.inserirCategoria(categoria)
+        categoriaDAO.buscarCategorias()
+        
     
         
     }

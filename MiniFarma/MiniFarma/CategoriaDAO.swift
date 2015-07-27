@@ -20,7 +20,6 @@ class CategoriaDAO: NSObject {
         self.pathDatabase = appDelegate.pathDatabase
         self.dataBase = FMDatabase.databaseWithPath(self.pathDatabase as String) as! FMDatabase
         
-        
     }
     
     
@@ -63,8 +62,7 @@ class CategoriaDAO: NSObject {
             var categoria = Categoria(idCategoria: idCategoria.integerValue, nomeCategoria: nome)
             
             
-            println(NSString(format:"id: %@ nome do remedio: %@ %@", idCategoria, nome))
-            
+            println(NSString(format:"id: %@ nome da categoria: %@ %@", idCategoria, nome))
             
             self.categoriaArray.addObject(categoria)
             

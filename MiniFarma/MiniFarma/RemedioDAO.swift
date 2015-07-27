@@ -31,7 +31,6 @@ class RemedioDAO: NSObject {
             self.dataBase.open()
             let inseridoComSucesso = self.dataBase.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade_quantidade, preco, numero_dose, unidade_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [remed.nomeRemedio,remed.dataValidade,remed.numeroQuantidade,remed.unidadeQuantidade,remed.preco,remed.numeroDose, remed.unidadeDose, remed.fotoRemedio, remed.fotoReceita,remed.vencido,remed.idFarmacia,remed.idCategoria,remed.idLocal,remed.idIntervalo])
             println("%@", self.dataBase.lastErrorMessage())
-        
             self.dataBase.close()
             return inseridoComSucesso
         
