@@ -75,6 +75,18 @@ class CategoriaTableViewController: UITableViewController {
     }
     
     
+    
+    @IBAction func cancelarClicado(sender: AnyObject) {
+        //Volta para o storyboard remedio, aonde cria um novo remedio
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let telaInicial = storyboard.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+//        self.window?.rootViewController = telaInicial
+
+    }
+    
+    
+    
+    
     @IBAction func adicionarClicado(sender: AnyObject) {
         
         

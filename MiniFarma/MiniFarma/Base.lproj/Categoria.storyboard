@@ -34,6 +34,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Categoria" id="UbW-gT-MEf">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="fRJ-2u-x2E">
+                            <connections>
+                                <action selector="cancelarClicado:" destination="elh-y9-92B" id="Hca-oz-l6e"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="En6-5L-bXO">
                             <connections>
                                 <action selector="adicionarClicado:" destination="elh-y9-92B" id="uKb-J0-hNC"/>
