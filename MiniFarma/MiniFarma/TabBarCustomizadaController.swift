@@ -28,6 +28,14 @@ class TabBarCustomizadaController: UITabBarController {
     //MARK:- Inicialização da view
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Customizando a tab bar
+        let abas = self.tabBar.items as! [UITabBarItem]
+        abas.first?.image = UIImage(named: "remedios_negativo")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        abas.last?.image = UIImage(named: "alertas_negativo")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        abas.first?.selectedImage = UIImage(named: "remedios")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        abas.last?.selectedImage = UIImage(named: "alertas")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        
         UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("dispositivoIraRotacionar:"), name:UIDeviceOrientationDidChangeNotification, object: nil)
         println("\(informacaoDeOutraTela?.numero) \(informacaoDeOutraTela?.unidade)")
@@ -82,8 +90,6 @@ class TabBarCustomizadaController: UITabBarController {
     //MARK:- Internacionalização
     func internacionalizaTabBar(){
         let abas = self.tabBar.items as! [UITabBarItem]
-        abas.first!.title = NSLocalizedString("TABBARREMEDIOS", comment: "Titulo da tab bar de remédios")
-        abas.last!.title = NSLocalizedString("TABBARALERTAS", comment: "Titulo da tab bar de alertas")
         
         abas.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "Aba remédios")
         abas.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "Aba remédios")

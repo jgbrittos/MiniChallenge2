@@ -21,7 +21,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     var numerosPickerViewIntervalos = Array<String>()
     var unidadesPickerViewIntervalos = Array<String>()
     var pickerViewIntervalosNaoEstaVisivel: Bool = true
-    var celulaSelecionada = Int()
+//    var celulaSelecionada = Int()
     
     let intervaloDAO = IntervaloDAO()
     var intervalos = [Intervalo]()
@@ -130,11 +130,11 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         celulaIntervalos.textLabel?.text = String(intervalo.numero) + " " + intervalo.unidade
         
-        if self.celulaSelecionada == indexPath.row {
-            celulaIntervalos.accessoryType = .Checkmark
-        }else{
-            celulaIntervalos.accessoryType = .None
-        }
+//        if self.celulaSelecionada == indexPath.row {
+//            celulaIntervalos.accessoryType = .Checkmark
+//        }else{
+//            celulaIntervalos.accessoryType = .None
+//        }
         
         return celulaIntervalos
     }
@@ -153,9 +153,13 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.celulaSelecionada = indexPath.row
+//        self.celulaSelecionada = indexPath.row
         self.intervaloSelecionado = self.intervalos[indexPath.row]
-        self.tableViewIntervalos.reloadData()
+        let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
+        let telaInicial = storyboardMain.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+        telaInicial.informacaoDeOutraTela = self.intervaloSelecionado
+        self.presentViewController(telaInicial, animated: true, completion: nil)
+//        self.tableViewIntervalos.reloadData()
     }
     
     //MARK:- Controles da view
@@ -195,7 +199,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func selecionouIntervalo(sender: AnyObject) {
         let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
         let telaInicial = storyboardMain.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-        telaInicial.informacaoDeOutraTela = self.intervaloSelecionado
+        telaInicial.informacaoDeOutraTela = nil
         self.presentViewController(telaInicial, animated: true, completion: nil)
     }
 }

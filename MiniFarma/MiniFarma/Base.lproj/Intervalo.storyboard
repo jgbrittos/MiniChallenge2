@@ -31,29 +31,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfb-iQ-o3d">
                                 <rect key="frame" x="0.0" y="394" width="600" height="206"/>
                                 <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2s-5c-Fcm">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="162"/>
+                                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                    </pickerView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGA-81-q1E">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <color key="backgroundColor" red="0.8980392157" green="0.0" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <items>
-                                            <barButtonItem systemItem="save" id="Ini-DM-MWr">
-                                                <connections>
-                                                    <action selector="salvaIntervalo:" destination="e4l-EY-Rbj" id="Hmt-CF-hl1"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="mgc-UK-APx"/>
                                             <barButtonItem systemItem="cancel" id="lHK-7C-bc7">
                                                 <connections>
                                                     <action selector="cancelarAdicaoIntervalo:" destination="e4l-EY-Rbj" id="OiU-DN-ftw"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="mgc-UK-APx"/>
+                                            <barButtonItem systemItem="save" id="Ini-DM-MWr">
+                                                <connections>
+                                                    <action selector="salvaIntervalo:" destination="e4l-EY-Rbj" id="Hmt-CF-hl1"/>
                                                 </connections>
                                             </barButtonItem>
                                         </items>
                                         <color key="tintColor" red="0.066666666669999999" green="0.49019607840000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </toolbar>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2s-5c-Fcm">
-                                        <rect key="frame" x="0.0" y="44" width="600" height="162"/>
-                                        <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -80,7 +80,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Intervalos" id="D8E-LY-OM9">
-                        <barButtonItem key="leftBarButtonItem" title="OK" id="h4m-7b-LEd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="h4m-7b-LEd">
                             <connections>
                                 <action selector="selecionouIntervalo:" destination="e4l-EY-Rbj" id="VOF-bj-FUh"/>
                             </connections>
