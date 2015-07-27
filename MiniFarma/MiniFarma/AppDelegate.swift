@@ -11,64 +11,72 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?   //    @property (strong, nonatomic) UIWindow *window;
-    var pathDatabase:NSString = ""
-    var dataBase:FMDatabase?
-    
+    var window: UIWindow?
+    var caminhoBancoDeDados:NSString = ""
+    var bancoDeDados:FMDatabase?
+    let nomeBancoDeDados: String = "Minifarma.sqlite"
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
-        var documentDiretory: NSString = paths[0] as! NSString
-        
-        self.pathDatabase = documentDiretory.stringByAppendingPathComponent("Minifarma.sqlite")
-        
-        var fileManager: NSFileManager = NSFileManager.defaultManager()
-        
-        var success: Bool = fileManager.fileExistsAtPath(self.pathDatabase as String)
-        
-        if(!success) {
-            
-            var databasePathFromApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent("Minifarma.sqlite")
-            
-            fileManager.copyItemAtPath(databasePathFromApp as String, toPath: self.pathDatabase as String, error: nil)
-        }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard: UIStoryboard!
+        let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!
+        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        var diretorioDocumentos: NSString = caminhos[0] as! NSString
         
-        let vetor = ["asd","asd"]
+        self.caminhoBancoDeDados = diretorioDocumentos.stringByAppendingPathComponent(self.nomeBancoDeDados)
         
-        if vetor.count == 2 {
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
-            telaInicial = storyboard.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+        var gerenciadorDeArquivos: NSFileManager = NSFileManager.defaultManager()
+        
+        var bancoExisteNoLocal: Bool = gerenciadorDeArquivos.fileExistsAtPath(self.caminhoBancoDeDados as String)
+        
+        if(!bancoExisteNoLocal) {
+            var caminhoBancoDeDadosNoApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent(self.nomeBancoDeDados)
+            gerenciadorDeArquivos.copyItemAtPath(caminhoBancoDeDadosNoApp as String, toPath: self.caminhoBancoDeDados as String, error: nil)
+        }
+        
+        self.bancoDeDados = FMDatabase.databaseWithPath(self.caminhoBancoDeDados as String) as? FMDatabase
+        
+        let existeAlgoNoBanco = self.verificaSeHaAlgumRemedio()
+        
+        if existeAlgoNoBanco {
+            //Tela Inicial
+            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
         }else{
-            storyboard = UIStoryboard(name: "Inicial", bundle: nil)
-            telaInicial = storyboard.instantiateViewControllerWithIdentifier("InicialStoryboard") as! TelaInicialViewController
+            //Tutorial
+            storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
+            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("InicialStoryboard") as! TelaInicialViewController
         }
         
         self.window?.rootViewController = telaInicial
         self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
         
-        
-        
-        
-        
-        //Copiando BD para pasta Documents
-        
-        
-
-        
-        
-        
-        
-        
-        
         return true
     }
 
+    func verificaSeHaAlgumRemedio() -> Bool {
+        self.bancoDeDados!.open()
+        
+        var resultado: FMResultSet = self.bancoDeDados!.executeQuery("SELECT * FROM Remedio", withArgumentsInArray: nil)
+        println("%@", self.bancoDeDados!.lastErrorMessage())
+        
+        var numeroDeRemedios: Int = 1//ALTERAR ESSE VALOR DE 1 PRA 0 E VICE VERSA FAZ MUDAR DE STORYBOARD INICIAL
+        while(resultado.next()){
+            numeroDeRemedios++
+        }
+        
+        self.bancoDeDados!.close()
+        
+        if numeroDeRemedios == 0 {
+            return false
+        }else{
+            return true
+        }
+
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
