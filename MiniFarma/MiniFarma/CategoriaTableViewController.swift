@@ -24,10 +24,6 @@ class CategoriaTableViewController: UITableViewController {
         self.categoriaArray = categoriaDAO.buscarCategorias() as! [Categoria]
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
-    }
-    
 
     override func viewDidAppear(animated: Bool) {
         self.tableView.reloadData()
@@ -55,7 +51,7 @@ class CategoriaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
 
-        cell.textLabel?.text = (self.categoriaArray[indexPath.row] as! Categoria).nomeCategoria
+        cell.textLabel?.text = (self.categoriaArray[indexPath.row] as Categoria).nomeCategoria
 
         return cell
     }
@@ -64,7 +60,6 @@ class CategoriaTableViewController: UITableViewController {
         
         if(editingStyle == .Delete){
             let sucesso: Bool = categoriaDAO.deletarCategoria(self.categoriaArray[indexPath.row])
-                //categoriaDAO.deletarCategoria(categoriaArray.objectAtIndex(indexPath.row))
             
             if(sucesso){
                 println("Categoria deletada com sucesso")
@@ -83,31 +78,31 @@ class CategoriaTableViewController: UITableViewController {
     @IBAction func adicionarClicado(sender: AnyObject) {
         
         
-        var alertController:UIAlertController?
-        alertController = UIAlertController(title: "Nova Categoria",
+        var alerta:UIAlertController?
+        alerta = UIAlertController(title: "Nova Categoria",
             message: "Digite o nome da nova categoria",
             preferredStyle: .Alert)
-        alertController!.addTextFieldWithConfigurationHandler(
+        alerta!.addTextFieldWithConfigurationHandler(
             {(textField: UITextField!) in
                 textField.placeholder = "Digite o texto"
         })
         
       
-        let action = UIAlertAction(title: "Criar",
+        let acaoAlerta = UIAlertAction(title: "Criar",
             style: UIAlertActionStyle.Default,
             handler: {[weak self]
                 (paramAction:UIAlertAction!) in
-                if let textFields = alertController?.textFields{
-                    let theTextFields = textFields as! [UITextField]
-                    let enteredText = theTextFields[0].text
+                if let textField = alerta?.textFields{
+                    let theTextField = textField as! [UITextField]
+                    let textoDigitado = theTextField[0].text
                     
-                    if (enteredText == ""){
-                        let myAlert: UIAlertController = UIAlertController(title: "Erro", message: "Campo de texto vazio", preferredStyle: .Alert)
-                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                        self!.presentViewController(myAlert, animated: true, completion: nil)
+                    if (textoDigitado == ""){
+                        let alertaErro: UIAlertController = UIAlertController(title: "Erro", message: "Campo de texto vazio", preferredStyle: .Alert)
+                        alertaErro.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        self!.presentViewController(alertaErro, animated: true, completion: nil)
 
                     }else{
-                        let categoria = Categoria(nomeCategoria: enteredText)
+                        let categoria = Categoria(nomeCategoria: textoDigitado)
                         self!.categoriaDAO.inserirCategoria(categoria)
                         self!.categoriaArray.append(categoria)
                         self!.tableView.reloadData()
@@ -117,15 +112,11 @@ class CategoriaTableViewController: UITableViewController {
             })
         
         
-        alertController?.addAction(action)
+        alerta?.addAction(acaoAlerta)
     
-        self.presentViewController(alertController!,
+        self.presentViewController(alerta!,
             animated: true,
             completion: nil)
-        
-        
-        
-        
         
     }
     
