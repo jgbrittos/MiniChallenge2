@@ -11,14 +11,14 @@ import UIKit
 class Categoria: NSObject {
  
     var idCategoria:Int = 0
-    var nomeCategoria : NSString = ""
+    var nomeCategoria : String = ""
     
-    init(idCategoria:Int, nomeCategoria:NSString) {
+    init(idCategoria:Int, nomeCategoria:String) {
         self.idCategoria = idCategoria
         self.nomeCategoria = nomeCategoria
     }
     
-    init(nomeCategoria:NSString) {
+    init(nomeCategoria:String) {
         self.nomeCategoria = nomeCategoria
     }
     

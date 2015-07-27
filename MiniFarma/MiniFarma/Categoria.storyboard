@@ -21,7 +21,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SnV-85-Isz">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -34,7 +34,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Categoria" id="UbW-gT-MEf">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="En6-5L-bXO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="En6-5L-bXO">
+                            <connections>
+                                <action selector="adicionarClicado:" destination="elh-y9-92B" id="uKb-J0-hNC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6I-7p-lLB" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,11 +13,11 @@ class CategoriaDAO: NSObject {
     
     var categoriaArray: NSMutableArray = []
     var dataBase: FMDatabase
-    var pathDatabase: NSString
+    var pathDatabase: String
     
     override init(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        self.pathDatabase = appDelegate.pathDatabase
+        self.pathDatabase = appDelegate.pathDatabase as String
         self.dataBase = FMDatabase.databaseWithPath(self.pathDatabase as String) as! FMDatabase
         
     }
@@ -55,10 +55,10 @@ class CategoriaDAO: NSObject {
         
         while(result.next()){
             
-            var idCategoria: NSString = result.stringForColumn("id_categoria")
-            var nome: NSString = result.stringForColumn("nome")
+            var idCategoria: String = result.stringForColumn("id_categoria")
+            var nome: String = result.stringForColumn("nome")
             
-            var categoria = Categoria(idCategoria: idCategoria.integerValue, nomeCategoria: nome)
+            var categoria = Categoria(idCategoria: idCategoria.toInt()!, nomeCategoria: nome)
             
             println(NSString(format:"id: %@ nome da categoria: %@", idCategoria, nome))
             

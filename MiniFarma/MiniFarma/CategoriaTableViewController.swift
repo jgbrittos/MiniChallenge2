@@ -10,21 +10,18 @@ import UIKit
 
 class CategoriaTableViewController: UITableViewController {
 
-    var categoriaArray: NSMutableArray = []
-    var categoriaDicionario: NSDictionary = [:]
+    var categoriaArray = [Categoria]()
+    var categoriaDicionario = [:]
+    
     
     let categoriaDAO = CategoriaDAO()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        let categorias = categoriaDAO.buscarCategorias() as! [Categoria]
-        self.categoriaArray.addObjectsFromArray(categorias)
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        self.categoriaArray = categoriaDAO.buscarCategorias() as! [Categoria]
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,12 +55,81 @@ class CategoriaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
 
-        cell.textLabel?.text = (self.categoriaArray[indexPath.row] as! Categoria).nomeCategoria as? String
+        cell.textLabel?.text = (self.categoriaArray[indexPath.row] as! Categoria).nomeCategoria
 
         return cell
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if(editingStyle == .Delete){
+            let sucesso: Bool = categoriaDAO.deletarCategoria(self.categoriaArray[indexPath.row])
+                //categoriaDAO.deletarCategoria(categoriaArray.objectAtIndex(indexPath.row))
+            
+            if(sucesso){
+                println("Categoria deletada com sucesso")
+            }
+            
+            
+            self.categoriaArray.removeAtIndex(indexPath.row)
+            
+            tableView.reloadData()
+            
+        }
+    
+    }
+    
+    
+    @IBAction func adicionarClicado(sender: AnyObject) {
+        
+        
+        var alertController:UIAlertController?
+        alertController = UIAlertController(title: "Nova Categoria",
+            message: "Digite o nome da nova categoria",
+            preferredStyle: .Alert)
+        alertController!.addTextFieldWithConfigurationHandler(
+            {(textField: UITextField!) in
+                textField.placeholder = "Digite o texto"
+        })
+        
+      
+        let action = UIAlertAction(title: "Criar",
+            style: UIAlertActionStyle.Default,
+            handler: {[weak self]
+                (paramAction:UIAlertAction!) in
+                if let textFields = alertController?.textFields{
+                    let theTextFields = textFields as! [UITextField]
+                    let enteredText = theTextFields[0].text
+                    
+                    if (enteredText == ""){
+                        let myAlert: UIAlertController = UIAlertController(title: "Erro", message: "Campo de texto vazio", preferredStyle: .Alert)
+                        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        self!.presentViewController(myAlert, animated: true, completion: nil)
 
-
+                    }else{
+                        let categoria = Categoria(nomeCategoria: enteredText)
+                        self!.categoriaDAO.inserirCategoria(categoria)
+                        self!.categoriaArray.append(categoria)
+                        self!.tableView.reloadData()
+                    }
+                    
+                }
+            })
+        
+        
+        alertController?.addAction(action)
+    
+        self.presentViewController(alertController!,
+            animated: true,
+            completion: nil)
+        
+        
+        
+        
+        
+    }
+    
+    
     
     
     /*
