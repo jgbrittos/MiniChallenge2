@@ -28,6 +28,8 @@
 		45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5371B5C335100AA2860 /* Alerta.swift */; };
 		45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */; };
 		45E8CD8D1B60163400190FA1 /* Inicial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E8CD8F1B60163400190FA1 /* Inicial.storyboard */; };
+		8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FC9E8541B61297800E46761 /* Minifarma.sqlite */; };
+		8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		45E8CD8E1B60163400190FA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Inicial.storyboard; sourceTree = "<group>"; };
 		45E8CD911B60163600190FA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Inicial.strings; sourceTree = "<group>"; };
 		45E8CD931B60163700190FA1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Inicial.strings"; sourceTree = "<group>"; };
+		8FC9E8541B61297800E46761 /* Minifarma.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minifarma.sqlite; sourceTree = "<group>"; };
+		8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemedioDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 			children = (
 				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
 				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
+				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
 				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
@@ -203,6 +208,7 @@
 		453961491B5BE3C60097DEDB /* BancoDeDados */ = {
 			isa = PBXGroup;
 			children = (
+				8FC9E8541B61297800E46761 /* Minifarma.sqlite */,
 				453961661B5BF06D0097DEDB /* FMDB */,
 			);
 			name = BancoDeDados;
@@ -328,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */,
 				4522B7D41B5E85060053DD8E /* logo_azul.png in Resources */,
 				4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */,
 				45E8CD8D1B60163400190FA1 /* Inicial.storyboard in Resources */,
@@ -362,6 +369,7 @@
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
 				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
+				8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */,
 				4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

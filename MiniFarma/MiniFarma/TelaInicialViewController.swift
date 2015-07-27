@@ -12,6 +12,15 @@ class TelaInicialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let remedio = Remedio()
+        let remedioDAO = RemedioDAO()
+        
+        remedioDAO.inserirRemedio(remedio)
+        remedioDAO.deletarRemedio(remedio)
+        remedioDAO.buscarRemedios()
+    
+        
     }
 
     override func didReceiveMemoryWarning() {
