@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ewa-rM-juw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Farmácia-->
@@ -49,7 +50,7 @@
         <!--Nova Farmácia-->
         <scene sceneID="Aia-Lw-DDn">
             <objects>
-                <viewController id="38O-ub-S8x" sceneMemberID="viewController">
+                <viewController id="38O-ub-S8x" customClass="NovaFarmaciaViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fgo-ge-e7l"/>
                         <viewControllerLayoutGuide type="bottom" id="h3H-Ir-LdK"/>
@@ -57,12 +58,55 @@
                     <view key="view" contentMode="scaleToFill" id="lS6-vM-Ybx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEU-cU-2fp">
+                                <rect key="frame" x="16" y="94" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorita" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5w-ai-WEF">
+                                <rect key="frame" x="16" y="138" width="62" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqS-G6-2aF">
+                                <rect key="frame" x="544" y="129" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="v00-4u-8e0"/>
+                                </constraints>
+                                <state key="normal" image="estrelaFavoritoNegativo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="estrelaFavorito"/>
+                                <connections>
+                                    <action selector="favoritoClicado:" destination="38O-ub-S8x" eventType="touchUpInside" id="WDz-WE-n81"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="HEU-cU-2fp" secondAttribute="centerY" constant="191" id="Fgd-ul-EnY"/>
+                            <constraint firstItem="V5w-ai-WEF" firstAttribute="top" secondItem="HEU-cU-2fp" secondAttribute="bottom" constant="14" id="Ghz-hi-SRn"/>
+                            <constraint firstItem="V5w-ai-WEF" firstAttribute="leading" secondItem="lS6-vM-Ybx" secondAttribute="leadingMargin" id="Grg-GK-Sd1"/>
+                            <constraint firstItem="HEU-cU-2fp" firstAttribute="leading" secondItem="lS6-vM-Ybx" secondAttribute="leadingMargin" id="L8Q-2b-eXf"/>
+                            <constraint firstItem="iqS-G6-2aF" firstAttribute="trailing" secondItem="HEU-cU-2fp" secondAttribute="trailing" id="ccN-nZ-HOb"/>
+                            <constraint firstItem="HEU-cU-2fp" firstAttribute="trailing" secondItem="lS6-vM-Ybx" secondAttribute="trailingMargin" id="cgs-fK-iMG"/>
+                            <constraint firstItem="h3H-Ir-LdK" firstAttribute="top" secondItem="iqS-G6-2aF" secondAttribute="bottom" constant="431" id="iQ9-3N-kcM"/>
+                            <constraint firstItem="iqS-G6-2aF" firstAttribute="top" secondItem="HEU-cU-2fp" secondAttribute="bottom" constant="5" id="oL8-nI-P3J"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nova Farmácia" id="dk7-xp-xI8">
-                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="Tuz-qg-D5m"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="Tuz-qg-D5m">
+                            <connections>
+                                <segue destination="0Db-4A-4W7" kind="show" id="Vhl-qZ-vWm"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="FtT-Yu-gVd"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="botaoFavorito" destination="iqS-G6-2aF" id="hC6-Yc-2hO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zk6-sL-qXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,4 +147,11 @@
             <point key="canvasLocation" x="6317" y="1073"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="estrelaFavorito" width="30" height="29"/>
+        <image name="estrelaFavoritoNegativo" width="30" height="29"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vhl-qZ-vWm"/>
+    </inferredMetricsTieBreakers>
 </document>
