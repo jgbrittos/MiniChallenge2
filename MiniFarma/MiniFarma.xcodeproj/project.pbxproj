@@ -64,6 +64,7 @@
 		45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8CD851B5FDA2B00190FA1 /* TelaInicialViewController.swift */; };
 		45E8CD8D1B60163400190FA1 /* Inicial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E8CD8F1B60163400190FA1 /* Inicial.storyboard */; };
 		8F1709DD1B67F311005A13B9 /* NovaFarmaciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */; };
+		8F1709DF1B680687005A13B9 /* LocalizacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1709DE1B680687005A13B9 /* LocalizacaoViewController.swift */; };
 		8F477CC31B67BC520050D94F /* FarmaciaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */; };
 		8F477CC51B67BC630050D94F /* Farmacia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC41B67BC630050D94F /* Farmacia.swift */; };
 		8F477CC71B67BC750050D94F /* Farmacia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F477CC61B67BC750050D94F /* Farmacia.storyboard */; };
@@ -160,6 +161,7 @@
 		45E8CD911B60163600190FA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Inicial.strings; sourceTree = "<group>"; };
 		45E8CD931B60163700190FA1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Inicial.strings"; sourceTree = "<group>"; };
 		8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovaFarmaciaViewController.swift; sourceTree = "<group>"; };
+		8F1709DE1B680687005A13B9 /* LocalizacaoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizacaoViewController.swift; sourceTree = "<group>"; };
 		8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FarmaciaDAO.swift; path = ../FarmaciaDAO.swift; sourceTree = "<group>"; };
 		8F477CC41B67BC630050D94F /* Farmacia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farmacia.swift; sourceTree = "<group>"; };
 		8F477CC61B67BC750050D94F /* Farmacia.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Farmacia.storyboard; path = ../Farmacia.storyboard; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				8F477CC81B67BED00050D94F /* FarmaciaTableViewController.swift */,
 				8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */,
 				8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */,
+				8F1709DE1B680687005A13B9 /* LocalizacaoViewController.swift */,
 			);
 			name = Farmacia;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				8F477CC31B67BC520050D94F /* FarmaciaDAO.swift in Sources */,
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
+				8F1709DF1B680687005A13B9 /* LocalizacaoViewController.swift in Sources */,
 				451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */,
 				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
 				45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */,
