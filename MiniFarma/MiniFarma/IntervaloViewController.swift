@@ -66,7 +66,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //Definindo dados da table view
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
-        self.intervaloSelecionado = self.intervalos[0] as Intervalo
+//        self.intervaloSelecionado = self.intervalos[0] as Intervalo
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
         self.tableViewIntervalos.tableFooterView = UIView(frame: CGRectZero)
         
@@ -159,7 +159,6 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
         telaAdicionarRemedio.intervalo = self.intervaloSelecionado!
         self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
-//        self.tableViewIntervalos.reloadData()
     }
     
     //MARK:- Controles da view
@@ -196,7 +195,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.viewComPickerViewEToolbar.hidden = true
     }
 
-    @IBAction func selecionouIntervalo(sender: AnyObject) {
+    @IBAction func cancelarSelecaoDeIntervalo(sender: AnyObject) {
         let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
         let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
         self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)

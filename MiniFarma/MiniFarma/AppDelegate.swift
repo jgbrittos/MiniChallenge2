@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var resultado: FMResultSet = self.bancoDeDados!.executeQuery("SELECT * FROM Remedio", withArgumentsInArray: nil)
         println("%@", self.bancoDeDados!.lastErrorMessage())
         
-        var numeroDeRemedios: Int = 0//ALTERAR ESSE VALOR DE 1 PRA 0 E VICE VERSA FAZ MUDAR DE STORYBOARD INICIAL
+        var numeroDeRemedios: Int = 1//ALTERAR ESSE VALOR DE 1 PRA 0 E VICE VERSA FAZ MUDAR DE STORYBOARD INICIAL
         while(resultado.next()){
             numeroDeRemedios++
         }

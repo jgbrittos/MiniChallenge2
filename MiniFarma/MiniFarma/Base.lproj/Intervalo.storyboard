@@ -82,7 +82,7 @@
                     <navigationItem key="navigationItem" title="Intervalos" id="D8E-LY-OM9">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="h4m-7b-LEd">
                             <connections>
-                                <action selector="selecionouIntervalo:" destination="e4l-EY-Rbj" id="VOF-bj-FUh"/>
+                                <action selector="cancelarSelecaoDeIntervalo:" destination="e4l-EY-Rbj" id="DBd-9i-kBx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YYG-m0-oXI">

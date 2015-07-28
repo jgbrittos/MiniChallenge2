@@ -43,7 +43,7 @@ class RemedioTableViewController: UITableViewController {
     let remedioDAO = RemedioDAO()
     
     var intervalo = Intervalo()
-    //var categoria = Categoria()
+    var categoria = Categoria()
     //var farmacia = Farmacia()
     //var local = Local()
     //var vencido = Int()
@@ -116,6 +116,11 @@ class RemedioTableViewController: UITableViewController {
         
         self.textFieldDataDeValidade.text = dateFormatter.stringFromDate(sender.date)
         
+    }
+    
+    @IBAction func tocouNaCelulaDeCategoria(sender: AnyObject) {
+        let storyboardCategoria = UIStoryboard(name: "Categoria", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        self.presentViewController(storyboardCategoria, animated:true, completion:nil)
     }
 
     @IBAction func tocouNaCelulaDeIntervalo(sender: AnyObject) {

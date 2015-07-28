@@ -98,6 +98,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="eF4-7v-eyZ" appends="YES" id="cxc-qP-Tzk"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaIntervalo" rowHeight="44" id="G0R-Cu-Tbb">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -499,6 +503,11 @@
                 <tapGestureRecognizer id="BvS-bW-n8Z">
                     <connections>
                         <action selector="tocouNaCelulaDePreco:" destination="UJ8-Gv-h8V" id="oNZ-U8-Qse"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="eF4-7v-eyZ">
+                    <connections>
+                        <action selector="tocouNaCelulaDeCategoria:" destination="UJ8-Gv-h8V" id="8yg-WV-lee"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

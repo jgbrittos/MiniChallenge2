@@ -13,6 +13,10 @@ class Categoria: NSObject {
     var idCategoria:Int = 0
     var nomeCategoria : String = ""
     
+    override init(){
+        
+    }
+    
     init(idCategoria:Int, nomeCategoria:String) {
         self.idCategoria = idCategoria
         self.nomeCategoria = nomeCategoria

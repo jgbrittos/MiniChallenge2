@@ -10,22 +10,22 @@ import UIKit
 
 class CategoriaTableViewController: UITableViewController {
 
-    var categoriaArray = [Categoria]()
+    var categorias = [Categoria]()
     var categoriaDicionario = [:]
-    
+    var categoriaSelecionada: Categoria?
     
     let categoriaDAO = CategoriaDAO()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("asdasdasdasd")
+
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        self.categoriaArray = categoriaDAO.buscarCategorias() as! [Categoria]
+        self.categorias = categoriaDAO.buscarCategorias() as! [Categoria]
     }
     
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
     }
     
@@ -36,22 +36,19 @@ class CategoriaTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of rows in the section.
-        return self.categoriaArray.count
+        return self.categorias.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
 
-        cell.textLabel?.text = (self.categoriaArray[indexPath.row] as Categoria).nomeCategoria
+        cell.textLabel?.text = (self.categorias[indexPath.row] as Categoria).nomeCategoria
 
         return cell
     }
@@ -59,37 +56,26 @@ class CategoriaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if(editingStyle == .Delete){
-            let sucesso: Bool = categoriaDAO.deletarCategoria(self.categoriaArray[indexPath.row])
+            let sucesso: Bool = categoriaDAO.deletarCategoria(self.categorias[indexPath.row])
             
             if(sucesso){
                 println("Categoria deletada com sucesso")
             }
             
-            
-            self.categoriaArray.removeAtIndex(indexPath.row)
+            self.categorias.removeAtIndex(indexPath.row)
             
             tableView.reloadData()
-            
         }
-    
     }
-    
-    
     
     @IBAction func cancelarClicado(sender: AnyObject) {
-        //Volta para o storyboard remedio, aonde cria um novo remedio
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let telaInicial = storyboard.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-//        self.window?.rootViewController = telaInicial
-
+        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
+        let telaAdicionarRemedio = storyboardRemedio.instantiateInitialViewController() as! UINavigationController
+        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
     }
     
-    
-    
-    
     @IBAction func adicionarClicado(sender: AnyObject) {
-        
-        
+
         var alerta:UIAlertController?
         alerta = UIAlertController(title: NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"),
             message: NSLocalizedString("MENSAGEMALERTA", comment: "Mensagem do Alerta"),
@@ -125,7 +111,7 @@ class CategoriaTableViewController: UITableViewController {
                     }else{
                         let categoria = Categoria(nomeCategoria: textoDigitado)
                         self!.categoriaDAO.inserirCategoria(categoria)
-                        self!.categoriaArray.append(categoria)
+                        self!.categorias.append(categoria)
                         self!.tableView.reloadData()
                     }
                     
@@ -141,52 +127,12 @@ class CategoriaTableViewController: UITableViewController {
         
     }
     
-    
-    
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.categoriaSelecionada = self.categorias[indexPath.row]
+        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
+        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
+        telaAdicionarRemedio.categoria = self.categoriaSelecionada!
+        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
