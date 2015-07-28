@@ -7,7 +7,7 @@
         <!--Farmácia-->
         <scene sceneID="I4n-HZ-mam">
             <objects>
-                <tableViewController storyboardIdentifier="FarmaciaStoryboard" id="0Db-4A-4W7" customClass="FarmaciaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="0Db-4A-4W7" customClass="FarmaciaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cOF-AS-rwC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

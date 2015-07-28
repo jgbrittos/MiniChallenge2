@@ -10,16 +10,25 @@ import UIKit
 
 class FarmaciaTableViewController: UITableViewController {
 
+    var farmacias = [Farmacia]()
+    var farmaciaDicionario = [:]
+    var farmaciaSelecionada: Farmacia?
+    
+    let farmaciaDAO = FarmaciaDAO()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,15 +39,45 @@ class FarmaciaTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return self.farmacias.count
     }
 
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if(editingStyle == .Delete){
+            let sucesso: Bool = farmaciaDAO.deletar(self.farmacias[indexPath.row])
+            
+            if(sucesso){
+                println("Farmacia deletada com sucesso")
+            }
+            
+            self.farmacias.removeAtIndex(indexPath.row)
+            
+            tableView.reloadData()
+        }
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell

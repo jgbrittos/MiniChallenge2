@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
 //            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
             storyboardInicial = UIStoryboard(name: "Farmacia", bundle: nil)
-            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("FarmaciaStoryboard") as! FarmaciaTableViewController
+            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
 
         }else{
             //Tutorial
