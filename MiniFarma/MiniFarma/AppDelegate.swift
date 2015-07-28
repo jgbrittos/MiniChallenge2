@@ -47,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //Tutorial
             storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
             telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("InicialStoryboard") as! TelaInicialViewController
+            
+//            storyboardInicial = UIStoryboard(name: "Categoria", bundle: nil)
+//            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
         }
         
         self.window?.rootViewController = telaInicial
@@ -58,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func verificaSeHaAlgumRemedio() -> Bool {
         self.bancoDeDados!.open()
-        
+
         var resultado: FMResultSet = self.bancoDeDados!.executeQuery("SELECT * FROM Remedio", withArgumentsInArray: nil)
         println("%@", self.bancoDeDados!.lastErrorMessage())
         

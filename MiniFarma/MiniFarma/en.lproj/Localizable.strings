@@ -29,3 +29,18 @@ UNIDADES_HORA = "hour(s)";
 UNIDADES_DIA = "day(s)";
 UNIDADES_SEMANA = "week(s)";
 UNIDADES_MES = "month(s)";
+
+///MARK: - Alerta categoria
+TITULOALERTA = "New Category";
+TITULOALERTA_ACESSIBILIDADE_LABEL = "New category registration";
+TITULOALERTA_ACESSIBILIDADE_HINT = "Alert to register a new category";
+
+MENSAGEMALERTA = "Type a new category";
+CADASTRARBOTAO = "Register";
+ERROALERTA = "ERROR";
+MENSAGEMALERTAERRO = "Empty textfield";
+
+CANCELARBOTAO = "Cancel";
+CATEGORIAPLACEHOLDER = "Type the text here";
+CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Textfield";
+CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT = "Type a new category";

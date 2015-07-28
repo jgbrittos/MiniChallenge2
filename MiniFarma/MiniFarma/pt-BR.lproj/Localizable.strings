@@ -43,3 +43,19 @@ UNIDADES_HORA = "hora(s)";
 UNIDADES_DIA = "dia(s)";
 UNIDADES_SEMANA = "semana(s)";
 UNIDADES_MES = "mes(es)";
+
+///MARK: - Alerta categoria
+TITULOALERTA = "Nova Categoria";
+TITULOALERTA_ACESSIBILIDADE_LABEL = "Cadastro de nova categoria";
+TITULOALERTA_ACESSIBILIDADE_HINT = "Alerta para cadastrar uma nova categoria";
+
+MENSAGEMALERTA = "Digite a nova categoria";
+
+CANCELARBOTAO = "Cancelar";
+CADASTRARBOTAO = "Cadastrar";
+ERROALERTA = "ERRO";
+MENSAGEMALERTAERRO = "Campo de texto vazio";
+
+CATEGORIAPLACEHOLDER = "Digite o texto aqui";
+CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Campo de texto";
+CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT = "Digite a nova categoria";

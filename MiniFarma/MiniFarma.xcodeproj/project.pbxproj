@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451428671B67B21C0070396A /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428641B67B21C0070396A /* Categoria.swift */; };
+		451428681B67B21C0070396A /* CategoriaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428651B67B21C0070396A /* CategoriaDAO.swift */; };
+		451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428661B67B21C0070396A /* CategoriaTableViewController.swift */; };
+		4514286C1B67B2570070396A /* Categoria.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4514286A1B67B2570070396A /* Categoria.storyboard */; };
 		4522B7D41B5E85060053DD8E /* logo_azul.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D21B5E85060053DD8E /* logo_azul.png */; };
 		4522B7D51B5E85060053DD8E /* logo_vermelho.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D31B5E85060053DD8E /* logo_vermelho.png */; };
 		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
@@ -74,6 +78,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		451428641B67B21C0070396A /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
+		451428651B67B21C0070396A /* CategoriaDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaDAO.swift; sourceTree = "<group>"; };
+		451428661B67B21C0070396A /* CategoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaTableViewController.swift; sourceTree = "<group>"; };
+		4514286B1B67B2570070396A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Categoria.storyboard; sourceTree = "<group>"; };
+		4514286E1B67B2700070396A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Categoria.strings; sourceTree = "<group>"; };
+		4514286F1B67B2750070396A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Categoria.strings"; sourceTree = "<group>"; };
 		4522B7D21B5E85060053DD8E /* logo_azul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_azul.png; sourceTree = "<group>"; };
 		4522B7D31B5E85060053DD8E /* logo_vermelho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_vermelho.png; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
@@ -168,6 +178,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4514286D1B67B25B0070396A /* Categoria */ = {
+			isa = PBXGroup;
+			children = (
+				4514286A1B67B2570070396A /* Categoria.storyboard */,
+				451428661B67B21C0070396A /* CategoriaTableViewController.swift */,
+				451428651B67B21C0070396A /* CategoriaDAO.swift */,
+				451428641B67B21C0070396A /* Categoria.swift */,
+			);
+			name = Categoria;
+			sourceTree = "<group>";
+		};
 		453961161B5BE35D0097DEDB = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +215,7 @@
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
 				457409B61B669A9400CC71EF /* Remedio */,
+				4514286D1B67B25B0070396A /* Categoria */,
 				45E0764B1B61184E00B0E7B6 /* Intervalo */,
 				457409B71B66A1E300CC71EF /* Alerta */,
 				453961441B5BE3A50097DEDB /* Assets */,
@@ -479,6 +501,7 @@
 			files = (
 				45D4084F1B66C3C000FB0EF0 /* Remedio.storyboard in Resources */,
 				458F6EF01B66ADA20042DF37 /* alertas_negativo@2x.png in Resources */,
+				4514286C1B67B2570070396A /* Categoria.storyboard in Resources */,
 				8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */,
 				45D4084B1B66BFE000FB0EF0 /* adicionar_remedio@1x.png in Resources */,
 				45D408461B66BFE000FB0EF0 /* adicionar_alerta@2x.png in Resources */,
@@ -531,15 +554,18 @@
 			files = (
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
+				451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */,
 				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
 				45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */,
 				45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */,
 				4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */,
 				45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */,
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
+				451428681B67B21C0070396A /* CategoriaDAO.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
 				457409B51B66991400CC71EF /* DAO.swift in Sources */,
 				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
+				451428671B67B21C0070396A /* Categoria.swift in Sources */,
 				8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */,
 				45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */,
 				4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */,
@@ -567,6 +593,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4514286A1B67B2570070396A /* Categoria.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4514286B1B67B2570070396A /* Base */,
+				4514286E1B67B2700070396A /* en */,
+				4514286F1B67B2750070396A /* pt-BR */,
+			);
+			name = Categoria.storyboard;
+			sourceTree = "<group>";
+		};
 		453961281B5BE35D0097DEDB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

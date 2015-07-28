@@ -42,8 +42,7 @@ class RemedioDAO: DAO {
     
         self.bancoDeDados.close()
         return inseridoComSucesso
-    }
-    
+	}
     override func deletar(objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
