@@ -10,55 +10,102 @@ import UIKit
 import MapKit
 
 
-class LocalizacaoViewController: UIViewController,CLLocationManagerDelegate {
+class LocalizacaoViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
 
     @IBOutlet weak var viewMapa: MKMapView!
-    var locationManager: CLLocationManager!
-
+    let locationManager = CLLocationManager()
+    var lat: Double = 0.0
+    var long: Double = 0.0
     
+    let pin=MKPinAnnotationView()
+    
+   
+   
+    
+    
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager.startUpdatingLocation()
-        }
+        self.locationManager.requestWhenInUseAuthorization()
         
+        viewMapa.delegate=self
         
-        
-        
-//        // 1
-//        let location = CLLocationCoordinate2D(latitude: 51.50007773, longitude: -0.1246402)
-//        
-//       
-//
-//        
-//        // 2
-//        let span = MKCoordinateSpanMake(0.05, 0.05)
-//        let region = MKCoordinateRegion(center: location, span: span)
-//        viewMapa.setRegion(region, animated: true)
-//        
-//        //3
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = location
-//        annotation.title = "Big Ben"
-//        annotation.subtitle = "London"
-//        viewMapa.addAnnotation(annotation)
-        
-        
-        // Do any additional setup after loading the view.
-    }
+     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    @IBAction func atualizaLocalizacao(sender: AnyObject) {
+    
+    
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.startUpdatingLocation()
+        lat = locationManager.location.coordinate.latitude
+        long = locationManager.location.coordinate.longitude
+        
+    
+        
+        
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: -long)
+        
+        
+        
+        // 2
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        viewMapa.setRegion(region, animated: true)
+        
+        //3
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "Farmácia"
+        annotation.subtitle = "Localização"
+    
+        
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "meuPin")
+        
+        pin.annotation = annotation
+        pin.animatesDrop = true
+        pin.draggable = true
+        
+        
+        
+        viewMapa.addAnnotation(annotation)
+    
+    }
+    
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
+        
+        pin.annotation=annotation
+        pin.animatesDrop=true
+        pin.draggable = true
+        
+        return pin
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
+        
+        if(newState == MKAnnotationViewDragState.Ending){
+            
+            
+            //consertar isso aq, nao ta mudando a localizacao 
+            
+            //var novaLocalizacao : CLLocation = newState.hashValue.value
+            println(NSString(format:"%d  %d", newState.hashValue.hashValue, newState.rawValue.hashValue))
+        }
+        
+}
+
     
     
 //    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
