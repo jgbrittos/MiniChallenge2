@@ -53,8 +53,6 @@ class RemedioTableViewController: UITableViewController {
 
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-//        self.celulaQuantidade.contentView.frame.size.height = self.alturaCelulaQuantidade
-        
         self.labelNumeroQuantidade.hidden = true
         self.segmentedControlUnidadeQuantidade.hidden = true
         
@@ -70,6 +68,11 @@ class RemedioTableViewController: UITableViewController {
             self.labelIntervalo.text = String(self.intervalo.numero) + " " + self.intervalo.unidade
         }
         
+        if let c = self.categoria as Categoria? {
+            self.labelCategoria.text = String(self.categoria.nomeCategoria)
+        }else{
+            self.labelCategoria.text = ""
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
