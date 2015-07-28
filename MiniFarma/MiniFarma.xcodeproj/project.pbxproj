@@ -431,8 +431,8 @@
 			isa = PBXGroup;
 			children = (
 				8F477CC61B67BC750050D94F /* Farmacia.storyboard */,
-				8F477CC81B67BED00050D94F /* FarmaciaTableViewController.swift */,
 				8F477CC41B67BC630050D94F /* Farmacia.swift */,
+				8F477CC81B67BED00050D94F /* FarmaciaTableViewController.swift */,
 				8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */,
 			);
 			name = Farmacia;

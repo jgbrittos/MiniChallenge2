@@ -7,7 +7,7 @@
         <!--Farmácia-->
         <scene sceneID="I4n-HZ-mam">
             <objects>
-                <tableViewController id="0Db-4A-4W7" customClass="FarmaciaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FarmaciaStoryboard" id="0Db-4A-4W7" customClass="FarmaciaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cOF-AS-rwC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,12 +35,38 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Farmácia" id="Lzy-z6-xop">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="14i-RH-Or1"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Zi7-8z-9wA"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Zi7-8z-9wA">
+                            <connections>
+                                <segue destination="lUZ-WW-RXz" kind="show" id="gg8-Pv-TJu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7o-ux-6yV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5527" y="1073"/>
+        </scene>
+        <!--Nova Farmácia-->
+        <scene sceneID="Aia-Lw-DDn">
+            <objects>
+                <viewController id="38O-ub-S8x" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fgo-ge-e7l"/>
+                        <viewControllerLayoutGuide type="bottom" id="h3H-Ir-LdK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lS6-vM-Ybx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nova Farmácia" id="dk7-xp-xI8">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="Tuz-qg-D5m"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="FtT-Yu-gVd"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zk6-sL-qXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7120" y="1073"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eue-pf-zEU">
@@ -57,6 +83,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUU-yy-W3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4711" y="1073"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sQL-Hr-dcs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lUZ-WW-RXz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXy-7D-lu5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="38O-ub-S8x" kind="relationship" relationship="rootViewController" id="Tjv-95-gCc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zk9-Qq-Qhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6317" y="1073"/>
         </scene>
     </scenes>
 </document>
