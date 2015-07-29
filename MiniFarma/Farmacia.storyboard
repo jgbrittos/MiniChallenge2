@@ -58,24 +58,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEU-cU-2fp">
-                                <rect key="frame" x="16" y="94" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEU-cU-2fp">
+                                <rect key="frame" x="16" y="72" width="568" height="52"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="pys-HT-JW6"/>
+                                    <constraint firstAttribute="height" constant="52" id="pys-HT-JW6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorita" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5w-ai-WEF">
-                                <rect key="frame" x="16" y="138" width="62" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcar como Favorita" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5w-ai-WEF">
+                                <rect key="frame" x="16" y="138" width="169" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="2K0-Hu-ox2"/>
-                                    <constraint firstAttribute="width" constant="62" id="wca-XY-tu9"/>
+                                    <constraint firstAttribute="width" constant="169" id="BTl-te-kwC"/>
+                                    <constraint firstAttribute="height" constant="21" id="Gu3-U7-NvR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="rNf-U2-ekc">
+                                <rect key="frame" x="0.0" y="167" width="605" height="389"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxG-WG-BMl">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="eSq-du-fdH"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="refresh" id="3fT-Of-rhO">
+                                        <connections>
+                                            <action selector="atualizaLocalizacao:" destination="38O-ub-S8x" id="XSC-g4-Ie0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqS-G6-2aF">
                                 <rect key="frame" x="544" y="129" width="40" height="40"/>
                                 <constraints>
@@ -90,27 +106,23 @@
                                     <action selector="favoritoClicado:" destination="38O-ub-S8x" eventType="touchUpInside" id="WDz-WE-n81"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2L7-Hk-weo">
-                                <rect key="frame" x="225" y="336" width="151" height="30"/>
-                                <state key="normal" title="Adicionar Localização">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="68m-Ya-AOw" kind="show" id="p9b-CE-wri"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gxG-WG-BMl" firstAttribute="top" secondItem="rNf-U2-ekc" secondAttribute="bottom" id="6tf-Uv-oOM"/>
+                            <constraint firstAttribute="trailing" secondItem="rNf-U2-ekc" secondAttribute="trailing" id="CKX-dV-jcZ"/>
                             <constraint firstItem="HEU-cU-2fp" firstAttribute="leading" secondItem="lS6-vM-Ybx" secondAttribute="leading" constant="16" id="GoO-yl-RVx"/>
+                            <constraint firstItem="gxG-WG-BMl" firstAttribute="leading" secondItem="lS6-vM-Ybx" secondAttribute="leading" id="HjU-j4-3JU"/>
+                            <constraint firstItem="V5w-ai-WEF" firstAttribute="top" secondItem="HEU-cU-2fp" secondAttribute="bottom" constant="14" id="Myj-Xe-Xaj"/>
+                            <constraint firstItem="V5w-ai-WEF" firstAttribute="leading" secondItem="HEU-cU-2fp" secondAttribute="leading" id="NRZ-0g-hOb"/>
+                            <constraint firstItem="rNf-U2-ekc" firstAttribute="top" secondItem="V5w-ai-WEF" secondAttribute="bottom" constant="8" symbolic="YES" id="QlK-ll-XOE"/>
                             <constraint firstAttribute="trailing" secondItem="HEU-cU-2fp" secondAttribute="trailing" constant="16" id="YZM-q5-ACm"/>
-                            <constraint firstItem="HEU-cU-2fp" firstAttribute="top" secondItem="fgo-ge-e7l" secondAttribute="bottom" constant="30" id="YyL-MF-rVW"/>
-                            <constraint firstItem="V5w-ai-WEF" firstAttribute="top" secondItem="HEU-cU-2fp" secondAttribute="bottom" constant="14" id="a5p-Zz-YtN"/>
+                            <constraint firstItem="HEU-cU-2fp" firstAttribute="top" secondItem="fgo-ge-e7l" secondAttribute="bottom" constant="8" id="YyL-MF-rVW"/>
+                            <constraint firstItem="rNf-U2-ekc" firstAttribute="leading" secondItem="lS6-vM-Ybx" secondAttribute="leading" id="aKD-Fa-6hF"/>
                             <constraint firstAttribute="trailing" secondItem="iqS-G6-2aF" secondAttribute="trailing" constant="16" id="aKY-oj-hzF"/>
-                            <constraint firstAttribute="centerX" secondItem="2L7-Hk-weo" secondAttribute="centerX" constant="-0.5" id="bVP-Ah-iL5"/>
+                            <constraint firstAttribute="trailing" secondItem="gxG-WG-BMl" secondAttribute="trailing" id="eqo-as-2y1"/>
                             <constraint firstItem="iqS-G6-2aF" firstAttribute="top" secondItem="HEU-cU-2fp" secondAttribute="bottom" constant="5" id="j1e-J1-94h"/>
-                            <constraint firstItem="V5w-ai-WEF" firstAttribute="leading" secondItem="lS6-vM-Ybx" secondAttribute="leading" constant="16" id="snb-f0-uhW"/>
-                            <constraint firstAttribute="centerY" secondItem="2L7-Hk-weo" secondAttribute="centerY" constant="-51" id="zQm-LL-Y9R"/>
+                            <constraint firstItem="h3H-Ir-LdK" firstAttribute="top" secondItem="gxG-WG-BMl" secondAttribute="bottom" id="jeg-pJ-vvC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nova Farmácia" id="dk7-xp-xI8">
@@ -119,63 +131,21 @@
                                 <segue destination="0Db-4A-4W7" kind="show" id="Vhl-qZ-vWm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="FtT-Yu-gVd"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="FtT-Yu-gVd">
+                            <connections>
+                                <action selector="salvaFarmacia:" destination="38O-ub-S8x" id="rkq-CD-yOd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="botaoFavorito" destination="iqS-G6-2aF" id="hC6-Yc-2hO"/>
+                        <outlet property="txtFieldNome" destination="HEU-cU-2fp" id="GFb-Qk-lO7"/>
+                        <outlet property="viewMapa" destination="rNf-U2-ekc" id="fO3-2E-PpJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zk6-sL-qXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7120" y="1073"/>
-        </scene>
-        <!--Localização-->
-        <scene sceneID="MdN-Nw-2XO">
-            <objects>
-                <viewController id="68m-Ya-AOw" customClass="LocalizacaoViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="k4d-jB-GYg"/>
-                        <viewControllerLayoutGuide type="bottom" id="AXE-lg-y6K"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="awQ-sw-Hgp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="HpF-W7-Svs">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                            </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyR-om-Z3i">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem style="done" systemItem="refresh" id="xNi-j5-1cI">
-                                        <connections>
-                                            <action selector="atualizaLocalizacao:" destination="68m-Ya-AOw" id="xTM-aA-WPT"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="iyR-om-Z3i" firstAttribute="leading" secondItem="awQ-sw-Hgp" secondAttribute="leading" id="Ayw-TP-ztx"/>
-                            <constraint firstItem="HpF-W7-Svs" firstAttribute="leading" secondItem="awQ-sw-Hgp" secondAttribute="leading" id="FB8-FT-2Se"/>
-                            <constraint firstItem="iyR-om-Z3i" firstAttribute="top" secondItem="HpF-W7-Svs" secondAttribute="bottom" id="J0a-GI-Uq8"/>
-                            <constraint firstAttribute="trailing" secondItem="iyR-om-Z3i" secondAttribute="trailing" id="iGF-JO-cje"/>
-                            <constraint firstAttribute="trailing" secondItem="HpF-W7-Svs" secondAttribute="trailing" id="mEY-kI-i8W"/>
-                            <constraint firstItem="AXE-lg-y6K" firstAttribute="top" secondItem="iyR-om-Z3i" secondAttribute="bottom" id="ocM-df-u0o"/>
-                            <constraint firstItem="HpF-W7-Svs" firstAttribute="top" secondItem="k4d-jB-GYg" secondAttribute="bottom" id="xu7-E7-Lkz"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Localização" id="qAT-vK-tr8">
-                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="1h0-Z9-ei7"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="viewMapa" destination="HpF-W7-Svs" id="y4D-Or-TZT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y0N-3D-iMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7878" y="1073"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eue-pf-zEU">

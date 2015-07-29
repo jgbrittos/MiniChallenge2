@@ -7,16 +7,31 @@
 //
 
 import UIKit
+import MapKit
 
-class NovaFarmaciaViewController: UIViewController {
+class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
 
     
+    @IBOutlet weak var txtFieldNome: UITextField!
+    @IBOutlet weak var viewMapa: MKMapView!
     @IBOutlet weak var botaoFavorito: UIButton!
+    
+    let pino = MKPinAnnotationView()
+    let localizacaoGerenciador = CLLocationManager()
+    
+    var latitudeValor: Double = 0.0
+    var longitudeValor: Double = 0.0
+
+    var nome:String = ""
     var favorito:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.localizacaoGerenciador.requestWhenInUseAuthorization()
+        
+        viewMapa.delegate=self
+        
         // Do any additional setup after loading the view.
     }
 
@@ -24,6 +39,57 @@ class NovaFarmaciaViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    @IBAction func atualizaLocalizacao(sender: AnyObject) {
+        localizacaoGerenciador.distanceFilter = kCLDistanceFilterNone
+        localizacaoGerenciador.desiredAccuracy = kCLLocationAccuracyBest
+        localizacaoGerenciador.startUpdatingLocation()
+        latitudeValor = localizacaoGerenciador.location.coordinate.latitude
+        longitudeValor = localizacaoGerenciador.location.coordinate.longitude
+        
+        let localizacao = CLLocationCoordinate2D(latitude: latitudeValor, longitude: longitudeValor)
+
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let regiao = MKCoordinateRegion(center: localizacao, span: span)
+        viewMapa.setRegion(regiao, animated: true)
+        let anotacao = MKPointAnnotation()
+        anotacao.coordinate = localizacao
+        anotacao.title = "Farmácia"
+        anotacao.subtitle = "Localização"
+        let pin = MKPinAnnotationView(annotation: anotacao, reuseIdentifier: "meuPin")
+        pin.annotation = anotacao
+        pin.animatesDrop = true
+        pin.draggable = true
+        
+        viewMapa.addAnnotation(anotacao)
+        
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
+        pino.animatesDrop=true
+        pino.draggable = true
+        
+        return pino
+    }
+    
+    
+    
+    
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
+        println(NSString(format:"teste"))
+        
+        if newState == MKAnnotationViewDragState.Ending {
+            let anotacao = view.annotation
+            println("annotation dropped at: \(anotacao.coordinate.latitude),\(anotacao.coordinate.longitude)")
+        }
+        
+    }
+
+    
+    
     
     
     @IBAction func favoritoClicado(sender: AnyObject) {
@@ -40,6 +106,18 @@ class NovaFarmaciaViewController: UIViewController {
     
    
 
+    @IBAction func salvaFarmacia(sender: AnyObject) {
+        
+        let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor)
+        
+        
+        
+        
+        
+    }
+    
+    
+    
     
     
 
