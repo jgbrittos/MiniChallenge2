@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RemedioTableViewController: UITableViewController {
+class RemedioTableViewController: UITableViewController, SelecionaCategoriaDelegate {
 
     
     @IBOutlet weak var imageViewFotoRemedio: UIImageView!
@@ -42,8 +42,8 @@ class RemedioTableViewController: UITableViewController {
     
     let remedioDAO = RemedioDAO()
     
-    var intervalo = Intervalo()
-    var categoria = Categoria()
+    var intervalo: Intervalo?
+    var categoria: Categoria?
     //var farmacia = Farmacia()
     //var local = Local()
     //var vencido = Int()
@@ -62,21 +62,21 @@ class RemedioTableViewController: UITableViewController {
         self.labelMoeda.hidden = true
         self.textFieldPreco.hidden = true
         
-        if self.intervalo.numero == 0 {
-            self.labelIntervalo.text = ""
-        }else{
-            self.labelIntervalo.text = String(self.intervalo.numero) + " " + self.intervalo.unidade
-        }
-        
-        if let c = self.categoria as Categoria? {
-            self.labelCategoria.text = String(self.categoria.nomeCategoria)
-        }else{
-            self.labelCategoria.text = ""
-        }
     }
 
     override func viewWillAppear(animated: Bool) {
-//        self.celulaQuantidade.contentView.frame.size.height = 44.0
+        
+        if let i = self.intervalo as Intervalo? {
+            self.labelIntervalo.text = String(i.numero) + " " + i.unidade
+        }else{
+            self.labelIntervalo.text = ""
+        }
+        
+        if let c = self.categoria as Categoria? {
+            self.labelCategoria.text = String(c.nomeCategoria)
+        }else{
+            self.labelCategoria.text = ""
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,14 +92,29 @@ class RemedioTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.row {
+            case 0:
+                return 150
+            case 5:
+                return self.alturaCelulaQuantidade
+            case 6:
+                return self.alturaCelulaDose
+            case 7:
+                return self.alturaCelulaPreco
+            default:
+                 return 44
+        }
+    }
+    
     @IBAction func salvarRemedio(sender: AnyObject) {
 //        let remedio = Remedio(nomeRemedio: textFieldNome.text, dataValidade: textFieldDataDeValidade.text, numeroQuantidade: 0, unidadeQuantidade: 0, preco: labelPreco.text, numeroDose: 0, unidadeDose: 0, fotoRemedio: "asd/asd", fotoReceita: "asd/asd", vencido: 0, idFarmacia: 0, idCategoria: 0, idLocal: 0, idIntervalo: 0)
 //        remedioDAO.inserir(remedio)
         //ir para a lista de remedios ou de alerta dependendo do parametro do switch
     }
 
-    
+    // MARK: - Teclado com PickerView
     @IBAction func editandoTextFieldDataDeValidade(sender: UITextField) {
         let datePickerDataDeValidade:UIDatePicker = UIDatePicker()
         datePickerDataDeValidade.datePickerMode = .Date
@@ -121,15 +136,11 @@ class RemedioTableViewController: UITableViewController {
         
     }
     
+    // MARK: - Toque nas celulas
     @IBAction func tocouNaCelulaDeCategoria(sender: AnyObject) {
-        let storyboardCategoria = UIStoryboard(name: "Categoria", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        self.presentViewController(storyboardCategoria, animated:true, completion:nil)
-    }
-
-    @IBAction func tocouNaCelulaDeIntervalo(sender: AnyObject) {
-        println("intervalo")
-        let storyboardIntervalo = UIStoryboard(name: "Intervalo", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        self.presentViewController(storyboardIntervalo, animated:true, completion:nil)
+//        let storyboardCategoria = UIStoryboard(name: "Categoria", bundle: nil).instantiateInitialViewController() as! UINavigationController
+//        self.presentViewController(storyboardCategoria, animated:true, completion:nil)
+        self.performSegueWithIdentifier("SelecionaCategoria", sender: nil)
     }
     
     @IBAction func tocouNaCelulaDeQuantidade(sender: AnyObject) {
@@ -180,18 +191,21 @@ class RemedioTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.row {
-            case 0:
-                return 150
-            case 5:
-                return self.alturaCelulaQuantidade
-            case 6:
-                return self.alturaCelulaDose
-            case 7:
-                return self.alturaCelulaPreco
-            default:
-                 return 44
+    // MARK: - Navegação
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SelecionaCategoria" {
+            var selecionaCategoria = segue.destinationViewController as! CategoriaTableViewController
+            selecionaCategoria.delegate = self
         }
     }
+    
+    // MARK: - Protocolos
+    //Categoria
+    func selecionaCategoria(categoria: Categoria){
+        self.categoria = categoria
+    }
+    
+    //Intervalo
+    
+    //Farmacia
 }

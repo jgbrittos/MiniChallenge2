@@ -11,8 +11,8 @@ import UIKit
 class CategoriaTableViewController: UITableViewController {
 
     var categorias = [Categoria]()
-    var categoriaDicionario = [:]
     var categoriaSelecionada: Categoria?
+    var delegate: SelecionaCategoriaDelegate?
     
     let categoriaDAO = CategoriaDAO()
     
@@ -24,15 +24,8 @@ class CategoriaTableViewController: UITableViewController {
         self.categorias = categoriaDAO.buscarCategorias() as! [Categoria]
     }
     
-
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -43,7 +36,6 @@ class CategoriaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.categorias.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
@@ -68,10 +60,14 @@ class CategoriaTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func cancelarClicado(sender: AnyObject) {
-        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
-        let telaAdicionarRemedio = storyboardRemedio.instantiateInitialViewController() as! UINavigationController
-        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.categoriaSelecionada = self.categorias[indexPath.row]
+        self.delegate?.selecionaCategoria(self.categoriaSelecionada!)
+        self.navigationController?.popViewControllerAnimated(true)
+//        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
+//        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
+//        telaAdicionarRemedio.categoria = self.categoriaSelecionada!
+//        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
     }
     
     @IBAction func adicionarClicado(sender: AnyObject) {
@@ -127,12 +123,10 @@ class CategoriaTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.categoriaSelecionada = self.categorias[indexPath.row]
-        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
-        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
-        telaAdicionarRemedio.categoria = self.categoriaSelecionada!
-        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
-    }
 
+}
+
+//MARK: - Protocolo
+protocol SelecionaCategoriaDelegate {
+    func selecionaCategoria(categoria: Categoria)
 }

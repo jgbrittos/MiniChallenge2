@@ -101,6 +101,7 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="eF4-7v-eyZ" appends="YES" id="cxc-qP-Tzk"/>
+                                            <segue destination="U31-xl-6gj" kind="show" identifier="SelecionaCategoria" id="XTe-aB-0JT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaIntervalo" rowHeight="44" id="G0R-Cu-Tbb">
@@ -273,9 +274,6 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="5Ko-xk-B3c" appends="YES" id="Pwn-vn-oL0"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaDose" rowHeight="88" id="Gyg-30-Yu5">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -490,11 +488,6 @@
                         <action selector="tocouNaCelulaDeIntervalo:" destination="UJ8-Gv-h8V" id="SKt-Hu-pTp"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="5Ko-xk-B3c">
-                    <connections>
-                        <action selector="tocouNaCelulaDeQuantidade:" destination="UJ8-Gv-h8V" id="jUl-uM-UTx"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="vez-b1-mhD">
                     <connections>
                         <action selector="tocouNaCelulaDeDose:" destination="UJ8-Gv-h8V" id="zEk-9N-281"/>
@@ -511,7 +504,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1780" y="674"/>
+            <point key="canvasLocation" x="1746" y="674"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5IW-av-i66">
@@ -530,6 +523,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsq-75-H71" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="968" y="674"/>
+        </scene>
+        <!--Categoria-->
+        <scene sceneID="l78-yJ-g03">
+            <objects>
+                <tableViewController id="U31-xl-6gj" customClass="CategoriaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bPo-BI-s4c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" id="rh5-AO-1pc">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rh5-AO-1pc" id="jxZ-fb-Jqh">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="U31-xl-6gj" id="J98-GJ-a1l"/>
+                            <outlet property="delegate" destination="U31-xl-6gj" id="m36-QX-sbd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Categoria" id="iSx-d9-GK8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="klv-d0-akc">
+                            <connections>
+                                <action selector="adicionarClicado:" destination="U31-xl-6gj" id="awO-7x-2mu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lgk-Ac-DcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2459" y="674"/>
         </scene>
     </scenes>
 </document>
