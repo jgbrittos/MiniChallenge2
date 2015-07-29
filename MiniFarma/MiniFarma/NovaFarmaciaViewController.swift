@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
+class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate,UITextFieldDelegate {
 
     
     @IBOutlet weak var txtFieldNome: UITextField!
@@ -18,6 +18,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     
     let pino = MKPinAnnotationView()
     let localizacaoGerenciador = CLLocationManager()
+    let farmaciaDAO = FarmaciaDAO()
     
     var latitudeValor: Double = 0.0
     var longitudeValor: Double = 0.0
@@ -30,6 +31,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
 
         self.localizacaoGerenciador.requestWhenInUseAuthorization()
         
+        self.txtFieldNome.delegate = self
         viewMapa.delegate=self
         
         // Do any additional setup after loading the view.
@@ -45,7 +47,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     @IBAction func atualizaLocalizacao(sender: AnyObject) {
         localizacaoGerenciador.distanceFilter = kCLDistanceFilterNone
         localizacaoGerenciador.desiredAccuracy = kCLLocationAccuracyBest
-        localizacaoGerenciador.startUpdatingLocation()
+        
         latitudeValor = localizacaoGerenciador.location.coordinate.latitude
         longitudeValor = localizacaoGerenciador.location.coordinate.longitude
         
@@ -110,18 +112,26 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         
         let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor)
         
+        farmaciaDAO.inserir(farmacia)
         
-        
-        
-        
+
+    //falta fazer voltar pra view anterior programaticamente
+    
     }
-    
-    
-    
     
     
 
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+        self.view.endEditing(true)
+        return true
+    }
+
+
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        txtFieldNome.resignFirstResponder()
+        self.view.endEditing(true)
+    }
     
     
     /*

@@ -23,7 +23,7 @@ class FarmaciaDAO: DAO {
         
         let farmacia: Farmacia = objeto as! Farmacia
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude) VALUES (?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia,farmacia.favorita,farmacia.latitude,farmacia.longitude])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude) VALUES (?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia,String(format: "%d",farmacia.favorita),String(format: "%f",farmacia.latitude),String(format: "%f",farmacia.longitude)])
         
         if !inseridoComSucesso {
             println("\(self.bancoDeDados.lastErrorMessage())")
@@ -76,7 +76,7 @@ class FarmaciaDAO: DAO {
             let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
             
             
-            println("id: \(farmacia.idFarmacia) numero: \(farmacia.idFarmacia) --- INTERVALO: \(farmacia)")
+            println("id: \(farmacia.idFarmacia) nome: \(farmacia.nomeFarmacia) --- FARMACIA: \(farmacia)")
             
             self.farmacias.append(farmacia)
         }
@@ -84,7 +84,6 @@ class FarmaciaDAO: DAO {
         self.bancoDeDados.close()
         
         return self.farmacias
-        
     }
 
     
