@@ -56,6 +56,8 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
     var local = Local()
     //var vencido = Int()
     
+    let histogramaUnidadesRemedio = [" cps", " g", " ml"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,11 +92,6 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
         if let c = self.categoria as Categoria? {
             self.labelCategoria.text = String(c.nomeCategoria)
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -180,11 +177,13 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
     
     @IBAction func tocouNaCelulaDeLocal(sender: AnyObject) {
         if self.celulaLocalOculta {
+            self.labelLocal.text = ""
             self.textFieldLocal.hidden = false
             self.buttonAdicionarLocal.hidden = false
             self.celulaLocalOculta = false
             self.alturaCelulaLocal += 44
         }else{
+            self.labelLocal.text = self.textFieldLocal.text
             self.textFieldLocal.hidden = true
             self.buttonAdicionarLocal.hidden = true
             self.celulaLocalOculta = true
