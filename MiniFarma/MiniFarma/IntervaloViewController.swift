@@ -193,11 +193,6 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.viewComPickerViewEToolbar.hidden = true
     }
 
-    @IBAction func cancelarSelecaoDeIntervalo(sender: AnyObject) {
-        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
-        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
-        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
-    }
 }
 
 // MARK: - Protocolo

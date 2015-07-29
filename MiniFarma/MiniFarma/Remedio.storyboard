@@ -77,7 +77,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHw-wO-zax">
                                                     <rect key="frame" x="91" y="11" width="501" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -120,7 +120,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4by-eE-y7E">
                                                     <rect key="frame" x="82" y="11" width="510" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -163,7 +163,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4Q-lR-lrx">
                                                     <rect key="frame" x="87" y="11" width="505" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -184,6 +184,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="pDg-jd-gV6" appends="YES" id="xha-V3-Cxr"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaLocal" rowHeight="44" id="6JB-OV-eMO">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -199,23 +203,28 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJV-Eg-pet">
-                                                    <rect key="frame" x="58" y="11" width="534" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OME-al-Ys0">
+                                                    <rect key="frame" x="58" y="7" width="534" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="vmK-y5-USE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="CJV-Eg-pet" firstAttribute="trailing" secondItem="xXg-6P-wwT" secondAttribute="trailingMargin" id="3d6-y0-ssT"/>
-                                                <constraint firstItem="CJV-Eg-pet" firstAttribute="leading" secondItem="bCf-mi-LUl" secondAttribute="trailing" constant="8" id="BwH-L0-70X"/>
-                                                <constraint firstItem="CJV-Eg-pet" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="3" id="H0y-ZI-g3t"/>
                                                 <constraint firstItem="bCf-mi-LUl" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="3" id="IU4-8j-dBW"/>
+                                                <constraint firstItem="OME-al-Ys0" firstAttribute="trailing" secondItem="xXg-6P-wwT" secondAttribute="trailingMargin" id="OzM-Hr-Zsg"/>
                                                 <constraint firstItem="bCf-mi-LUl" firstAttribute="leading" secondItem="xXg-6P-wwT" secondAttribute="leadingMargin" id="aQ9-ZV-r4x"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bCf-mi-LUl" secondAttribute="bottom" constant="3.5" id="cT5-dW-dO4"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="CJV-Eg-pet" secondAttribute="bottom" constant="4" id="gtT-wc-30y"/>
+                                                <constraint firstItem="OME-al-Ys0" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="-1" id="nO5-lT-Wtc"/>
+                                                <constraint firstItem="OME-al-Ys0" firstAttribute="leading" secondItem="bCf-mi-LUl" secondAttribute="trailing" constant="8" id="yxk-UZ-aZf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LQg-fE-GIf" appends="YES" id="D5f-UW-S3X"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaQuantidade" rowHeight="88" id="bt7-Yh-cQ8">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -242,7 +251,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHK-Vo-l0G">
                                                     <rect key="frame" x="8" y="45" width="288" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uN3-Uu-oxi">
@@ -295,7 +304,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eR8-Ox-Exw">
                                                     <rect key="frame" x="8" y="45" width="288" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="04C-EE-t7v">
@@ -349,7 +358,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTd-aA-9bQ">
                                                     <rect key="frame" x="61" y="11" width="531" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -360,8 +369,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4a-Zj-LEU">
-                                                    <rect key="frame" x="38" y="44" width="554" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="37" y="44" width="555" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
@@ -432,6 +441,10 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="lRp-b3-l8f" secondAttribute="bottom" constant="3.5" id="qlg-gZ-9L5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="2W2-vm-MNp" appends="YES" id="ubr-MA-DWc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -472,7 +485,6 @@
                         <outlet property="labelDose" destination="DoR-Ol-Q3t" id="qbA-SU-Ixd"/>
                         <outlet property="labelFarmacia" destination="k4Q-lR-lrx" id="L13-Xn-li5"/>
                         <outlet property="labelIntervalo" destination="4by-eE-y7E" id="6zg-aC-g3w"/>
-                        <outlet property="labelLocal" destination="CJV-Eg-pet" id="uIV-L8-e5D"/>
                         <outlet property="labelMoeda" destination="r2S-cu-Cwx" id="es2-YI-coG"/>
                         <outlet property="labelNumeroDose" destination="eR8-Ox-Exw" id="9Ea-ly-4aR"/>
                         <outlet property="labelNumeroQuantidade" destination="nHK-Vo-l0G" id="PH4-bd-Xkn"/>
@@ -482,21 +494,12 @@
                         <outlet property="segmentedControlUnidadeQuantidade" destination="uN3-Uu-oxi" id="hFO-Ey-DSi"/>
                         <outlet property="switchAlerta" destination="SuK-W3-lmq" id="DnS-qG-Lkk"/>
                         <outlet property="textFieldDataDeValidade" destination="JZ3-8b-mAt" id="0JF-kX-5Eu"/>
+                        <outlet property="textFieldLocal" destination="OME-al-Ys0" id="1HW-Vb-TBE"/>
                         <outlet property="textFieldNome" destination="Sdq-5v-ZYm" id="j5M-Zo-1Vo"/>
                         <outlet property="textFieldPreco" destination="s4a-Zj-LEU" id="k52-9F-iRg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkD-WG-r64" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="vez-b1-mhD">
-                    <connections>
-                        <action selector="tocouNaCelulaDeDose:" destination="UJ8-Gv-h8V" id="zEk-9N-281"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="BvS-bW-n8Z">
-                    <connections>
-                        <action selector="tocouNaCelulaDePreco:" destination="UJ8-Gv-h8V" id="oNZ-U8-Qse"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="eF4-7v-eyZ">
                     <connections>
                         <action selector="tocouNaCelulaDeCategoria:" destination="UJ8-Gv-h8V" id="8yg-WV-lee"/>
@@ -507,11 +510,24 @@
                         <action selector="tocouNaCelulaDeIntervalo:" destination="UJ8-Gv-h8V" id="FQB-UA-uca"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="pDg-jd-gV6"/>
+                <tapGestureRecognizer id="LQg-fE-GIf"/>
                 <tapGestureRecognizer id="i1o-Yc-LRi">
                     <connections>
                         <action selector="tocouNaCelulaDeQuantidade:" destination="UJ8-Gv-h8V" id="9c5-ld-9kG"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="vez-b1-mhD">
+                    <connections>
+                        <action selector="tocouNaCelulaDeDose:" destination="UJ8-Gv-h8V" id="zEk-9N-281"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="BvS-bW-n8Z">
+                    <connections>
+                        <action selector="tocouNaCelulaDePreco:" destination="UJ8-Gv-h8V" id="oNZ-U8-Qse"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="2W2-vm-MNp"/>
             </objects>
             <point key="canvasLocation" x="1746" y="674"/>
         </scene>

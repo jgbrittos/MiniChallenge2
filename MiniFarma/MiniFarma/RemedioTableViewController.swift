@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RemedioTableViewController: UITableViewController, SelecionaCategoriaDelegate, SelecionaIntervaloDelegate {
+class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, SelecionaCategoriaDelegate, SelecionaIntervaloDelegate {
 
     
     @IBOutlet weak var imageViewFotoRemedio: UIImageView!
@@ -20,7 +20,7 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
     @IBOutlet weak var labelQuantidade: UILabel!
     @IBOutlet weak var labelDose: UILabel!
     @IBOutlet weak var labelPreco: UILabel!
-    @IBOutlet weak var labelLocal: UILabel!
+    @IBOutlet weak var textFieldLocal: UITextField!
     @IBOutlet weak var switchAlerta: UISwitch!
     
     @IBOutlet weak var labelNumeroQuantidade: UITextField!
@@ -38,6 +38,8 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
     var celulaQuantidadeOculta: Bool = true
     var celulaDoseOculta: Bool = true
     var celulaPrecoOculta: Bool = true
+    
+    let pickerViewLocal:UIPickerView = UIPickerView()
     
     let remedioDAO = RemedioDAO()
     
@@ -61,6 +63,9 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
         self.labelMoeda.hidden = true
         self.textFieldPreco.hidden = true
         
+        self.pickerViewLocal.delegate = self
+        self.textFieldLocal.inputView = self.pickerViewLocal
+        self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -109,7 +114,8 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
         //ir para a lista de remedios ou de alerta dependendo do parametro do switch
     }
 
-    // MARK: - Teclado com PickerView
+    // MARK: - Teclado com Date e Picker View's
+    //Data de Validade
     @IBAction func editandoTextFieldDataDeValidade(sender: UITextField) {
         let datePickerDataDeValidade:UIDatePicker = UIDatePicker()
         datePickerDataDeValidade.datePickerMode = .Date
@@ -129,6 +135,23 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
         
         self.textFieldDataDeValidade.text = dateFormatter.stringFromDate(sender.date)
         
+    }
+    
+    //Local
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 3
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return "Armario"
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.textFieldLocal.text = "testando " + String(row)
     }
     
     // MARK: - Toque nas celulas
@@ -198,6 +221,8 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
             case "SelecionaIntervalo":
                 var selecionaIntervalo = segue.destinationViewController as! IntervaloViewController
                 selecionaIntervalo.delegate = self
+                break
+            case "SelecionaFarmacia":
                 break
             default:
                 println("Algo ocorreu na função prepareForSegue da classe RemedioTableViewController")

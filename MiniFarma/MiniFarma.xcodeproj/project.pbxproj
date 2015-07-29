@@ -10,6 +10,8 @@
 		451428671B67B21C0070396A /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428641B67B21C0070396A /* Categoria.swift */; };
 		451428681B67B21C0070396A /* CategoriaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428651B67B21C0070396A /* CategoriaDAO.swift */; };
 		451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428661B67B21C0070396A /* CategoriaTableViewController.swift */; };
+		451428721B690CCA0070396A /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428711B690CCA0070396A /* Local.swift */; };
+		451428741B690CDA0070396A /* LocalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428731B690CDA0070396A /* LocalDAO.swift */; };
 		4522B7D41B5E85060053DD8E /* logo_azul.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D21B5E85060053DD8E /* logo_azul.png */; };
 		4522B7D51B5E85060053DD8E /* logo_vermelho.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D31B5E85060053DD8E /* logo_vermelho.png */; };
 		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
@@ -79,6 +81,8 @@
 		451428641B67B21C0070396A /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
 		451428651B67B21C0070396A /* CategoriaDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaDAO.swift; sourceTree = "<group>"; };
 		451428661B67B21C0070396A /* CategoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaTableViewController.swift; sourceTree = "<group>"; };
+		451428711B690CCA0070396A /* Local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
+		451428731B690CDA0070396A /* LocalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDAO.swift; sourceTree = "<group>"; };
 		4522B7D21B5E85060053DD8E /* logo_azul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_azul.png; sourceTree = "<group>"; };
 		4522B7D31B5E85060053DD8E /* logo_vermelho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_vermelho.png; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
@@ -178,6 +182,15 @@
 				451428641B67B21C0070396A /* Categoria.swift */,
 			);
 			name = Categoria;
+			sourceTree = "<group>";
+		};
+		451428701B690CB40070396A /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				451428731B690CDA0070396A /* LocalDAO.swift */,
+				451428711B690CCA0070396A /* Local.swift */,
+			);
+			name = Local;
 			sourceTree = "<group>";
 		};
 		453961161B5BE35D0097DEDB = {
@@ -332,6 +345,7 @@
 				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
 				4514286D1B67B25B0070396A /* Categoria */,
 				45E0764B1B61184E00B0E7B6 /* Intervalo */,
+				451428701B690CB40070396A /* Local */,
 			);
 			name = Remedio;
 			sourceTree = "<group>";
@@ -541,8 +555,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
+				451428721B690CCA0070396A /* Local.swift in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
 				451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */,
+				451428741B690CDA0070396A /* LocalDAO.swift in Sources */,
 				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
 				45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */,
 				45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */,
