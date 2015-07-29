@@ -13,6 +13,7 @@ UIPickerViewDelegate,
 UIPickerViewDataSource,
 UINavigationControllerDelegate,
 UIImagePickerControllerDelegate,
+UIActionSheetDelegate,
 SelecionaCategoriaDelegate,
 SelecionaIntervaloDelegate {
 
@@ -320,18 +321,32 @@ SelecionaIntervaloDelegate {
     }
     
     @IBAction func tirarFotoDoRemedio(sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
+        let acao = UIActionSheet(title: "Selecionar uma foto da:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Camera", "Galeria")
         
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            imagePicker.sourceType = .Camera
-        } else {
-            imagePicker.sourceType = .PhotoLibrary
+        acao.showInView(self.view)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        switch buttonIndex {
+            case 0:
+                if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                    picker.sourceType = .Camera
+                }
+                break
+            case 1:
+                picker.sourceType = .PhotoLibrary
+                break
+            default:
+                println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+                break
         }
         
-        imagePicker.allowsEditing = true
-        
-        presentViewController(imagePicker, animated: true, completion: nil)
+        self.presentViewController(picker, animated:true, completion:nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
@@ -340,9 +355,8 @@ SelecionaIntervaloDelegate {
         
         self.fotoRemedio = fotoRemedio
         
-        dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
     
     // MARK: - Navegação
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
