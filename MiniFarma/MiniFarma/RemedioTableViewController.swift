@@ -10,7 +10,7 @@ import UIKit
 
 class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, SelecionaCategoriaDelegate, SelecionaIntervaloDelegate {
 
-    
+    // MARK: - Propriedades
     @IBOutlet weak var imageViewFotoRemedio: UIImageView!
     @IBOutlet weak var textFieldNome: UITextField!
     @IBOutlet weak var textFieldDataDeValidade: UITextField!
@@ -20,33 +20,40 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
     @IBOutlet weak var labelQuantidade: UILabel!
     @IBOutlet weak var labelDose: UILabel!
     @IBOutlet weak var labelPreco: UILabel!
-    @IBOutlet weak var textFieldLocal: UITextField!
     @IBOutlet weak var switchAlerta: UISwitch!
     
-    @IBOutlet weak var labelNumeroQuantidade: UITextField!
+    @IBOutlet weak var labelLocal: UILabel!
+    @IBOutlet weak var textFieldLocal: UITextField!
+    @IBOutlet weak var buttonAdicionarLocal: UIButton!
+    var alturaCelulaLocal: CGFloat = 44
+    
+    @IBOutlet weak var textFieldNumeroQuantidade: UITextField!
     @IBOutlet weak var segmentedControlUnidadeQuantidade: UISegmentedControl!
     var alturaCelulaQuantidade: CGFloat = 44
     
-    @IBOutlet weak var labelNumeroDose: UITextField!
+    @IBOutlet weak var textFieldNumeroDose: UITextField!
     @IBOutlet weak var segmentedControlUnidadeDose: UISegmentedControl!
     var alturaCelulaDose: CGFloat = 44
     
     @IBOutlet weak var labelMoeda: UILabel!
     @IBOutlet weak var textFieldPreco: UITextField!
     var alturaCelulaPreco: CGFloat = 44
-    
+
     var celulaQuantidadeOculta: Bool = true
     var celulaDoseOculta: Bool = true
     var celulaPrecoOculta: Bool = true
+    var celulaLocalOculta: Bool = true
     
     let pickerViewLocal:UIPickerView = UIPickerView()
     
     let remedioDAO = RemedioDAO()
+    let localDAO = LocalDAO()
+    var locais = [Local]()
     
     var intervalo: Intervalo?
     var categoria: Categoria?
     //var farmacia = Farmacia()
-    //var local = Local()
+    var local = Local()
     //var vencido = Int()
     
     override func viewDidLoad() {
@@ -54,18 +61,24 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
 
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        self.labelNumeroQuantidade.hidden = true
+        //Celula de Local
+        self.textFieldLocal.hidden = true
+        self.buttonAdicionarLocal.hidden = true
+        //Celula de Quantidade
+        self.textFieldNumeroQuantidade.hidden = true
         self.segmentedControlUnidadeQuantidade.hidden = true
-        
-        self.labelNumeroDose.hidden = true
+        //Celula de Dose
+        self.textFieldNumeroDose.hidden = true
         self.segmentedControlUnidadeDose.hidden = true
-        
+        //Celula de Preco
         self.labelMoeda.hidden = true
         self.textFieldPreco.hidden = true
         
+        //PickerView de Local
         self.pickerViewLocal.delegate = self
         self.textFieldLocal.inputView = self.pickerViewLocal
         self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
+        self.locais = self.localDAO.buscarTodos() as! [Local]
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -97,6 +110,8 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
         switch indexPath.row {
             case 0:
                 return 150
+            case 4:
+                return self.alturaCelulaLocal
             case 5:
                 return self.alturaCelulaQuantidade
             case 6:
@@ -143,15 +158,15 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        return self.locais.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return "Armario"
+        return self.locais[row].nome
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.textFieldLocal.text = "testando " + String(row)
+        self.textFieldLocal.text = self.locais[row].nome
     }
     
     // MARK: - Toque nas celulas
@@ -163,14 +178,30 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
         self.performSegueWithIdentifier("SelecionaIntervalo", sender: nil)
     }
     
+    @IBAction func tocouNaCelulaDeLocal(sender: AnyObject) {
+        if self.celulaLocalOculta {
+            self.textFieldLocal.hidden = false
+            self.buttonAdicionarLocal.hidden = false
+            self.celulaLocalOculta = false
+            self.alturaCelulaLocal += 44
+        }else{
+            self.textFieldLocal.hidden = true
+            self.buttonAdicionarLocal.hidden = true
+            self.celulaLocalOculta = true
+            self.alturaCelulaLocal = 44
+        }
+        self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: 4, inSection: 0))
+        self.tableView.reloadData()
+    }
+    
     @IBAction func tocouNaCelulaDeQuantidade(sender: AnyObject) {
         if self.celulaQuantidadeOculta {
-            self.labelNumeroQuantidade.hidden = false
+            self.textFieldNumeroQuantidade.hidden = false
             self.segmentedControlUnidadeQuantidade.hidden = false
             self.celulaQuantidadeOculta = false
             self.alturaCelulaQuantidade += 44
         }else{
-            self.labelNumeroQuantidade.hidden = true
+            self.textFieldNumeroQuantidade.hidden = true
             self.segmentedControlUnidadeQuantidade.hidden = true
             self.celulaQuantidadeOculta = true
             self.alturaCelulaQuantidade = 44
@@ -181,12 +212,12 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
 
     @IBAction func tocouNaCelulaDeDose(sender: AnyObject) {
         if self.celulaDoseOculta {
-            self.labelNumeroDose.hidden = false
+            self.textFieldNumeroDose.hidden = false
             self.segmentedControlUnidadeDose.hidden = false
             self.celulaDoseOculta = false
             self.alturaCelulaDose += 44
         }else{
-            self.labelNumeroDose.hidden = true
+            self.textFieldNumeroDose.hidden = true
             self.segmentedControlUnidadeDose.hidden = true
             self.celulaDoseOculta = true
             self.alturaCelulaDose = 44
@@ -211,6 +242,56 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
         self.tableView.reloadData()
     }
 
+    @IBAction func adicionarLocal(sender: AnyObject) {
+        var alerta:UIAlertController?
+        
+        alerta = UIAlertController(title: NSLocalizedString("TITULOALERTALOCAL", comment: "Titulo do alerta"),
+            message: NSLocalizedString("MENSAGEMALERTALOCAL", comment: "Mensagem do Alerta"),
+            preferredStyle: .Alert)
+        alerta!.addTextFieldWithConfigurationHandler(
+            {(textField: UITextField!) in
+                textField.placeholder = NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta")
+                textField.accessibilityLabel = NSLocalizedString("CATEGORIAPLACEHOLDERLOCAL_ACESSIBILIDADE_LABEL", comment: "Alerta")
+                textField.accessibilityHint = NSLocalizedString("CATEGORIAPLACEHOLDERLOCAL_ACESSIBILIDADE_HINT", comment: "Alerta")
+        })
+        
+        alerta?.accessibilityLabel = NSLocalizedString("TITULOALERTALOCAL_ACESSIBILIDADE_LABEL", comment: "Alerta")
+        alerta?.accessibilityHint = NSLocalizedString("TITULOALERTALOCAL_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
+        
+        
+        alerta!.addAction(UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"), style: .Default, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        let acaoAlerta = UIAlertAction(title: NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta"),
+            style: UIAlertActionStyle.Default,
+            handler: {[weak self]
+                (paramAction:UIAlertAction!) in
+                if let textField = alerta?.textFields{
+                    let theTextField = textField as! [UITextField]
+                    let textoDigitado = theTextField[0].text
+                    
+                    if (textoDigitado == ""){
+                        let alertaErro: UIAlertController = UIAlertController(title: NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), message: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), preferredStyle: .Alert)
+                        alertaErro.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        self!.presentViewController(alertaErro, animated: true, completion: nil)
+                        
+                    }else{
+                        let local = Local(nome: textoDigitado)
+                        self!.localDAO.inserir(local)
+                        self!.locais.append(local)
+                        self!.pickerViewLocal.reloadAllComponents()
+                    }
+                    
+                }
+            })
+        
+        
+        alerta?.addAction(acaoAlerta)
+        
+        self.presentViewController(alerta!,animated: true,completion: nil)
+    }
+    
     // MARK: - Navegação
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {

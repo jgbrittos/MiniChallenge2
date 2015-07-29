@@ -64,10 +64,6 @@ class CategoriaTableViewController: UITableViewController {
         self.categoriaSelecionada = self.categorias[indexPath.row]
         self.delegate?.selecionaCategoria(self.categoriaSelecionada!)
         self.navigationController?.popViewControllerAnimated(true)
-//        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
-//        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
-//        telaAdicionarRemedio.categoria = self.categoriaSelecionada!
-//        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
     }
     
     @IBAction func adicionarClicado(sender: AnyObject) {
@@ -116,14 +112,10 @@ class CategoriaTableViewController: UITableViewController {
         
         
         alerta?.addAction(acaoAlerta)
-    
-        self.presentViewController(alerta!,
-            animated: true,
-            completion: nil)
-        
-    }
-    
 
+        self.presentViewController(alerta!,animated: true,completion: nil)
+
+    }
 }
 
 //MARK: - Protocolo

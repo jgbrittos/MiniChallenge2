@@ -57,5 +57,18 @@ ERROALERTA = "ERRO";
 MENSAGEMALERTAERRO = "Campo de texto vazio";
 
 CATEGORIAPLACEHOLDER = "Digite o texto aqui";
-CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Campo de texto";
+CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Campo de texto para adicionar a nova categoria";
 CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT = "Digite a nova categoria";
+
+//MARK: - Alerta de adicionar Local
+TITULOALERTALOCAL = "Novo Local";
+TITULOALERTALOCAL_ACESSIBILIDADE_LABEL = "Cadastro de novo local";
+TITULOALERTALOCAL_ACESSIBILIDADE_HINT = "Alerta para cadastrar um novo local";
+
+MENSAGEMALERTALOCAL = "Digite o novo local";
+
+CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Campo de texto para adicionar local";
+CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT = "Digite o novo local";
+
+
+

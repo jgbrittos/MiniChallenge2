@@ -10,22 +10,19 @@ import UIKit
 
 class Local: NSObject {
    
-    var idIntervalo = Int()
-    var numero = Int()
-    var unidade = String()
+    var idLocal = Int()
+    var nome = String()
     
     override init(){
         
     }
     
-    init(numero: Int, unidade: String) {
-        self.numero = numero
-        self.unidade = unidade
+    init(nome: String) {
+        self.nome = nome
     }
     
-    init(idIntervalo: Int, numero: Int, unidade: String) {
-        self.idIntervalo = idIntervalo
-        self.numero = numero
-        self.unidade = unidade
+    init(idLocal: Int, nome: String) {
+        self.idLocal = idLocal
+        self.nome = nome
     }
 }

@@ -189,7 +189,7 @@
                                             <outletCollection property="gestureRecognizers" destination="pDg-jd-gV6" appends="YES" id="xha-V3-Cxr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaLocal" rowHeight="44" id="6JB-OV-eMO">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaLocal" rowHeight="88" id="6JB-OV-eMO">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6JB-OV-eMO" id="xXg-6P-wwT">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -203,23 +203,51 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OME-al-Ys0">
-                                                    <rect key="frame" x="58" y="7" width="534" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="vmK-y5-USE"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7we-qV-Due">
+                                                    <rect key="frame" x="58" y="11" width="534" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-W6-hD2">
+                                                    <rect key="frame" x="8" y="45" width="554" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwP-JJ-n8x">
+                                                    <rect key="frame" x="570" y="49" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="bjq-0h-Jnk"/>
+                                                        <constraint firstAttribute="height" constant="22" id="oI5-yH-BDc"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="adicionarLocal:" destination="UJ8-Gv-h8V" eventType="touchUpInside" id="fx8-Dn-0X1"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="YwP-JJ-n8x" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="41" id="C0R-zs-zpv"/>
                                                 <constraint firstItem="bCf-mi-LUl" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="3" id="IU4-8j-dBW"/>
-                                                <constraint firstItem="OME-al-Ys0" firstAttribute="trailing" secondItem="xXg-6P-wwT" secondAttribute="trailingMargin" id="OzM-Hr-Zsg"/>
+                                                <constraint firstItem="7we-qV-Due" firstAttribute="leading" secondItem="bCf-mi-LUl" secondAttribute="trailing" constant="8" id="J0l-rq-fpH"/>
+                                                <constraint firstItem="YwP-JJ-n8x" firstAttribute="trailing" secondItem="xXg-6P-wwT" secondAttribute="trailingMargin" id="XaC-KW-DK0"/>
                                                 <constraint firstItem="bCf-mi-LUl" firstAttribute="leading" secondItem="xXg-6P-wwT" secondAttribute="leadingMargin" id="aQ9-ZV-r4x"/>
+                                                <constraint firstItem="7we-qV-Due" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="3" id="bUi-Ao-z6z"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bCf-mi-LUl" secondAttribute="bottom" constant="3.5" id="cT5-dW-dO4"/>
-                                                <constraint firstItem="OME-al-Ys0" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="-1" id="nO5-lT-Wtc"/>
-                                                <constraint firstItem="OME-al-Ys0" firstAttribute="leading" secondItem="bCf-mi-LUl" secondAttribute="trailing" constant="8" id="yxk-UZ-aZf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7we-qV-Due" secondAttribute="bottom" constant="47.5" id="hfF-M6-8zF"/>
+                                                <constraint firstItem="Aow-W6-hD2" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="37" id="jpc-c4-KsE"/>
+                                                <constraint firstItem="YwP-JJ-n8x" firstAttribute="leading" secondItem="Aow-W6-hD2" secondAttribute="trailing" constant="8" id="oLe-NM-8Ll"/>
+                                                <constraint firstItem="Aow-W6-hD2" firstAttribute="leading" secondItem="xXg-6P-wwT" secondAttribute="leadingMargin" id="ojP-2Z-Bko"/>
+                                                <constraint firstItem="7we-qV-Due" firstAttribute="trailing" secondItem="xXg-6P-wwT" secondAttribute="trailingMargin" id="xDn-QR-8Ef"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="cT5-dW-dO4"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
@@ -480,22 +508,24 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonAdicionarLocal" destination="YwP-JJ-n8x" id="g8X-ln-GcP"/>
                         <outlet property="imageViewFotoRemedio" destination="3Gr-uo-uXj" id="y6M-rs-yoA"/>
                         <outlet property="labelCategoria" destination="OHw-wO-zax" id="0mB-8M-PcP"/>
                         <outlet property="labelDose" destination="DoR-Ol-Q3t" id="qbA-SU-Ixd"/>
                         <outlet property="labelFarmacia" destination="k4Q-lR-lrx" id="L13-Xn-li5"/>
                         <outlet property="labelIntervalo" destination="4by-eE-y7E" id="6zg-aC-g3w"/>
+                        <outlet property="labelLocal" destination="9MN-ec-fEZ" id="gL5-5t-nOp"/>
                         <outlet property="labelMoeda" destination="r2S-cu-Cwx" id="es2-YI-coG"/>
-                        <outlet property="labelNumeroDose" destination="eR8-Ox-Exw" id="9Ea-ly-4aR"/>
-                        <outlet property="labelNumeroQuantidade" destination="nHK-Vo-l0G" id="PH4-bd-Xkn"/>
                         <outlet property="labelPreco" destination="RTd-aA-9bQ" id="Qac-DF-6HC"/>
                         <outlet property="labelQuantidade" destination="9MN-ec-fEZ" id="WNo-Qd-alh"/>
                         <outlet property="segmentedControlUnidadeDose" destination="04C-EE-t7v" id="jBN-zU-Uc6"/>
                         <outlet property="segmentedControlUnidadeQuantidade" destination="uN3-Uu-oxi" id="hFO-Ey-DSi"/>
                         <outlet property="switchAlerta" destination="SuK-W3-lmq" id="DnS-qG-Lkk"/>
                         <outlet property="textFieldDataDeValidade" destination="JZ3-8b-mAt" id="0JF-kX-5Eu"/>
-                        <outlet property="textFieldLocal" destination="OME-al-Ys0" id="1HW-Vb-TBE"/>
+                        <outlet property="textFieldLocal" destination="Aow-W6-hD2" id="2It-dw-AQ6"/>
                         <outlet property="textFieldNome" destination="Sdq-5v-ZYm" id="j5M-Zo-1Vo"/>
+                        <outlet property="textFieldNumeroDose" destination="eR8-Ox-Exw" id="BeU-qb-fnt"/>
+                        <outlet property="textFieldNumeroQuantidade" destination="nHK-Vo-l0G" id="zys-5t-nvX"/>
                         <outlet property="textFieldPreco" destination="s4a-Zj-LEU" id="k52-9F-iRg"/>
                     </connections>
                 </tableViewController>
@@ -511,7 +541,11 @@
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="pDg-jd-gV6"/>
-                <tapGestureRecognizer id="LQg-fE-GIf"/>
+                <tapGestureRecognizer id="LQg-fE-GIf">
+                    <connections>
+                        <action selector="tocouNaCelulaDeLocal:" destination="UJ8-Gv-h8V" id="k9v-Q6-AzI"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="i1o-Yc-LRi">
                     <connections>
                         <action selector="tocouNaCelulaDeQuantidade:" destination="UJ8-Gv-h8V" id="9c5-ld-9kG"/>
