@@ -90,9 +90,9 @@
                                     <action selector="favoritoClicado:" destination="38O-ub-S8x" eventType="touchUpInside" id="WDz-WE-n81"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2L7-Hk-weo">
-                                <rect key="frame" x="259" y="337" width="82" height="30"/>
-                                <state key="normal" title="Localização">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2L7-Hk-weo">
+                                <rect key="frame" x="225" y="336" width="151" height="30"/>
+                                <state key="normal" title="Adicionar Localização">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -107,8 +107,10 @@
                             <constraint firstItem="HEU-cU-2fp" firstAttribute="top" secondItem="fgo-ge-e7l" secondAttribute="bottom" constant="30" id="YyL-MF-rVW"/>
                             <constraint firstItem="V5w-ai-WEF" firstAttribute="top" secondItem="HEU-cU-2fp" secondAttribute="bottom" constant="14" id="a5p-Zz-YtN"/>
                             <constraint firstAttribute="trailing" secondItem="iqS-G6-2aF" secondAttribute="trailing" constant="16" id="aKY-oj-hzF"/>
+                            <constraint firstAttribute="centerX" secondItem="2L7-Hk-weo" secondAttribute="centerX" constant="-0.5" id="bVP-Ah-iL5"/>
                             <constraint firstItem="iqS-G6-2aF" firstAttribute="top" secondItem="HEU-cU-2fp" secondAttribute="bottom" constant="5" id="j1e-J1-94h"/>
                             <constraint firstItem="V5w-ai-WEF" firstAttribute="leading" secondItem="lS6-vM-Ybx" secondAttribute="leading" constant="16" id="snb-f0-uhW"/>
+                            <constraint firstAttribute="centerY" secondItem="2L7-Hk-weo" secondAttribute="centerY" constant="-51" id="zQm-LL-Y9R"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nova Farmácia" id="dk7-xp-xI8">

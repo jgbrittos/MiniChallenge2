@@ -18,13 +18,7 @@ class LocalizacaoViewController: UIViewController,CLLocationManagerDelegate,MKMa
     var long: Double = 0.0
     
     let pin=MKPinAnnotationView()
-    
-   
-   
-    
-    
 
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +49,7 @@ class LocalizacaoViewController: UIViewController,CLLocationManagerDelegate,MKMa
     
         
         
-        let location = CLLocationCoordinate2D(latitude: lat, longitude: -long)
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
         
         
         
@@ -84,27 +78,53 @@ class LocalizacaoViewController: UIViewController,CLLocationManagerDelegate,MKMa
     }
     
     
+
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
-        
-        pin.annotation=annotation
         pin.animatesDrop=true
         pin.draggable = true
         
         return pin
     }
+
+
+    
+    
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
+        println(NSString(format:"teste"))
         
-        if(newState == MKAnnotationViewDragState.Ending){
-            
-            
-            //consertar isso aq, nao ta mudando a localizacao 
-            
-            //var novaLocalizacao : CLLocation = newState.hashValue.value
-            println(NSString(format:"%d  %d", newState.hashValue.hashValue, newState.rawValue.hashValue))
+        if newState == MKAnnotationViewDragState.Ending {
+            let ann = view.annotation
+            println("annotation dropped at: \(ann.coordinate.latitude),\(ann.coordinate.longitude)")
         }
         
 }
+        
+
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!){
+        
+        
+    }
+
+    
+    
+
+        
+//        if(newState == MKAnnotationViewDragState.Ending){
+//            lat = mapView.centerCoordinate.latitude
+//            long = mapView.centerCoordinate.longitude
+//            //lat = mapView.
+////            lat=mapView.userLocation.coordinate.latitude
+////            long=mapView.userLocation.coordinate.longitude
+//            let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+//            let span = MKCoordinateSpanMake(0.05, 0.05)
+//            let region = MKCoordinateRegion(center: location, span: span)
+//            viewMapa.setRegion(region, animated: true)
+//            println(NSString(format:"lat: %.2f long: %.2f", lat,long))
+
+    
+
 
     
     
@@ -131,4 +151,5 @@ class LocalizacaoViewController: UIViewController,CLLocationManagerDelegate,MKMa
     }
     */
 
+    
 }
