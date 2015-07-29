@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RemedioTableViewController: UITableViewController, SelecionaCategoriaDelegate {
+class RemedioTableViewController: UITableViewController, SelecionaCategoriaDelegate, SelecionaIntervaloDelegate {
 
     
     @IBOutlet weak var imageViewFotoRemedio: UIImageView!
@@ -35,7 +35,6 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
     @IBOutlet weak var textFieldPreco: UITextField!
     var alturaCelulaPreco: CGFloat = 44
     
-//    @IBOutlet weak var celulaQuantidade: UITableViewCell!
     var celulaQuantidadeOculta: Bool = true
     var celulaDoseOculta: Bool = true
     var celulaPrecoOculta: Bool = true
@@ -68,14 +67,10 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
         
         if let i = self.intervalo as Intervalo? {
             self.labelIntervalo.text = String(i.numero) + " " + i.unidade
-        }else{
-            self.labelIntervalo.text = ""
         }
         
         if let c = self.categoria as Categoria? {
             self.labelCategoria.text = String(c.nomeCategoria)
-        }else{
-            self.labelCategoria.text = ""
         }
     }
     
@@ -138,9 +133,11 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
     
     // MARK: - Toque nas celulas
     @IBAction func tocouNaCelulaDeCategoria(sender: AnyObject) {
-//        let storyboardCategoria = UIStoryboard(name: "Categoria", bundle: nil).instantiateInitialViewController() as! UINavigationController
-//        self.presentViewController(storyboardCategoria, animated:true, completion:nil)
         self.performSegueWithIdentifier("SelecionaCategoria", sender: nil)
+    }
+    
+    @IBAction func tocouNaCelulaDeIntervalo(sender: AnyObject) {
+        self.performSegueWithIdentifier("SelecionaIntervalo", sender: nil)
     }
     
     @IBAction func tocouNaCelulaDeQuantidade(sender: AnyObject) {
@@ -193,9 +190,18 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
 
     // MARK: - Navegação
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SelecionaCategoria" {
-            var selecionaCategoria = segue.destinationViewController as! CategoriaTableViewController
-            selecionaCategoria.delegate = self
+        switch segue.identifier! {
+            case "SelecionaCategoria":
+                var selecionaCategoria = segue.destinationViewController as! CategoriaTableViewController
+                selecionaCategoria.delegate = self
+                break
+            case "SelecionaIntervalo":
+                var selecionaIntervalo = segue.destinationViewController as! IntervaloViewController
+                selecionaIntervalo.delegate = self
+                break
+            default:
+                println("Algo ocorreu na função prepareForSegue da classe RemedioTableViewController")
+                break
         }
     }
     
@@ -206,6 +212,9 @@ class RemedioTableViewController: UITableViewController, SelecionaCategoriaDeleg
     }
     
     //Intervalo
+    func selecionaIntervalo(intervalo: Intervalo){
+        self.intervalo = intervalo
+    }
     
     //Farmacia
 }

@@ -143,7 +143,8 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="rmf-9U-h6M" appends="YES" id="FRn-pg-769"/>
+                                            <outletCollection property="gestureRecognizers" destination="3YO-6G-Do7" appends="YES" id="sDb-4H-cUS"/>
+                                            <segue destination="Q7f-ww-59h" kind="show" identifier="SelecionaIntervalo" id="BKW-hK-Fd9"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaFarmacia" rowHeight="44" id="9Pq-u3-sBn">
@@ -274,6 +275,9 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="i1o-Yc-LRi" appends="YES" id="mPN-Wn-aRR"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaDose" rowHeight="88" id="Gyg-30-Yu5">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -483,11 +487,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkD-WG-r64" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="rmf-9U-h6M">
-                    <connections>
-                        <action selector="tocouNaCelulaDeIntervalo:" destination="UJ8-Gv-h8V" id="SKt-Hu-pTp"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="vez-b1-mhD">
                     <connections>
                         <action selector="tocouNaCelulaDeDose:" destination="UJ8-Gv-h8V" id="zEk-9N-281"/>
@@ -501,6 +500,16 @@
                 <tapGestureRecognizer id="eF4-7v-eyZ">
                     <connections>
                         <action selector="tocouNaCelulaDeCategoria:" destination="UJ8-Gv-h8V" id="8yg-WV-lee"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3YO-6G-Do7">
+                    <connections>
+                        <action selector="tocouNaCelulaDeIntervalo:" destination="UJ8-Gv-h8V" id="FQB-UA-uca"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="i1o-Yc-LRi">
+                    <connections>
+                        <action selector="tocouNaCelulaDeQuantidade:" destination="UJ8-Gv-h8V" id="9c5-ld-9kG"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -556,6 +565,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgk-Ac-DcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2459" y="674"/>
+        </scene>
+        <!--Intervalo-->
+        <scene sceneID="o4B-jJ-Dgb">
+            <objects>
+                <viewController storyboardIdentifier="InicioIntervalo" id="Q7f-ww-59h" customClass="IntervaloViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pen-tj-lba"/>
+                        <viewControllerLayoutGuide type="bottom" id="5po-a6-yJD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="icm-h5-TIw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zoo-63-kKF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celula" id="LJW-Xu-pMH">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LJW-Xu-pMH" id="SDe-Wl-unX">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="892-Ym-Rah">
+                                <rect key="frame" x="0.0" y="394" width="600" height="206"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irD-7a-J3f">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="162"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </pickerView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2X-Gg-2f7">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.0" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <items>
+                                            <barButtonItem systemItem="cancel" id="q2I-Ij-TWA">
+                                                <connections>
+                                                    <action selector="cancelarAdicaoIntervalo:" destination="Q7f-ww-59h" id="Elk-o4-bWH"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="519-o7-TBX"/>
+                                            <barButtonItem systemItem="save" id="ThM-76-0e9">
+                                                <connections>
+                                                    <action selector="salvaIntervalo:" destination="Q7f-ww-59h" id="kJ1-4p-EK7"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                        <color key="tintColor" red="0.066666666669999999" green="0.49019607840000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="irD-7a-J3f" firstAttribute="leading" secondItem="892-Ym-Rah" secondAttribute="leading" id="D7f-uA-CYi"/>
+                                    <constraint firstAttribute="trailing" secondItem="n2X-Gg-2f7" secondAttribute="trailing" id="L1R-1A-3ye"/>
+                                    <constraint firstAttribute="bottom" secondItem="irD-7a-J3f" secondAttribute="bottom" id="NQy-xr-U7A"/>
+                                    <constraint firstItem="n2X-Gg-2f7" firstAttribute="top" secondItem="892-Ym-Rah" secondAttribute="top" id="TtS-5p-oPN"/>
+                                    <constraint firstItem="n2X-Gg-2f7" firstAttribute="leading" secondItem="892-Ym-Rah" secondAttribute="leading" id="YEo-pE-UcZ"/>
+                                    <constraint firstItem="irD-7a-J3f" firstAttribute="top" secondItem="n2X-Gg-2f7" secondAttribute="bottom" id="coR-0p-KNB"/>
+                                    <constraint firstAttribute="trailing" secondItem="irD-7a-J3f" secondAttribute="trailing" id="f9c-qp-chS"/>
+                                    <constraint firstAttribute="height" constant="206" id="gOY-Gb-w4e"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5po-a6-yJD" firstAttribute="top" secondItem="892-Ym-Rah" secondAttribute="bottom" id="NG1-YX-da9"/>
+                            <constraint firstItem="zoo-63-kKF" firstAttribute="leading" secondItem="icm-h5-TIw" secondAttribute="leading" id="VT0-R1-uei"/>
+                            <constraint firstItem="892-Ym-Rah" firstAttribute="leading" secondItem="icm-h5-TIw" secondAttribute="leading" id="WjZ-zq-XMj"/>
+                            <constraint firstAttribute="trailing" secondItem="zoo-63-kKF" secondAttribute="trailing" id="gaJ-LK-DRd"/>
+                            <constraint firstItem="5po-a6-yJD" firstAttribute="top" secondItem="zoo-63-kKF" secondAttribute="bottom" id="ih1-fs-xWh"/>
+                            <constraint firstItem="zoo-63-kKF" firstAttribute="top" secondItem="icm-h5-TIw" secondAttribute="top" id="xrg-bY-rJq"/>
+                            <constraint firstAttribute="trailing" secondItem="892-Ym-Rah" secondAttribute="trailing" id="yM7-Gs-U7A"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Intervalo" id="5jI-7Q-hie">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZUZ-kS-16n">
+                            <connections>
+                                <action selector="adicionarIntervalo:" destination="Q7f-ww-59h" id="iGZ-Bf-qPk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pickerViewIntervalos" destination="irD-7a-J3f" id="LoT-Wv-VWI"/>
+                        <outlet property="tableViewIntervalos" destination="zoo-63-kKF" id="gIc-fo-VRj"/>
+                        <outlet property="toolBarPickerView" destination="n2X-Gg-2f7" id="q2o-XZ-QX5"/>
+                        <outlet property="viewComPickerViewEToolbar" destination="892-Ym-Rah" id="9eC-ih-skK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQG-l1-bH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1746" y="1392"/>
         </scene>
     </scenes>
 </document>

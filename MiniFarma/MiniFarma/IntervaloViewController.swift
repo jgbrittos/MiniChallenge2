@@ -21,13 +21,14 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     var numerosPickerViewIntervalos = Array<String>()
     var unidadesPickerViewIntervalos = Array<String>()
     var pickerViewIntervalosNaoEstaVisivel: Bool = true
-//    var celulaSelecionada = Int()
     
     let intervaloDAO = IntervaloDAO()
     var intervalos = [Intervalo]()
     var numeroIntervalo = String()
     var unidadeIntervalo = String()
     var intervaloSelecionado: Intervalo?
+    
+    var delegate: SelecionaIntervaloDelegate?
     
     //MARK:- Inicialização
     override func viewDidLoad() {
@@ -153,27 +154,12 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.celulaSelecionada = indexPath.row
         self.intervaloSelecionado = self.intervalos[indexPath.row]
-        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil)
-        let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
-        telaAdicionarRemedio.intervalo = self.intervaloSelecionado!
-        self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
+        self.delegate?.selecionaIntervalo(self.intervaloSelecionado!)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     //MARK:- Controles da view
-    @IBAction func salvaIntervalo(sender: AnyObject) {
-        
-        let novoIntervalo = Intervalo(numero: self.numeroIntervalo.toInt()!, unidade: self.unidadeIntervalo)
-        self.intervalos.append(novoIntervalo)
-        intervaloDAO.inserir(novoIntervalo)
-        
-        self.viewComPickerViewEToolbar.hidden = true
-        self.pickerViewIntervalosNaoEstaVisivel = true
-        self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
-        self.tableViewIntervalos.reloadData()
-    }
-    
     @IBAction func adicionarIntervalo(sender: AnyObject) {
         self.pickerViewIntervalos.selectRow(0, inComponent: 0, animated: true)
         self.pickerViewIntervalos.selectRow(0, inComponent: 1, animated: true)
@@ -189,6 +175,18 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    @IBAction func salvaIntervalo(sender: AnyObject) {
+        
+        let novoIntervalo = Intervalo(numero: self.numeroIntervalo.toInt()!, unidade: self.unidadeIntervalo)
+        self.intervalos.append(novoIntervalo)
+        intervaloDAO.inserir(novoIntervalo)
+        
+        self.viewComPickerViewEToolbar.hidden = true
+        self.pickerViewIntervalosNaoEstaVisivel = true
+        self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
+        self.tableViewIntervalos.reloadData()
+    }
+    
     @IBAction func cancelarAdicaoIntervalo(sender: AnyObject) {
         self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
         self.pickerViewIntervalosNaoEstaVisivel = true
@@ -200,4 +198,10 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         let telaAdicionarRemedio = storyboardRemedio.instantiateViewControllerWithIdentifier("RemedioStoryboard") as! RemedioTableViewController
         self.presentViewController(telaAdicionarRemedio, animated: true, completion: nil)
     }
+}
+
+// MARK: - Protocolo
+
+protocol SelecionaIntervaloDelegate{
+    func selecionaIntervalo(intervalo: Intervalo)
 }
