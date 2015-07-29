@@ -8,10 +8,16 @@
 
 import UIKit
 
-class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, SelecionaCategoriaDelegate, SelecionaIntervaloDelegate {
+class RemedioTableViewController: UITableViewController,
+UIPickerViewDelegate,
+UIPickerViewDataSource,
+UINavigationControllerDelegate,
+UIImagePickerControllerDelegate,
+SelecionaCategoriaDelegate,
+SelecionaIntervaloDelegate {
 
     // MARK: - Propriedades
-    @IBOutlet weak var imageViewFotoRemedio: UIImageView!
+    @IBOutlet weak var buttonTirarFotoRemedio: UIButton!
     @IBOutlet weak var textFieldNome: UITextField!
     @IBOutlet weak var textFieldDataDeValidade: UITextField!
     @IBOutlet weak var labelCategoria: UILabel!
@@ -54,7 +60,10 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
     var categoria: Categoria?
     //var farmacia = Farmacia()
     var local = Local()
-    //var vencido = Int()
+    var vencido = Int()
+    
+    var fotoRemedio: UIImage?
+    var fotoReceita: UIImage?
     
     let histogramaUnidadesRemedio = [" cps", " g", " ml"]
     
@@ -79,6 +88,7 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
         //PickerView de Local
         self.pickerViewLocal.delegate = self
         self.textFieldLocal.inputView = self.pickerViewLocal
+//        self.pickerViewLocal.set = UIColor(red: 204, green: 0, blue: 68, alpha: 1)
         self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
         self.locais = self.localDAO.buscarTodos() as! [Local]
     }
@@ -92,6 +102,18 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
         if let c = self.categoria as Categoria? {
             self.labelCategoria.text = String(c.nomeCategoria)
         }
+        
+//        if let f = self.farmacia as Farmacia? {
+//            self.labelFarmacia.text = String(f.nomeFarmacia)
+//        }
+        
+        if let foto = self.fotoRemedio as UIImage? {
+            self.buttonTirarFotoRemedio.setTitle("", forState: .Normal)
+            self.buttonTirarFotoRemedio.setBackgroundImage(self.fotoRemedio, forState: .Normal)
+        }else{
+            self.buttonTirarFotoRemedio.setTitle("adicionar foto", forState: .Normal)
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -195,11 +217,13 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
     
     @IBAction func tocouNaCelulaDeQuantidade(sender: AnyObject) {
         if self.celulaQuantidadeOculta {
+            self.labelQuantidade.text = ""
             self.textFieldNumeroQuantidade.hidden = false
             self.segmentedControlUnidadeQuantidade.hidden = false
             self.celulaQuantidadeOculta = false
             self.alturaCelulaQuantidade += 44
         }else{
+            self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
             self.textFieldNumeroQuantidade.hidden = true
             self.segmentedControlUnidadeQuantidade.hidden = true
             self.celulaQuantidadeOculta = true
@@ -211,11 +235,13 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
 
     @IBAction func tocouNaCelulaDeDose(sender: AnyObject) {
         if self.celulaDoseOculta {
+            self.labelDose.text = ""
             self.textFieldNumeroDose.hidden = false
             self.segmentedControlUnidadeDose.hidden = false
             self.celulaDoseOculta = false
             self.alturaCelulaDose += 44
         }else{
+            self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
             self.textFieldNumeroDose.hidden = true
             self.segmentedControlUnidadeDose.hidden = true
             self.celulaDoseOculta = true
@@ -227,11 +253,13 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
     
     @IBAction func tocouNaCelulaDePreco(sender: AnyObject) {
         if self.celulaPrecoOculta {
+            self.labelPreco.text = ""
             self.labelMoeda.hidden = false
             self.textFieldPreco.hidden = false
             self.celulaPrecoOculta = false
             self.alturaCelulaPreco += 44
         }else{
+            self.labelPreco.text = self.labelMoeda.text! + " " + self.textFieldPreco.text
             self.labelMoeda.hidden = true
             self.textFieldPreco.hidden = true
             self.celulaPrecoOculta = true
@@ -290,6 +318,31 @@ class RemedioTableViewController: UITableViewController, UIPickerViewDelegate, U
         
         self.presentViewController(alerta!,animated: true,completion: nil)
     }
+    
+    @IBAction func tirarFotoDoRemedio(sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            imagePicker.sourceType = .Camera
+        } else {
+            imagePicker.sourceType = .PhotoLibrary
+        }
+        
+        imagePicker.allowsEditing = true
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        let fotoRemedio = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        self.fotoRemedio = fotoRemedio
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     // MARK: - Navegação
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

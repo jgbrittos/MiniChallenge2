@@ -12,8 +12,6 @@
 		451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428661B67B21C0070396A /* CategoriaTableViewController.swift */; };
 		451428721B690CCA0070396A /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428711B690CCA0070396A /* Local.swift */; };
 		451428741B690CDA0070396A /* LocalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428731B690CDA0070396A /* LocalDAO.swift */; };
-		4522B7D41B5E85060053DD8E /* logo_azul.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D21B5E85060053DD8E /* logo_azul.png */; };
-		4522B7D51B5E85060053DD8E /* logo_vermelho.png in Resources */ = {isa = PBXBuildFile; fileRef = 4522B7D31B5E85060053DD8E /* logo_vermelho.png */; };
 		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
 		453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961241B5BE35D0097DEDB /* AppDelegate.swift */; };
 		4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453961281B5BE35D0097DEDB /* Main.storyboard */; };
@@ -83,8 +81,6 @@
 		451428661B67B21C0070396A /* CategoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaTableViewController.swift; sourceTree = "<group>"; };
 		451428711B690CCA0070396A /* Local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		451428731B690CDA0070396A /* LocalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDAO.swift; sourceTree = "<group>"; };
-		4522B7D21B5E85060053DD8E /* logo_azul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_azul.png; sourceTree = "<group>"; };
-		4522B7D31B5E85060053DD8E /* logo_vermelho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_vermelho.png; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
 		4522B7E01B5EC0CA0053DD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,8 +258,6 @@
 				45D408351B66BEE800FB0EF0 /* Lista Inicial */,
 				458F6F021B66ADB70042DF37 /* Remedios */,
 				458F6F011B66ADB10042DF37 /* Alerta */,
-				4522B7D21B5E85060053DD8E /* logo_azul.png */,
-				4522B7D31B5E85060053DD8E /* logo_vermelho.png */,
 				4539612B1B5BE35D0097DEDB /* Images.xcassets */,
 			);
 			name = Assets;
@@ -515,7 +509,6 @@
 				45D408491B66BFE000FB0EF0 /* adicionar_farmacia@2x.png in Resources */,
 				45D4083B1B66BF0F00FB0EF0 /* mais@3x.png in Resources */,
 				45D408391B66BF0F00FB0EF0 /* mais@1x.png in Resources */,
-				4522B7D41B5E85060053DD8E /* logo_azul.png in Resources */,
 				45D4084A1B66BFE000FB0EF0 /* adicionar_farmacia@3x.png in Resources */,
 				458F6F001B66ADAD0042DF37 /* remedios@3x.png in Resources */,
 				45D4084D1B66BFE000FB0EF0 /* adicionar_remedio@3x.png in Resources */,
@@ -533,7 +526,6 @@
 				458F6EFC1B66ADAD0042DF37 /* remedios_negativo@2x.png in Resources */,
 				45D408481B66BFE000FB0EF0 /* adicionar_farmacia@1x.png in Resources */,
 				458F6EF11B66ADA20042DF37 /* alertas_negativo@3x.png in Resources */,
-				4522B7D51B5E85060053DD8E /* logo_vermelho.png in Resources */,
 				458F6EF31B66ADA20042DF37 /* alertas@2x.png in Resources */,
 				4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */,
 				458F6EFE1B66ADAD0042DF37 /* remedios@1x.png in Resources */,
