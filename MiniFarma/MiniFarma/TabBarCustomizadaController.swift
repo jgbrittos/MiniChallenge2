@@ -41,11 +41,9 @@ class TabBarCustomizadaController: UITabBarController {
 
     override func viewWillAppear(animated: Bool) {
         self.internacionalizaTabBar()
-        
         self.botaoMaisOpcoes.frame = CGRectMake(0.0, 0.0, 60, 60)
         self.botaoMaisOpcoes.addTarget(self, action: Selector("fazAnimacaoDeBotoesDeOpcoes:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoMaisOpcoes.setBackgroundImage(UIImage(named: "botaoMais"), forState:UIControlState.Normal)
-//        self.botaoMaisOpcoes.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
         self.botaoMaisOpcoes.layer.zPosition = 1
         self.tabBar.addSubview(botaoMaisOpcoes)
@@ -132,6 +130,9 @@ class TabBarCustomizadaController: UITabBarController {
                 self.botaoAdicionaAlerta.center = self.centroInicialPadrao
             }
             }, completion: {(value: Bool) in
+                self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
+                self.botaoAdicionaRemedio.center = self.centroInicialPadrao
+                self.botaoAdicionaAlerta.center = self.centroInicialPadrao
                 self.botaoAdicionaFarmacia.removeFromSuperview()
                 self.botaoAdicionaRemedio.removeFromSuperview()
                 self.botaoAdicionaAlerta.removeFromSuperview()
