@@ -14,9 +14,12 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableViewRemedios: UITableView!
     @IBOutlet weak var segmentedControlValidadeRemedios: UISegmentedControl!
     
-    let remediosValidos = ["Tylenol","Resfenol","Dorflex","Torsillax","Novalgina","Tylenol","Resfenol","Dorflex","Torsillax","Novalgina"]
-    let remediosVencidos = ["Pasallix","Viagra","Resfenol"]
-    var dadosASeremMostrados = Array<String>()
+//    let remediosValidos = ["Tylenol","Resfenol","Dorflex","Torsillax","Novalgina","Tylenol","Resfenol","Dorflex","Torsillax","Novalgina"]
+    var remediosValidos = [Remedio]()
+    var remediosVencidos = [Remedio]()
+    var dadosASeremMostrados = [Remedio]()
+    
+    let remedioDAO = RemedioDAO()
     
     //MARK:- Inicialização da view
     override func viewDidLoad() {
@@ -26,15 +29,14 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.delegate = self
         self.tableViewRemedios.dataSource = self
         
-        //Definindo os dados que serão mostrados na primeira vez que entra na tela
-        self.dadosASeremMostrados = self.remediosValidos
-        
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
         self.tableViewRemedios.tableFooterView = UIView(frame: CGRectZero)
     }
 
     override func viewWillAppear(animated: Bool) {
         self.internacionalizaSegmentedControl()
+        self.remediosValidos = self.remedioDAO.buscarTodos() as! [Remedio]
+        self.dadosASeremMostrados = self.remediosValidos
     }
     
     //MARK:- Internacionalização
@@ -45,7 +47,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK:- Controles da Table View
     @IBAction func alteraDadosDaTabelaRemedios(sender: AnyObject) {
-        self.dadosASeremMostrados = Array<String>()
+        self.dadosASeremMostrados = [Remedio]()
         switch segmentedControlValidadeRemedios.selectedSegmentIndex {
             case 0:
                 self.dadosASeremMostrados = self.remediosValidos
@@ -84,8 +86,18 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             return celulaBranca
         }else{
             let celulaRemedio = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaRemedio", forIndexPath:indexPath) as! UITableViewCell
-            celulaRemedio.textLabel?.text = self.dadosASeremMostrados[indexPath.row]
-            celulaRemedio.detailTextLabel?.text = self.dadosASeremMostrados[indexPath.row]
+            let remedio = self.dadosASeremMostrados[indexPath.row]
+            
+            let formatadorData = NSDateFormatter()
+            formatadorData.dateFormat = "dd/MM/yyyy"
+            
+            celulaRemedio.textLabel?.text = remedio.nomeRemedio
+            celulaRemedio.detailTextLabel?.text = formatadorData.stringFromDate(remedio.dataValidade)
+            
+            let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            var documentos: String = caminhos[0] as! String
+            let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
+            celulaRemedio.imageView?.image = UIImage(contentsOfFile: caminhoCompleto)
             
             //Adicionando a setinha no fim da célula
             celulaRemedio.accessoryType = .DisclosureIndicator
@@ -105,10 +117,13 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             //Ação para quando o usuário quer apagar um remédio
         })
 
-        tomeiRemedio.backgroundColor = UIColor(red: CGFloat(3/255.0), green: CGFloat(144/255.0), blue: CGFloat(178/255.0), alpha: CGFloat(1))
-        apagarRemedio.backgroundColor = UIColor(red: CGFloat(237/255.0), green: CGFloat(37/255.0), blue: CGFloat(73/255.0), alpha: CGFloat(1))
+        tomeiRemedio.backgroundColor = UIColor(red: 0/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1)
+        apagarRemedio.backgroundColor = UIColor(red: 255/255.0, green: 0/255.0, blue: 73/255.0, alpha: 1)
 
         return [apagarRemedio, tomeiRemedio]
     }
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 88
+    }
 }

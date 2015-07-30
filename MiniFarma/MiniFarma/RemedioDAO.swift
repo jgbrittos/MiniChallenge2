@@ -59,8 +59,9 @@ class RemedioDAO: DAO {
 
     override func buscarTodos() -> [AnyObject] {
         
-//        let usuarioArray = NSMutableArray()
         self.bancoDeDados.open()
+        
+        self.remedios = [Remedio]()
         
         var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
         
