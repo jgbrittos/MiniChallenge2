@@ -389,7 +389,7 @@ SelecionaIntervaloDelegate {
     
     // MARK: - Foto do remédio
     @IBAction func tirarFotoDoRemedio(sender: AnyObject) {
-        let acao = UIActionSheet(title: "Selecionar uma foto da:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Camera", "Galeria")
+        let acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto")
         
         acao.showInView(self.view)
     }
@@ -399,22 +399,29 @@ SelecionaIntervaloDelegate {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
-        
+        println("\(buttonIndex)")
         switch buttonIndex {
             case 0:
+                //Cancelar
+                break
+            case 1:
                 if UIImagePickerController.isSourceTypeAvailable(.Camera) {
                     picker.sourceType = .Camera
                 }
+                self.presentViewController(picker, animated:true, completion:nil)
                 break
-            case 1:
+            case 2:
                 picker.sourceType = .PhotoLibrary
+                self.presentViewController(picker, animated:true, completion:nil)
+                break
+            case 3:
+                self.buttonTirarFotoRemedio.setTitle("adicionar foto", forState: .Normal)
+                self.buttonTirarFotoRemedio.setBackgroundImage(nil, forState: .Normal)
                 break
             default:
                 println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
                 break
         }
-        
-        self.presentViewController(picker, animated:true, completion:nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
