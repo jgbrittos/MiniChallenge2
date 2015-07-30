@@ -63,7 +63,7 @@ SelecionaIntervaloDelegate {
     var local = Local()
     var vencido = Int()
     
-    var frameDoTeclado: CGRect = CGRectZero
+//    var frameDoTeclado: CGRect?
     var fotoRemedio: UIImage?
     var fotoReceita: UIImage?
     
@@ -95,12 +95,11 @@ SelecionaIntervaloDelegate {
         self.textFieldLocal.inputView = self.pickerViewLocal
         self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
         self.locais = self.localDAO.buscarTodos() as! [Local]
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("verificaTamanhoDoTeclado:"), name:UIKeyboardWillShowNotification, object: nil)
+
     }
 
     override func viewWillAppear(animated: Bool) {
-        
+        super.viewWillAppear(animated)
         if let i = self.intervalo as Intervalo? {
             self.labelIntervalo.text = String(i.numero) + " " + i.unidade
         }
@@ -122,10 +121,6 @@ SelecionaIntervaloDelegate {
         
     }
 
-    func verificaTamanhoDoTeclado(notificacao: NSNotification){
-        self.frameDoTeclado = (notificacao.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-    }
-    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -235,7 +230,7 @@ SelecionaIntervaloDelegate {
             self.alturaCelulaQuantidade += 44
             self.ocultaCelulasDe(true, quantidade: false, dose: true, preco: true)
         }else{
-            if self.textFieldNumeroQuantidade.text != nil {
+            if self.textFieldNumeroQuantidade.text != "" {
                 self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
             }else{
                 self.labelQuantidade.text = ""
@@ -255,11 +250,10 @@ SelecionaIntervaloDelegate {
             self.textFieldNumeroDose.hidden = false
             self.segmentedControlUnidadeDose.hidden = false
             self.celulaDoseOculta = false
-            self.tableView.frame.size.height -= self.frameDoTeclado.size.height
             self.alturaCelulaDose += 44
             self.ocultaCelulasDe(true, quantidade: true, dose: false, preco: true)
         }else{
-            if self.textFieldNumeroDose.text != nil{
+            if self.textFieldNumeroDose.text != "" {
                 self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
             }else{
                 self.labelDose.text = ""
@@ -267,7 +261,6 @@ SelecionaIntervaloDelegate {
             self.textFieldNumeroDose.hidden = true
             self.segmentedControlUnidadeDose.hidden = true
             self.celulaDoseOculta = true
-            self.tableView.frame.size.height += self.frameDoTeclado.size.height
             self.alturaCelulaDose = 44
         }
         self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: 6, inSection: 0))
@@ -280,11 +273,10 @@ SelecionaIntervaloDelegate {
             self.labelMoeda.hidden = false
             self.textFieldPreco.hidden = false
             self.celulaPrecoOculta = false
-            self.tableView.frame.size.height -= self.frameDoTeclado.size.height
             self.alturaCelulaPreco += 44
             self.ocultaCelulasDe(true, quantidade: true, dose: true, preco: false)
         }else{
-            if self.textFieldPreco.text != nil{
+            if self.textFieldPreco.text != "" {
                 self.labelPreco.text = self.labelMoeda.text! + self.textFieldPreco.text
             }else{
                 self.labelPreco.text = ""
@@ -293,7 +285,6 @@ SelecionaIntervaloDelegate {
             self.textFieldPreco.hidden = true
             self.celulaPrecoOculta = true
             self.alturaCelulaPreco = 44
-            self.tableView.frame.size.height += self.frameDoTeclado.size.height
         }
         self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: 7, inSection: 0))
         self.tableView.reloadData()
@@ -329,7 +320,6 @@ SelecionaIntervaloDelegate {
             self.textFieldNumeroDose.hidden = true
             self.segmentedControlUnidadeDose.hidden = true
             self.celulaDoseOculta = true
-            self.tableView.frame.size.height += self.frameDoTeclado.size.height
             self.alturaCelulaDose = 44
         }
         
@@ -343,7 +333,6 @@ SelecionaIntervaloDelegate {
             self.textFieldPreco.hidden = true
             self.celulaPrecoOculta = true
             self.alturaCelulaPreco = 44
-            self.tableView.frame.size.height += self.frameDoTeclado.size.height
         }
     }
     
