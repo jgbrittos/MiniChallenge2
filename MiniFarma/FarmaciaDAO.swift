@@ -88,9 +88,29 @@ class FarmaciaDAO: DAO {
         
         return self.farmacias
     }
+    
+    
+    
+    
+    
+    
+    func atualizaFarmaciaFavorita(idFarmacia: Int, favorita:Int) -> Bool {
+        
+        self.bancoDeDados.open()
+        
+        
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Farmacia SET favorita = ? WHERE id_farmacia = ?", withArgumentsInArray: [favorita,idFarmacia])
+        
+        if !atualizadoComSucesso {
+            println("\(self.bancoDeDados.lastErrorMessage())")
+        }
+        
+        self.bancoDeDados.close()
+        
+        return atualizadoComSucesso
+        
+    }
 
-    
-    
     
     
 }

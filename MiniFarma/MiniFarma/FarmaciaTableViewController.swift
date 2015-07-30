@@ -63,18 +63,18 @@ class FarmaciaTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        //let cell = FarmaciaTableViewCell()
+        //cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Celula", forIndexPath: indexPath) as! FarmaciaTableViewCell
         
-        
-        cell.textLabel?.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
-        cell.imageView?.image = UIImage(named: "estrelaFavorito")
-        
-       // cell.lbl = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
+        //cell.textLabel?.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
+        cell.nomeCustomizado.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
+
         
         if((self.farmacias[indexPath.row] as Farmacia).favorita == 1){
-            cell.detailTextLabel?.text = "Favorita"
+            cell.imagemFavorito.image = UIImage(named: "estrelaFavorito")
         }else{
-            //cell.detailTextLabel?.text = "
+            cell.imagemFavorito.image = UIImage(named: "estrelaFavoritoNegativo")
         }
         
         return cell

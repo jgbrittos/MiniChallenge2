@@ -10,9 +10,8 @@ import UIKit
 
 class FarmaciaTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var customImagemFavorito: UIImageView!
-    
-    
+    @IBOutlet weak var imagemFavorito: UIImageView!
+    @IBOutlet weak var nomeCustomizado: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

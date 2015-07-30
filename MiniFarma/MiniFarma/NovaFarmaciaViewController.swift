@@ -20,6 +20,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     let localizacaoGerenciador = CLLocationManager()
     let farmaciaDAO = FarmaciaDAO()
     
+    var farmacias = [Farmacia]()
     var latitudeValor: Double = 0.0
     var longitudeValor: Double = 0.0
 
@@ -96,9 +97,40 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     
     @IBAction func favoritoClicado(sender: AnyObject) {
         
+        self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
+        var farmaciaFavoritaId : Int = 0
+        
+        
         if favorito == 0{
-            botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
-            favorito=1
+            for Farmacia in farmacias{
+                if Farmacia.favorita == 1{
+                    
+                    farmaciaFavoritaId = Farmacia.idFarmacia
+                    
+                    var uiAlert = UIAlertController(title: "Aviso", message: "Já existe uma farmácia favorita. Deseja alterar para essa?", preferredStyle: UIAlertControllerStyle.Alert)
+                    self.presentViewController(uiAlert, animated: true, completion: nil)
+                    
+                    uiAlert.addAction(UIAlertAction(title: "Não", style: .Default, handler: { action in
+                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
+                        self.favorito=0
+                    }))
+                    
+                    
+                    uiAlert.addAction(UIAlertAction(title: "Sim", style: .Default, handler: { action in
+                        self.farmaciaDAO.atualizaFarmaciaFavorita(farmaciaFavoritaId, favorita: 0)
+                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+                        self.favorito=1
+                    }))
+                    
+                    
+                    
+                    
+                    
+                }else{
+                    botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+                    favorito=1
+                }
+            }
         }else{
             botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
             favorito=0
