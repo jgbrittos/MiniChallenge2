@@ -38,11 +38,11 @@ class CategoriaTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        let celula = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
 
-        cell.textLabel?.text = (self.categorias[indexPath.row] as Categoria).nomeCategoria
+        celula.textLabel?.text = (self.categorias[indexPath.row] as Categoria).nomeCategoria
 
-        return cell
+        return celula
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

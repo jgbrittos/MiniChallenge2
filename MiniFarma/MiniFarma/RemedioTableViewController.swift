@@ -66,6 +66,7 @@ SelecionaIntervaloDelegate {
 //    var frameDoTeclado: CGRect?
     var fotoRemedio: UIImage?
     var fotoReceita: UIImage?
+    var fotoOuReceita: Int = 0
     
     let histogramaUnidadesRemedio = [" cps", " g", " ml"]
     
@@ -144,6 +145,16 @@ SelecionaIntervaloDelegate {
                 return self.alturaCelulaPreco
             default:
                  return 44
+        }
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let identificador = cell.reuseIdentifier {
+            if identificador == "celulaReceita" && self.fotoReceita != nil {
+                cell.accessoryType = .Checkmark
+            }else{
+                cell.accessoryType = .None
+            }
         }
     }
     
@@ -290,6 +301,13 @@ SelecionaIntervaloDelegate {
         self.tableView.reloadData()
     }
 
+    @IBAction func tocouNaCelulaDeReceita(sender: AnyObject) {
+        let acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto")
+        acao.tag = 1
+        self.fotoOuReceita = 1
+        acao.showInView(self.view)
+    }
+
     func ocultaCelulasDe(local: Bool, quantidade: Bool, dose:Bool, preco:Bool){
         if local {
             self.labelLocal.text = self.textFieldLocal.text
@@ -390,7 +408,8 @@ SelecionaIntervaloDelegate {
     // MARK: - Foto do remédio
     @IBAction func tirarFotoDoRemedio(sender: AnyObject) {
         let acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto")
-        
+        acao.tag = 0
+        self.fotoOuReceita = 0
         acao.showInView(self.view)
     }
     
@@ -399,39 +418,85 @@ SelecionaIntervaloDelegate {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
-        
-        switch buttonIndex {
-            case 0:
-                //Cancelar
-                break
-            case 1:
-                if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-                    picker.sourceType = .Camera
-                }
-                self.presentViewController(picker, animated:true, completion:nil)
-                break
-            case 2:
-                picker.sourceType = .PhotoLibrary
-                self.presentViewController(picker, animated:true, completion:nil)
-                break
-            case 3:
-                self.buttonTirarFotoRemedio.setTitle("adicionar foto", forState: .Normal)
-                self.buttonTirarFotoRemedio.setBackgroundImage(nil, forState: .Normal)
-                break
-            default:
-                println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
-                break
+        if actionSheet.tag == 0 {
+            switch buttonIndex {
+                case 0:
+                    //Cancelar
+                    break
+                case 1:
+                    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                        picker.sourceType = .Camera
+                    }
+                    self.presentViewController(picker, animated:true, completion:nil)
+                    break
+                case 2:
+                    picker.sourceType = .PhotoLibrary
+                    self.presentViewController(picker, animated:true, completion:nil)
+                    break
+                case 3:
+                    self.buttonTirarFotoRemedio.setTitle("adicionar foto", forState: .Normal)
+                    self.buttonTirarFotoRemedio.setBackgroundImage(nil, forState: .Normal)
+                    self.fotoRemedio = nil
+                    break
+                default:
+                    println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+                    break
+            }
+        }else{
+            switch buttonIndex {
+                case 0:
+                    //Cancelar
+                    break
+                case 1:
+                    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                        picker.sourceType = .Camera
+                    }
+                    self.presentViewController(picker, animated:true, completion:nil)
+                    break
+                case 2:
+                    picker.sourceType = .PhotoLibrary
+                    self.presentViewController(picker, animated:true, completion:nil)
+                    break
+                case 3:
+                    self.fotoReceita = nil
+                    self.tableView.reloadData()
+                    break
+                default:
+                    println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+                    break
+            }
         }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+
+        switch self.fotoOuReceita {
+            case 0:
+                self.fotoRemedio = info[UIImagePickerControllerEditedImage] as? UIImage
+                break
+            case 1:
+                self.fotoReceita = info[UIImagePickerControllerEditedImage] as? UIImage
+                break
+            default:
+                println("Algo ocorreu na funcao didFinishPickingMediaWithInfo na classe RemedioTableViewController")
+                break
+        }
         
-        let fotoRemedio = info[UIImagePickerControllerEditedImage] as! UIImage
-        
-        self.fotoRemedio = fotoRemedio
-        
+        self.tableView.reloadData()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // MARK: - Controle dos segmented controls de quantidade e dose
+    @IBAction func selecionouUnidadeDeQuantidade(sender: AnyObject) {
+        let indiceUnidadeQuantidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
+        self.segmentedControlUnidadeDose.selectedSegmentIndex = indiceUnidadeQuantidade
+    }
+    
+    @IBAction func selecionouUnidadeDeDose(sender: UISegmentedControl) {
+        let indiceUnidadeDose = self.segmentedControlUnidadeDose.selectedSegmentIndex
+        self.segmentedControlUnidadeQuantidade.selectedSegmentIndex = indiceUnidadeDose
+    }
+    
     
     // MARK: - Navegação
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
