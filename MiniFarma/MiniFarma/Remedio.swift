@@ -14,10 +14,9 @@ class Remedio: NSObject {
     var nomeRemedio:String = ""
     var dataValidade: NSDate
     var numeroQuantidade:Int = 0
-    var unidadeQuantidade: Int = 0
+    var unidade: Int = 0
     var preco: Double = 0
     var numeroDose: Int = 0
-    var unidadeDose: Int = 0
     var fotoRemedio: String = ""
     var fotoReceita: String = ""
     var vencido: Int = 0
@@ -33,17 +32,16 @@ class Remedio: NSObject {
     
     //Remedio do banco
     init(idRemedio:Int, nomeRemedio:String, dataValidade:NSDate, numeroQuantidade: Int,
-        unidadeQuantidade:Int, preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:String,
+        unidade:Int, preco:Double, numeroDose:Int, fotoRemedio:String,
         fotoReceita:String,vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
         
         self.idRemedio = idRemedio
         self.nomeRemedio = nomeRemedio
         self.dataValidade = dataValidade
         self.numeroQuantidade = numeroQuantidade
-        self.unidadeQuantidade = unidadeQuantidade
+        self.unidade = unidade
         self.preco = preco
         self.numeroDose = numeroDose
-        self.unidadeDose = unidadeDose
         self.fotoRemedio = fotoRemedio
         self.fotoReceita = fotoReceita
         self.vencido = vencido
@@ -55,17 +53,16 @@ class Remedio: NSObject {
     }
     
     //Remedio criado
-    init(nomeRemedio:String, dataValidade:NSDate, numeroQuantidade: Int, unidadeQuantidade:Int,
-        preco:Double, numeroDose:Int, unidadeDose:Int,fotoRemedio:String,fotoReceita:String,
+    init(nomeRemedio:String, dataValidade:NSDate, numeroQuantidade: Int, unidade:Int,
+        preco:Double, numeroDose:Int,fotoRemedio:String,fotoReceita:String,
         vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
         
         self.nomeRemedio = nomeRemedio
         self.dataValidade = dataValidade
         self.numeroQuantidade = numeroQuantidade
-        self.unidadeQuantidade = unidadeQuantidade
+        self.unidade = unidade
         self.preco = preco
         self.numeroDose = numeroDose
-        self.unidadeDose = unidadeDose
         self.fotoRemedio = fotoRemedio
         self.fotoReceita = fotoReceita
         self.vencido = vencido

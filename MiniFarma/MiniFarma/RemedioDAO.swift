@@ -22,14 +22,13 @@ class RemedioDAO: DAO {
         
         let remedio: Remedio = objeto as! Remedio
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade_quantidade, preco, numero_dose, unidade_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade, preco, numero_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [
             remedio.nomeRemedio,
             remedio.dataValidade,
             remedio.numeroQuantidade,
-            remedio.unidadeQuantidade,
+            remedio.unidade,
             remedio.preco,
             remedio.numeroDose,
-            remedio.unidadeDose,
             remedio.fotoRemedio,
             remedio.fotoReceita,
             remedio.vencido,
@@ -68,10 +67,9 @@ class RemedioDAO: DAO {
         //campos opcionais
         var dataValidade: NSString = ""
         var numeroQuantidade:NSString = ""
-        var unidadeQuantidade: NSString = ""
+        var unidade: NSString = ""
         var preco: NSString = ""
         var numeroDose: NSString = ""
-        var unidadeDose: NSString = ""
         var fotoRemedio: NSString = ""
         var fotoReceita: NSString = ""
         var vencido: NSString = ""
@@ -97,17 +95,14 @@ class RemedioDAO: DAO {
             if(result.stringForColumn("numero_quantidade") != nil){
                 numeroQuantidade = result.stringForColumn("numero_quantidade")
             }
-            if(result.stringForColumn("unidade_quantidade") != nil){
-                unidadeQuantidade = result.stringForColumn("unidade_quantidade")
+            if(result.stringForColumn("unidade") != nil){
+                unidade = result.stringForColumn("unidade")
             }
             if(result.stringForColumn("preco") != nil){
                 preco = result.stringForColumn("preco")
             }
             if(result.stringForColumn("numero_dose") != nil){
                 numeroDose = result.stringForColumn("numero_dose")
-            }
-            if(result.stringForColumn("unidade_dose") != nil){
-                unidadeDose = result.stringForColumn("unidade_dose")
             }
             if(result.stringForColumn("foto_remedio") != nil){
                 fotoRemedio = result.stringForColumn("foto_remedio")
@@ -131,7 +126,7 @@ class RemedioDAO: DAO {
                 idIntervalo = result.stringForColumn("id_intervalo")
             }
             
-            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidadeDate, numeroQuantidade: numeroQuantidade.integerValue, unidadeQuantidade: unidadeQuantidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, unidadeDose: unidadeDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidadeDate, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
             
             println("id: \(idRemedio) nome do remedio: \(nome) --- REMEDIO: \(remedio)")
 
