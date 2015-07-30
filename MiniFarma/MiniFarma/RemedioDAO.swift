@@ -65,7 +65,7 @@ class RemedioDAO: DAO {
         var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
         
         //campos opcionais
-        var dataValidade: NSString = ""
+        var dataValidade: NSDate?
         var numeroQuantidade:NSString = ""
         var unidade: NSString = ""
         var preco: NSString = ""
@@ -87,10 +87,10 @@ class RemedioDAO: DAO {
             
             
             if(result.stringForColumn("data_validade") != nil){
-                dataValidade = result.stringForColumn("data_validade")
-                var dataValidadeFormato = NSDateFormatter()
-                dataValidadeFormato.dateFormat = "dd-MM-yyyy"
-                var dataValidadeDate = dataValidadeFormato.dateFromString(dataValidade as String)
+                dataValidade = result.dateForColumn("data_validade")
+//                var dataValidadeFormato = NSDateFormatter()
+//                dataValidadeFormato.dateFormat = "dd-MM-yyyy"
+//                var dataValidadeDate = dataValidadeFormato.dateFromString(dataValidade as String)
             }
             if(result.stringForColumn("numero_quantidade") != nil){
                 numeroQuantidade = result.stringForColumn("numero_quantidade")
@@ -128,7 +128,7 @@ class RemedioDAO: DAO {
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidadeDate, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
             
-            println("id: \(idRemedio) nome do remedio: \(nome) --- REMEDIO: \(remedio)")
+            println("id: \(idRemedio) nome do remedio: \(nome) data: \(dataValidade) --- REMEDIO: \(remedio)")
 
             self.remedios.append(remedio)
             

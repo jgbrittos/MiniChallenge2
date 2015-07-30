@@ -153,6 +153,14 @@
 			name = Remedio;
 			sourceTree = "<group>";
 		};
+		451428781B6AB40F0070396A /* Visualizar Foto */ = {
+			isa = PBXGroup;
+			children = (
+				451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */,
+			);
+			name = "Visualizar Foto";
+			sourceTree = "<group>";
+		};
 		453961161B5BE35D0097DEDB = {
 			isa = PBXGroup;
 			children = (
@@ -295,11 +303,11 @@
 			isa = PBXGroup;
 			children = (
 				45D4084E1B66C3C000FB0EF0 /* Remedio.storyboard */,
-				451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */,
 				451428771B6AA0150070396A /* Remedio */,
 				4514286D1B67B25B0070396A /* Categoria */,
 				45E0764B1B61184E00B0E7B6 /* Intervalo */,
 				451428701B690CB40070396A /* Local */,
+				451428781B6AB40F0070396A /* Visualizar Foto */,
 			);
 			name = Remedio;
 			sourceTree = "<group>";

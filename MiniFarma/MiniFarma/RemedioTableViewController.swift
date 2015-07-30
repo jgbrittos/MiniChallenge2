@@ -161,7 +161,7 @@ SelecionaIntervaloDelegate {
     @IBAction func salvarRemedio(sender: AnyObject) {
         
         let nomeRemedio: String = self.textFieldNome.text
-        let dataValidade: NSDate?
+        let dataValidade = NSDate()
         let numeroQuantidade: Int = self.textFieldNumeroQuantidade.text.toInt()!
         let unidade: Int = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
         let preco: Double = NSNumberFormatter().numberFromString(self.textFieldPreco.text)!.doubleValue
@@ -170,11 +170,21 @@ SelecionaIntervaloDelegate {
         let fotoReceita: String = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: nomeRemedio, eTipo: "Receita.png")
         let vencido: Int = 0
         let idFarmacia: Int = 0
-        let idCategoria = self.categoria?.idCategoria
-        let idLocal: Int = self.local.idLocal
-        let idIntervalo = self.intervalo?.idIntervalo
         
-//        self.remedioDAO.inserir(remedio)
+        var idCategoria: Int = 0
+        if let c = self.categoria {
+            idCategoria = c.idCategoria
+        }
+        
+        let idLocal: Int = self.local.idLocal
+        
+        var idIntervalo: Int = 0
+        if let i = self.intervalo {
+            idIntervalo = i.idIntervalo
+        }
+        
+        let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, vencido: vencido, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
+        self.remedioDAO.inserir(remedio)
         //ir para a lista de remedios ou de alerta dependendo do parametro do switch
     }
     
