@@ -79,7 +79,7 @@ class FarmaciaDAO: DAO {
             let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
             
             
-            println("id: \(farmacia.idFarmacia) nome: \(farmacia.nomeFarmacia) --- FARMACIA: \(farmacia)")
+//            println("id: \(farmacia.idFarmacia) nome: \(farmacia.nomeFarmacia) --- FARMACIA: \(farmacia)")
             
             self.farmacias.append(farmacia)
         }

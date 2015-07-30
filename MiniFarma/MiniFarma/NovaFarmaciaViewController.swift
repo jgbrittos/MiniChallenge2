@@ -53,12 +53,10 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         }
 
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -123,20 +121,23 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         case 0:
             
             if self.existeFavorita > 0{
-                var uiAlert = UIAlertController(title: "Aviso", message: "Já existe uma farmácia favorita. Deseja alterar para essa?", preferredStyle: UIAlertControllerStyle.Alert)
-                self.presentViewController(uiAlert, animated: true, completion: nil)
+                var alertaFavorita = UIAlertController(title: NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"), message: NSLocalizedString("MENSAGEMALERTA", comment: "Titulo do alerta"), preferredStyle: UIAlertControllerStyle.Alert)
+                self.presentViewController(alertaFavorita, animated: true, completion: nil)
                 
-                uiAlert.addAction(UIAlertAction(title: "Não", style: .Default, handler: { action in
+                alertaFavorita.addAction(UIAlertAction(title: NSLocalizedString("NAOALERTA", comment: "Opção do alerta"), style: .Default, handler: { action in
                     self.favorito=0
                 }))
                 
                 
-                uiAlert.addAction(UIAlertAction(title: "Sim", style: .Default, handler: { action in
+                alertaFavorita.addAction(UIAlertAction(title: NSLocalizedString("SIMALERTA", comment: "Opção do alerta"), style: .Default, handler: { action in
                     self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
                     self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
                     self.existeFavorita=0
                     self.favorito=1
                 }))
+                
+                alertaFavorita.accessibilityLabel = NSLocalizedString("FARMACIAALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
+                alertaFavorita.accessibilityHint = NSLocalizedString("FARMACIAALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
                 
             }
             if self.existeFavorita == 0{
@@ -177,7 +178,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             self.navigationController!.popViewControllerAnimated(true)
 
         }else{
-            var alert = UIAlertController(title: "Erro", message: "Digite o nome da farmácia", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), message: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }

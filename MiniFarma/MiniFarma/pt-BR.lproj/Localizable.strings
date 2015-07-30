@@ -59,3 +59,16 @@ MENSAGEMALERTAERRO = "Campo de texto vazio";
 CATEGORIAPLACEHOLDER = "Digite o texto aqui";
 CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Campo de texto";
 CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT = "Digite a nova categoria";
+
+
+//MARK: - Farmacia - Alerta Farmacia Favorita Ja existe e nome vazio
+
+TITULOALERTA = "Aviso";
+MENSAGEMALERTA = "Já existe uma farmácia favorita. Deseja alterar para essa?";
+NAOALERTA = "Não";
+SIMALERTA= "Sim";
+FARMACIAALERTA_ACESSIBILIDADE_LABEL = "Alerta";
+FARMACIAALERTA_ACESSIBILIDADE_HINT = "Já existe uma farmácia favorita. Escolha a opção.";
+ERROFARMACIA = "Erro";
+MENSAGEMERROFARMACIA = "Digite o nome da farmácia";
+

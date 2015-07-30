@@ -36,7 +36,6 @@ class FarmaciaTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -51,10 +50,6 @@ class FarmaciaTableViewController: UITableViewController {
         if(editingStyle == .Delete){
             let sucesso: Bool = farmaciaDAO.deletar(self.farmacias[indexPath.row])
             
-            if(sucesso){
-                println("Farmacia deletada com sucesso")
-            }
-            
             self.farmacias.removeAtIndex(indexPath.row)
             
             tableView.reloadData()
@@ -63,11 +58,9 @@ class FarmaciaTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = FarmaciaTableViewCell()
-        //cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Celula", forIndexPath: indexPath) as! FarmaciaTableViewCell
         
-        //cell.textLabel?.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
         cell.nomeCustomizado.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
 
         
