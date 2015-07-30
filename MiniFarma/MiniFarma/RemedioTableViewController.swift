@@ -158,8 +158,8 @@ SelecionaIntervaloDelegate {
     }
     
     @IBAction func salvarRemedio(sender: AnyObject) {
-//        let remedio = Remedio(nomeRemedio: textFieldNome.text, dataValidade: textFieldDataDeValidade.text, numeroQuantidade: 0, unidadeQuantidade: 0, preco: labelPreco.text, numeroDose: 0, unidadeDose: 0, fotoRemedio: "asd/asd", fotoReceita: "asd/asd", vencido: 0, idFarmacia: 0, idCategoria: 0, idLocal: 0, idIntervalo: 0)
-//        remedioDAO.inserir(remedio)
+//        let remedio = Remedio(nomeRemedio: textFieldNome.text, dataValidade: textFieldDataDeValidade.text, numeroQuantidade: 0, unidade: 0, preco: labelPreco.text, numeroDose: 0, fotoRemedio: "asd/asd", fotoReceita: "asd/asd", vencido: 0, idFarmacia: 0, idCategoria: 0, idLocal: 0, idIntervalo: 0)
+//        self.remedioDAO.inserir(remedio)
         //ir para a lista de remedios ou de alerta dependendo do parametro do switch
     }
 

@@ -110,4 +110,5 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
 
         return [apagarRemedio, tomeiRemedio]
     }
+
 }

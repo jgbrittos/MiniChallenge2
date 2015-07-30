@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
         }
         
+        self.alteraAparenciaDaStatusENavigationBar()
+        
         self.window?.rootViewController = telaInicial
         self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
@@ -59,6 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func alteraAparenciaDaStatusENavigationBar(){
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        var navigationBarAppearace = UINavigationBar.appearance()
+        
+        navigationBarAppearace.tintColor = self.hexadecimalParaUIColor(0xFFFFFF)
+        navigationBarAppearace.barTintColor = self.hexadecimalParaUIColor(0xCC0044)
+        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        
+    }
+    
+    func hexadecimalParaUIColor(rgb:UInt32) -> UIColor {
+        let red = CGFloat((rgb & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((rgb & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(rgb & 0xFF)/256.0
+        
+        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
+    }
+    
     func verificaSeHaAlgumRemedio() -> Bool {
         self.bancoDeDados!.open()
 
