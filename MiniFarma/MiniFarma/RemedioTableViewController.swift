@@ -301,7 +301,14 @@ SelecionaIntervaloDelegate {
     }
 
     @IBAction func tocouNaCelulaDeReceita(sender: AnyObject) {
-        let acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto")
+        var acao: UIActionSheet
+        
+        if self.fotoReceita != nil {
+            acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto","Visualizar foto")
+        }else{
+            acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto")
+        }
+    
         acao.tag = 1
         self.fotoOuReceita = 1
         acao.showInView(self.view)
@@ -417,7 +424,7 @@ SelecionaIntervaloDelegate {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
-        if actionSheet.tag == 0 {
+        if actionSheet.tag == 0 {//Remédio
             switch buttonIndex {
                 case 0:
                     //Cancelar
@@ -441,7 +448,7 @@ SelecionaIntervaloDelegate {
                     println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
                     break
             }
-        }else{
+        }else{//Receita
             switch buttonIndex {
                 case 0:
                     //Cancelar
@@ -459,6 +466,9 @@ SelecionaIntervaloDelegate {
                 case 3:
                     self.fotoReceita = nil
                     self.tableView.reloadData()
+                    break
+                case 4:
+                    self.performSegueWithIdentifier("VisualizarFotoReceita", sender: nil)
                     break
                 default:
                     println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
@@ -520,6 +530,10 @@ SelecionaIntervaloDelegate {
                 selecionaIntervalo.delegate = self
                 break
             case "SelecionaFarmacia":
+                break
+            case "VisualizarFotoReceita":
+                let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController
+                visualizador.fotoASerVisualizada = self.fotoReceita!
                 break
             default:
                 println("Algo ocorreu na função prepareForSegue da classe RemedioTableViewController")

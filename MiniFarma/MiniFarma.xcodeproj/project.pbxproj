@@ -12,6 +12,7 @@
 		451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428661B67B21C0070396A /* CategoriaTableViewController.swift */; };
 		451428721B690CCA0070396A /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428711B690CCA0070396A /* Local.swift */; };
 		451428741B690CDA0070396A /* LocalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428731B690CDA0070396A /* LocalDAO.swift */; };
+		451428761B6AA0090070396A /* VisualizarFotoReceitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */; };
 		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
 		453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961241B5BE35D0097DEDB /* AppDelegate.swift */; };
 		4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453961281B5BE35D0097DEDB /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		451428661B67B21C0070396A /* CategoriaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriaTableViewController.swift; sourceTree = "<group>"; };
 		451428711B690CCA0070396A /* Local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		451428731B690CDA0070396A /* LocalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDAO.swift; sourceTree = "<group>"; };
+		451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFotoReceitaViewController.swift; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
 		4522B7E01B5EC0CA0053DD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,16 @@
 				451428711B690CCA0070396A /* Local.swift */,
 			);
 			name = Local;
+			sourceTree = "<group>";
+		};
+		451428771B6AA0150070396A /* Remedio */ = {
+			isa = PBXGroup;
+			children = (
+				45D408501B66C3D600FB0EF0 /* RemedioTableViewController.swift */,
+				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
+				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
+			);
+			name = Remedio;
 			sourceTree = "<group>";
 		};
 		453961161B5BE35D0097DEDB = {
@@ -334,9 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				45D4084E1B66C3C000FB0EF0 /* Remedio.storyboard */,
-				45D408501B66C3D600FB0EF0 /* RemedioTableViewController.swift */,
-				8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */,
-				45DAB5351B5C334A00AA2860 /* Remedio.swift */,
+				451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */,
+				451428771B6AA0150070396A /* Remedio */,
 				4514286D1B67B25B0070396A /* Categoria */,
 				45E0764B1B61184E00B0E7B6 /* Intervalo */,
 				451428701B690CB40070396A /* Local */,
@@ -556,6 +567,7 @@
 				45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */,
 				4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */,
 				45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */,
+				451428761B6AA0090070396A /* VisualizarFotoReceitaViewController.swift in Sources */,
 				45DAB5361B5C334A00AA2860 /* Remedio.swift in Sources */,
 				451428681B67B21C0070396A /* CategoriaDAO.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
