@@ -77,12 +77,15 @@ SelecionaIntervaloDelegate {
         //Celula de Local
         self.textFieldLocal.hidden = true
         self.buttonAdicionarLocal.hidden = true
+        
         //Celula de Quantidade
         self.textFieldNumeroQuantidade.hidden = true
         self.segmentedControlUnidadeQuantidade.hidden = true
+        
         //Celula de Dose
         self.textFieldNumeroDose.hidden = true
         self.segmentedControlUnidadeDose.hidden = true
+        
         //Celula de Preco
         self.labelMoeda.hidden = true
         self.textFieldPreco.hidden = true
@@ -232,7 +235,11 @@ SelecionaIntervaloDelegate {
             self.alturaCelulaQuantidade += 44
             self.ocultaCelulasDe(true, quantidade: false, dose: true, preco: true)
         }else{
-            self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+            if self.textFieldNumeroQuantidade.text != nil {
+                self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+            }else{
+                self.labelQuantidade.text = ""
+            }
             self.textFieldNumeroQuantidade.hidden = true
             self.segmentedControlUnidadeQuantidade.hidden = true
             self.celulaQuantidadeOculta = true
@@ -252,7 +259,11 @@ SelecionaIntervaloDelegate {
             self.alturaCelulaDose += 44
             self.ocultaCelulasDe(true, quantidade: true, dose: false, preco: true)
         }else{
-            self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+            if self.textFieldNumeroDose.text != nil{
+                self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+            }else{
+                self.labelDose.text = ""
+            }
             self.textFieldNumeroDose.hidden = true
             self.segmentedControlUnidadeDose.hidden = true
             self.celulaDoseOculta = true
@@ -273,7 +284,11 @@ SelecionaIntervaloDelegate {
             self.alturaCelulaPreco += 44
             self.ocultaCelulasDe(true, quantidade: true, dose: true, preco: false)
         }else{
-            self.labelPreco.text = self.labelMoeda.text! + " " + self.textFieldPreco.text
+            if self.textFieldPreco.text != nil{
+                self.labelPreco.text = self.labelMoeda.text! + self.textFieldPreco.text
+            }else{
+                self.labelPreco.text = ""
+            }
             self.labelMoeda.hidden = true
             self.textFieldPreco.hidden = true
             self.celulaPrecoOculta = true
@@ -294,7 +309,11 @@ SelecionaIntervaloDelegate {
         }
         
         if quantidade {
-            self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+            if self.textFieldNumeroQuantidade.text != "" {
+                self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+            }else{
+                self.labelQuantidade.text = ""
+            }
             self.textFieldNumeroQuantidade.hidden = true
             self.segmentedControlUnidadeQuantidade.hidden = true
             self.celulaQuantidadeOculta = true
@@ -302,7 +321,11 @@ SelecionaIntervaloDelegate {
         }
         
         if dose {
-            self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+            if self.textFieldNumeroDose.text != "" {
+                self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+            }else{
+                self.labelDose.text = ""
+            }
             self.textFieldNumeroDose.hidden = true
             self.segmentedControlUnidadeDose.hidden = true
             self.celulaDoseOculta = true
@@ -311,7 +334,11 @@ SelecionaIntervaloDelegate {
         }
         
         if preco {
-            self.labelPreco.text = self.labelMoeda.text! + " " + self.textFieldPreco.text
+            if self.textFieldPreco.text != "" {
+                self.labelPreco.text = self.labelMoeda.text! + self.textFieldPreco.text
+            }else{
+                self.labelPreco.text = ""
+            }
             self.labelMoeda.hidden = true
             self.textFieldPreco.hidden = true
             self.celulaPrecoOculta = true
