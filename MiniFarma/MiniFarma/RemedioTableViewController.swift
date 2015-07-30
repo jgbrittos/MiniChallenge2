@@ -399,7 +399,7 @@ SelecionaIntervaloDelegate {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
-        println("\(buttonIndex)")
+        
         switch buttonIndex {
             case 0:
                 //Cancelar
