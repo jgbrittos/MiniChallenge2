@@ -10,6 +10,9 @@ import UIKit
 
 class FarmaciaTableViewController: UITableViewController {
 
+    
+    
+    
     var farmacias = [Farmacia]()
     var farmaciaDicionario = [:]
     var farmaciaSelecionada: Farmacia?
@@ -21,17 +24,16 @@ class FarmaciaTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
         self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -63,7 +65,17 @@ class FarmaciaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
         
+        
         cell.textLabel?.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
+        cell.imageView?.image = UIImage(named: "estrelaFavorito")
+        
+       // cell.lbl = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
+        
+        if((self.farmacias[indexPath.row] as Farmacia).favorita == 1){
+            cell.detailTextLabel?.text = "Favorita"
+        }else{
+            //cell.detailTextLabel?.text = "
+        }
         
         return cell
     }

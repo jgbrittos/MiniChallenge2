@@ -13,19 +13,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" textLabel="B7i-Vk-ztn" style="IBUITableViewCellStyleDefault" id="gJD-OQ-hQg">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Celula" id="HjQ-YK-2Ju" customClass="FarmaciaTableViewCell" customModule="MiniFarma" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gJD-OQ-hQg" id="fFO-y0-vNF">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HjQ-YK-2Ju" id="5MT-8W-Tqn">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B7i-Vk-ztn">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="estrelaFavoritoNegativo" translatesAutoresizingMaskIntoConstraints="NO" id="2De-Is-sYb">
+                                            <rect key="frame" x="552" y="2" width="40" height="40"/>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="2De-Is-sYb" secondAttribute="centerX" constant="-272" id="NrE-Fx-bNV"/>
+                                        <constraint firstAttribute="trailing" secondItem="2De-Is-sYb" secondAttribute="trailing" constant="8" id="QFh-gy-Wc6"/>
+                                        <constraint firstAttribute="bottom" secondItem="2De-Is-sYb" secondAttribute="bottom" constant="2" id="Rkh-Gz-YSD"/>
+                                        <constraint firstAttribute="centerY" secondItem="2De-Is-sYb" secondAttribute="centerY" id="Su3-vH-S1N"/>
+                                        <constraint firstItem="2De-Is-sYb" firstAttribute="top" secondItem="5MT-8W-Tqn" secondAttribute="top" constant="2" id="TgS-8b-uKU"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imagemFavorito" destination="2De-Is-sYb" id="ta9-zJ-8dT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -37,7 +45,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="14i-RH-Or1"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Zi7-8z-9wA">
                             <connections>
-                                <segue destination="lUZ-WW-RXz" kind="show" id="gg8-Pv-TJu"/>
+                                <segue destination="38O-ub-S8x" kind="show" id="c3d-Xl-kU1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -76,9 +84,6 @@
                                 <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="rNf-U2-ekc">
-                                <rect key="frame" x="0.0" y="167" width="605" height="389"/>
-                            </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxG-WG-BMl">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
@@ -106,6 +111,9 @@
                                     <action selector="favoritoClicado:" destination="38O-ub-S8x" eventType="touchUpInside" id="WDz-WE-n81"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="rNf-U2-ekc">
+                                <rect key="frame" x="0.0" y="167" width="605" height="389"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -126,11 +134,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nova Farmácia" id="dk7-xp-xI8">
-                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="Tuz-qg-D5m">
-                            <connections>
-                                <segue destination="0Db-4A-4W7" kind="show" id="Vhl-qZ-vWm"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="FtT-Yu-gVd">
                             <connections>
                                 <action selector="salvaFarmacia:" destination="38O-ub-S8x" id="rkq-CD-yOd"/>
@@ -145,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zk6-sL-qXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7120" y="1073"/>
+            <point key="canvasLocation" x="6286" y="1073"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eue-pf-zEU">
@@ -163,30 +166,9 @@
             </objects>
             <point key="canvasLocation" x="4711" y="1073"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="sQL-Hr-dcs">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lUZ-WW-RXz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXy-7D-lu5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="38O-ub-S8x" kind="relationship" relationship="rootViewController" id="Tjv-95-gCc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zk9-Qq-Qhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6317" y="1073"/>
-        </scene>
     </scenes>
     <resources>
         <image name="estrelaFavorito" width="30" height="29"/>
         <image name="estrelaFavoritoNegativo" width="30" height="29"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Vhl-qZ-vWm"/>
-    </inferredMetricsTieBreakers>
 </document>

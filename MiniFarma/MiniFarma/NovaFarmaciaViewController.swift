@@ -110,17 +110,21 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
 
     @IBAction func salvaFarmacia(sender: AnyObject) {
         
-        let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor)
-        
-        farmaciaDAO.inserir(farmacia)
-        
+        if(txtFieldNome.text != ""){
+            let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor)
+            
+            farmaciaDAO.inserir(farmacia)
+            
+            self.navigationController!.popViewControllerAnimated(true)
 
-    //falta fazer voltar pra view anterior programaticamente
-    
+        }else{
+            var alert = UIAlertController(title: "Erro", message: "Digite o nome da farmácia", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        
     }
-    
-    
-
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         self.view.endEditing(true)

@@ -23,7 +23,8 @@ class FarmaciaDAO: DAO {
         
         let farmacia: Farmacia = objeto as! Farmacia
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude) VALUES (?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia,String(format: "%d",farmacia.favorita),String(format: "%f",farmacia.latitude),String(format: "%f",farmacia.longitude)])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude) VALUES (?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia, String(farmacia.favorita),String(stringInterpolationSegment: farmacia.latitude),String(stringInterpolationSegment: farmacia.longitude)])
+        
         
         if !inseridoComSucesso {
             println("\(self.bancoDeDados.lastErrorMessage())")
@@ -55,6 +56,8 @@ class FarmaciaDAO: DAO {
     override func buscarTodos() -> [AnyObject] {
         
         self.bancoDeDados.open()
+        
+        self.farmacias = [Farmacia]()
         
         var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia Order By id_farmacia", withArgumentsInArray: nil)
         
