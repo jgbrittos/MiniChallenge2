@@ -63,6 +63,7 @@ SelecionaIntervaloDelegate {
     var local = Local()
     var vencido = Int()
     
+    var frameDoTeclado: CGRect = CGRectZero
     var fotoRemedio: UIImage?
     var fotoReceita: UIImage?
     
@@ -89,9 +90,10 @@ SelecionaIntervaloDelegate {
         //PickerView de Local
         self.pickerViewLocal.delegate = self
         self.textFieldLocal.inputView = self.pickerViewLocal
-//        self.pickerViewLocal.set = UIColor(red: 204, green: 0, blue: 68, alpha: 1)
         self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
         self.locais = self.localDAO.buscarTodos() as! [Local]
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("verificaTamanhoDoTeclado:"), name:UIKeyboardWillShowNotification, object: nil)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -117,6 +119,10 @@ SelecionaIntervaloDelegate {
         
     }
 
+    func verificaTamanhoDoTeclado(notificacao: NSNotification){
+        self.frameDoTeclado = (notificacao.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+    }
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -205,6 +211,7 @@ SelecionaIntervaloDelegate {
             self.buttonAdicionarLocal.hidden = false
             self.celulaLocalOculta = false
             self.alturaCelulaLocal += 44
+            self.ocultaCelulasDe(false, quantidade: true, dose: true, preco: true)
         }else{
             self.labelLocal.text = self.textFieldLocal.text
             self.textFieldLocal.hidden = true
@@ -223,6 +230,7 @@ SelecionaIntervaloDelegate {
             self.segmentedControlUnidadeQuantidade.hidden = false
             self.celulaQuantidadeOculta = false
             self.alturaCelulaQuantidade += 44
+            self.ocultaCelulasDe(true, quantidade: false, dose: true, preco: true)
         }else{
             self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
             self.textFieldNumeroQuantidade.hidden = true
@@ -240,12 +248,15 @@ SelecionaIntervaloDelegate {
             self.textFieldNumeroDose.hidden = false
             self.segmentedControlUnidadeDose.hidden = false
             self.celulaDoseOculta = false
+            self.tableView.frame.size.height -= self.frameDoTeclado.size.height
             self.alturaCelulaDose += 44
+            self.ocultaCelulasDe(true, quantidade: true, dose: false, preco: true)
         }else{
             self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
             self.textFieldNumeroDose.hidden = true
             self.segmentedControlUnidadeDose.hidden = true
             self.celulaDoseOculta = true
+            self.tableView.frame.size.height += self.frameDoTeclado.size.height
             self.alturaCelulaDose = 44
         }
         self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: 6, inSection: 0))
@@ -258,18 +269,58 @@ SelecionaIntervaloDelegate {
             self.labelMoeda.hidden = false
             self.textFieldPreco.hidden = false
             self.celulaPrecoOculta = false
+            self.tableView.frame.size.height -= self.frameDoTeclado.size.height
             self.alturaCelulaPreco += 44
+            self.ocultaCelulasDe(true, quantidade: true, dose: true, preco: false)
         }else{
             self.labelPreco.text = self.labelMoeda.text! + " " + self.textFieldPreco.text
             self.labelMoeda.hidden = true
             self.textFieldPreco.hidden = true
             self.celulaPrecoOculta = true
             self.alturaCelulaPreco = 44
+            self.tableView.frame.size.height += self.frameDoTeclado.size.height
         }
         self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: 7, inSection: 0))
         self.tableView.reloadData()
     }
 
+    func ocultaCelulasDe(local: Bool, quantidade: Bool, dose:Bool, preco:Bool){
+        if local {
+            self.labelLocal.text = self.textFieldLocal.text
+            self.textFieldLocal.hidden = true
+            self.buttonAdicionarLocal.hidden = true
+            self.celulaLocalOculta = true
+            self.alturaCelulaLocal = 44
+        }
+        
+        if quantidade {
+            self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+            self.textFieldNumeroQuantidade.hidden = true
+            self.segmentedControlUnidadeQuantidade.hidden = true
+            self.celulaQuantidadeOculta = true
+            self.alturaCelulaQuantidade = 44
+        }
+        
+        if dose {
+            self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+            self.textFieldNumeroDose.hidden = true
+            self.segmentedControlUnidadeDose.hidden = true
+            self.celulaDoseOculta = true
+            self.tableView.frame.size.height += self.frameDoTeclado.size.height
+            self.alturaCelulaDose = 44
+        }
+        
+        if preco {
+            self.labelPreco.text = self.labelMoeda.text! + " " + self.textFieldPreco.text
+            self.labelMoeda.hidden = true
+            self.textFieldPreco.hidden = true
+            self.celulaPrecoOculta = true
+            self.alturaCelulaPreco = 44
+            self.tableView.frame.size.height += self.frameDoTeclado.size.height
+        }
+    }
+    
+    // MARK: - PickerView de Local
     @IBAction func adicionarLocal(sender: AnyObject) {
         var alerta:UIAlertController?
         
@@ -320,6 +371,7 @@ SelecionaIntervaloDelegate {
         self.presentViewController(alerta!,animated: true,completion: nil)
     }
     
+    // MARK: - Foto do remédio
     @IBAction func tirarFotoDoRemedio(sender: AnyObject) {
         let acao = UIActionSheet(title: "Selecionar uma foto da:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Camera", "Galeria")
         
