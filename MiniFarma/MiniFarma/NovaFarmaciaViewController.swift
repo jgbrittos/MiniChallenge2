@@ -178,9 +178,13 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             self.navigationController!.popViewControllerAnimated(true)
 
         }else{
-            var alert = UIAlertController(title: NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), message: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            var alertaNome = UIAlertController(title: NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), message: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), preferredStyle: UIAlertControllerStyle.Alert)
+            alertaNome.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertaNome, animated: true, completion: nil)
+            
+            alertaNome.accessibilityLabel = NSLocalizedString("FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
+            alertaNome.accessibilityHint = NSLocalizedString("FARMACIANOMEALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
+
         }
         
         

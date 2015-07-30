@@ -71,4 +71,5 @@ FARMACIAALERTA_ACESSIBILIDADE_LABEL = "Alerta";
 FARMACIAALERTA_ACESSIBILIDADE_HINT = "Já existe uma farmácia favorita. Escolha a opção.";
 ERROFARMACIA = "Erro";
 MENSAGEMERROFARMACIA = "Digite o nome da farmácia";
-
+FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL = "Alerta";
+FARMACIANOMEALERTA_ACESSIBILIDADE_HINT = "Campo Nome da farmácia vazio. Digite um nome.";

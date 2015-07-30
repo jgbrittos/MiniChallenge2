@@ -44,3 +44,19 @@ CANCELARBOTAO = "Cancel";
 CATEGORIAPLACEHOLDER = "Type the text here";
 CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Textfield";
 CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT = "Type a new category";
+
+
+//MARK: - Farmacia - Alerta Farmacia Favorita Ja existe e nome vazio
+
+TITULOALERTA = "Warning";
+MENSAGEMALERTA = "There is already a favorite pharmacy. Do you want to change it?";
+NAOALERTA = "No";
+SIMALERTA= "Yes";
+FARMACIAALERTA_ACESSIBILIDADE_LABEL = "Alert";
+FARMACIAALERTA_ACESSIBILIDADE_HINT = "There is already a favorite pharmacy. Choose an option.";
+ERROFARMACIA = "Error";
+MENSAGEMERROFARMACIA = "Type the pharmacy name";
+FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL = "Alert";
+FARMACIANOMEALERTA_ACESSIBILIDADE_HINT = "Pharmacy name textfield empty. Type a name.";
+
+
