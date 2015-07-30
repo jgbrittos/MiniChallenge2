@@ -298,7 +298,7 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uN3-Uu-oxi">
                                                     <rect key="frame" x="304" y="46" width="288" height="29"/>
                                                     <segments>
-                                                        <segment title="cps"/>
+                                                        <segment title="cp"/>
                                                         <segment title="g"/>
                                                         <segment title="ml"/>
                                                     </segments>
@@ -365,7 +365,7 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="04C-EE-t7v">
                                                     <rect key="frame" x="304" y="46" width="288" height="29"/>
                                                     <segments>
-                                                        <segment title="cps"/>
+                                                        <segment title="cp"/>
                                                         <segment title="g"/>
                                                         <segment title="ml"/>
                                                     </segments>

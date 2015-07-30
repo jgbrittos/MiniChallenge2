@@ -63,12 +63,11 @@ SelecionaIntervaloDelegate {
     var local = Local()
     var vencido = Int()
     
-//    var frameDoTeclado: CGRect?
     var fotoRemedio: UIImage?
     var fotoReceita: UIImage?
     var fotoOuReceita: Int = 0
     
-    let histogramaUnidadesRemedio = [" cps", " g", " ml"]
+    let histogramaUnidadesRemedio = [" cp", " g", " ml"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -490,13 +489,24 @@ SelecionaIntervaloDelegate {
     @IBAction func selecionouUnidadeDeQuantidade(sender: AnyObject) {
         let indiceUnidadeQuantidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
         self.segmentedControlUnidadeDose.selectedSegmentIndex = indiceUnidadeQuantidade
+        
+        if self.textFieldNumeroDose.text != "" {
+            self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+        }else{
+            self.labelDose.text = ""
+        }
     }
     
     @IBAction func selecionouUnidadeDeDose(sender: UISegmentedControl) {
         let indiceUnidadeDose = self.segmentedControlUnidadeDose.selectedSegmentIndex
         self.segmentedControlUnidadeQuantidade.selectedSegmentIndex = indiceUnidadeDose
+        
+        if self.textFieldNumeroQuantidade.text != "" {
+            self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+        }else{
+            self.labelQuantidade.text = ""
+        }
     }
-    
     
     // MARK: - Navegação
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
