@@ -44,7 +44,7 @@ class TabBarCustomizadaController: UITabBarController {
         
         self.botaoMaisOpcoes.frame = CGRectMake(0.0, 0.0, 60, 60)
         self.botaoMaisOpcoes.addTarget(self, action: Selector("fazAnimacaoDeBotoesDeOpcoes:"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.botaoMaisOpcoes.setBackgroundImage(UIImage(named: "mais"), forState:UIControlState.Normal)
+        self.botaoMaisOpcoes.setBackgroundImage(UIImage(named: "botaoMais"), forState:UIControlState.Normal)
 //        self.botaoMaisOpcoes.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
         self.botaoMaisOpcoes.layer.zPosition = 1
@@ -69,18 +69,18 @@ class TabBarCustomizadaController: UITabBarController {
         
         self.botaoAdicionaFarmacia.frame = tamanhoPadraoBotao
         self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
-        self.botaoAdicionaFarmacia.setBackgroundImage(UIImage(named: "adicionar_farmacia"), forState:UIControlState.Normal)
+        self.botaoAdicionaFarmacia.setBackgroundImage(UIImage(named: "botaoAdicionarFarmacia"), forState:UIControlState.Normal)
 //        self.botaoAdicionaFarmacia.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         
         self.botaoAdicionaRemedio.frame = tamanhoPadraoBotao
         self.botaoAdicionaRemedio.center = self.centroInicialPadrao
         self.botaoAdicionaRemedio.addTarget(self, action: Selector("chamaStoryboardIntervalo:"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.botaoAdicionaRemedio.setBackgroundImage(UIImage(named: "adicionar_remedio"), forState:UIControlState.Normal)
+        self.botaoAdicionaRemedio.setBackgroundImage(UIImage(named: "botaoAdicionarRemedio"), forState:UIControlState.Normal)
 //        self.botaoAdicionaRemedio.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         
         self.botaoAdicionaAlerta.frame = tamanhoPadraoBotao
         self.botaoAdicionaAlerta.center = self.centroInicialPadrao
-        self.botaoAdicionaAlerta.setBackgroundImage(UIImage(named: "adicionar_alerta"), forState:UIControlState.Normal)
+        self.botaoAdicionaAlerta.setBackgroundImage(UIImage(named: "botaoAdicionarAlerta"), forState:UIControlState.Normal)
 //        self.botaoAdicionaAlerta.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
     }
     

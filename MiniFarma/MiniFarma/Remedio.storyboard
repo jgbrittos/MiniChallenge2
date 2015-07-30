@@ -570,6 +570,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Adicionar Remédio" id="kT6-fc-XXw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ksP-ft-lQV">
+                            <connections>
+                                <action selector="cancelarAdicaoDeRemedio:" destination="UJ8-Gv-h8V" id="eTS-oY-H3i"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="MEo-3d-NyR">
                             <connections>
                                 <action selector="salvarRemedio:" destination="UJ8-Gv-h8V" id="osI-eo-gew"/>

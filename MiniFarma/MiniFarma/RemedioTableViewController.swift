@@ -157,10 +157,39 @@ SelecionaIntervaloDelegate {
         }
     }
     
+    // MARK: - Salvar remedio
     @IBAction func salvarRemedio(sender: AnyObject) {
-//        let remedio = Remedio(nomeRemedio: textFieldNome.text, dataValidade: textFieldDataDeValidade.text, numeroQuantidade: 0, unidade: 0, preco: labelPreco.text, numeroDose: 0, fotoRemedio: "asd/asd", fotoReceita: "asd/asd", vencido: 0, idFarmacia: 0, idCategoria: 0, idLocal: 0, idIntervalo: 0)
+        
+        let nomeRemedio: String = self.textFieldNome.text
+        let dataValidade: NSDate?
+        let numeroQuantidade: Int = self.textFieldNumeroQuantidade.text.toInt()!
+        let unidade: Int = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
+        let preco: Double = NSNumberFormatter().numberFromString(self.textFieldPreco.text)!.doubleValue
+        let numeroDose: Int = self.textFieldNumeroDose.text.toInt()!
+        let fotoRemedio: String = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: nomeRemedio, eTipo: "Remedio.png")
+        let fotoReceita: String = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: nomeRemedio, eTipo: "Receita.png")
+        let vencido: Int = 0
+        let idFarmacia: Int = 0
+        let idCategoria = self.categoria?.idCategoria
+        let idLocal: Int = self.local.idLocal
+        let idIntervalo = self.intervalo?.idIntervalo
+        
 //        self.remedioDAO.inserir(remedio)
         //ir para a lista de remedios ou de alerta dependendo do parametro do switch
+    }
+    
+    func salvarFoto(foto: UIImage?, comNomeDoRemedio nomeRemedio: String, eTipo tipo: String) -> String {
+        if let f = foto {
+            let imagemEmDados = NSData(data:UIImagePNGRepresentation(foto))
+            let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            var documentos: String = caminhos[0] as! String
+            let caminhoCompleto = documentos.stringByAppendingPathComponent(nomeRemedio+tipo)
+            let resultado = imagemEmDados.writeToFile(caminhoCompleto, atomically: true)
+            println("\(resultado)")
+            return caminhoCompleto
+        }else{
+            return "sem foto"
+        }
     }
 
     // MARK: - Teclado com Date e Picker View's
@@ -548,6 +577,10 @@ SelecionaIntervaloDelegate {
                 println("Algo ocorreu na função prepareForSegue da classe RemedioTableViewController")
                 break
         }
+    }
+    
+    @IBAction func cancelarAdicaoDeRemedio(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Protocolos
