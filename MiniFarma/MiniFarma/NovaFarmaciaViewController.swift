@@ -15,6 +15,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     @IBOutlet weak var txtFieldNome: UITextField!
     @IBOutlet weak var viewMapa: MKMapView!
     @IBOutlet weak var botaoFavorito: UIButton!
+    @IBOutlet weak var botaoLocalizacao: UIButton!
     
     let pino = MKPinAnnotationView()
     let localizacaoGerenciador = CLLocationManager()
@@ -27,6 +28,9 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     var nome:String = ""
     var favorito:Int = 0
     
+    var farmaciaFavoritaId : Int = 0
+    var existeFavorita: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +38,20 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         
         self.txtFieldNome.delegate = self
         viewMapa.delegate=self
+        
+        
+        self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
+
+        
+        for Farmacia in farmacias{
+            
+            if Farmacia.favorita == 1{
+                existeFavorita++
+                farmaciaFavoritaId = Farmacia.idFarmacia
+            }
+            
+        }
+
         
         // Do any additional setup after loading the view.
     }
@@ -46,6 +64,9 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     
     
     @IBAction func atualizaLocalizacao(sender: AnyObject) {
+        botaoLocalizacao.highlighted = true
+        botaoLocalizacao.imageView?.image = UIImage(named: "estrelaFavorito")
+        
         localizacaoGerenciador.distanceFilter = kCLDistanceFilterNone
         localizacaoGerenciador.desiredAccuracy = kCLLocationAccuracyBest
         
@@ -97,45 +118,51 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     
     @IBAction func favoritoClicado(sender: AnyObject) {
         
-        self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
-        var farmaciaFavoritaId : Int = 0
+        switch self.favorito{
         
-        
-        if favorito == 0{
-            for Farmacia in farmacias{
-                if Farmacia.favorita == 1{
-                    
-                    farmaciaFavoritaId = Farmacia.idFarmacia
-                    
-                    var uiAlert = UIAlertController(title: "Aviso", message: "Já existe uma farmácia favorita. Deseja alterar para essa?", preferredStyle: UIAlertControllerStyle.Alert)
-                    self.presentViewController(uiAlert, animated: true, completion: nil)
-                    
-                    uiAlert.addAction(UIAlertAction(title: "Não", style: .Default, handler: { action in
-                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
-                        self.favorito=0
-                    }))
-                    
-                    
-                    uiAlert.addAction(UIAlertAction(title: "Sim", style: .Default, handler: { action in
-                        self.farmaciaDAO.atualizaFarmaciaFavorita(farmaciaFavoritaId, favorita: 0)
-                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
-                        self.favorito=1
-                    }))
-                    
-                    
-                    
-                    
-                    
-                }else{
-                    botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
-                    favorito=1
-                }
+        case 0:
+            
+            if self.existeFavorita > 0{
+                var uiAlert = UIAlertController(title: "Aviso", message: "Já existe uma farmácia favorita. Deseja alterar para essa?", preferredStyle: UIAlertControllerStyle.Alert)
+                self.presentViewController(uiAlert, animated: true, completion: nil)
+                
+                uiAlert.addAction(UIAlertAction(title: "Não", style: .Default, handler: { action in
+                    self.favorito=0
+                }))
+                
+                
+                uiAlert.addAction(UIAlertAction(title: "Sim", style: .Default, handler: { action in
+                    self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
+                    self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+                    self.existeFavorita=0
+                    self.favorito=1
+                }))
+                
             }
-        }else{
-            botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
-            favorito=0
-        }
+            if self.existeFavorita == 0{
+                self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+                self.favorito=1
+            }
+            
+            
+            
+            break
+
+            
+            
+            
+            
+            case 1:
+                botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
+                self.favorito=0
+            
+                break
+            
+  
+        default:
+            break
         
+        }
     }
     
    
