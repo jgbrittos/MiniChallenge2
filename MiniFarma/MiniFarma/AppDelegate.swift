@@ -15,10 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var caminhoBancoDeDados:NSString = ""
     var bancoDeDados:FMDatabase?
     let nomeBancoDeDados: String = "Minifarma.sqlite"
+    var remedioGlobal : Remedio?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
         let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!
         let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)

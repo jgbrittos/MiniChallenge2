@@ -20,17 +20,26 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate {
     var unidadeDuracao: Int = 0
     var idIntervalo: Int = 0
     var idRemedio: Int = 0
-
+    
+    var remedio: Remedio?
+    var intervalo: Intervalo?
+    
     let alertaDAO = AlertaDAO()
-
+    let intervaloDAO = IntervaloDAO()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
         
-        lblIntervalo.text = ""
-        lblRemedio.text = ""
-        unidadeDuracao = 0
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        self.remedio = appDelegate.remedioGlobal
         
+        if let r = self.remedio {
+            self.intervalo = self.intervaloDAO.buscarIntervaloPorId(String(r.idIntervalo))
+            self.lblIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
+            self.lblRemedio.text = r.nomeRemedio
+            self.unidadeDuracao = r.unidade
+        }
         
     }
 

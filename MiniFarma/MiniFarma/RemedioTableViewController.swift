@@ -96,6 +96,7 @@ SelecionaFarmaciaDelegate {
         self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
         self.locais = self.localDAO.buscarTodos() as! [Local]
 
+        self.switchAlerta.on = false
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -193,11 +194,15 @@ SelecionaFarmaciaDelegate {
         
         let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
         self.remedioDAO.inserir(remedio)
-        self.dismissViewControllerAnimated(true, completion: nil)
         
         if self.switchAlerta.on {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.remedioGlobal = remedio as Remedio
+            let storyboardAlerta = UIStoryboard(name: "Alerta", bundle: nil).instantiateInitialViewController() as! UINavigationController
+            self.presentViewController(storyboardAlerta, animated: true, completion: nil)
             //ir para a tela de alerta e passar o remedio
         }else{
+            self.dismissViewControllerAnimated(true, completion: nil)
             //voltar para tela de lista
         }
     }

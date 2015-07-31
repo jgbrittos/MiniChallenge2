@@ -79,4 +79,33 @@ class IntervaloDAO: DAO {
         return self.intervalos
         
     }
+    
+    func buscarIntervaloPorId(id: String) -> Intervalo {
+        self.bancoDeDados.open()
+        
+        var intervaloBuscado: Intervalo?
+        
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo WHERE id_intervalo = ? Order By id_intervalo", withArgumentsInArray: [id])
+        
+        var idIntervalo = String()
+        var numero = String()
+        var unidade = String()
+        
+        while(resultadoBusca.next()){
+            
+            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
+            numero = resultadoBusca.stringForColumn("numero")
+            unidade = resultadoBusca.stringForColumn("unidade")
+            
+            let intervalo = Intervalo(idIntervalo: idIntervalo.toInt()!, numero: numero.toInt()!, unidade: unidade)
+            
+            println("id: \(intervalo.idIntervalo) numero: \(intervalo.numero) --- INTERVALO: \(intervalo)")
+            
+            intervaloBuscado = intervalo
+        }
+        
+        self.bancoDeDados.close()
+        
+        return intervaloBuscado!
+    }
 }
