@@ -36,7 +36,8 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.internacionalizaSegmentedControl()
-        self.remediosValidos = self.remedioDAO.buscarTodos() as! [Remedio]
+        self.remediosValidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 0) as! [Remedio]
+        self.remediosVencidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 1) as! [Remedio]
         self.dadosASeremMostrados = self.remediosValidos
         self.tableViewRemedios.reloadData()
     }
