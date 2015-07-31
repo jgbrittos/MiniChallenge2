@@ -246,6 +246,15 @@ SelecionaIntervaloDelegate {
         self.textFieldLocal.text = self.locais[row].nome
     }
     
+    @IBAction func comecouAEscolherLocal(sender: AnyObject) {
+        if self.locais.count == 0 {
+            self.textFieldLocal.resignFirstResponder()
+            self.emiteAlertaParaCadastrarLocal()
+        }else{
+            self.textFieldLocal.text = self.locais[0].nome
+        }
+    }
+    
     // MARK: - Toque nas celulas
     @IBAction func tocouNaCelulaDeCategoria(sender: AnyObject) {
         self.performSegueWithIdentifier("SelecionaCategoria", sender: nil)
@@ -405,6 +414,10 @@ SelecionaIntervaloDelegate {
     
     // MARK: - PickerView de Local
     @IBAction func adicionarLocal(sender: AnyObject) {
+        self.emiteAlertaParaCadastrarLocal()
+    }
+    
+    func emiteAlertaParaCadastrarLocal() {
         var alerta:UIAlertController?
         
         alerta = UIAlertController(title: NSLocalizedString("TITULOALERTALOCAL", comment: "Titulo do alerta"),
