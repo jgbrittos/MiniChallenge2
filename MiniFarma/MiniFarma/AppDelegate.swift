@@ -41,8 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if existeAlgoNoBanco {
             //Tela Inicial
-            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+//            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+//            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+            storyboardInicial = UIStoryboard(name: "Farmacia", bundle: nil)
+            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
+
         }else{
             //Tutorial
             storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)

@@ -70,5 +70,15 @@ MENSAGEMALERTALOCAL = "Digite o novo local";
 CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL = "Campo de texto para adicionar local";
 CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT = "Digite o novo local";
 
+//MARK: - Farmacia - Alerta Farmacia Favorita Ja existe e nome vazio
 
-
+TITULOALERTA = "Aviso";
+MENSAGEMALERTA = "Já existe uma farmácia favorita. Deseja alterar para essa?";
+NAOALERTA = "Não";
+SIMALERTA= "Sim";
+FARMACIAALERTA_ACESSIBILIDADE_LABEL = "Alerta";
+FARMACIAALERTA_ACESSIBILIDADE_HINT = "Já existe uma farmácia favorita. Escolha a opção.";
+ERROFARMACIA = "Erro";
+MENSAGEMERROFARMACIA = "Digite o nome da farmácia";
+FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL = "Alerta";
+FARMACIANOMEALERTA_ACESSIBILIDADE_HINT = "Campo Nome da farmácia vazio. Digite um nome.";
