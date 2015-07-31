@@ -60,7 +60,7 @@ class AlertaDAO: DAO {
         
         self.alertas = [Alerta]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM ALerta Order By id_alerta", withArgumentsInArray: nil)
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta Order By id_alerta", withArgumentsInArray: nil)
     
         var idAlerta = String()
         var dataInicio = NSDate()
@@ -84,9 +84,6 @@ class AlertaDAO: DAO {
             
             let alerta = Alerta(idAlerta: idAlerta.toInt()!, dataInicio: dataInicio, numeroDuracao: numeroDuracao.toInt()!, unidadeDuracao: unidadeDuracao.toInt()!, ativo: ativo.toInt()!, idIntervalo: idIntervalo.toInt()!, idRemedio: idRemedio.toInt()!)
             
-
-            
-            
             println("id: \(alerta.idAlerta) ")
             
             self.alertas.append(alerta)
@@ -97,10 +94,45 @@ class AlertaDAO: DAO {
         return self.alertas
     }
     
-    
-    
-    
-    
+    func buscarTodos(ativos _ativos: Int) -> [AnyObject] {
+        
+        self.bancoDeDados.open()
+        
+        self.alertas = [Alerta]()
+        
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE ativo = ? Order By id_alerta", withArgumentsInArray: [String(_ativos)])
+        
+        var idAlerta = String()
+        var dataInicio = NSDate()
+        var numeroDuracao = String()
+        var unidadeDuracao = String()
+        var ativo = String()
+        var idIntervalo = String()
+        var idRemedio = String()
+        
+        
+        while(resultadoBusca.next()){
+            
+            idAlerta = resultadoBusca.stringForColumn("id_Alerta")
+            dataInicio = resultadoBusca.dateForColumn("data_inicio")
+            numeroDuracao = resultadoBusca.stringForColumn("numero_duracao")
+            unidadeDuracao = resultadoBusca.stringForColumn("unidade_duracao")
+            ativo = resultadoBusca.stringForColumn("ativo")
+            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
+            idRemedio = resultadoBusca.stringForColumn("id_remedio")
+            
+            
+            let alerta = Alerta(idAlerta: idAlerta.toInt()!, dataInicio: dataInicio, numeroDuracao: numeroDuracao.toInt()!, unidadeDuracao: unidadeDuracao.toInt()!, ativo: ativo.toInt()!, idIntervalo: idIntervalo.toInt()!, idRemedio: idRemedio.toInt()!)
+            
+            println("id: \(alerta.idAlerta) ")
+            
+            self.alertas.append(alerta)
+        }
+        
+        self.bancoDeDados.close()
+        
+        return self.alertas
+    }
     
 //    func atualizaAlerta(idAlerta: Int) -> Bool {
 //        
@@ -118,9 +150,5 @@ class AlertaDAO: DAO {
 //        
 //    }
 //    
-    
-    
-    
-    
     
 }

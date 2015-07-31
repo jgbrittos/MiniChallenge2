@@ -14,9 +14,13 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableViewAlerta: UITableView!
     @IBOutlet weak var segmentedControlAtividadeAlertas: UISegmentedControl!
     
-    let alertasAtivos = ["Novalgina", "Resfenol"]
-    let alertasInativos = ["Viagra","Tylenol","Dorflex"]
-    var alertasDaVez = Array<String>()
+    var alertasAtivos = [Alerta]()
+    var alertasInativos = [Alerta]()
+    var alertasDaVez = [Alerta]()
+    
+    let alertaDAO = AlertaDAO()
+    let remedioDAO = RemedioDAO()
+    let intervaloDAO = IntervaloDAO()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,10 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(animated: Bool) {
         self.internacionalizaSegmentedControl()
+        self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
+        self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
+        self.alertasDaVez = self.alertasAtivos
+        self.tableViewAlerta.reloadData()
     }
     
     //MARK:- Internacionalização
@@ -82,9 +90,20 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return celulaBranca
         }else{
             let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
-            celulaAlerta.labelNome.text = self.alertasDaVez[indexPath.row]
-            celulaAlerta.labelDataDeValidade.text = self.alertasDaVez[indexPath.row]
             
+            let formatadorData = NSDateFormatter()
+            formatadorData.dateFormat = "dd/MM/yyyy"
+            
+            let remedio = self.remedioDAO.buscarPor(id: self.alertasDaVez[indexPath.row].idRemedio)
+            
+            celulaAlerta.labelNome.text = remedio.nomeRemedio
+            celulaAlerta.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)
+
+            let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            var documentos: String = caminhos[0] as! String
+            let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
+            celulaAlerta.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
+
             return celulaAlerta
         }
     }

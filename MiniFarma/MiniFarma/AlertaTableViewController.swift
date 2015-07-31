@@ -17,14 +17,10 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     @IBOutlet weak var lblIntervalo: UILabel!
     @IBOutlet weak var lblRemedio: UILabel!
     
-    var unidadeDuracao: Int = 0
-    var idIntervalo: Int = 0
-    var idRemedio: Int = 0
-    
     let alertaDAO = AlertaDAO()
     var intervalo: Intervalo?
     var remedio: Remedio?
-    var intervalo: Intervalo?
+    var unidadeDuracao: Int?
     
     let intervaloDAO = IntervaloDAO()
     
@@ -32,7 +28,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
         
-        self.unidadeDuracao = 0
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.remedio = appDelegate.remedioGlobal
         
@@ -80,26 +75,23 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     
     @IBAction func salvaAlarme(sender: AnyObject) {
         
-        let alerta = Alerta(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: unidadeDuracao, ativo: 1, idIntervalo: idIntervalo, idRemedio: idRemedio)
+        let alerta = Alerta(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
         
-        
-        
+        self.alertaDAO.inserir(alerta)
+        self.dismissViewControllerAnimated(true, completion: nil)
         //falta metodo que leva pra outra view
     }
-    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true
     }
     
-    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent){
         txtDuracaoQuantidade.resignFirstResponder()
         self.view.endEditing(true)
     }
 
-    
     @IBAction func indexMudou(sender: AnyObject) {
         
         switch duracaoUnidadeSegmented.selectedSegmentIndex{
@@ -117,7 +109,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         }
         
     }
-    
     
     @IBAction func cancelarAlerta(sender: AnyObject) {
         
