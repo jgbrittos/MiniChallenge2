@@ -341,8 +341,8 @@
 			children = (
 				8F6610421B6BAD140099C69B /* Alerta.storyboard */,
 				8F6610441B6BB1510099C69B /* AlertaTableViewController.swift */,
-				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				8F6610401B6BAD050099C69B /* AlertaDAO.swift */,
+				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 			);
 			name = Alerta;
 			sourceTree = "<group>";
