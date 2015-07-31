@@ -13,6 +13,7 @@
 		451428721B690CCA0070396A /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428711B690CCA0070396A /* Local.swift */; };
 		451428741B690CDA0070396A /* LocalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428731B690CDA0070396A /* LocalDAO.swift */; };
 		451428761B6AA0090070396A /* VisualizarFotoReceitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */; };
+		4514287A1B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */; };
 		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
 		453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961241B5BE35D0097DEDB /* AppDelegate.swift */; };
 		4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453961281B5BE35D0097DEDB /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		451428711B690CCA0070396A /* Local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		451428731B690CDA0070396A /* LocalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDAO.swift; sourceTree = "<group>"; };
 		451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFotoReceitaViewController.swift; sourceTree = "<group>"; };
+		451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaRemediosAlertasTableViewCell.swift; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
 		4522B7E01B5EC0CA0053DD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +264,7 @@
 				4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */,
 				45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */,
 				45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */,
+				451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */,
 			);
 			name = "Lista Inicial";
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				457409B51B66991400CC71EF /* DAO.swift in Sources */,
 				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
 				451428671B67B21C0070396A /* Categoria.swift in Sources */,
+				4514287A1B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift in Sources */,
 				8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */,
 				45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */,
 				4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */,
