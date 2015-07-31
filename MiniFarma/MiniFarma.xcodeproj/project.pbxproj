@@ -47,6 +47,7 @@
 		8F633D471B694472000C07C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F633D461B694472000C07C1 /* MapKit.framework */; };
 		8F6610411B6BAD050099C69B /* AlertaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6610401B6BAD050099C69B /* AlertaDAO.swift */; };
 		8F6610431B6BAD140099C69B /* Alerta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F6610421B6BAD140099C69B /* Alerta.storyboard */; };
+		8F6610451B6BB1510099C69B /* AlertaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6610441B6BB1510099C69B /* AlertaTableViewController.swift */; };
 		8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FC9E8541B61297800E46761 /* Minifarma.sqlite */; };
 		8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,7 @@
 		8F633D461B694472000C07C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8F6610401B6BAD050099C69B /* AlertaDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertaDAO.swift; sourceTree = "<group>"; };
 		8F6610421B6BAD140099C69B /* Alerta.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alerta.storyboard; sourceTree = "<group>"; };
+		8F6610441B6BB1510099C69B /* AlertaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertaTableViewController.swift; sourceTree = "<group>"; };
 		8FC9E8541B61297800E46761 /* Minifarma.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minifarma.sqlite; sourceTree = "<group>"; };
 		8FC9E8561B6132CD00E46761 /* RemedioDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemedioDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				8F6610421B6BAD140099C69B /* Alerta.storyboard */,
+				8F6610441B6BB1510099C69B /* AlertaTableViewController.swift */,
 				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				8F6610401B6BAD050099C69B /* AlertaDAO.swift */,
 			);
@@ -483,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F6610451B6BB1510099C69B /* AlertaTableViewController.swift in Sources */,
 				8F477CC31B67BC520050D94F /* FarmaciaDAO.swift in Sources */,
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
 				451428721B690CCA0070396A /* Local.swift in Sources */,
