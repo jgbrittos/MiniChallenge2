@@ -42,6 +42,9 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.reloadData()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        
+    }
     //MARK:- Internacionalização
     func internacionalizaSegmentedControl(){
         self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO", comment: "Remédio válido"), forSegmentAtIndex: 0)

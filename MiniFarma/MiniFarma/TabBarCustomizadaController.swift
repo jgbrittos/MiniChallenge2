@@ -40,6 +40,7 @@ class TabBarCustomizadaController: UITabBarController {
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.internacionalizaTabBar()
         self.botaoMaisOpcoes.frame = CGRectMake(0.0, 0.0, 60, 60)
         self.botaoMaisOpcoes.addTarget(self, action: Selector("fazAnimacaoDeBotoesDeOpcoes:"), forControlEvents: UIControlEvents.TouchUpInside)

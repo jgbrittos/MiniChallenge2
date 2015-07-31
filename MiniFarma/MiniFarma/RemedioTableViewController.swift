@@ -194,7 +194,12 @@ SelecionaIntervaloDelegate {
         let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
         self.remedioDAO.inserir(remedio)
         self.dismissViewControllerAnimated(true, completion: nil)
-        //ir para a lista de remedios ou de alerta dependendo do parametro do switch
+        
+        if self.switchAlerta.on {
+            //ir para a tela de alerta e passar o remedio
+        }else{
+            //voltar para tela de lista
+        }
     }
     
     func salvarFoto(foto: UIImage?, comNomeDoRemedio nomeRemedio: String, eTipo tipo: String) -> String {
