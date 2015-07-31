@@ -221,12 +221,6 @@
                                                     <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-W6-hD2">
-                                                    <rect key="frame" x="8" y="45" width="554" height="30"/>
-                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwP-JJ-n8x">
                                                     <rect key="frame" x="570" y="49" width="22" height="22"/>
                                                     <constraints>
@@ -241,6 +235,15 @@
                                                         <action selector="adicionarLocal:" destination="UJ8-Gv-h8V" eventType="touchUpInside" id="fx8-Dn-0X1"/>
                                                     </connections>
                                                 </button>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Aow-W6-hD2">
+                                                    <rect key="frame" x="8" y="45" width="554" height="30"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="comecouAEscolherLocal:" destination="UJ8-Gv-h8V" eventType="editingDidBegin" id="oUu-HZ-22C"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="YwP-JJ-n8x" firstAttribute="top" secondItem="xXg-6P-wwT" secondAttribute="topMargin" constant="41" id="C0R-zs-zpv"/>
