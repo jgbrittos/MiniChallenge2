@@ -40,7 +40,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="E1G-dF-FnT">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="E1G-dF-FnT">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="460044263.09074003">
                                                         <!--2015-07-31 14:04:23 +0000-->
@@ -82,7 +82,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-0S-nAL">
                                                     <rect key="frame" x="8" y="8" width="285" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Osc-YQ-1KP">
                                                     <rect key="frame" x="301" y="8" width="291" height="29"/>
@@ -91,6 +91,10 @@
                                                         <segment title="sem"/>
                                                         <segment title="mês"/>
                                                     </segments>
+                                                    <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="indexMudou:" destination="mev-3R-KCw" eventType="valueChanged" id="HlO-Ys-BwL"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -112,6 +116,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intervalo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5i-th-jfe">
                                                     <rect key="frame" x="8" y="11" width="66" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-fN-LnG">
+                                                    <rect key="frame" x="88" y="11" width="504" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -119,6 +129,10 @@
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="r5i-th-jfe" secondAttribute="centerY" constant="0.5" id="BWz-4Y-YAh"/>
                                                 <constraint firstItem="r5i-th-jfe" firstAttribute="leading" secondItem="OAe-k1-Eqd" secondAttribute="leadingMargin" id="JYN-Vi-s7S"/>
+                                                <constraint firstItem="wGu-fN-LnG" firstAttribute="leading" secondItem="r5i-th-jfe" secondAttribute="trailing" constant="14" id="Jbk-El-Z3b"/>
+                                                <constraint firstAttribute="centerX" secondItem="wGu-fN-LnG" secondAttribute="centerX" constant="-40" id="Yoq-Gp-qvu"/>
+                                                <constraint firstAttribute="centerY" secondItem="wGu-fN-LnG" secondAttribute="centerY" constant="0.5" id="ZIm-Gb-JX6"/>
+                                                <constraint firstItem="wGu-fN-LnG" firstAttribute="trailing" secondItem="OAe-k1-Eqd" secondAttribute="trailingMargin" id="eBr-fL-AM6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -131,6 +145,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remédio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1r-vX-lcO">
                                                     <rect key="frame" x="8" y="11" width="69" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6u-hV-ggJ">
+                                                    <rect key="frame" x="85" y="11" width="507" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -138,6 +158,10 @@
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="B1r-vX-lcO" secondAttribute="centerY" constant="0.5" id="BGC-ci-uTd"/>
                                                 <constraint firstItem="B1r-vX-lcO" firstAttribute="leading" secondItem="jY0-kZ-Gyu" secondAttribute="leadingMargin" id="BIj-p3-hKB"/>
+                                                <constraint firstAttribute="centerX" secondItem="n6u-hV-ggJ" secondAttribute="centerX" constant="-38.5" id="CBi-sk-J4B"/>
+                                                <constraint firstItem="n6u-hV-ggJ" firstAttribute="trailing" secondItem="jY0-kZ-Gyu" secondAttribute="trailingMargin" id="GaR-CC-DqY"/>
+                                                <constraint firstItem="n6u-hV-ggJ" firstAttribute="leading" secondItem="B1r-vX-lcO" secondAttribute="trailing" constant="8" id="rWC-Xi-9E5"/>
+                                                <constraint firstAttribute="centerY" secondItem="n6u-hV-ggJ" secondAttribute="centerY" constant="0.5" id="tTh-Lb-4eq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -149,9 +173,19 @@
                             <outlet property="delegate" destination="mev-3R-KCw" id="tA9-Sf-CMP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Alarme" id="jrw-Vn-Slb"/>
+                    <navigationItem key="navigationItem" title="Alarme" id="jrw-Vn-Slb">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="z0Y-qJ-BzO">
+                            <connections>
+                                <action selector="salvaAlarme:" destination="mev-3R-KCw" id="dS8-UF-IUE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="imagemDataInicio" destination="CtA-7u-gzt" id="URw-cY-MqS"/>
+                        <outlet property="dataInicioPicker" destination="E1G-dF-FnT" id="lOM-JR-hH0"/>
+                        <outlet property="duracaoUnidadeSegmented" destination="Osc-YQ-1KP" id="5dV-Oo-rHT"/>
+                        <outlet property="lblIntervalo" destination="wGu-fN-LnG" id="9Q9-4Z-Qh7"/>
+                        <outlet property="lblRemedio" destination="n6u-hV-ggJ" id="UnD-Xo-brp"/>
+                        <outlet property="txtDuracaoQuantidade" destination="oc7-0S-nAL" id="AUu-ZB-Tdv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvs-XR-FWB" userLabel="First Responder" sceneMemberID="firstResponder"/>

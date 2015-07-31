@@ -8,14 +8,29 @@
 
 import UIKit
 
-class AlertaTableViewController: UITableViewController {
+class AlertaTableViewController: UITableViewController,UITextFieldDelegate {
 
-    @IBOutlet weak var imagemDataInicio: UIImageView!
+   
+    @IBOutlet weak var dataInicioPicker: UIDatePicker!
+    @IBOutlet weak var txtDuracaoQuantidade: UITextField!
+    @IBOutlet weak var duracaoUnidadeSegmented: UISegmentedControl!
+    @IBOutlet weak var lblIntervalo: UILabel!
+    @IBOutlet weak var lblRemedio: UILabel!
     
+    var unidadeDuracao: Int = 0
+    var idIntervalo: Int = 0
+    var idRemedio: Int = 0
+
+    let alertaDAO = AlertaDAO()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.clipsToBounds = true
+        self.txtDuracaoQuantidade.delegate = self
+        
+        lblIntervalo.text = ""
+        lblRemedio.text = ""
+        unidadeDuracao = 0
+        
         
     }
 
@@ -38,6 +53,51 @@ class AlertaTableViewController: UITableViewController {
         return 6
     }
 
+    
+    @IBAction func salvaAlarme(sender: AnyObject) {
+        
+        let alerta = Alerta(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: unidadeDuracao, ativo: 1, idIntervalo: idIntervalo, idRemedio: idRemedio)
+        
+        
+        
+        //falta metodo que leva pra outra view
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent){
+        txtDuracaoQuantidade.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+
+    
+    @IBAction func indexMudou(sender: AnyObject) {
+        
+        switch duracaoUnidadeSegmented.selectedSegmentIndex{
+            case 0:
+                unidadeDuracao = 0
+                break
+            case 1:
+                unidadeDuracao = 1
+                break
+            case 2:
+                unidadeDuracao = 3
+                break
+            default:
+                break
+        }
+        
+    }
+    
+    
+    
+    
+    
     
 //    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        //if((tableView.dequeueReusableCellWithIdentifier("Data")) != nil){
