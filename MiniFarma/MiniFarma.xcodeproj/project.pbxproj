@@ -43,7 +43,6 @@
 		8F3768671B6A68A50046F849 /* FarmaciaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */; };
 		8F477CC31B67BC520050D94F /* FarmaciaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */; };
 		8F477CC51B67BC630050D94F /* Farmacia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC41B67BC630050D94F /* Farmacia.swift */; };
-		8F477CC71B67BC750050D94F /* Farmacia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F477CC61B67BC750050D94F /* Farmacia.storyboard */; };
 		8F477CC91B67BED00050D94F /* FarmaciaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC81B67BED00050D94F /* FarmaciaTableViewController.swift */; };
 		8F633D471B694472000C07C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F633D461B694472000C07C1 /* MapKit.framework */; };
 		8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FC9E8541B61297800E46761 /* Minifarma.sqlite */; };
@@ -113,7 +112,6 @@
 		8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmaciaTableViewCell.swift; sourceTree = "<group>"; };
 		8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FarmaciaDAO.swift; path = ../FarmaciaDAO.swift; sourceTree = "<group>"; };
 		8F477CC41B67BC630050D94F /* Farmacia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farmacia.swift; sourceTree = "<group>"; };
-		8F477CC61B67BC750050D94F /* Farmacia.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Farmacia.storyboard; path = ../Farmacia.storyboard; sourceTree = "<group>"; };
 		8F477CC81B67BED00050D94F /* FarmaciaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmaciaTableViewController.swift; sourceTree = "<group>"; };
 		8F633D461B694472000C07C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8FC9E8541B61297800E46761 /* Minifarma.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minifarma.sqlite; sourceTree = "<group>"; };
@@ -362,12 +360,11 @@
 		8F477CC11B67BC200050D94F /* Farmacia */ = {
 			isa = PBXGroup;
 			children = (
-				8F477CC61B67BC750050D94F /* Farmacia.storyboard */,
-				8F477CC41B67BC630050D94F /* Farmacia.swift */,
 				8F477CC81B67BED00050D94F /* FarmaciaTableViewController.swift */,
-				8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */,
-				8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */,
 				8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */,
+				8F477CC21B67BC520050D94F /* FarmaciaDAO.swift */,
+				8F477CC41B67BC630050D94F /* Farmacia.swift */,
+				8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */,
 			);
 			name = Farmacia;
 			sourceTree = "<group>";
@@ -455,7 +452,6 @@
 			files = (
 				45D4084F1B66C3C000FB0EF0 /* Remedio.storyboard in Resources */,
 				8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */,
-				8F477CC71B67BC750050D94F /* Farmacia.storyboard in Resources */,
 				4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */,
 				45E8CD8D1B60163400190FA1 /* Inicial.storyboard in Resources */,
 				453961501B5BE5370097DEDB /* Localizable.strings in Resources */,

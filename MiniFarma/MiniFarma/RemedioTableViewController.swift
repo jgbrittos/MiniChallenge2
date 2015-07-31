@@ -274,6 +274,10 @@ SelecionaIntervaloDelegate {
         self.performSegueWithIdentifier("SelecionaIntervalo", sender: nil)
     }
     
+    @IBAction func tocouNaCelulaDeFarmacia(sender: AnyObject) {
+        self.performSegueWithIdentifier("SelecionaFarmacia", sender: nil)
+    }
+    
     @IBAction func tocouNaCelulaDeLocal(sender: AnyObject) {
         if self.celulaLocalOculta {
             self.labelLocal.text = ""
@@ -605,6 +609,8 @@ SelecionaIntervaloDelegate {
                 selecionaIntervalo.delegate = self
                 break
             case "SelecionaFarmacia":
+                var selecionaFarmacia = segue.destinationViewController as! FarmaciaTableViewController
+//                selecionaIntervalo.delegate = self
                 break
             case "VisualizarFotoReceita":
                 let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController

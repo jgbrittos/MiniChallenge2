@@ -606,6 +606,7 @@
                         <outlet property="textFieldNumeroQuantidade" destination="nHK-Vo-l0G" id="zys-5t-nvX"/>
                         <outlet property="textFieldPreco" destination="s4a-Zj-LEU" id="k52-9F-iRg"/>
                         <segue destination="Thq-Hb-oxS" kind="show" identifier="VisualizarFotoReceita" id="Pcf-y5-mk2"/>
+                        <segue destination="0pX-7n-PmH" kind="show" identifier="SelecionaFarmacia" id="54l-js-czW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkD-WG-r64" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -619,7 +620,11 @@
                         <action selector="tocouNaCelulaDeIntervalo:" destination="UJ8-Gv-h8V" id="FQB-UA-uca"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="pDg-jd-gV6"/>
+                <tapGestureRecognizer id="pDg-jd-gV6">
+                    <connections>
+                        <action selector="tocouNaCelulaDeFarmacia:" destination="UJ8-Gv-h8V" id="zQz-r9-nxz"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="LQg-fE-GIf">
                     <connections>
                         <action selector="tocouNaCelulaDeLocal:" destination="UJ8-Gv-h8V" id="k9v-Q6-AzI"/>
@@ -665,6 +670,186 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsq-75-H71" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="968" y="674"/>
+        </scene>
+        <!--Farmácia-->
+        <scene sceneID="Ldo-85-TAf">
+            <objects>
+                <tableViewController id="0pX-7n-PmH" customClass="FarmaciaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ddo-Y0-95j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Celula" id="ZKj-9E-hbm" customClass="FarmaciaTableViewCell" customModule="MiniFarma" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZKj-9E-hbm" id="H4t-ei-Hik">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k82-yH-Amq">
+                                            <rect key="frame" x="8" y="11" width="546" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="estrelaFavoritoNegativo" translatesAutoresizingMaskIntoConstraints="NO" id="55e-zy-O0e">
+                                            <rect key="frame" x="562" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="cAK-D0-MAJ"/>
+                                                <constraint firstAttribute="height" constant="30" id="iWn-88-fdH"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="55e-zy-O0e" firstAttribute="leading" secondItem="k82-yH-Amq" secondAttribute="trailing" constant="8" id="0Jh-D0-XFg"/>
+                                        <constraint firstAttribute="centerY" secondItem="k82-yH-Amq" secondAttribute="centerY" constant="0.5" id="BSA-Fb-Sga"/>
+                                        <constraint firstItem="55e-zy-O0e" firstAttribute="trailing" secondItem="H4t-ei-Hik" secondAttribute="trailingMargin" id="LIn-M2-B2x"/>
+                                        <constraint firstItem="k82-yH-Amq" firstAttribute="leading" secondItem="H4t-ei-Hik" secondAttribute="leadingMargin" id="nO4-pL-TkS"/>
+                                        <constraint firstAttribute="centerY" secondItem="55e-zy-O0e" secondAttribute="centerY" id="x9N-Bx-ekv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imagemFavorito" destination="55e-zy-O0e" id="evh-zO-46a"/>
+                                    <outlet property="nomeCustomizado" destination="k82-yH-Amq" id="rKH-Z2-da8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0pX-7n-PmH" id="nG2-2D-ol7"/>
+                            <outlet property="delegate" destination="0pX-7n-PmH" id="x3m-2I-27O"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Farmácia" id="ntA-N0-6i5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Mcx-DT-ftD">
+                            <connections>
+                                <segue destination="Lzz-e7-cUc" kind="show" id="ehA-az-ege"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wsu-vV-PFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="1392"/>
+        </scene>
+        <!--Nova Farmácia-->
+        <scene sceneID="JBC-SQ-0sI">
+            <objects>
+                <viewController id="Lzz-e7-cUc" customClass="NovaFarmaciaViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VJG-Sx-K5q"/>
+                        <viewControllerLayoutGuide type="bottom" id="HPY-vd-pQ7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kpb-Dp-tgU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-BN-PkF">
+                                <rect key="frame" x="16" y="72" width="568" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="cqQ-BL-xOY"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcar como favorita" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLN-eN-PSk">
+                                <rect key="frame" x="16" y="129" width="195" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WgS-v9-Q35"/>
+                                    <constraint firstAttribute="width" constant="195" id="pcg-7V-faL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="Kbh-8S-wBv">
+                                <rect key="frame" x="0.0" y="167" width="600" height="396"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfd-yF-ndM">
+                                <rect key="frame" x="544" y="120" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="9IM-oh-5KU"/>
+                                    <constraint firstAttribute="height" constant="40" id="SSp-Ch-bPJ"/>
+                                </constraints>
+                                <state key="normal" image="estrelaFavoritoNegativo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="favoritoClicado:" destination="Lzz-e7-cUc" eventType="touchUpInside" id="b2d-Re-sVJ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IM0-g9-KfR">
+                                <rect key="frame" x="0.0" y="554" width="600" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuQ-jc-QpW">
+                                        <rect key="frame" x="8" y="4" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="fPB-Kp-W1a"/>
+                                            <constraint firstAttribute="height" constant="35" id="lQ3-jw-07f"/>
+                                        </constraints>
+                                        <state key="normal" image="localizacao">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="localizacaoNegativo"/>
+                                        <connections>
+                                            <action selector="atualizaLocalizacao:" destination="Lzz-e7-cUc" eventType="touchUpInside" id="0aK-PT-8LV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="XuQ-jc-QpW" firstAttribute="leading" secondItem="IM0-g9-KfR" secondAttribute="leading" constant="8" id="2NO-gg-4OE"/>
+                                    <constraint firstAttribute="centerY" secondItem="XuQ-jc-QpW" secondAttribute="centerY" constant="1.5" id="bNz-97-1lS"/>
+                                    <constraint firstAttribute="height" constant="46" id="rBo-pp-Zl8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yfd-yF-ndM" firstAttribute="trailing" secondItem="kpb-Dp-tgU" secondAttribute="trailingMargin" id="CoO-aF-Ipm"/>
+                            <constraint firstItem="xCz-BN-PkF" firstAttribute="leading" secondItem="kpb-Dp-tgU" secondAttribute="leadingMargin" id="DpA-oE-Na3"/>
+                            <constraint firstItem="Kbh-8S-wBv" firstAttribute="top" secondItem="Yfd-yF-ndM" secondAttribute="bottom" constant="7" id="MIk-iR-a4s"/>
+                            <constraint firstItem="Kbh-8S-wBv" firstAttribute="top" secondItem="gLN-eN-PSk" secondAttribute="bottom" constant="17" id="QGa-qn-rLy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IM0-g9-KfR" secondAttribute="trailing" constant="-16" id="Rxh-PU-bkW"/>
+                            <constraint firstItem="Kbh-8S-wBv" firstAttribute="top" secondItem="VJG-Sx-K5q" secondAttribute="bottom" constant="103" id="S4Y-Fw-4GT"/>
+                            <constraint firstItem="Yfd-yF-ndM" firstAttribute="top" secondItem="VJG-Sx-K5q" secondAttribute="bottom" constant="56" id="Yeb-Kb-oV4"/>
+                            <constraint firstAttribute="trailing" secondItem="Kbh-8S-wBv" secondAttribute="trailing" id="YgM-Vr-vZh"/>
+                            <constraint firstItem="HPY-vd-pQ7" firstAttribute="top" secondItem="IM0-g9-KfR" secondAttribute="bottom" id="htS-XK-U7R"/>
+                            <constraint firstItem="IM0-g9-KfR" firstAttribute="top" secondItem="Kbh-8S-wBv" secondAttribute="bottom" constant="-9" id="inb-6W-yGk"/>
+                            <constraint firstItem="Kbh-8S-wBv" firstAttribute="top" secondItem="Yfd-yF-ndM" secondAttribute="bottom" constant="7" id="qF1-hF-7oj"/>
+                            <constraint firstAttribute="centerY" secondItem="gLN-eN-PSk" secondAttribute="centerY" constant="160.5" id="qU8-nB-CnH"/>
+                            <constraint firstItem="xCz-BN-PkF" firstAttribute="trailing" secondItem="kpb-Dp-tgU" secondAttribute="trailingMargin" id="qYu-vs-InY"/>
+                            <constraint firstItem="gLN-eN-PSk" firstAttribute="leading" secondItem="kpb-Dp-tgU" secondAttribute="leadingMargin" id="svN-9A-gjf"/>
+                            <constraint firstItem="Kbh-8S-wBv" firstAttribute="leading" secondItem="kpb-Dp-tgU" secondAttribute="leading" id="tFW-rA-sfn"/>
+                            <constraint firstItem="IM0-g9-KfR" firstAttribute="leading" secondItem="kpb-Dp-tgU" secondAttribute="leadingMargin" constant="-16" id="tdj-Es-hFr"/>
+                            <constraint firstItem="Yfd-yF-ndM" firstAttribute="leading" secondItem="gLN-eN-PSk" secondAttribute="trailing" constant="333" id="vlH-jI-Q2d"/>
+                            <constraint firstItem="xCz-BN-PkF" firstAttribute="top" secondItem="VJG-Sx-K5q" secondAttribute="bottom" constant="8" id="vxI-BB-oq2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="S4Y-Fw-4GT"/>
+                                <exclude reference="qF1-hF-7oj"/>
+                                <exclude reference="Yeb-Kb-oV4"/>
+                                <exclude reference="vlH-jI-Q2d"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nova Farmácia" id="uBt-WB-hd4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Rhi-Md-eGg">
+                            <connections>
+                                <action selector="salvaFarmacia:" destination="Lzz-e7-cUc" id="xq4-xY-cU6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="botaoFavorito" destination="Yfd-yF-ndM" id="qy6-fk-3Ce"/>
+                        <outlet property="botaoLocalizacao" destination="XuQ-jc-QpW" id="BeH-6Z-SVs"/>
+                        <outlet property="txtFieldNome" destination="xCz-BN-PkF" id="s46-Mb-gpk"/>
+                        <outlet property="viewMapa" destination="Kbh-8S-wBv" id="6hx-zl-IKg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LsL-9G-5zk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="2110"/>
         </scene>
         <!--Categoria-->
         <scene sceneID="l78-yJ-g03">
@@ -827,4 +1012,9 @@
             <point key="canvasLocation" x="2459" y="1392"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="estrelaFavoritoNegativo" width="30" height="29"/>
+        <image name="localizacao" width="52" height="52"/>
+        <image name="localizacaoNegativo" width="36" height="35"/>
+    </resources>
 </document>

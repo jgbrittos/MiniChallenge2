@@ -39,27 +39,20 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         self.txtFieldNome.delegate = self
         viewMapa.delegate=self
         
-        
         self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
 
-        
         for Farmacia in farmacias{
             
             if Farmacia.favorita == 1{
                 existeFavorita++
                 farmaciaFavoritaId = Farmacia.idFarmacia
             }
-            
         }
-
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
     
     @IBAction func atualizaLocalizacao(sender: AnyObject) {
         botaoLocalizacao.highlighted = true
@@ -90,15 +83,11 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
-        pino.animatesDrop=true
+        pino.animatesDrop = true
         pino.draggable = true
         
         return pino
     }
-    
-    
-    
-    
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
         println(NSString(format:"teste"))
@@ -110,10 +99,6 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         
     }
 
-    
-    
-    
-    
     @IBAction func favoritoClicado(sender: AnyObject) {
         
         switch self.favorito{
@@ -128,7 +113,6 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
                     self.favorito=0
                 }))
                 
-                
                 alertaFavorita.addAction(UIAlertAction(title: NSLocalizedString("SIMALERTA", comment: "Opção do alerta"), style: .Default, handler: { action in
                     self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
                     self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
@@ -140,33 +124,22 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
                 alertaFavorita.accessibilityHint = NSLocalizedString("FARMACIAALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
                 
             }
+            
             if self.existeFavorita == 0{
                 self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
                 self.favorito=1
             }
-            
-            
-            
-            break
 
-            
-            
-            
-            
+                break
             case 1:
                 botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
                 self.favorito=0
             
                 break
-            
-  
         default:
             break
-        
         }
     }
-    
-   
 
     @IBAction func salvaFarmacia(sender: AnyObject) {
         
@@ -186,30 +159,15 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             alertaNome.accessibilityHint = NSLocalizedString("FARMACIANOMEALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
 
         }
-        
-        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
         self.view.endEditing(true)
         return true
     }
-
-
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         txtFieldNome.resignFirstResponder()
         self.view.endEditing(true)
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
