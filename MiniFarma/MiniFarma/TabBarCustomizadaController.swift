@@ -80,6 +80,8 @@ class TabBarCustomizadaController: UITabBarController {
         self.botaoAdicionaAlerta.frame = tamanhoPadraoBotao
         self.botaoAdicionaAlerta.center = self.centroInicialPadrao
         self.botaoAdicionaAlerta.setBackgroundImage(UIImage(named: "botaoAdicionarAlerta"), forState:UIControlState.Normal)
+        self.botaoAdicionaAlerta.addTarget(self, action: Selector("chamaStoryboardAlerta:"), forControlEvents: UIControlEvents.TouchUpInside)
+
 //        self.botaoAdicionaAlerta.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
     }
     
@@ -145,4 +147,13 @@ class TabBarCustomizadaController: UITabBarController {
         let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil).instantiateInitialViewController() as! UINavigationController
         self.presentViewController(storyboardRemedio, animated:true, completion:nil)
     }
+    
+    
+    
+    func chamaStoryboardAlerta(sender: UIButton){
+        self.fazBotoesDesaparecerem(animadamente: false)
+        let storyboardAlerta = UIStoryboard(name: "Alerta", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        self.presentViewController(storyboardAlerta, animated:true, completion:nil)
+    }
+    
 }

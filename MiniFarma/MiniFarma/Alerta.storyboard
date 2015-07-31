@@ -135,6 +135,9 @@
                                                 <constraint firstItem="wGu-fN-LnG" firstAttribute="trailing" secondItem="OAe-k1-Eqd" secondAttribute="trailingMargin" id="eBr-fL-AM6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="KeZ-ze-y14" kind="show" id="uX1-t8-1nl"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="g2n-Bj-OQY">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -164,6 +167,9 @@
                                                 <constraint firstAttribute="centerY" secondItem="n6u-hV-ggJ" secondAttribute="centerY" constant="0.5" id="tTh-Lb-4eq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="24X-57-vR0" kind="show" id="CHn-Vk-SGh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -174,6 +180,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Alarme" id="jrw-Vn-Slb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2ZZ-LE-ipa">
+                            <connections>
+                                <action selector="cancelarAlerta:" destination="mev-3R-KCw" id="ynn-Dy-SKa"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="z0Y-qJ-BzO">
                             <connections>
                                 <action selector="salvaAlarme:" destination="mev-3R-KCw" id="dS8-UF-IUE"/>
@@ -191,6 +202,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvs-XR-FWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1206" y="474"/>
+        </scene>
+        <!--Intervalo-->
+        <scene sceneID="pO6-42-0AU">
+            <objects>
+                <tableViewController id="KeZ-ze-y14" customClass="IntervaloTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wKa-qR-sWm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celula" id="Ncl-9k-lF1">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ncl-9k-lF1" id="EFQ-7w-Yp4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KeZ-ze-y14" id="LC7-a5-KwH"/>
+                            <outlet property="delegate" destination="KeZ-ze-y14" id="tJ9-BZ-8u5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Intervalo" id="cTL-qX-rZo"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93x-yi-FYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2034" y="-81"/>
+        </scene>
+        <!--Remédio-->
+        <scene sceneID="XsS-gU-jAM">
+            <objects>
+                <tableViewController id="24X-57-vR0" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fLs-N6-A9w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="K4N-cx-pvC">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K4N-cx-pvC" id="pKM-13-1i1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="24X-57-vR0" id="y2g-7A-atM"/>
+                            <outlet property="delegate" destination="24X-57-vR0" id="vIK-4k-ztx"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Remédio" id="YaZ-TW-dkH"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMF-Lc-fS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2034" y="793"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="avc-9l-CJY">
