@@ -34,9 +34,11 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.internacionalizaSegmentedControl()
         self.remediosValidos = self.remedioDAO.buscarTodos() as! [Remedio]
         self.dadosASeremMostrados = self.remediosValidos
+        self.tableViewRemedios.reloadData()
     }
     
     //MARK:- Internacionalização
@@ -114,7 +116,25 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             //Ação para quando o usuário tomou um remédio
         })
         var apagarRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            //Ação para quando o usuário quer apagar um remédio
+            switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
+                case 0:
+                    let remedio = self.remediosValidos[indexPath.row] as Remedio
+                    self.remedioDAO.deletar(remedio)
+                    self.remediosValidos.removeAtIndex(indexPath.row)
+                    self.dadosASeremMostrados = self.remediosValidos
+                    break
+                case 1:
+                    let remedio = self.remediosVencidos[indexPath.row] as Remedio
+                    self.remedioDAO.deletar(remedio)
+                    self.remediosVencidos.removeAtIndex(indexPath.row)
+                    self.dadosASeremMostrados = self.remediosVencidos
+                    break
+                default:
+                    println("Algo ocorreu no método editActionsForRowAtIndexPath na classe RemediosViewController!")
+                    break
+            }
+            
+            self.tableViewRemedios.reloadData()
         })
 
         tomeiRemedio.backgroundColor = UIColor(red: 0/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1)

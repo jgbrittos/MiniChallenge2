@@ -185,6 +185,7 @@ SelecionaIntervaloDelegate {
         
         let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, vencido: vencido, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
         self.remedioDAO.inserir(remedio)
+        self.dismissViewControllerAnimated(true, completion: nil)
         //ir para a lista de remedios ou de alerta dependendo do parametro do switch
     }
     
