@@ -42,6 +42,9 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.reloadData()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        
+    }
     //MARK:- Internacionalização
     func internacionalizaSegmentedControl(){
         self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO", comment: "Remédio válido"), forSegmentAtIndex: 0)
@@ -88,22 +91,20 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             celulaBranca.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
             return celulaBranca
         }else{
-            let celulaRemedio = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaRemedio", forIndexPath:indexPath) as! UITableViewCell
+            let celulaRemedio = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaRemedio", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
             let remedio = self.dadosASeremMostrados[indexPath.row]
             
             let formatadorData = NSDateFormatter()
             formatadorData.dateFormat = "dd/MM/yyyy"
             
-            celulaRemedio.textLabel?.text = remedio.nomeRemedio
-            celulaRemedio.detailTextLabel?.text = formatadorData.stringFromDate(remedio.dataValidade)
+            celulaRemedio.labelNome.text = remedio.nomeRemedio
+            celulaRemedio.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)
             
             let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
             var documentos: String = caminhos[0] as! String
             let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
-            celulaRemedio.imageView?.image = UIImage(contentsOfFile: caminhoCompleto)
+            celulaRemedio.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
             
-            //Adicionando a setinha no fim da célula
-            celulaRemedio.accessoryType = .DisclosureIndicator
             return celulaRemedio
         }
     }
@@ -145,6 +146,6 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 88
+        return 130
     }
 }

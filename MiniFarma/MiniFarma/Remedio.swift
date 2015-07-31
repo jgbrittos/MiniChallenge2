@@ -12,65 +12,140 @@ class Remedio: NSObject {
     
     var idRemedio:Int = 0
     var nomeRemedio:String = ""
-    var dataValidade: NSDate
-    var numeroQuantidade:Int = 0
-    var unidade: Int = 0
-    var preco: Double = 0
-    var numeroDose: Int = 0
+    var dataValidade = NSDate()
+    var numeroQuantidade:Int = -1
+    var unidade: Int = -1
+    var preco: Double = -1
+    var numeroDose: Int = -1
     var fotoRemedio: String = ""
     var fotoReceita: String = ""
-    var vencido: Int = 0
-    var idFarmacia: Int = 0
-    var idCategoria: Int = 0
-    var idLocal: Int = 0
-    var idIntervalo: Int = 0
+    var vencido: Int = -1
+    var idFarmacia: Int = -1
+    var idCategoria: Int = -1
+    var idLocal: Int = -1
+    var idIntervalo: Int = -1
     
-    override init() {
-        self.dataValidade = NSDate()
-    
-    }
+    override init() {}
     
     //Remedio do banco
-    init(idRemedio:Int, nomeRemedio:String, dataValidade:NSDate, numeroQuantidade: Int,
-        unidade:Int, preco:Double, numeroDose:Int, fotoRemedio:String,
-        fotoReceita:String,vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
+    init(idRemedio:Int?, nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?,
+        unidade:Int?, preco:Double?, numeroDose:Int?, fotoRemedio:String?,
+        fotoReceita:String?,vencido:Int?,idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?){
+        if let idr = idRemedio{
+            self.idRemedio = idr
+        }
         
-        self.idRemedio = idRemedio
-        self.nomeRemedio = nomeRemedio
-        self.dataValidade = dataValidade
-        self.numeroQuantidade = numeroQuantidade
-        self.unidade = unidade
-        self.preco = preco
-        self.numeroDose = numeroDose
-        self.fotoRemedio = fotoRemedio
-        self.fotoReceita = fotoReceita
-        self.vencido = vencido
-        self.idFarmacia = idFarmacia
-        self.idCategoria = idCategoria
-        self.idLocal = idLocal
-        self.idIntervalo = idIntervalo
+        if let n = nomeRemedio {
+            self.nomeRemedio = n
+        }
         
+        if let d = dataValidade {
+            self.dataValidade = d
+        }
+        
+        if let nq = numeroQuantidade {
+            self.numeroQuantidade = nq
+        }
+        
+        if let u = unidade {
+            self.unidade = u
+        }
+        
+        if let p = preco {
+            self.preco = p
+        }
+        
+        if let nd = numeroDose {
+            self.numeroDose = nd
+        }
+        
+        if let frem = fotoRemedio {
+            self.fotoRemedio = frem
+        }
+        
+        if let frec = fotoReceita {
+            self.fotoReceita = frec
+        }
+        
+        if let v = vencido {
+            self.vencido = v
+        }
+        
+        if let idf = idFarmacia {
+            self.idFarmacia = idf
+        }
+        
+        if let idc = idCategoria {
+            self.idCategoria = idc
+        }
+        
+        if let idl = idLocal {
+            self.idLocal = idl
+        }
+        
+        if let idi = idIntervalo {
+            self.idIntervalo = idi
+        }
     }
     
     //Remedio criado
-    init(nomeRemedio:String, dataValidade:NSDate, numeroQuantidade: Int, unidade:Int,
-        preco:Double, numeroDose:Int,fotoRemedio:String,fotoReceita:String,
-        vencido:Int,idFarmacia:Int, idCategoria:Int, idLocal:Int,idIntervalo:Int){
+    init(nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?, unidade:Int?,
+        preco:Double?, numeroDose:Int?,fotoRemedio:String?,fotoReceita:String?,
+        idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?){
+            
+        if let n = nomeRemedio {
+            self.nomeRemedio = n
+        }
+            
+        if let d = dataValidade {
+            self.dataValidade = d
+        }
         
-        self.nomeRemedio = nomeRemedio
-        self.dataValidade = dataValidade
-        self.numeroQuantidade = numeroQuantidade
-        self.unidade = unidade
-        self.preco = preco
-        self.numeroDose = numeroDose
-        self.fotoRemedio = fotoRemedio
-        self.fotoReceita = fotoReceita
-        self.vencido = vencido
-        self.idFarmacia = idFarmacia
-        self.idCategoria = idCategoria
-        self.idLocal = idLocal
-        self.idIntervalo = idIntervalo
-    }
+        if let nq = numeroQuantidade {
+            self.numeroQuantidade = nq
+        }
 
-    
+        if let u = unidade {
+            self.unidade = u
+        }
+        
+        if let p = preco {
+            self.preco = p
+        }
+        
+        if let nd = numeroDose {
+            self.numeroDose = nd
+        }
+        
+        if let frem = fotoRemedio {
+            self.fotoRemedio = frem
+        }
+        
+        if let frec = fotoReceita {
+            self.fotoReceita = frec
+        }
+        
+        if self.dataValidade.compare(NSDate()) == .OrderedDescending {
+            //se data de validade maior que a data de hoje
+            self.vencido = 0
+        }else{
+            self.vencido = 1
+        }
+        
+        if let idf = idFarmacia {
+            self.idFarmacia = idf
+        }
+        
+        if let idc = idCategoria {
+            self.idCategoria = idc
+        }
+        
+        if let idl = idLocal {
+            self.idLocal = idl
+        }
+        
+        if let idi = idIntervalo {
+            self.idIntervalo = idi
+        }
+    }
 }

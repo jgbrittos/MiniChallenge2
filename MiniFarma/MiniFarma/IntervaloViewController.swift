@@ -114,6 +114,21 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         println("\(numeroIntervalo) \(unidadeIntervalo)")
     }
 
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var corDoTexto: NSAttributedString?
+        
+        switch component {
+            case 0:
+                corDoTexto = NSAttributedString(string: self.numerosPickerViewIntervalos[row], attributes: [NSForegroundColorAttributeName : UIColor(red: 0/255.0, green: 158/255.0, blue: 201/255.0, alpha: 1)])
+            case 1:
+                corDoTexto = NSAttributedString(string: self.unidadesPickerViewIntervalos[row], attributes: [NSForegroundColorAttributeName : UIColor(red: 0/255.0, green: 158/255.0, blue: 201/255.0, alpha: 1)])
+            default:
+                println("Algo ocorreu na funcao attributedTitleForRow na classe IntervaloViewController")
+        }
+        
+        return corDoTexto
+    }
+    
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
