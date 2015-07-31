@@ -15,7 +15,8 @@ UINavigationControllerDelegate,
 UIImagePickerControllerDelegate,
 UIActionSheetDelegate,
 SelecionaCategoriaDelegate,
-SelecionaIntervaloDelegate {
+SelecionaIntervaloDelegate,
+SelecionaFarmaciaDelegate {
 
     // MARK: - Propriedades
     @IBOutlet weak var buttonTirarFotoRemedio: UIButton!
@@ -59,9 +60,8 @@ SelecionaIntervaloDelegate {
     
     var intervalo: Intervalo?
     var categoria: Categoria?
-    //var farmacia = Farmacia()
+    var farmacia = Farmacia()
     var local = Local()
-    var vencido = Int()
     
     var fotoRemedio: UIImage?
     var fotoReceita: UIImage?
@@ -108,9 +108,9 @@ SelecionaIntervaloDelegate {
             self.labelCategoria.text = String(c.nomeCategoria)
         }
         
-//        if let f = self.farmacia as Farmacia? {
-//            self.labelFarmacia.text = String(f.nomeFarmacia)
-//        }
+        if let f = self.farmacia as Farmacia? {
+            self.labelFarmacia.text = String(f.nomeFarmacia)
+        }
         
         if let foto = self.fotoRemedio as UIImage? {
             self.buttonTirarFotoRemedio.setTitle("", forState: .Normal)
@@ -610,7 +610,7 @@ SelecionaIntervaloDelegate {
                 break
             case "SelecionaFarmacia":
                 var selecionaFarmacia = segue.destinationViewController as! FarmaciaTableViewController
-//                selecionaIntervalo.delegate = self
+                selecionaFarmacia.delegate = self
                 break
             case "VisualizarFotoReceita":
                 let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController
@@ -638,4 +638,7 @@ SelecionaIntervaloDelegate {
     }
     
     //Farmacia
+    func selecionaFarmacia(farmacia: Farmacia){
+        self.farmacia = farmacia
+    }
 }

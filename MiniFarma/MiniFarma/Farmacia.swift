@@ -16,6 +16,10 @@ class Farmacia: NSObject {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     
+    override init (){
+        
+    }
+    
     init(idFarmacia:Int,nomeFarmacia:String,favorita:Int,latitude:Double,longitude:Double) {
         self.idFarmacia=idFarmacia
         self.nomeFarmacia=nomeFarmacia
