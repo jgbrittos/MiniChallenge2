@@ -13,6 +13,7 @@ class FarmaciaTableViewController: UITableViewController {
     var farmacias = [Farmacia]()
     var farmaciaDicionario = [:]
     var farmaciaSelecionada: Farmacia?
+    var delegate: SelecionaFarmaciaDelegate?
     
     let farmaciaDAO = FarmaciaDAO()
     
@@ -66,4 +67,16 @@ class FarmaciaTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.farmaciaSelecionada = self.farmacias[indexPath.row]
+        self.delegate?.selecionaFarmacia(self.farmaciaSelecionada!)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+}
+
+// MARK: - Protocolo
+
+protocol SelecionaFarmaciaDelegate {
+    func selecionaFarmacia(farmacia: Farmacia)
+    
 }
