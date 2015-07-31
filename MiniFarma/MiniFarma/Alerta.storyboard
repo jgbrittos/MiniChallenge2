@@ -136,7 +136,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="KeZ-ze-y14" kind="show" id="uX1-t8-1nl"/>
+                                            <segue destination="KeZ-ze-y14" kind="show" identifier="ListarIntervalos" id="uX1-t8-1nl"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="g2n-Bj-OQY">
@@ -168,7 +168,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="24X-57-vR0" kind="show" id="CHn-Vk-SGh"/>
+                                            <segue destination="24X-57-vR0" kind="show" identifier="listarRemedio" id="CHn-Vk-SGh"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

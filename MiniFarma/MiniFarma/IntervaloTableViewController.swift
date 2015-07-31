@@ -57,13 +57,9 @@ class IntervaloTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.intervaloSelecionado = self.intervalos[indexPath.row]
+        self.delegate?.selecionaIntervaloDoAlerta(self.intervaloSelecionado!)
+        self.navigationController?.popViewControllerAnimated(true)
     }
-    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.intervalo = self.intervalos[indexPath.row] as Intervalo?
-//        self.delegate?.selecionaIntervaloDoAlerta(self.intervalo!)
-//        self.navigationController?.popViewControllerAnimated(true)
-//    }
 
 }
 

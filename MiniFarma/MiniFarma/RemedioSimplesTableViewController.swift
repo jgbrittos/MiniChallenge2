@@ -16,11 +16,15 @@ class RemedioSimplesTableViewController: UITableViewController {
     
     let remedioDAO = RemedioDAO()
     
+    var delegate: SelecionaRemedioDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.remedios = remedioDAO.buscarTodos() as! [Remedio]
+        
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     
     }
 
@@ -54,6 +58,18 @@ class RemedioSimplesTableViewController: UITableViewController {
         return celulaRemedios
     }
 
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.remedioSelecionado = self.remedios[indexPath.row]
+        self.delegate?.selecionaRemedio(self.remedioSelecionado!)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
+    
+
+    
+    
     
     
 
@@ -112,4 +128,8 @@ class RemedioSimplesTableViewController: UITableViewController {
     }
     */
 
+}
+
+protocol SelecionaRemedioDelegate {
+    func selecionaRemedio(remedio:Remedio)
 }

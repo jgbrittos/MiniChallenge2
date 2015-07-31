@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertaTableViewController: UITableViewController,UITextFieldDelegate, SelecionaIntervaloDoAlertaDelegate {
+class AlertaTableViewController: UITableViewController,UITextFieldDelegate, SelecionaIntervaloDoAlertaDelegate, SelecionaRemedioDelegate {
 
    
     @IBOutlet weak var dataInicioPicker: UIDatePicker!
@@ -23,21 +23,30 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     
     let alertaDAO = AlertaDAO()
     var intervalo: Intervalo?
+    var remedio: Remedio?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
         
+        self.lblIntervalo.text = ""
+        self.lblRemedio.text = ""
         
-        lblRemedio.text = ""
-        unidadeDuracao = 0
+        self.unidadeDuracao = 0
         
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        println("\(self.intervalo?.numero)")
+        
         if let i = self.intervalo as Intervalo? {
-            self.lblIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
+            self.lblIntervalo.text = String(i.numero) + " " + i.unidade
+        }
+        
+        if let r = self.remedio as Remedio? {
+        self.lblRemedio.text = r.nomeRemedio
         }
     }
     
@@ -59,7 +68,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         // Return the number of rows in the section.
         return 6
     }
-
     
     @IBAction func salvaAlarme(sender: AnyObject) {
         
@@ -102,7 +110,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     }
     
     
-    
     @IBAction func cancelarAlerta(sender: AnyObject) {
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -112,5 +119,24 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
 
     func selecionaIntervaloDoAlerta(intervalo: Intervalo){
         self.intervalo = intervalo
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+            case "ListarIntervalos":
+                var selecionaIntervaloDoAlerta = segue.destinationViewController as! IntervaloTableViewController
+                selecionaIntervaloDoAlerta.delegate = self
+                break
+            case "listarRemedio":
+                var selecionaRemedioDoAlerta = segue.destinationViewController as! RemedioSimplesTableViewController
+                selecionaRemedioDoAlerta.delegate = self
+            break
+            
+            default:break
+        }
+    }
+    
+    func selecionaRemedio(remedio: Remedio){
+        self.remedio = remedio
     }
 }
