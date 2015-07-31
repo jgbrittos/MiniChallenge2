@@ -160,18 +160,23 @@ SelecionaIntervaloDelegate {
     // MARK: - Salvar remedio
     @IBAction func salvarRemedio(sender: AnyObject) {
         
-        let nomeRemedio: String = self.textFieldNome.text
-        let numeroQuantidade: Int = self.textFieldNumeroQuantidade.text.toInt()!
-        let unidade: Int = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
-        let preco: Double = NSNumberFormatter().numberFromString(self.textFieldPreco.text)!.doubleValue
-        let numeroDose: Int = self.textFieldNumeroDose.text.toInt()!
-        let fotoRemedio: String = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: nomeRemedio, eTipo: "Remedio.png")
-        let fotoReceita: String = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: nomeRemedio, eTipo: "Receita.png")
+        let nomeRemedio = self.textFieldNome.text
+        var numeroQuantidade = self.textFieldNumeroQuantidade.text.toInt() as Int?
+        let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
+        
+        var preco: Double?
+        if !self.textFieldPreco.text.isEmpty {
+            preco = NSNumberFormatter().numberFromString(self.textFieldPreco.text)!.doubleValue
+        }
+
+        var numeroDose = self.textFieldNumeroDose.text.toInt()
+        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: nomeRemedio, eTipo: "Remedio.png")
+        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: nomeRemedio, eTipo: "Receita.png")
 
         let formatador = NSDateFormatter()
         formatador.dateFormat = "dd/MM/yyyy"
         let dataValidade =  formatador.dateFromString(self.textFieldDataDeValidade.text)
-        let vencido: Int = 0
+        
         let idFarmacia: Int = 0
         
         var idCategoria: Int = 0
@@ -186,7 +191,7 @@ SelecionaIntervaloDelegate {
             idIntervalo = i.idIntervalo
         }
         
-        let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, vencido: vencido, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
+        let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
         self.remedioDAO.inserir(remedio)
         self.dismissViewControllerAnimated(true, completion: nil)
         //ir para a lista de remedios ou de alerta dependendo do parametro do switch
