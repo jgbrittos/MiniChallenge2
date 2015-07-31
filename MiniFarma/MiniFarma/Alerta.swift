@@ -23,6 +23,23 @@ class Alerta: NSObject {
         self.dataInicio = NSDate()
     }
     
+    init(idAlerta:Int, dataInicio: NSDate, numeroDuracao:Int, unidadeDuracao:Int, ativo:Int,idIntervalo:Int,idRemedio:Int){
+        self.idAlerta=idAlerta
+        self.dataInicio=dataInicio
+        self.numeroDuracao=numeroDuracao
+        self.unidadeDuracao=unidadeDuracao
+        self.ativo=ativo
+        self.idIntervalo=idIntervalo
+        self.idRemedio=idRemedio
+    }
     
+    init(dataInicio: NSDate, numeroDuracao:Int, unidadeDuracao:Int, ativo:Int,idIntervalo:Int,idRemedio:Int){
+        self.dataInicio=dataInicio
+        self.numeroDuracao=numeroDuracao
+        self.unidadeDuracao=unidadeDuracao
+        self.ativo=ativo
+        self.idIntervalo=idIntervalo
+        self.idRemedio=idRemedio
+    }
     
 }
