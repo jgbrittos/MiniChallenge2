@@ -81,12 +81,10 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             celulaBranca.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
             return celulaBranca
         }else{
-            let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! UITableViewCell
-            celulaAlerta.textLabel?.text = self.alertasDaVez[indexPath.row]
-            celulaAlerta.detailTextLabel?.text = self.alertasDaVez[indexPath.row]
+            let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
+            celulaAlerta.labelNome.text = self.alertasDaVez[indexPath.row]
+            celulaAlerta.labelDataDeValidade.text = self.alertasDaVez[indexPath.row]
             
-            //Adicionando a setinha no fim da célula
-            celulaAlerta.accessoryType = .DisclosureIndicator
             return celulaAlerta
         }
     }
@@ -108,6 +106,10 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         apagar.backgroundColor = UIColor(red: 255/255.0, green: 0/255.0, blue: 73/255.0, alpha: 1)
         
         return [apagar, tomei]
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 130
     }
 
 }

@@ -105,8 +105,6 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
             celulaRemedio.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
             
-            //Adicionando a setinha no fim da célula
-            celulaRemedio.accessoryType = .DisclosureIndicator
             return celulaRemedio
         }
     }
