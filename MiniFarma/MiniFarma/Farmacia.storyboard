@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9fX-Mp-eyL">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Nova Farmácia-->
+        <scene sceneID="jVt-3k-NSz">
+            <objects>
+                <viewController id="LsJ-Kg-s97" customClass="NovaFarmaciaViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uLW-XN-58Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="fX3-ms-d8o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Z6-4o-Sp0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nr4-dj-6YG">
+                                <rect key="frame" x="16" y="72" width="568" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="hxy-Dy-s6J"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcar como favorita" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XK2-3e-Yey">
+                                <rect key="frame" x="16" y="129" width="195" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Uud-uu-UZS"/>
+                                    <constraint firstAttribute="width" constant="195" id="weo-Pw-qH0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="Ikk-P7-t6r">
+                                <rect key="frame" x="0.0" y="167" width="600" height="396"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWM-Nd-ZPO">
+                                <rect key="frame" x="544" y="120" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="pUQ-Ry-K2r"/>
+                                    <constraint firstAttribute="height" constant="40" id="sRe-OU-FsM"/>
+                                </constraints>
+                                <state key="normal" image="estrelaFavoritoNegativo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="favoritoClicado:" destination="LsJ-Kg-s97" eventType="touchUpInside" id="NFx-9J-Kb5"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXR-KQ-UxV">
+                                <rect key="frame" x="0.0" y="554" width="600" height="46"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sS-oh-bRl">
+                                        <rect key="frame" x="8" y="4" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="MnV-TM-43d"/>
+                                            <constraint firstAttribute="height" constant="35" id="m4k-3m-vsB"/>
+                                        </constraints>
+                                        <state key="normal" image="localizacao">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="localizacaoNegativo"/>
+                                        <connections>
+                                            <action selector="atualizaLocalizacao:" destination="LsJ-Kg-s97" eventType="touchUpInside" id="CKt-xl-jlP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="CVN-SC-yU9"/>
+                                    <constraint firstAttribute="centerY" secondItem="6sS-oh-bRl" secondAttribute="centerY" constant="1.5" id="Zzq-nz-fV0"/>
+                                    <constraint firstItem="6sS-oh-bRl" firstAttribute="leading" secondItem="zXR-KQ-UxV" secondAttribute="leading" constant="8" id="i6c-SQ-VKG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WWM-Nd-ZPO" firstAttribute="leading" secondItem="XK2-3e-Yey" secondAttribute="trailing" constant="333" id="2IS-Ov-fcW"/>
+                            <constraint firstItem="fX3-ms-d8o" firstAttribute="top" secondItem="zXR-KQ-UxV" secondAttribute="bottom" constant="-44" id="3as-Q5-XVg"/>
+                            <constraint firstAttribute="trailing" secondItem="Ikk-P7-t6r" secondAttribute="trailing" id="3rv-tM-EYv"/>
+                            <constraint firstItem="zXR-KQ-UxV" firstAttribute="leading" secondItem="5Z6-4o-Sp0" secondAttribute="leadingMargin" constant="-16" id="6y0-SG-Yhy"/>
+                            <constraint firstItem="nr4-dj-6YG" firstAttribute="top" secondItem="uLW-XN-58Y" secondAttribute="bottom" constant="8" id="B9N-jH-ZHT"/>
+                            <constraint firstItem="Ikk-P7-t6r" firstAttribute="top" secondItem="WWM-Nd-ZPO" secondAttribute="bottom" constant="7" id="KzC-4Y-F2k"/>
+                            <constraint firstItem="nr4-dj-6YG" firstAttribute="trailing" secondItem="5Z6-4o-Sp0" secondAttribute="trailingMargin" id="OO9-bs-z9n"/>
+                            <constraint firstItem="XK2-3e-Yey" firstAttribute="leading" secondItem="5Z6-4o-Sp0" secondAttribute="leadingMargin" id="QA8-yH-PaO"/>
+                            <constraint firstItem="nr4-dj-6YG" firstAttribute="leading" secondItem="5Z6-4o-Sp0" secondAttribute="leadingMargin" id="Shb-vB-18O"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zXR-KQ-UxV" secondAttribute="trailing" constant="-16" id="YCU-mb-yB9"/>
+                            <constraint firstAttribute="centerY" secondItem="XK2-3e-Yey" secondAttribute="centerY" constant="160.5" id="dfr-7w-EZg"/>
+                            <constraint firstItem="Ikk-P7-t6r" firstAttribute="leading" secondItem="5Z6-4o-Sp0" secondAttribute="leading" id="dsm-DI-IEi"/>
+                            <constraint firstItem="zXR-KQ-UxV" firstAttribute="top" secondItem="Ikk-P7-t6r" secondAttribute="bottom" constant="-9" id="fhe-4T-A8S"/>
+                            <constraint firstItem="Ikk-P7-t6r" firstAttribute="top" secondItem="WWM-Nd-ZPO" secondAttribute="bottom" constant="7" id="ifU-Uo-Qfk"/>
+                            <constraint firstItem="WWM-Nd-ZPO" firstAttribute="top" secondItem="uLW-XN-58Y" secondAttribute="bottom" constant="56" id="jZt-Mk-kwb"/>
+                            <constraint firstItem="Ikk-P7-t6r" firstAttribute="top" secondItem="XK2-3e-Yey" secondAttribute="bottom" constant="17" id="kus-dg-6cn"/>
+                            <constraint firstItem="Ikk-P7-t6r" firstAttribute="top" secondItem="uLW-XN-58Y" secondAttribute="bottom" constant="103" id="mdo-un-gei"/>
+                            <constraint firstItem="WWM-Nd-ZPO" firstAttribute="trailing" secondItem="5Z6-4o-Sp0" secondAttribute="trailingMargin" id="tZx-dY-AgH"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mdo-un-gei"/>
+                                <exclude reference="ifU-Uo-Qfk"/>
+                                <exclude reference="jZt-Mk-kwb"/>
+                                <exclude reference="2IS-Ov-fcW"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Nova Farmácia" id="ndP-5f-dCw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="l9B-ZD-59d">
+                            <connections>
+                                <action selector="cancelarAdicaoDeFarmacia:" destination="LsJ-Kg-s97" id="lLI-kd-S4B"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dws-ee-Oae">
+                            <connections>
+                                <action selector="salvaFarmacia:" destination="LsJ-Kg-s97" id="W4L-Vp-Q8s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="botaoFavorito" destination="WWM-Nd-ZPO" id="a3o-yj-4bG"/>
+                        <outlet property="botaoLocalizacao" destination="6sS-oh-bRl" id="hdd-Ul-mCG"/>
+                        <outlet property="txtFieldNome" destination="nr4-dj-6YG" id="YjA-zW-OuH"/>
+                        <outlet property="viewMapa" destination="Ikk-P7-t6r" id="LK4-lF-jiN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvT-7j-FiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2592" y="2110"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9B3-el-pem">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9fX-Mp-eyL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ue8-30-OTV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LsJ-Kg-s97" kind="relationship" relationship="rootViewController" id="8DH-62-NUc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H1W-gU-PHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780" y="2110"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="estrelaFavoritoNegativo" width="30" height="29"/>
+        <image name="localizacao" width="52" height="52"/>
+        <image name="localizacaoNegativo" width="36" height="35"/>
+    </resources>
+</document>

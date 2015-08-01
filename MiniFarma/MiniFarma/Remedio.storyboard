@@ -721,7 +721,7 @@
                     <navigationItem key="navigationItem" title="Farmácia" id="ntA-N0-6i5">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Mcx-DT-ftD">
                             <connections>
-                                <segue destination="Lzz-e7-cUc" kind="show" id="ehA-az-ege"/>
+                                <segue destination="Lzz-e7-cUc" kind="show" identifier="AdicionarFarmacia" id="ehA-az-ege"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

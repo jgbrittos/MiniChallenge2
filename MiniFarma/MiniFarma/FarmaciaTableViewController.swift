@@ -72,6 +72,12 @@ class FarmaciaTableViewController: UITableViewController {
         self.delegate?.selecionaFarmacia(self.farmaciaSelecionada!)
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let novaFarmacia = segue.destinationViewController as! NovaFarmaciaViewController
+        novaFarmacia.inicialOuAdicionaRemedio = false
+    }
+    
 }
 
 // MARK: - Protocolo

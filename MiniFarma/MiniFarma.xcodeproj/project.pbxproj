@@ -14,6 +14,7 @@
 		451428741B690CDA0070396A /* LocalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428731B690CDA0070396A /* LocalDAO.swift */; };
 		451428761B6AA0090070396A /* VisualizarFotoReceitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */; };
 		4514287A1B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */; };
+		4514287C1B6C2F1B0070396A /* Farmacia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4514287B1B6C2F1B0070396A /* Farmacia.storyboard */; };
 		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
 		453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961241B5BE35D0097DEDB /* AppDelegate.swift */; };
 		4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453961281B5BE35D0097DEDB /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 		451428731B690CDA0070396A /* LocalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDAO.swift; sourceTree = "<group>"; };
 		451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFotoReceitaViewController.swift; sourceTree = "<group>"; };
 		451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaRemediosAlertasTableViewCell.swift; sourceTree = "<group>"; };
+		4514287B1B6C2F1B0070396A /* Farmacia.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Farmacia.storyboard; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
 		4522B7E01B5EC0CA0053DD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				45D4084E1B66C3C000FB0EF0 /* Remedio.storyboard */,
+				4514287B1B6C2F1B0070396A /* Farmacia.storyboard */,
 				451428771B6AA0150070396A /* Remedio */,
 				8F477CC11B67BC200050D94F /* Farmacia */,
 				4514286D1B67B25B0070396A /* Categoria */,
@@ -473,6 +476,7 @@
 				4539612F1B5BE35D0097DEDB /* LaunchScreen.xib in Resources */,
 				8F6610431B6BAD140099C69B /* Alerta.storyboard in Resources */,
 				4539612C1B5BE35D0097DEDB /* Images.xcassets in Resources */,
+				4514287C1B6C2F1B0070396A /* Farmacia.storyboard in Resources */,
 				4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

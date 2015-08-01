@@ -31,6 +31,8 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     var farmaciaFavoritaId : Int = 0
     var existeFavorita: Int = 0
     
+    var inicialOuAdicionaRemedio: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -148,8 +150,12 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             
             farmaciaDAO.inserir(farmacia)
             
-            self.navigationController!.popViewControllerAnimated(true)
-
+            if self.inicialOuAdicionaRemedio {
+                self.dismissViewControllerAnimated(true, completion:nil)
+            }else{
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            
         }else{
             var alertaNome = UIAlertController(title: NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), message: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), preferredStyle: UIAlertControllerStyle.Alert)
             alertaNome.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -170,4 +176,9 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         txtFieldNome.resignFirstResponder()
         self.view.endEditing(true)
     }
+    
+    @IBAction func cancelarAdicaoDeFarmacia(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

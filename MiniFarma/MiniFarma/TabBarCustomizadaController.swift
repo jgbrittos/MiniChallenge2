@@ -68,12 +68,13 @@ class TabBarCustomizadaController: UITabBarController {
         
         self.botaoAdicionaFarmacia.frame = tamanhoPadraoBotao
         self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
+        self.botaoAdicionaFarmacia.addTarget(self, action: Selector("chamaStoryboardFarmacia:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoAdicionaFarmacia.setBackgroundImage(UIImage(named: "botaoAdicionarFarmacia"), forState:UIControlState.Normal)
 //        self.botaoAdicionaFarmacia.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         
         self.botaoAdicionaRemedio.frame = tamanhoPadraoBotao
         self.botaoAdicionaRemedio.center = self.centroInicialPadrao
-        self.botaoAdicionaRemedio.addTarget(self, action: Selector("chamaStoryboardIntervalo:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.botaoAdicionaRemedio.addTarget(self, action: Selector("chamaStoryboardRemedio:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoAdicionaRemedio.setBackgroundImage(UIImage(named: "botaoAdicionarRemedio"), forState:UIControlState.Normal)
 //        self.botaoAdicionaRemedio.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         
@@ -142,13 +143,11 @@ class TabBarCustomizadaController: UITabBarController {
         })
     }
     
-    func chamaStoryboardIntervalo(sender: UIButton){
+    func chamaStoryboardRemedio(sender: UIButton){
         self.fazBotoesDesaparecerem(animadamente: false)
         let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil).instantiateInitialViewController() as! UINavigationController
         self.presentViewController(storyboardRemedio, animated:true, completion:nil)
     }
-    
-    
     
     func chamaStoryboardAlerta(sender: UIButton){
         self.fazBotoesDesaparecerem(animadamente: false)
@@ -156,4 +155,9 @@ class TabBarCustomizadaController: UITabBarController {
         self.presentViewController(storyboardAlerta, animated:true, completion:nil)
     }
     
+    func chamaStoryboardFarmacia(sender: UIButton){
+        self.fazBotoesDesaparecerem(animadamente: false)
+        let storyboardFarmacia = UIStoryboard(name: "Farmacia", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        self.presentViewController(storyboardFarmacia, animated:true, completion:nil)
+    }
 }
