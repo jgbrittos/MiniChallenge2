@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "filename" : "Tenha controle da su + Imported Layers + Oval 27 + Rectangle 59 + Rectangle 59 Copy@1x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "Tenha controle da su + Imported Layers + Oval 27 + Rectangle 59 + Rectangle 59 Copy@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "Tenha controle da su + Imported Layers + Oval 27 + Rectangle 59 + Rectangle 59 Copy@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
