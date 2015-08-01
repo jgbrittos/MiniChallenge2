@@ -100,11 +100,14 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             celulaRemedio.labelNome.text = remedio.nomeRemedio
             celulaRemedio.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)
             
-            let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-            var documentos: String = caminhos[0] as! String
-            let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
-            celulaRemedio.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
-            
+            if remedio.fotoRemedio == "sem foto" {
+                celulaRemedio.imageViewFotoRemedio?.image = UIImage(named: "semFoto")
+            }else{
+                let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                var documentos: String = caminhos[0] as! String
+                let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
+                celulaRemedio.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
+            }
             return celulaRemedio
         }
     }
