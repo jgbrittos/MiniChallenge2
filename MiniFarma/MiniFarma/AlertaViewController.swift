@@ -99,11 +99,21 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             celulaAlerta.labelNome.text = remedio.nomeRemedio
             celulaAlerta.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)
 
-            let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-            var documentos: String = caminhos[0] as! String
-            let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
-            celulaAlerta.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
+//            let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+//            var documentos: String = caminhos[0] as! String
+//            let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
+//            celulaAlerta.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
 
+            if remedio.fotoRemedio == "sem foto" {
+                celulaAlerta.imageViewFotoRemedio?.image = UIImage(named: "semFoto")
+            }else{
+                let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                var documentos: String = caminhos[0] as! String
+                let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
+                celulaAlerta.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
+
+            }
+            
             return celulaAlerta
         }
     }
