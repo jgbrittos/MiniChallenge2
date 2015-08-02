@@ -37,9 +37,9 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
         
         for var i = 0; i < 5; i++ {
             var frame = CGRect()
-            frame.origin.x = self.scrollViewTutorial.frame.size.width * CGFloat(i)
+            frame.origin.x = (self.scrollViewTutorial.frame.size.width * CGFloat(i))+16
             frame.origin.y = self.scrollViewTutorial.frame.size.height/4.0
-            frame.size = CGSizeMake(self.scrollViewTutorial.frame.size.width, self.scrollViewTutorial.frame.size.height/2.0)
+            frame.size = CGSizeMake(self.scrollViewTutorial.frame.size.width-32, self.scrollViewTutorial.frame.size.height/2.0)
             
             var imagemTutorial = UIImageView(frame: frame)
             imagemTutorial.contentMode = .ScaleAspectFit
