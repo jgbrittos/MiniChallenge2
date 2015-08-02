@@ -26,7 +26,6 @@ class TabBarCustomizadaController: UITabBarController {
     
     let imagemInstrucao = UIImageView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width*0.6, UIScreen.mainScreen().bounds.height*0.4))
     
-    
     //MARK:- Inicialização da view
     override func viewDidLoad() {
         super.viewDidLoad()

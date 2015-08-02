@@ -33,9 +33,6 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
         let botaoComecar = UIButton(frame: CGRectMake(0,0, 50, 50))
         botaoComecar.center = CGPointMake(UIScreen.mainScreen().bounds.width*7/2, UIScreen.mainScreen().bounds.height-100)
         botaoComecar.setImage(UIImage(named: "botaoComecar"), forState: .Normal)
-        //botaoComecar.setTitle("Começar", forState: .Normal)
-        //botaoComecar.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        //botaoComecar.backgroundColor = UIColor.redColor()
         botaoComecar.addTarget(self, action: Selector("comecar"), forControlEvents: .TouchUpInside)
         
         for var i = 0; i < 5; i++ {
