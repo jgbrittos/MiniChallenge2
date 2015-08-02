@@ -92,6 +92,10 @@ class Remedio: NSObject {
     init(nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?, unidade:Int?,
         preco:Double?, numeroDose:Int?,fotoRemedio:String?,fotoReceita:String?,
         idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?){
+        
+        let formatador = NSDateFormatter()
+        formatador.dateFormat = "dd-MM-yyyy"
+        let dataControle = formatador.dateFromString("01/01/1900")!
             
         if let n = nomeRemedio {
             self.nomeRemedio = n
@@ -99,6 +103,8 @@ class Remedio: NSObject {
             
         if let d = dataValidade {
             self.dataValidade = d
+        }else{
+            self.dataValidade = dataControle
         }
         
         if let nq = numeroQuantidade {
@@ -127,6 +133,8 @@ class Remedio: NSObject {
         
         if self.dataValidade.compare(NSDate()) == .OrderedDescending {
             //se data de validade maior que a data de hoje
+            self.vencido = 0
+        }else if self.dataValidade.compare(dataControle) == .OrderedSame {
             self.vencido = 0
         }else{
             self.vencido = 1

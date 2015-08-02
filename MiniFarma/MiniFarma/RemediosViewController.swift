@@ -93,13 +93,21 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             return celulaBranca
         }else{
             let celulaRemedio = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaRemedio", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
+            
             let remedio = self.dadosASeremMostrados[indexPath.row]
+            
+            celulaRemedio.labelNome.text = remedio.nomeRemedio
             
             let formatadorData = NSDateFormatter()
             formatadorData.dateFormat = "dd/MM/yyyy"
             
-            celulaRemedio.labelNome.text = remedio.nomeRemedio
-            celulaRemedio.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)
+            var data = formatadorData.stringFromDate(remedio.dataValidade)
+            
+            if data == "01/01/1900"{
+                data = "data indisponível"
+            }
+            
+            celulaRemedio.labelDataDeValidade.text = data
             
             if remedio.fotoRemedio == "sem foto" {
                 celulaRemedio.imageViewFotoRemedio?.image = UIImage(named: "semFoto")
