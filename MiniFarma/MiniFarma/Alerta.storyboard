@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Alarme-->
+        <!--Alerta-->
         <scene sceneID="4Xb-JJ-oC6">
             <objects>
                 <tableViewController id="mev-3R-KCw" customClass="AlertaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,7 +179,7 @@
                             <outlet property="delegate" destination="mev-3R-KCw" id="tA9-Sf-CMP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Alarme" id="jrw-Vn-Slb">
+                    <navigationItem key="navigationItem" title="Alerta" id="jrw-Vn-Slb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2ZZ-LE-ipa">
                             <connections>
                                 <action selector="cancelarAlerta:" destination="mev-3R-KCw" id="ynn-Dy-SKa"/>
