@@ -15,22 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="Pxa-4A-ZRJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulH-X8-Q4u">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </scrollView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="KWo-Vr-Ifu" firstAttribute="top" secondItem="ulH-X8-Q4u" secondAttribute="bottom" id="CfD-3l-b5L"/>
-                            <constraint firstItem="ulH-X8-Q4u" firstAttribute="top" secondItem="Pxa-4A-ZRJ" secondAttribute="top" id="DoI-dW-CZh"/>
-                            <constraint firstItem="ulH-X8-Q4u" firstAttribute="leading" secondItem="Pxa-4A-ZRJ" secondAttribute="leading" id="Mm1-K3-QTu"/>
-                            <constraint firstAttribute="trailing" secondItem="ulH-X8-Q4u" secondAttribute="trailing" id="ss2-RW-A9u"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tutorial" id="vbH-ar-5Q7"/>
-                    <connections>
-                        <outlet property="scrollViewTutorial" destination="ulH-X8-Q4u" id="fpq-y7-ch9"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0i-DV-opp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

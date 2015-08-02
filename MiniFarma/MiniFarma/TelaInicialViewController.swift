@@ -10,7 +10,7 @@ import UIKit
 
 class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var scrollViewTutorial: UIScrollView!
+    var scrollViewTutorial: UIScrollView!
     var controleDePaginacao: UIPageControl!
     
     override func viewDidLoad() {
@@ -24,8 +24,7 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
             UIColor(red: 0/255.0, green: 158/255.0, blue: 201/255.0, alpha: 1).CGColor]
         self.view.layer.insertSublayer(gradient, atIndex: 0)
         
-        let sct = UIScrollView(frame: UIScreen.mainScreen().bounds)
-        self.scrollViewTutorial = sct
+        self.scrollViewTutorial = UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollViewTutorial.delegate = self
         self.scrollViewTutorial.showsHorizontalScrollIndicator = false
         self.scrollViewTutorial.pagingEnabled = true
@@ -33,7 +32,11 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
         
         let botaoComecar = UIButton(frame: CGRectMake(0,0, 50, 50))
         botaoComecar.center = CGPointMake(UIScreen.mainScreen().bounds.width*7/2, UIScreen.mainScreen().bounds.height-100)
-        botaoComecar.backgroundColor = UIColor.redColor()
+        botaoComecar.setImage(UIImage(named: "botaoComecar"), forState: .Normal)
+        //botaoComecar.setTitle("Começar", forState: .Normal)
+        //botaoComecar.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        //botaoComecar.backgroundColor = UIColor.redColor()
+        botaoComecar.addTarget(self, action: Selector("comecar"), forControlEvents: .TouchUpInside)
         
         for var i = 0; i < 5; i++ {
             var frame = CGRect()
@@ -44,8 +47,6 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
             var imagemTutorial = UIImageView(frame: frame)
             imagemTutorial.contentMode = .ScaleAspectFit
             imagemTutorial.image = UIImage(named: "Tutorial"+String(i+1))
-            
-//            self.controleDePaginacao.addTarget(self, action: Selector("mudouDePagina:"), forControlEvents: UIControlEvents.ValueChanged)
             
             self.scrollViewTutorial.addSubview(imagemTutorial)
             
@@ -69,5 +70,12 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
         let pagina = floor((self.scrollViewTutorial.contentOffset.x - self.scrollViewTutorial.frame.size.width / 2) / self.scrollViewTutorial.frame.size.width) + 1
         self.controleDePaginacao.currentPage = Int(pagina)
     }
-
+    
+    func comecar(){
+        let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+        let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
+        self.presentViewController(telaInicial, animated: true, completion: nil)
+        
+    }
+    
 }

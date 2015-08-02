@@ -22,6 +22,11 @@ class TabBarCustomizadaController: UITabBarController {
     
     var informacaoDeOutraTela: Intervalo?
     
+    let remedioDAO = RemedioDAO()
+    
+    let imagemInstrucao = UIImageView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width*0.6, UIScreen.mainScreen().bounds.height*0.4))
+    
+    
     //MARK:- Inicialização da view
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +53,16 @@ class TabBarCustomizadaController: UITabBarController {
         self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
         self.botaoMaisOpcoes.layer.zPosition = 1
         self.tabBar.addSubview(botaoMaisOpcoes)
+        
+        let remedios = self.remedioDAO.buscarTodos() as! [Remedio]
+        
+        imagemInstrucao.image = UIImage(named: "instrucao")
+        imagemInstrucao.center = CGPointMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height*2/3)
+        if remedios.count == 0 {
+            self.view.addSubview(imagemInstrucao)
+        }else{
+            imagemInstrucao.removeFromSuperview()
+        }
     }
     
     func dispositivoIraRotacionar(notificacao: NSNotification){

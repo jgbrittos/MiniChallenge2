@@ -39,6 +39,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.remediosValidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 0) as! [Remedio]
         self.remediosVencidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 1) as! [Remedio]
         self.dadosASeremMostrados = self.remediosValidos
+        
         self.tableViewRemedios.reloadData()
     }
     
