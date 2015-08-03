@@ -37,7 +37,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
             self.lblRemedio.text = r.nomeRemedio
             self.unidadeDuracao = r.unidade
         }
-        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -78,8 +77,10 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         let alerta = Alerta(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
         
         self.alertaDAO.inserir(alerta)
-        self.dismissViewControllerAnimated(true, completion: nil)
-        //falta metodo que leva pra outra view
+
+        let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+        let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
+        self.presentViewController(telaInicial, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

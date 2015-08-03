@@ -641,6 +641,7 @@ SelecionaFarmaciaDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // MARK: - Teclado
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.textFieldNome.resignFirstResponder()
         return true
