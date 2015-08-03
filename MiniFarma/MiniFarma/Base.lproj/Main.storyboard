@@ -489,6 +489,24 @@
             </objects>
             <point key="canvasLocation" x="2314" y="1096"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Nej-J7-wyJ">
+            <objects>
+                <viewController id="8mL-UT-ykB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gg5-Fu-UBH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Skk-Zu-aTZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YuX-Mw-6Np">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LkT-fd-15Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2314" y="1833"/>
+        </scene>
         <!--Foto-->
         <scene sceneID="UzJ-M8-qJZ">
             <objects>
