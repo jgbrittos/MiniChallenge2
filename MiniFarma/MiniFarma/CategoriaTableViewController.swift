@@ -69,8 +69,8 @@ class CategoriaTableViewController: UITableViewController {
     @IBAction func adicionarClicado(sender: AnyObject) {
 
         var alerta:UIAlertController?
-        alerta = UIAlertController(title: NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"),
-            message: NSLocalizedString("MENSAGEMALERTA", comment: "Mensagem do Alerta"),
+        alerta = UIAlertController(title: NSLocalizedString("TITULOALERTACATEGORIA", comment: "Titulo do alerta"),
+            message: NSLocalizedString("MENSAGEMALERTACATEGORIA", comment: "Mensagem do Alerta"),
             preferredStyle: .Alert)
         alerta!.addTextFieldWithConfigurationHandler(
             {(textField: UITextField!) in
@@ -79,8 +79,8 @@ class CategoriaTableViewController: UITableViewController {
                 textField.accessibilityHint = NSLocalizedString("CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT", comment: "Alerta")
         })
         
-        alerta?.accessibilityLabel = NSLocalizedString("TITULOALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
-        alerta?.accessibilityHint = NSLocalizedString("TITULOALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
+        alerta?.accessibilityLabel = NSLocalizedString("TITULOALERTACATEGORIA_ACESSIBILIDADE_LABEL", comment: "Alerta")
+        alerta?.accessibilityHint = NSLocalizedString("TITULOALERTACATEGORIA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
         
       
         alerta!.addAction(UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"), style: .Default, handler: { (action: UIAlertAction!) in

@@ -45,11 +45,11 @@ UNIDADES_SEMANA = "semana(s)";
 UNIDADES_MES = "mes(es)";
 
 ///MARK: - Alerta categoria
-TITULOALERTA = "Nova Categoria";
-TITULOALERTA_ACESSIBILIDADE_LABEL = "Cadastro de nova categoria";
-TITULOALERTA_ACESSIBILIDADE_HINT = "Alerta para cadastrar uma nova categoria";
+TITULOALERTACATEGORIA = "Nova Categoria";
+TITULOALERTACATEGORIA_ACESSIBILIDADE_LABEL = "Cadastro de nova categoria";
+TITULOALERTACATEGORIA_ACESSIBILIDADE_HINT = "Alerta para cadastrar uma nova categoria";
 
-MENSAGEMALERTA = "Digite a nova categoria";
+MENSAGEMALERTACATEGORIA = "Digite a nova categoria";
 
 CANCELARBOTAO = "Cancelar";
 CADASTRARBOTAO = "Cadastrar";
