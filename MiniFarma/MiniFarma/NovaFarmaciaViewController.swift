@@ -103,43 +103,49 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
 
     @IBAction func favoritoClicado(sender: AnyObject) {
         
-        switch self.favorito{
-        
-        case 0:
-            
-            if self.existeFavorita > 0{
-                var alertaFavorita = UIAlertController(title: NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"), message: NSLocalizedString("MENSAGEMALERTA", comment: "Titulo do alerta"), preferredStyle: UIAlertControllerStyle.Alert)
-                self.presentViewController(alertaFavorita, animated: true, completion: nil)
+        switch self.favorito {
+            case 0:
+                if self.existeFavorita > 0{
+//                    var alertaFavorita = UIAlertController(title: NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"), message: NSLocalizedString("MENSAGEMALERTA", comment: "Titulo do alerta"), preferredStyle: UIAlertControllerStyle.Alert)
+//                    self.presentViewController(alertaFavorita, animated: true, completion: nil)
+//                    
+//                    alertaFavorita.addAction(UIAlertAction(title: NSLocalizedString("NAOALERTA", comment: "Opção do alerta"), style: .Default, handler: { action in
+//                        self.favorito=0
+//                    }))
+//                    
+//                    alertaFavorita.addAction(UIAlertAction(title: NSLocalizedString("SIMALERTA", comment: "Opção do alerta"), style: .Default, handler: { action in
+//                        self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
+//                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+//                        self.existeFavorita=0
+//                        self.favorito=1
+//                    }))
+//                    
+//                    alertaFavorita.accessibilityLabel = NSLocalizedString("FARMACIAALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
+//                    alertaFavorita.accessibilityHint = NSLocalizedString("FARMACIAALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
+//                    
+//                }
                 
-                alertaFavorita.addAction(UIAlertAction(title: NSLocalizedString("NAOALERTA", comment: "Opção do alerta"), style: .Default, handler: { action in
-                    self.favorito=0
-                }))
+                    let alerta = SCLAlertView()
+                    alerta.addButton(NSLocalizedString("SIMALERTA", comment: "Opção do alerta")) {
+                        self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
+                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+                        self.existeFavorita = 0
+                        self.favorito = 1
+                    }
+                    alerta.showEdit(NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTA", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
+                }
                 
-                alertaFavorita.addAction(UIAlertAction(title: NSLocalizedString("SIMALERTA", comment: "Opção do alerta"), style: .Default, handler: { action in
-                    self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
+                if self.existeFavorita == 0 {
                     self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
-                    self.existeFavorita=0
-                    self.favorito=1
-                }))
-                
-                alertaFavorita.accessibilityLabel = NSLocalizedString("FARMACIAALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
-                alertaFavorita.accessibilityHint = NSLocalizedString("FARMACIAALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
-                
-            }
-            
-            if self.existeFavorita == 0{
-                self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
-                self.favorito=1
-            }
-
+                    self.favorito = 1
+                }
                 break
             case 1:
                 botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
-                self.favorito=0
-            
+                self.favorito = 0
                 break
-        default:
-            break
+            default:
+                break
         }
     }
 
@@ -157,13 +163,14 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             }
             
         }else{
-            var alertaNome = UIAlertController(title: NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), message: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), preferredStyle: UIAlertControllerStyle.Alert)
-            alertaNome.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alertaNome, animated: true, completion: nil)
-            
-            alertaNome.accessibilityLabel = NSLocalizedString("FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
-            alertaNome.accessibilityHint = NSLocalizedString("FARMACIANOMEALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
+//            var alertaNome = UIAlertController(title: NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), message: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), preferredStyle: UIAlertControllerStyle.Alert)
+//            alertaNome.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//            self.presentViewController(alertaNome, animated: true, completion: nil)
+//            
+//            alertaNome.accessibilityLabel = NSLocalizedString("FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL", comment: "Alerta")
+//            alertaNome.accessibilityHint = NSLocalizedString("FARMACIANOMEALERTA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
 
+            SCLAlertView().showError(NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), subTitle: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
         }
     }
     
