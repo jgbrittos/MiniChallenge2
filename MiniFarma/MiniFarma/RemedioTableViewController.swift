@@ -14,6 +14,7 @@ UIPickerViewDataSource,
 UINavigationControllerDelegate,
 UIImagePickerControllerDelegate,
 UIActionSheetDelegate,
+UITextFieldDelegate,
 SelecionaCategoriaDelegate,
 SelecionaIntervaloDelegate,
 SelecionaFarmaciaDelegate {
@@ -73,6 +74,8 @@ SelecionaFarmaciaDelegate {
         super.viewDidLoad()
 
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        self.textFieldNome.delegate = self
         
         //Celula de Local
         self.textFieldLocal.hidden = true
@@ -636,6 +639,11 @@ SelecionaFarmaciaDelegate {
     
     @IBAction func cancelarAdicaoDeRemedio(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.textFieldNome.resignFirstResponder()
+        return true
     }
     
     // MARK: - Protocolos

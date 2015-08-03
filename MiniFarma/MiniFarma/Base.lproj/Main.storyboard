@@ -139,6 +139,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JNA-Yv-kx9">
                                                     <rect key="frame" x="8" y="8" width="134" height="134"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="134" id="mB3-ih-8fy"/>
                                                     </constraints>
@@ -186,6 +187,10 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="pGi-Lc-YgH" appends="YES" id="fG9-84-GXc"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="dmT-cP-cCW">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -440,6 +445,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LcD-zd-jVs" appends="YES" id="gCE-ea-fhJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -463,11 +472,55 @@
                         <outlet property="labelNome" destination="vK6-1t-uZB" id="Y4G-zC-93o"/>
                         <outlet property="labelPreco" destination="hrH-0x-Jay" id="hBW-ck-cCb"/>
                         <outlet property="labelQuantidade" destination="uDz-rd-npF" id="ex8-Va-n10"/>
+                        <segue destination="Rle-Lo-sjT" kind="show" identifier="VisualizarFoto" id="GfL-yI-Xgp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Chj-Ne-1EF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LcD-zd-jVs">
+                    <connections>
+                        <action selector="tocouNaCelulaReceita:" destination="s5H-sA-ZYX" id="UcQ-BM-kbI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="pGi-Lc-YgH">
+                    <connections>
+                        <action selector="tocouNaFotoRemedio:" destination="s5H-sA-ZYX" id="hXs-IC-4Ch"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2314" y="1096"/>
+        </scene>
+        <!--Foto-->
+        <scene sceneID="UzJ-M8-qJZ">
+            <objects>
+                <viewController id="Rle-Lo-sjT" customClass="VisualizarFotoReceitaViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fBH-zC-bwa"/>
+                        <viewControllerLayoutGuide type="bottom" id="K7E-Y8-bxr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w5u-Xt-jXe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mpf-sZ-vCg">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mpf-sZ-vCg" firstAttribute="top" secondItem="fBH-zC-bwa" secondAttribute="bottom" id="8CA-4P-kre"/>
+                            <constraint firstItem="K7E-Y8-bxr" firstAttribute="top" secondItem="mpf-sZ-vCg" secondAttribute="bottom" id="DZm-vN-X7N"/>
+                            <constraint firstItem="mpf-sZ-vCg" firstAttribute="leading" secondItem="w5u-Xt-jXe" secondAttribute="leadingMargin" constant="-16" id="fsX-49-jPJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mpf-sZ-vCg" secondAttribute="trailing" constant="-16" id="mGT-zJ-oDS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Foto" id="a1T-HV-fKo"/>
+                    <connections>
+                        <outlet property="imageViewFoto" destination="mpf-sZ-vCg" id="UzB-mu-EkI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uN2-hK-Kto" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3038" y="1096"/>
         </scene>
         <!--Meus Alertas-->
         <scene sceneID="N9w-vO-SHJ">

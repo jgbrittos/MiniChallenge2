@@ -29,7 +29,7 @@
                                                     </constraints>
                                                     <color key="textColor" red="0.0" green="0.61960784313725492" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vy1-mO-YI4">
                                                     <rect key="frame" x="8" y="8" width="134" height="134"/>
@@ -994,7 +994,7 @@
             </objects>
             <point key="canvasLocation" x="1714" y="1496"/>
         </scene>
-        <!--Foto da Receita-->
+        <!--Foto-->
         <scene sceneID="xSW-h4-vpL">
             <objects>
                 <viewController id="Thq-Hb-oxS" customClass="VisualizarFotoReceitaViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
@@ -1018,7 +1018,7 @@
                             <constraint firstItem="OFm-JG-EGM" firstAttribute="leading" secondItem="lpP-1b-p9Q" secondAttribute="leadingMargin" constant="-16" id="nh7-md-Ecd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Foto da Receita" id="SRM-nn-PEL"/>
+                    <navigationItem key="navigationItem" title="Foto" id="SRM-nn-PEL"/>
                     <connections>
                         <outlet property="imageViewFoto" destination="OFm-JG-EGM" id="9bJ-ya-Rtr"/>
                     </connections>

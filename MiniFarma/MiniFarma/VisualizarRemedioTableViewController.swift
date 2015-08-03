@@ -29,6 +29,9 @@ class VisualizarRemedioTableViewController: UITableViewController {
     @IBOutlet weak var labelDose: UILabel!
     @IBOutlet weak var labelPreco: UILabel!
     
+    var fotoDoRemedio: UIImage?
+    var fotoDaReceita: UIImage?
+    
     let histogramaUnidadesRemedio = [" cp", " g", " ml"]
     
     override func viewDidLoad() {
@@ -40,7 +43,24 @@ class VisualizarRemedioTableViewController: UITableViewController {
     }
     
     func mostraInformacoesDoRemedio(){
-        self.fotoRemedio.image = UIImage(named: "semFoto")
+        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentos: String = caminhos[0] as! String
+        let caminhoCompletoFoto = documentos.stringByAppendingPathComponent(self.remedio!.nomeRemedio+"Remedio.png")
+        let caminhoCompletoReceita = documentos.stringByAppendingPathComponent(self.remedio!.nomeRemedio+"Receita.png")
+        
+        if self.remedio?.fotoRemedio == "sem foto" {
+            self.fotoDoRemedio = UIImage(named: "semFoto")
+        }else{
+            self.fotoDoRemedio = UIImage(contentsOfFile: caminhoCompletoFoto)
+        }
+
+        if self.remedio?.fotoReceita == "sem foto" {
+            self.fotoDaReceita = UIImage(named: "semFoto")
+        }else{
+            self.fotoDaReceita = UIImage(contentsOfFile: caminhoCompletoReceita)
+        }
+        
+        self.fotoRemedio.image = self.fotoDoRemedio
         
         self.labelNome.text = self.remedio?.nomeRemedio
         
@@ -125,4 +145,16 @@ class VisualizarRemedioTableViewController: UITableViewController {
         }
     }
 
+    @IBAction func tocouNaFotoRemedio(sender: AnyObject) {
+        self.performSegueWithIdentifier("VisualizarFoto", sender: self.fotoDoRemedio)
+    }
+    
+    @IBAction func tocouNaCelulaReceita(sender: AnyObject) {
+        self.performSegueWithIdentifier("VisualizarFoto", sender: self.fotoDaReceita)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController
+        visualizador.fotoASerVisualizada = sender as! UIImage
+    }
 }
