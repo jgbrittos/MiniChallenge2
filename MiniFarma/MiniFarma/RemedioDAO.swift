@@ -299,4 +299,25 @@ class RemedioDAO: DAO {
         
         return self.remedios
     }
+    
+    
+    func marcaRemedioTomado(idRemedio: Int, novaQuantidade : Int) -> Bool {
+        
+        self.bancoDeDados.open()
+        
+
+        
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET numero_quantidade = ? WHERE id_remedio = ?", withArgumentsInArray: [String(novaQuantidade),String(idRemedio)])
+        
+        if !atualizadoComSucesso {
+            println("\(self.bancoDeDados.lastErrorMessage())")
+        }
+        
+        self.bancoDeDados.close()
+        
+        return atualizadoComSucesso
+        
+    }
+
+    
 }

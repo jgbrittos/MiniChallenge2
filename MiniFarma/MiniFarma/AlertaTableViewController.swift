@@ -79,8 +79,8 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         
         self.alertaDAO.inserir(alerta)
         
-        let notificacao = Notificacao(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, intervalo: self.intervalo!)
-                
+        let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
         //falta metodo que leva pra outra view
     }
