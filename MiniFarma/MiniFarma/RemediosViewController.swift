@@ -14,11 +14,10 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableViewRemedios: UITableView!
     @IBOutlet weak var segmentedControlValidadeRemedios: UISegmentedControl!
     
-//    let remediosValidos = ["Tylenol","Resfenol","Dorflex","Torsillax","Novalgina","Tylenol","Resfenol","Dorflex","Torsillax","Novalgina"]
     var remediosValidos = [Remedio]()
     var remediosVencidos = [Remedio]()
     var dadosASeremMostrados = [Remedio]()
-    
+    var remedioSelecionado: Remedio?
     let remedioDAO = RemedioDAO()
     
     //MARK:- Inicialização da view
@@ -43,9 +42,6 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.reloadData()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        
-    }
     //MARK:- Internacionalização
     func internacionalizaSegmentedControl(){
         self.segmentedControlValidadeRemedios.setTitle(NSLocalizedString("SEGMENTEDCONTROLREMEDIOVALIDO", comment: "Remédio válido"), forSegmentAtIndex: 0)
@@ -159,5 +155,15 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 130
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.remedioSelecionado = self.dadosASeremMostrados[indexPath.row]
+        self.performSegueWithIdentifier("VisualizarRemedio", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
+        visualizarRemedio.remedio = self.remedioSelecionado
     }
 }

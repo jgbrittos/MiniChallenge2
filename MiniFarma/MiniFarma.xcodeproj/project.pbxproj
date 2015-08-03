@@ -15,6 +15,7 @@
 		451428761B6AA0090070396A /* VisualizarFotoReceitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */; };
 		4514287A1B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */; };
 		4514287C1B6C2F1B0070396A /* Farmacia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4514287B1B6C2F1B0070396A /* Farmacia.storyboard */; };
+		451428B01B6F9CB70070396A /* VisualizarRemedioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451428AF1B6F9CB70070396A /* VisualizarRemedioTableViewController.swift */; };
 		4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */; };
 		453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453961241B5BE35D0097DEDB /* AppDelegate.swift */; };
 		4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453961281B5BE35D0097DEDB /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFotoReceitaViewController.swift; sourceTree = "<group>"; };
 		451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaRemediosAlertasTableViewCell.swift; sourceTree = "<group>"; };
 		4514287B1B6C2F1B0070396A /* Farmacia.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Farmacia.storyboard; sourceTree = "<group>"; };
+		451428AF1B6F9CB70070396A /* VisualizarRemedioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarRemedioTableViewController.swift; sourceTree = "<group>"; };
 		4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCustomizadaController.swift; sourceTree = "<group>"; };
 		4522B7E01B5EC0CA0053DD8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4539611F1B5BE35D0097DEDB /* MiniFarma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniFarma.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,23 @@
 			name = "Visualizar Foto";
 			sourceTree = "<group>";
 		};
+		451428B11B6F9CE80070396A /* Remedio */ = {
+			isa = PBXGroup;
+			children = (
+				45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */,
+				451428AF1B6F9CB70070396A /* VisualizarRemedioTableViewController.swift */,
+			);
+			name = Remedio;
+			sourceTree = "<group>";
+		};
+		451428B21B6F9CEF0070396A /* Alerta */ = {
+			isa = PBXGroup;
+			children = (
+				45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */,
+			);
+			name = Alerta;
+			sourceTree = "<group>";
+		};
 		453961161B5BE35D0097DEDB = {
 			isa = PBXGroup;
 			children = (
@@ -272,9 +291,9 @@
 			children = (
 				453961281B5BE35D0097DEDB /* Main.storyboard */,
 				4522B7DD1B5EB85C0053DD8E /* TabBarCustomizadaController.swift */,
-				45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */,
-				45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */,
 				451428791B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift */,
+				451428B11B6F9CE80070396A /* Remedio */,
+				451428B21B6F9CEF0070396A /* Alerta */,
 			);
 			name = "Lista Inicial";
 			sourceTree = "<group>";
@@ -498,6 +517,7 @@
 				8F6610451B6BB1510099C69B /* AlertaTableViewController.swift in Sources */,
 				8F477CC31B67BC520050D94F /* FarmaciaDAO.swift in Sources */,
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
+				451428B01B6F9CB70070396A /* VisualizarRemedioTableViewController.swift in Sources */,
 				451428721B690CCA0070396A /* Local.swift in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
 				451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */,

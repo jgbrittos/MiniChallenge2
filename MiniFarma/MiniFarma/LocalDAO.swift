@@ -77,4 +77,31 @@ class LocalDAO: DAO {
         return self.locais
         
     }
+    
+    override func buscarPorId(id: Int) -> AnyObject? {
+        self.bancoDeDados.open()
+        
+        var localBuscado = Local()
+        
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local WHERE id_local = ?", withArgumentsInArray: [String(id)])
+        
+        var idLocal = String()
+        var nome = String()
+        
+        while(resultadoBusca.next()){
+            
+            idLocal = resultadoBusca.stringForColumn("id_local")
+            nome = resultadoBusca.stringForColumn("nome")
+            
+            let local = Local(idLocal: idLocal.toInt()!, nome: nome)
+            
+            println("id: \(local.idLocal) nome: \(local.nome) --- INTERVALO: \(local)")
+            
+            localBuscado = local
+        }
+        
+        self.bancoDeDados.close()
+        
+        return localBuscado
+    }
 }

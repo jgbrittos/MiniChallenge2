@@ -140,13 +140,12 @@ class RemedioDAO: DAO {
         
     }
     
-    func buscarPor(id _id: Int) -> Remedio {
-        
+    override func buscarPorId(id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
         var remedioBuscado = Remedio()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ? Order By id_remedio", withArgumentsInArray: [String(_id)])
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ? Order By id_remedio", withArgumentsInArray: [String(id)])
         
         //campos opcionais
         var dataValidade: NSDate?
@@ -216,7 +215,6 @@ class RemedioDAO: DAO {
         self.bancoDeDados.close()
         
         return remedioBuscado
-        
     }
     
     func buscarTodosComDataDeValidade(valido _validade: Int) -> [AnyObject] {

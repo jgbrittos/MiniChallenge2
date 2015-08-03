@@ -10,8 +10,6 @@ import UIKit
 
 class AlertaDAO: DAO {
    
-    
-    
     var alertas = [Alerta]()
     
     override init(){
@@ -149,6 +147,7 @@ class AlertaDAO: DAO {
 //        return atualizadoComSucesso
 //        
 //    }
-//    
+
+    
     
 }

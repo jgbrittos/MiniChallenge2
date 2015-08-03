@@ -80,10 +80,10 @@ class IntervaloDAO: DAO {
         
     }
     
-    func buscarIntervaloPorId(id: String) -> Intervalo {
+    override func buscarPorId(id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
-        var intervaloBuscado: Intervalo?
+        var intervaloBuscado = Intervalo()
         
         var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo WHERE id_intervalo = ? Order By id_intervalo", withArgumentsInArray: [id])
         
@@ -106,6 +106,6 @@ class IntervaloDAO: DAO {
         
         self.bancoDeDados.close()
         
-        return intervaloBuscado!
+        return intervaloBuscado
     }
 }

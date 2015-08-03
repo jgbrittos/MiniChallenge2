@@ -94,7 +94,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let formatadorData = NSDateFormatter()
             formatadorData.dateFormat = "dd/MM/yyyy"
             
-            let remedio = self.remedioDAO.buscarPor(id: self.alertasDaVez[indexPath.row].idRemedio)
+            let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
             
             celulaAlerta.labelNome.text = remedio.nomeRemedio
             celulaAlerta.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)

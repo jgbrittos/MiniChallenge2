@@ -39,4 +39,9 @@ class DAO: NSObject {
         return Array<AnyObject>()
     }
     
+    func buscarPorId(id: Int) -> AnyObject? {
+        //Sobrescrever
+        return nil
+    }
+    
 }

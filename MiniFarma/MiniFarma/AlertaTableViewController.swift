@@ -32,7 +32,7 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         self.remedio = appDelegate.remedioGlobal
         
         if let r = self.remedio {
-            self.intervalo = self.intervaloDAO.buscarIntervaloPorId(String(r.idIntervalo))
+            self.intervalo = self.intervaloDAO.buscarPorId(r.idIntervalo) as? Intervalo
             self.lblIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
             self.lblRemedio.text = r.nomeRemedio
             self.unidadeDuracao = r.unidade

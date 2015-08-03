@@ -8,50 +8,50 @@
 
 import UIKit
 
-class CategoriaDAO: NSObject {
+class CategoriaDAO: DAO {
    
-    
-    var categoriaArray: NSMutableArray = []
-    var dataBase: FMDatabase
-    var pathDatabase: String
+    var categorias = [Categoria]()
     
     override init(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        self.pathDatabase = appDelegate.caminhoBancoDeDados as String
-        self.dataBase = FMDatabase.databaseWithPath(self.pathDatabase as String) as! FMDatabase
-        
+        super.init()
     }
     
-    
-    func inserirCategoria(categ: Categoria) -> Bool{
+    override func inserir(objeto: AnyObject?) -> Bool {
         
+        self.bancoDeDados.open()
         
-        self.dataBase.open()
-        let inseridoComSucesso = self.dataBase.executeUpdate("INSERT INTO Categoria (nome) VALUES (?)", withArgumentsInArray: [categ.nomeCategoria])
-        println("%@", self.dataBase.lastErrorMessage())
-        self.dataBase.close()
+        let categoria: Categoria = objeto as! Categoria
+        
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Categoria (nome) VALUES (?)", withArgumentsInArray: [categoria.nomeCategoria])
+        
+        println("%@", self.bancoDeDados.lastErrorMessage())
+        
+        self.bancoDeDados.close()
+        
         return inseridoComSucesso
-        
+
     }
     
-    func deletarCategoria(categ: Categoria) -> Bool{
+    override func deletar(objeto: AnyObject?) -> Bool {
         
+        self.bancoDeDados.open()
         
+        let categoria: Categoria = objeto as! Categoria
         
-        self.dataBase.open()
-        let deletadoComSucesso = self.dataBase.executeUpdate("DELETE FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(categ.idCategoria)])
-        println("%@", self.dataBase.lastErrorMessage())
-        self.dataBase.close()
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(categoria.idCategoria)])
+        
+        println("%@", self.bancoDeDados.lastErrorMessage())
+        
+        self.bancoDeDados.close()
+        
         return deletadoComSucesso
     }
-    
-    
-    func buscarCategorias() -> NSArray {
+
+    override func buscarTodos() -> [AnyObject] {
         
-        self.dataBase.open()
+        self.bancoDeDados.open()
         
-        var result: FMResultSet = self.dataBase.executeQuery("SELECT * FROM Categoria Order By id_categoria", withArgumentsInArray: nil)
-        
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By id_categoria", withArgumentsInArray: nil)
         
         while(result.next()){
             
@@ -60,14 +60,34 @@ class CategoriaDAO: NSObject {
             
             var categoria = Categoria(idCategoria: idCategoria.toInt()!, nomeCategoria: nome)
             
-            self.categoriaArray.addObject(categoria)
-            
+            self.categorias.append(categoria)
         }
         
-        self.dataBase.close()
+        self.bancoDeDados.close()
         
-        return self.categoriaArray
+        return self.categorias
         
     }
-    
+
+    override func buscarPorId(id: Int) -> AnyObject? {
+        self.bancoDeDados.open()
+        
+        var categoriaBuscada = Categoria()
+        
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria WHERE id_categoria = ? Order By id_categoria", withArgumentsInArray: [String(id)])
+        
+        while(result.next()){
+            
+            var idCategoria: String = result.stringForColumn("id_categoria")
+            var nome: String = result.stringForColumn("nome")
+            
+            var categoria = Categoria(idCategoria: idCategoria.toInt()!, nomeCategoria: nome)
+            
+            categoriaBuscada = categoria
+        }
+        
+        self.bancoDeDados.close()
+        
+        return categoriaBuscada
+    }
 }

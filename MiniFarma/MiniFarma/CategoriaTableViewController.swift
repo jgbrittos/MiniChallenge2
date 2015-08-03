@@ -21,7 +21,7 @@ class CategoriaTableViewController: UITableViewController {
 
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        self.categorias = categoriaDAO.buscarCategorias() as! [Categoria]
+        self.categorias = categoriaDAO.buscarTodos() as! [Categoria]
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,7 +48,7 @@ class CategoriaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if(editingStyle == .Delete){
-            let sucesso: Bool = categoriaDAO.deletarCategoria(self.categorias[indexPath.row])
+            let sucesso: Bool = categoriaDAO.deletar(self.categorias[indexPath.row])
             
             if(sucesso){
                 println("Categoria deletada com sucesso")
@@ -102,7 +102,7 @@ class CategoriaTableViewController: UITableViewController {
 
                     }else{
                         let categoria = Categoria(nomeCategoria: textoDigitado)
-                        self!.categoriaDAO.inserirCategoria(categoria)
+                        self!.categoriaDAO.inserir(categoria)
                         self!.categorias.append(categoria)
                         self!.tableView.reloadData()
                     }

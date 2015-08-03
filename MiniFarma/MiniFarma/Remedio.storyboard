@@ -651,7 +651,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1746" y="674"/>
+            <point key="canvasLocation" x="1714" y="674"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5IW-av-i66">
@@ -728,7 +728,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wsu-vV-PFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="1392"/>
+            <point key="canvasLocation" x="968" y="1496"/>
         </scene>
         <!--Nova Farmácia-->
         <scene sceneID="JBC-SQ-0sI">
@@ -849,7 +849,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LsL-9G-5zk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="2110"/>
+            <point key="canvasLocation" x="968" y="2214"/>
         </scene>
         <!--Categoria-->
         <scene sceneID="l78-yJ-g03">
@@ -992,7 +992,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQG-l1-bH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1746" y="1392"/>
+            <point key="canvasLocation" x="1714" y="1496"/>
         </scene>
         <!--Foto da Receita-->
         <scene sceneID="xSW-h4-vpL">
@@ -1025,7 +1025,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucr-Ab-CPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2459" y="1392"/>
+            <point key="canvasLocation" x="2459" y="1496"/>
         </scene>
     </scenes>
     <resources>

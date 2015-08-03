@@ -60,8 +60,8 @@ SelecionaFarmaciaDelegate {
     
     var intervalo: Intervalo?
     var categoria: Categoria?
-    var farmacia = Farmacia()
-    var local = Local()
+    var farmacia: Farmacia?
+    var local: Local?
     
     var fotoRemedio: UIImage?
     var fotoReceita: UIImage?
@@ -178,14 +178,20 @@ SelecionaFarmaciaDelegate {
         formatador.dateFormat = "dd/MM/yyyy"
         let dataValidade =  formatador.dateFromString(self.textFieldDataDeValidade.text)
         
-        let idFarmacia: Int = 0
+        var idFarmacia: Int = 0
+        if let f = self.farmacia {
+            idFarmacia = f.idFarmacia
+        }
         
         var idCategoria: Int = 0
         if let c = self.categoria {
             idCategoria = c.idCategoria
         }
         
-        let idLocal: Int = self.local.idLocal
+        var idLocal: Int = 0
+        if let l = self.local {
+            idLocal = l.idLocal
+        }
         
         var idIntervalo: Int = 0
         if let i = self.intervalo {
@@ -258,7 +264,8 @@ SelecionaFarmaciaDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.textFieldLocal.text = self.locais[row].nome
+        self.local = self.locais[row]
+        self.textFieldLocal.text = self.local!.nome
     }
     
     @IBAction func comecouAEscolherLocal(sender: AnyObject) {

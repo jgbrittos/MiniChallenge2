@@ -88,11 +88,36 @@ class FarmaciaDAO: DAO {
         
         return self.farmacias
     }
-    
-    
-    
-    
-    
+
+    override func buscarPorId(id: Int) -> AnyObject? {
+        self.bancoDeDados.open()
+        
+        var farmaciaBuscada = Farmacia()
+        
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia WHERE id_farmacia = ? Order By id_farmacia", withArgumentsInArray: [String(id)])
+        
+        var idFarmacia = String()
+        var nome = String()
+        var favorita = String()
+        var latitude = String()
+        var longitude = String()
+        
+        while(resultadoBusca.next()){
+            
+            idFarmacia = resultadoBusca.stringForColumn("id_Farmacia")
+            nome = resultadoBusca.stringForColumn("nome")
+            favorita = resultadoBusca.stringForColumn("favorita")
+            latitude = resultadoBusca.stringForColumn("latitude")
+            longitude = resultadoBusca.stringForColumn("longitude")
+            
+            let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
+            farmaciaBuscada = farmacia
+        }
+        
+        self.bancoDeDados.close()
+        
+        return farmaciaBuscada
+    }
     
     func atualizaFarmaciaFavorita(idFarmacia: Int, favorita:Int) -> Bool {
         
@@ -111,6 +136,4 @@ class FarmaciaDAO: DAO {
         
     }
 
-    
-    
 }
