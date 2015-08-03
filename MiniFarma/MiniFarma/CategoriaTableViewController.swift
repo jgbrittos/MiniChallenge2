@@ -68,53 +68,66 @@ class CategoriaTableViewController: UITableViewController {
     
     @IBAction func adicionarClicado(sender: AnyObject) {
 
-        var alerta:UIAlertController?
-        alerta = UIAlertController(title: NSLocalizedString("TITULOALERTACATEGORIA", comment: "Titulo do alerta"),
-            message: NSLocalizedString("MENSAGEMALERTACATEGORIA", comment: "Mensagem do Alerta"),
-            preferredStyle: .Alert)
-        alerta!.addTextFieldWithConfigurationHandler(
-            {(textField: UITextField!) in
-                textField.placeholder = NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta")
-                textField.accessibilityLabel = NSLocalizedString("CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL", comment: "Alerta")
-                textField.accessibilityHint = NSLocalizedString("CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT", comment: "Alerta")
-        })
-        
-        alerta?.accessibilityLabel = NSLocalizedString("TITULOALERTACATEGORIA_ACESSIBILIDADE_LABEL", comment: "Alerta")
-        alerta?.accessibilityHint = NSLocalizedString("TITULOALERTACATEGORIA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
-        
-      
-        alerta!.addAction(UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"), style: .Default, handler: { (action: UIAlertAction!) in
+//        var alerta:UIAlertController?
+//        alerta = UIAlertController(title: NSLocalizedString("TITULOALERTACATEGORIA", comment: "Titulo do alerta"),
+//            message: NSLocalizedString("MENSAGEMALERTACATEGORIA", comment: "Mensagem do Alerta"),
+//            preferredStyle: .Alert)
+//        alerta!.addTextFieldWithConfigurationHandler(
+//            {(textField: UITextField!) in
+//                textField.placeholder = NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta")
+//                textField.accessibilityLabel = NSLocalizedString("CATEGORIAPLACEHOLDER_ACESSIBILIDADE_LABEL", comment: "Alerta")
+//                textField.accessibilityHint = NSLocalizedString("CATEGORIAPLACEHOLDER_ACESSIBILIDADE_HINT", comment: "Alerta")
+//        })
+//        
+//        alerta?.accessibilityLabel = NSLocalizedString("TITULOALERTACATEGORIA_ACESSIBILIDADE_LABEL", comment: "Alerta")
+//        alerta?.accessibilityHint = NSLocalizedString("TITULOALERTACATEGORIA_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
+//        
+//      
+//        alerta!.addAction(UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"), style: .Default, handler: { (action: UIAlertAction!) in
+//
+//        }))
+//        
+//        let acaoAlerta = UIAlertAction(title: NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta"),
+//            style: UIAlertActionStyle.Default,
+//            handler: {[weak self]
+//                (paramAction:UIAlertAction!) in
+//                if let textField = alerta?.textFields{
+//                    let theTextField = textField as! [UITextField]
+//                    let textoDigitado = theTextField[0].text
+//                    
+//                    if (textoDigitado == ""){
+//                        let alertaErro: UIAlertController = UIAlertController(title: NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), message: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), preferredStyle: .Alert)
+//                        alertaErro.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+//                        self!.presentViewController(alertaErro, animated: true, completion: nil)
+//
+//                    }else{
+//                        let categoria = Categoria(nomeCategoria: textoDigitado)
+//                        self!.categoriaDAO.inserir(categoria)
+//                        self!.categorias.append(categoria)
+//                        self!.tableView.reloadData()
+//                    }
+//                    
+//                }
+//            })
+//        
+//        
+//        alerta?.addAction(acaoAlerta)
+//
+//        self.presentViewController(alerta!,animated: true,completion: nil)
 
-        }))
-        
-        let acaoAlerta = UIAlertAction(title: NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta"),
-            style: UIAlertActionStyle.Default,
-            handler: {[weak self]
-                (paramAction:UIAlertAction!) in
-                if let textField = alerta?.textFields{
-                    let theTextField = textField as! [UITextField]
-                    let textoDigitado = theTextField[0].text
-                    
-                    if (textoDigitado == ""){
-                        let alertaErro: UIAlertController = UIAlertController(title: NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), message: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), preferredStyle: .Alert)
-                        alertaErro.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                        self!.presentViewController(alertaErro, animated: true, completion: nil)
-
-                    }else{
-                        let categoria = Categoria(nomeCategoria: textoDigitado)
-                        self!.categoriaDAO.inserir(categoria)
-                        self!.categorias.append(categoria)
-                        self!.tableView.reloadData()
-                    }
-                    
-                }
-            })
-        
-        
-        alerta?.addAction(acaoAlerta)
-
-        self.presentViewController(alerta!,animated: true,completion: nil)
-
+        let alerta = SCLAlertView()
+        let nomeCategoria = alerta.addTextField(title:NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
+        alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
+            if nomeCategoria.text != "" {
+                let categoria = Categoria(nomeCategoria: nomeCategoria.text)
+                self.categoriaDAO.inserir(categoria)
+                self.categorias.append(categoria)
+                self.tableView.reloadData()
+            }else{
+                SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), subTitle: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), closeButtonTitle: "OK")
+            }
+        }
+        alerta.showEdit(NSLocalizedString("TITULOALERTACATEGORIA", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTACATEGORIA", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
     }
 }
 
