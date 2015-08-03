@@ -49,6 +49,7 @@
 		8F6610411B6BAD050099C69B /* AlertaDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6610401B6BAD050099C69B /* AlertaDAO.swift */; };
 		8F6610431B6BAD140099C69B /* Alerta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F6610421B6BAD140099C69B /* Alerta.storyboard */; };
 		8F6610451B6BB1510099C69B /* AlertaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6610441B6BB1510099C69B /* AlertaTableViewController.swift */; };
+		8F710AD21B6F9E18009E9D8C /* Notificacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F710AD11B6F9E18009E9D8C /* Notificacao.swift */; };
 		8F72453D1B6BFAC5003EE667 /* IntervaloTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F72453C1B6BFAC5003EE667 /* IntervaloTableViewController.swift */; };
 		8F72453F1B6C0D58003EE667 /* RemedioSimplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F72453E1B6C0D58003EE667 /* RemedioSimplesTableViewController.swift */; };
 		8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8FC9E8541B61297800E46761 /* Minifarma.sqlite */; };
@@ -124,6 +125,7 @@
 		8F6610401B6BAD050099C69B /* AlertaDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertaDAO.swift; sourceTree = "<group>"; };
 		8F6610421B6BAD140099C69B /* Alerta.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alerta.storyboard; sourceTree = "<group>"; };
 		8F6610441B6BB1510099C69B /* AlertaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertaTableViewController.swift; sourceTree = "<group>"; };
+		8F710AD11B6F9E18009E9D8C /* Notificacao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notificacao.swift; sourceTree = "<group>"; };
 		8F72453C1B6BFAC5003EE667 /* IntervaloTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloTableViewController.swift; sourceTree = "<group>"; };
 		8F72453E1B6C0D58003EE667 /* RemedioSimplesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemedioSimplesTableViewController.swift; sourceTree = "<group>"; };
 		8FC9E8541B61297800E46761 /* Minifarma.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minifarma.sqlite; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				45DAB5371B5C335100AA2860 /* Alerta.swift */,
 				8F72453C1B6BFAC5003EE667 /* IntervaloTableViewController.swift */,
 				8F72453E1B6C0D58003EE667 /* RemedioSimplesTableViewController.swift */,
+				8F710AD11B6F9E18009E9D8C /* Notificacao.swift */,
 			);
 			name = AdicionarAlerta;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				8F6610451B6BB1510099C69B /* AlertaTableViewController.swift in Sources */,
 				8F477CC31B67BC520050D94F /* FarmaciaDAO.swift in Sources */,
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
+				8F710AD21B6F9E18009E9D8C /* Notificacao.swift in Sources */,
 				451428721B690CCA0070396A /* Local.swift in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
 				451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */,

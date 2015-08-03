@@ -17,9 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let nomeBancoDeDados: String = "Minifarma.sqlite"
     var remedioGlobal : Remedio?
     
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
+            UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        
+        
         
         let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!
