@@ -283,14 +283,17 @@ SelecionaFarmaciaDelegate {
     
     // MARK: - Toque nas celulas
     @IBAction func tocouNaCelulaDeCategoria(sender: AnyObject) {
+        self.textFieldDataDeValidade.resignFirstResponder()
         self.performSegueWithIdentifier("SelecionaCategoria", sender: nil)
     }
     
     @IBAction func tocouNaCelulaDeIntervalo(sender: AnyObject) {
+        self.textFieldDataDeValidade.resignFirstResponder()
         self.performSegueWithIdentifier("SelecionaIntervalo", sender: nil)
     }
     
     @IBAction func tocouNaCelulaDeFarmacia(sender: AnyObject) {
+        self.textFieldDataDeValidade.resignFirstResponder()
         self.performSegueWithIdentifier("SelecionaFarmacia", sender: nil)
     }
     
@@ -383,6 +386,7 @@ SelecionaFarmaciaDelegate {
     }
 
     @IBAction func tocouNaCelulaDeReceita(sender: AnyObject) {
+        self.textFieldDataDeValidade.resignFirstResponder()
         var acao: UIActionSheet
         
         if self.fotoReceita != nil {
