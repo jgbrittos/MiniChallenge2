@@ -10,6 +10,7 @@ import UIKit
 
 class AlertaTableViewController: UITableViewController,UITextFieldDelegate, SelecionaIntervaloDoAlertaDelegate, SelecionaRemedioDelegate {
 
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
    
     @IBOutlet weak var dataInicioPicker: UIDatePicker!
     @IBOutlet weak var txtDuracaoQuantidade: UITextField!
@@ -28,7 +29,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.remedio = appDelegate.remedioGlobal
         
         if let r = self.remedio {
@@ -77,7 +77,9 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         let alerta = Alerta(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
         
         self.alertaDAO.inserir(alerta)
-
+        
+        appDelegate.remedioGlobal = nil
+        
         let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
         let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
         self.presentViewController(telaInicial, animated: true, completion: nil)

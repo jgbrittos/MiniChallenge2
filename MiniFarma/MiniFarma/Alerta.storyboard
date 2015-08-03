@@ -118,12 +118,15 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intervalo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5i-th-jfe">
                                                     <rect key="frame" x="8" y="12" width="66" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="66" id="CIJ-Aj-iBh"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-fN-LnG">
-                                                    <rect key="frame" x="88" y="12" width="471" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-fN-LnG">
+                                                    <rect key="frame" x="88" y="23" width="471" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -133,7 +136,6 @@
                                                 <constraint firstAttribute="centerY" secondItem="r5i-th-jfe" secondAttribute="centerY" constant="-0.75" id="BWz-4Y-YAh"/>
                                                 <constraint firstItem="r5i-th-jfe" firstAttribute="leading" secondItem="OAe-k1-Eqd" secondAttribute="leadingMargin" id="JYN-Vi-s7S"/>
                                                 <constraint firstItem="wGu-fN-LnG" firstAttribute="leading" secondItem="r5i-th-jfe" secondAttribute="trailing" constant="14" id="Jbk-El-Z3b"/>
-                                                <constraint firstAttribute="centerX" secondItem="wGu-fN-LnG" secondAttribute="centerX" constant="-40" id="Yoq-Gp-qvu"/>
                                                 <constraint firstAttribute="centerY" secondItem="wGu-fN-LnG" secondAttribute="centerY" constant="-0.75" id="ZIm-Gb-JX6"/>
                                                 <constraint firstItem="wGu-fN-LnG" firstAttribute="trailing" secondItem="OAe-k1-Eqd" secondAttribute="trailingMargin" id="eBr-fL-AM6"/>
                                             </constraints>
@@ -150,12 +152,15 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remédio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1r-vX-lcO">
                                                     <rect key="frame" x="8" y="12" width="69" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="69" id="b1W-D4-RPr"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6u-hV-ggJ">
-                                                    <rect key="frame" x="85" y="12" width="474" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6u-hV-ggJ">
+                                                    <rect key="frame" x="85" y="23" width="474" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -164,7 +169,6 @@
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="B1r-vX-lcO" secondAttribute="centerY" constant="-0.75" id="BGC-ci-uTd"/>
                                                 <constraint firstItem="B1r-vX-lcO" firstAttribute="leading" secondItem="jY0-kZ-Gyu" secondAttribute="leadingMargin" id="BIj-p3-hKB"/>
-                                                <constraint firstAttribute="centerX" secondItem="n6u-hV-ggJ" secondAttribute="centerX" constant="-38.5" id="CBi-sk-J4B"/>
                                                 <constraint firstItem="n6u-hV-ggJ" firstAttribute="trailing" secondItem="jY0-kZ-Gyu" secondAttribute="trailingMargin" id="GaR-CC-DqY"/>
                                                 <constraint firstItem="n6u-hV-ggJ" firstAttribute="leading" secondItem="B1r-vX-lcO" secondAttribute="trailing" constant="8" id="rWC-Xi-9E5"/>
                                                 <constraint firstAttribute="centerY" secondItem="n6u-hV-ggJ" secondAttribute="centerY" constant="-0.75" id="tTh-Lb-4eq"/>
