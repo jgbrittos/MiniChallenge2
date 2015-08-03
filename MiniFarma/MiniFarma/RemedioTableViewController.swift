@@ -276,7 +276,8 @@ SelecionaFarmaciaDelegate {
             self.textFieldLocal.resignFirstResponder()
             self.emiteAlertaParaCadastrarLocal()
         }else{
-            self.textFieldLocal.text = self.locais[0].nome
+            self.local = self.locais[0]
+            self.textFieldLocal.text = self.local!.nome
         }
     }
     
