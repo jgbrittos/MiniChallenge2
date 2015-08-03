@@ -22,6 +22,8 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let remedioDAO = RemedioDAO()
     let intervaloDAO = IntervaloDAO()
     
+    var alertaSelecionado: Alerta?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,11 +101,6 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             celulaAlerta.labelNome.text = remedio.nomeRemedio
             celulaAlerta.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)
 
-//            let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-//            var documentos: String = caminhos[0] as! String
-//            let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
-//            celulaAlerta.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
-
             if remedio.fotoRemedio == "sem foto" {
                 celulaAlerta.imageViewFotoRemedio?.image = UIImage(named: "semFoto")
             }else{
@@ -129,6 +126,24 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             //Ação para quando o usuário quer apagar um remédio
+            switch self.segmentedControlAtividadeAlertas.selectedSegmentIndex {
+                case 0:
+                    let alerta = self.alertasAtivos[indexPath.row] as Alerta
+                    self.alertaDAO.deletar(alerta)
+                    self.alertasAtivos.removeAtIndex(indexPath.row)
+                    self.alertasDaVez = self.alertasAtivos
+                    break
+                case 1:
+                    let alerta = self.alertasInativos[indexPath.row] as Alerta
+                    self.alertaDAO.deletar(alerta)
+                    self.alertasInativos.removeAtIndex(indexPath.row)
+                    self.alertasDaVez = self.alertasInativos
+                    break
+                default:
+                    println("Algo ocorreu no método editActionsForRowAtIndexPath na classe AlertaViewController!")
+                    break
+            }
+            self.tableViewAlerta.reloadData()
         })
         
         tomei.backgroundColor = UIColor(red: 0/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1)
@@ -141,4 +156,13 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 130
     }
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.alertaSelecionado = self.alertasDaVez[indexPath.row]
+        self.performSegueWithIdentifier("VisualizarAlerta", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var visualizarAlerta = segue.destinationViewController as! VisualizarAlertaTableViewController
+        visualizarAlerta.alerta = self.alertaSelecionado
+    }
 }
