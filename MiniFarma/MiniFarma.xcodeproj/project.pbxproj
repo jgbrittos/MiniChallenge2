@@ -235,7 +235,6 @@
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
 				457409B61B669A9400CC71EF /* Adicionar Remedio */,
-				451428C61B70170D0070396A /* SCLAlertView.swift */,
 				457409B71B66A1E300CC71EF /* AdicionarAlerta */,
 				453961441B5BE3A50097DEDB /* Assets */,
 				453961491B5BE3C60097DEDB /* BancoDeDados */,
@@ -330,6 +329,7 @@
 		4539614B1B5BE4D70097DEDB /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				451428C61B70170D0070396A /* SCLAlertView.swift */,
 				8F633D461B694472000C07C1 /* MapKit.framework */,
 				453961611B5BEED30097DEDB /* CoreLocation.framework */,
 				4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */,
