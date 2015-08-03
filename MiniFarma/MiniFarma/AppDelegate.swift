@@ -24,8 +24,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
-            UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        
+        var notificationActionOk :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionOk.identifier = "ACCEPT_IDENTIFIER"
+        notificationActionOk.title = "Tomei"
+        notificationActionOk.destructive = false
+        notificationActionOk.authenticationRequired = false
+        notificationActionOk.activationMode = UIUserNotificationActivationMode.Background
+        
+        var notificationActionCancel :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionCancel.identifier = "NOT_NOW_IDENTIFIER"
+        notificationActionCancel.title = "Adiar"
+        notificationActionCancel.destructive = true
+        notificationActionCancel.authenticationRequired = false
+        notificationActionCancel.activationMode = UIUserNotificationActivationMode.Background
+        
+        var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = "INVITE_CATEGORY"
+        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
+        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert |
+            UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>
+            ))
+        
         
         
         

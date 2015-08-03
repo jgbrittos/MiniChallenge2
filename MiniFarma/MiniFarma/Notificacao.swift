@@ -60,6 +60,7 @@ class Notificacao: NSObject {
         localNotification.alertAction = "Testing notifications on iOS8"
         localNotification.alertBody = "Woww it works"
         localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+        localNotification.category = "INVITE_CATEGORY";
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
     
