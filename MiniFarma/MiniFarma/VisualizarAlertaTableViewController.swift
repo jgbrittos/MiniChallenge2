@@ -53,4 +53,8 @@ class VisualizarAlertaTableViewController: UITableViewController {
         return 4
     }
 
+    @IBAction func editarAlerta(sender: AnyObject) {
+        
+    }
+
 }

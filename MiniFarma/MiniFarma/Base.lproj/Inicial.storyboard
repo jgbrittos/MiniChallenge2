@@ -17,6 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tutorial" id="vbH-ar-5Q7"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0i-DV-opp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
