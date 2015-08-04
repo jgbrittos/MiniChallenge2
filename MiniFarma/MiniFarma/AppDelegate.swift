@@ -12,10 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var caminhoBancoDeDados:NSString = ""
-    var bancoDeDados:FMDatabase?
+    var caminhoBancoDeDados: String = ""
+    var bancoDeDados: FMDatabase?
     let nomeBancoDeDados: String = "Minifarma.sqlite"
-    var remedioGlobal : Remedio?
+    var remedioGlobal: Remedio?
+    var remedioEditavel: Remedio?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         

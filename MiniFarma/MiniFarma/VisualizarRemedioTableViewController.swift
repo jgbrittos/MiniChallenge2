@@ -11,6 +11,7 @@ import UIKit
 class VisualizarRemedioTableViewController: UITableViewController {
 
     var remedio: Remedio?
+    var remedioDAO = RemedioDAO()
     var intervaloDAO = IntervaloDAO()
     var categoriaDAO = CategoriaDAO()
     var farmaciaDAO = FarmaciaDAO()
@@ -39,35 +40,28 @@ class VisualizarRemedioTableViewController: UITableViewController {
 
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.remedio = self.remedioDAO.buscarPorId(self.remedio!.idRemedio) as? Remedio
+        
         self.mostraInformacoesDoRemedio()
     }
     
     func mostraInformacoesDoRemedio(){
-        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentos: String = caminhos[0] as! String
-        let caminhoCompletoFoto = documentos.stringByAppendingPathComponent(self.remedio!.nomeRemedio+"Remedio.png")
-        let caminhoCompletoReceita = documentos.stringByAppendingPathComponent(self.remedio!.nomeRemedio+"Receita.png")
         
-        if self.remedio?.fotoRemedio == "sem foto" {
-            self.fotoDoRemedio = UIImage(named: "semFoto")
-        }else{
-            self.fotoDoRemedio = UIImage(contentsOfFile: caminhoCompletoFoto)
-        }
-
-        if self.remedio?.fotoReceita == "sem foto" {
-            self.fotoDaReceita = UIImage(named: "semFoto")
-        }else{
-            self.fotoDaReceita = UIImage(contentsOfFile: caminhoCompletoReceita)
-        }
+        self.fotoDoRemedio = self.remedio?.fotoRemedioUIImage
+        
+        self.fotoDaReceita = self.remedio?.fotoReceitaUIImage
         
         self.fotoRemedio.image = self.fotoDoRemedio
         
         self.labelNome.text = self.remedio?.nomeRemedio
         
         if let d = self.remedio?.dataValidade {
-            let formatador = NSDateFormatter()
-            formatador.dateFormat = "dd/MM/yyyy"
-            let dataString = formatador.stringFromDate(d)
+            
+            let dataString = self.remedio?.dataEmString
             
             if dataString != "01/01/1900"{
                 self.labelDataDeValidade.text = dataString
@@ -157,4 +151,13 @@ class VisualizarRemedioTableViewController: UITableViewController {
         let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController
         visualizador.fotoASerVisualizada = sender as! UIImage
     }
+    
+    @IBAction func editarRemedio(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.remedioEditavel = self.remedio
+        
+        let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        self.presentViewController(storyboardRemedio, animated: true, completion: nil)
+    }
+    
 }

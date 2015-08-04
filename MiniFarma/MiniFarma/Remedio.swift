@@ -25,6 +25,32 @@ class Remedio: NSObject {
     var idLocal: Int = 0
     var idIntervalo: Int = 0
     
+    var dataEmString: String {
+        let f = NSDateFormatter()
+        f.dateFormat = "dd/MM/yyyy"
+        return f.stringFromDate(self.dataValidade)
+    }
+    
+    var fotoRemedioUIImage: UIImage {
+        if self.fotoRemedio == "sem foto"{
+            return UIImage(named: "semFoto")!
+        }
+        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        var documentos: String = caminhos[0] as! String
+        let caminhoCompleto = documentos.stringByAppendingPathComponent(self.nomeRemedio+"Remedio.png")
+        return UIImage(contentsOfFile: caminhoCompleto)!
+    }
+    
+    var fotoReceitaUIImage: UIImage {
+        if self.fotoReceita == "sem foto"{
+            return UIImage(named: "semFoto")!
+        }
+        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        var documentos: String = caminhos[0] as! String
+        let caminhoCompleto = documentos.stringByAppendingPathComponent(self.nomeRemedio+"Receita.png")
+        return UIImage(contentsOfFile: caminhoCompleto)!
+    }
+    
     override init() {}
     
     //Remedio do banco

@@ -85,7 +85,6 @@ class RemedioDAO: DAO {
             var idRemedio: NSString = result.stringForColumn("id_remedio")
             var nome: NSString = result.stringForColumn("nome")
             
-            
             if(result.stringForColumn("data_validade") != nil){
                 dataValidade = result.dateForColumn("data_validade")
             }
@@ -294,25 +293,39 @@ class RemedioDAO: DAO {
         
         return self.remedios
     }
-    
+
+    func atualizar(remedio: Remedio, comId id: Int) -> Bool {
+        self.bancoDeDados.open()
+        
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET nome = ?, data_validade = ?, numero_quantidade = ?, unidade = ?, preco = ?, numero_dose = ?, foto_remedio = ?, foto_receita = ?, vencido = ?, id_farmacia = ?, id_categoria = ?, id_local = ?, id_intervalo = ? WHERE id_remedio = ?", withArgumentsInArray: [remedio.nomeRemedio,
+            remedio.dataValidade,
+            remedio.numeroQuantidade,
+            remedio.unidade,
+            remedio.preco,
+            remedio.numeroDose,
+            remedio.fotoRemedio,
+            remedio.fotoReceita,
+            remedio.vencido,
+            remedio.idFarmacia,
+            remedio.idCategoria,
+            remedio.idLocal,
+            remedio.idIntervalo,
+            String(id)])
+        
+        self.bancoDeDados.close()
+        
+        return atualizadoComSucesso
+    }
     
     func marcaRemedioTomado(idRemedio: Int, novaQuantidade : Int) -> Bool {
         
         self.bancoDeDados.open()
         
-
-        
         let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET numero_quantidade = ? WHERE id_remedio = ?", withArgumentsInArray: [String(novaQuantidade),String(idRemedio)])
-        
-        if !atualizadoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
         
         self.bancoDeDados.close()
         
         return atualizadoComSucesso
-        
     }
 
-    
 }

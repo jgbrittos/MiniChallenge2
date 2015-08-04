@@ -459,7 +459,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Visualizar Remédio" id="SSM-na-lrO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="51d-GI-b9D"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="51d-GI-b9D">
+                            <connections>
+                                <action selector="editarRemedio:" destination="s5H-sA-ZYX" id="q6D-ZW-ys0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="fotoRemedio" destination="JNA-Yv-kx9" id="c5A-hl-ry4"/>

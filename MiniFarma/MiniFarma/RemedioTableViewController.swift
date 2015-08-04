@@ -57,6 +57,9 @@ SelecionaFarmaciaDelegate {
     
     let remedioDAO = RemedioDAO()
     let localDAO = LocalDAO()
+    let categoriaDAO = CategoriaDAO()
+    let intervaloDAO = IntervaloDAO()
+    let farmaciaDAO = FarmaciaDAO()
     var locais = [Local]()
     
     var intervalo: Intervalo?
@@ -67,6 +70,7 @@ SelecionaFarmaciaDelegate {
     var fotoRemedio: UIImage?
     var fotoReceita: UIImage?
     var fotoOuReceita: Int = 0
+    var idRemedio: Int = 0
     
     let histogramaUnidadesRemedio = [" cp", " g", " ml"]
     
@@ -104,6 +108,40 @@ SelecionaFarmaciaDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if let r = appDelegate.remedioEditavel {
+            self.buttonTirarFotoRemedio.setBackgroundImage(r.fotoRemedioUIImage, forState: .Normal)
+            self.fotoRemedio = r.fotoRemedioUIImage
+            
+            self.textFieldNome.text = r.nomeRemedio
+            self.textFieldDataDeValidade.text = r.dataEmString
+            
+            self.categoria = self.categoriaDAO.buscarPorId(r.idCategoria) as? Categoria
+            self.intervalo = self.intervaloDAO.buscarPorId(r.idIntervalo) as? Intervalo
+            self.farmacia = self.farmaciaDAO.buscarPorId(r.idFarmacia) as? Farmacia
+            
+            self.local = self.localDAO.buscarPorId(r.idLocal) as? Local
+            self.labelLocal.text = self.local?.nome
+            self.textFieldLocal.text = self.local?.nome
+            
+            self.labelQuantidade.text = String(r.numeroQuantidade)
+            self.textFieldNumeroQuantidade.text = String(r.numeroQuantidade)
+            
+            self.labelDose.text = String(r.numeroDose)
+            self.textFieldNumeroDose.text = String(r.numeroDose)
+            
+            self.labelPreco.text = self.labelMoeda.text! + String(stringInterpolationSegment: r.preco)
+            self.textFieldPreco.text = String(stringInterpolationSegment: r.preco)
+            
+            self.fotoReceita = r.fotoReceitaUIImage
+            
+            self.idRemedio = r.idRemedio
+            
+            appDelegate.remedioEditavel = nil
+        }
+        
         if let i = self.intervalo as Intervalo? {
             self.labelIntervalo.text = String(i.numero) + " " + i.unidade
         }
@@ -169,8 +207,9 @@ SelecionaFarmaciaDelegate {
         let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
         
         var preco: Double?
-        if !self.textFieldPreco.text.isEmpty {
-            preco = NSNumberFormatter().numberFromString(self.textFieldPreco.text)!.doubleValue
+        println("\(self.textFieldPreco.text)")
+        if self.textFieldPreco.text != "" {
+            preco = NSString(string: self.textFieldPreco.text).doubleValue
         }
 
         var numeroDose = self.textFieldNumeroDose.text.toInt()
@@ -179,7 +218,7 @@ SelecionaFarmaciaDelegate {
 
         let formatador = NSDateFormatter()
         formatador.dateFormat = "dd/MM/yyyy"
-        let dataValidade =  formatador.dateFromString(self.textFieldDataDeValidade.text)
+        let dataValidade = formatador.dateFromString(self.textFieldDataDeValidade.text)
         
         var idFarmacia: Int = 0
         if let f = self.farmacia {
@@ -202,7 +241,13 @@ SelecionaFarmaciaDelegate {
         }
         
         let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
-        self.remedioDAO.inserir(remedio)
+        
+        if self.idRemedio == 0 {
+            self.remedioDAO.inserir(remedio)
+        }else{
+            self.remedioDAO.atualizar(remedio, comId: self.idRemedio)
+        }
+        
         
         if self.switchAlerta.on {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
