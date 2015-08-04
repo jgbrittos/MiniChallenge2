@@ -31,11 +31,11 @@ UNIDADES_SEMANA = "week(s)";
 UNIDADES_MES = "month(s)";
 
 ///MARK: - Alerta categoria
-TITULOALERTA = "New Category";
-TITULOALERTA_ACESSIBILIDADE_LABEL = "New category registration";
-TITULOALERTA_ACESSIBILIDADE_HINT = "Alert to register a new category";
+TITULOALERTACATEGORIA = "New Category";
+TITULOALERTACATEGORIA_ACESSIBILIDADE_LABEL = "New category registration";
+TITULOALERTACATEGORIA_ACESSIBILIDADE_HINT = "Alert to register a new category";
 
-MENSAGEMALERTA = "Type a new category";
+MENSAGEMALERTACATEGORIA = "Type a new category";
 CADASTRARBOTAO = "Register";
 ERROALERTA = "ERROR";
 MENSAGEMALERTAERRO = "Empty textfield";
