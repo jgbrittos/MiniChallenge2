@@ -22,6 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        //verifica se o app já foi aberto alguma vez
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
+            //println("App already launched")
+        }else{
+            UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
+        }
+        
         
         
         
@@ -40,15 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationActionCancel.activationMode = UIUserNotificationActivationMode.Background
         
         var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        
         notificationCategory.identifier = "INVITE_CATEGORY"
         notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
         notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert |
-            UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>
-            ))
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert |
+            .Badge, categories: [notificationCategory]))
         
-        
+//        //        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert |
+//        UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>
+//        ))
         
         
         let storyboardInicial: UIStoryboard!
@@ -136,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(identifier == "ADIAR_IDENTIFICADOR"){
             println("Cliquei em adiar \(idRemedio)")
             var notificacaoLocal:UILocalNotification = UILocalNotification()
-            notificacaoLocal.alertAction = "Notificacao adiada"
+            notificacaoLocal.alertAction = "Notificação adiada"
             notificacaoLocal.alertBody = "Tomar \(remedioBuscado.nomeRemedio) Dose: \(remedioBuscado.numeroDose) \(remedioBuscado.unidade)"
             notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 300)
             notificacaoLocal.category = "INVITE_CATEGORY";
