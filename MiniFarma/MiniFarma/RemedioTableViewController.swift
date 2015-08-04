@@ -207,7 +207,6 @@ SelecionaFarmaciaDelegate {
         let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
         
         var preco: Double?
-        println("\(self.textFieldPreco.text)")
         if self.textFieldPreco.text != "" {
             preco = NSString(string: self.textFieldPreco.text).doubleValue
         }
@@ -268,7 +267,6 @@ SelecionaFarmaciaDelegate {
             var documentos: String = caminhos[0] as! String
             let caminhoCompleto = documentos.stringByAppendingPathComponent(nomeRemedio+tipo)
             let resultado = imagemEmDados.writeToFile(caminhoCompleto, atomically: true)
-            println("\(resultado)")
             return caminhoCompleto
         }else{
             return "sem foto"
