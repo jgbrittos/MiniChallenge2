@@ -28,28 +28,27 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
-        
-        self.remedio = appDelegate.remedioGlobal
-        
-        if let r = self.remedio {
-            self.intervalo = self.intervaloDAO.buscarPorId(r.idIntervalo) as? Intervalo
-            self.lblIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
-            self.lblRemedio.text = r.nomeRemedio
-            self.unidadeDuracao = r.unidade
-        }
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        println("\(self.intervalo?.numero)")
+        self.remedio = appDelegate.remedioGlobal
         
-        if let i = self.intervalo as Intervalo? {
-            self.lblIntervalo.text = String(i.numero) + " " + i.unidade
+        if let r = self.remedio {
+            self.intervalo = self.intervaloDAO.buscarPorId(r.idIntervalo) as? Intervalo
+//            self.lblIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
+            if self.intervalo!.numero != 0 {
+                self.lblIntervalo.text = String(self.intervalo!.numero) + " " + self.intervalo!.unidade
+            }
+            self.lblRemedio.text = r.nomeRemedio
+            self.unidadeDuracao = r.unidade
         }
         
+        
+        
         if let r = self.remedio as Remedio? {
-        self.lblRemedio.text = r.nomeRemedio
+            self.lblRemedio.text = r.nomeRemedio
         }
     }
     

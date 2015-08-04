@@ -125,10 +125,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
                     
                     let gerenciadorDeArquivos = NSFileManager()
-                    let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                    var documentos: String = caminhos[0] as! String
-                    let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
-                    let resultado = gerenciadorDeArquivos.removeItemAtPath(caminhoCompleto, error: nil)
+                    gerenciadorDeArquivos.removeItemAtPath(remedio.fotoRemedio, error: nil)
                     
                     self.remedioDAO.deletar(remedio)
                     self.remediosValidos.removeAtIndex(indexPath.row)
@@ -138,10 +135,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     let remedio = self.remediosVencidos[indexPath.row] as Remedio
                     
                     let gerenciadorDeArquivos = NSFileManager()
-                    let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                    var documentos: String = caminhos[0] as! String
-                    let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Receita.png")
-                    let resultado = gerenciadorDeArquivos.removeItemAtPath(caminhoCompleto, error: nil)
+                    gerenciadorDeArquivos.removeItemAtPath(remedio.fotoReceita, error: nil)
                     
                     self.remedioDAO.deletar(remedio)
                     self.remediosVencidos.removeAtIndex(indexPath.row)
