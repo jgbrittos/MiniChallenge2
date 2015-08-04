@@ -17,14 +17,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let nomeBancoDeDados: String = "Minifarma.sqlite"
     var remedioGlobal : Remedio?
     
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboardInicial: UIStoryboard!
+        let telaInicial: UIViewController!
         
+        self.criaNotificacoesIterativas(application)
         
+        self.verificarSeBancoExiste()
         
+        let existeAlgoNoBanco = self.verificaSeHaAlgumRemedio()
         
+        if existeAlgoNoBanco {
+            //Tela Inicial
+            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+        }else{
+            //Tutorial
+            storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
+            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
+        }
+        
+        self.alteraAparenciaDaStatusENavigationBar()
+        
+        self.window?.rootViewController = telaInicial
+        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.makeKeyAndVisible()
+        
+        return true
+    }
+
+    func verificarSeBancoExiste() {
+        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        var diretorioDocumentos: NSString = caminhos[0] as! NSString
+        
+        self.caminhoBancoDeDados = diretorioDocumentos.stringByAppendingPathComponent(self.nomeBancoDeDados)
+        
+        var gerenciadorDeArquivos: NSFileManager = NSFileManager.defaultManager()
+        
+        var bancoExisteNoLocal: Bool = gerenciadorDeArquivos.fileExistsAtPath(self.caminhoBancoDeDados as String)
+        
+        if(!bancoExisteNoLocal) {
+            var caminhoBancoDeDadosNoApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent(self.nomeBancoDeDados)
+            gerenciadorDeArquivos.copyItemAtPath(caminhoBancoDeDadosNoApp as String, toPath: self.caminhoBancoDeDados as String, error: nil)
+        }
+        
+        self.bancoDeDados = FMDatabase.databaseWithPath(self.caminhoBancoDeDados as String) as? FMDatabase
+    }
+    
+    func criaNotificacoesIterativas(application: UIApplication) {
         var notificationActionOk :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         notificationActionOk.identifier = "ADIAR_IDENTIFICADOR"
         notificationActionOk.title = "Adiar"
@@ -44,59 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
         notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert |
-            UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>
-            ))
-        
-        
-        
-        
-        let storyboardInicial: UIStoryboard!
-        let telaInicial: UIViewController!
-        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var diretorioDocumentos: NSString = caminhos[0] as! NSString
-        
-        self.caminhoBancoDeDados = diretorioDocumentos.stringByAppendingPathComponent(self.nomeBancoDeDados)
-        
-        var gerenciadorDeArquivos: NSFileManager = NSFileManager.defaultManager()
-        
-        var bancoExisteNoLocal: Bool = gerenciadorDeArquivos.fileExistsAtPath(self.caminhoBancoDeDados as String)
-        
-        if(!bancoExisteNoLocal) {
-            var caminhoBancoDeDadosNoApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent(self.nomeBancoDeDados)
-            gerenciadorDeArquivos.copyItemAtPath(caminhoBancoDeDadosNoApp as String, toPath: self.caminhoBancoDeDados as String, error: nil)
-        }
-        
-        self.bancoDeDados = FMDatabase.databaseWithPath(self.caminhoBancoDeDados as String) as? FMDatabase
-        
-        let existeAlgoNoBanco = self.verificaSeHaAlgumRemedio()
-        
-        if existeAlgoNoBanco {
-            //Tela Inicial
-            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-//            storyboardInicial = UIStoryboard(name: "Farmacia", bundle: nil)
-//            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
-//            storyboardInicial = UIStoryboard(name: "Alerta", bundle: nil)
-//            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
-        }else{
-            //Tutorial
-            storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
-            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
-            
-//            storyboardInicial = UIStoryboard(name: "Categoria", bundle: nil)
-//            telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
-        }
-        
-        self.alteraAparenciaDaStatusENavigationBar()
-        
-        self.window?.rootViewController = telaInicial
-        self.window?.backgroundColor = UIColor.whiteColor()
-        self.window?.makeKeyAndVisible()
-        
-        return true
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>))
     }
-
+    
     func alteraAparenciaDaStatusENavigationBar(){
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         var navigationBarAppearace = UINavigationBar.appearance()
@@ -153,8 +145,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler()
 
     }
-    
-    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
