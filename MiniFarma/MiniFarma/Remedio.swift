@@ -13,17 +13,17 @@ class Remedio: NSObject {
     var idRemedio:Int = 0
     var nomeRemedio:String = ""
     var dataValidade = NSDate()
-    var numeroQuantidade:Int = -1
-    var unidade: Int = -1
-    var preco: Double = -1
-    var numeroDose: Int = -1
+    var numeroQuantidade:Int = 0
+    var unidade: Int = 0
+    var preco: Double = 0
+    var numeroDose: Int = 0
     var fotoRemedio: String = ""
     var fotoReceita: String = ""
-    var vencido: Int = -1
-    var idFarmacia: Int = -1
-    var idCategoria: Int = -1
-    var idLocal: Int = -1
-    var idIntervalo: Int = -1
+    var vencido: Int = 0
+    var idFarmacia: Int = 0
+    var idCategoria: Int = 0
+    var idLocal: Int = 0
+    var idIntervalo: Int = 0
     
     override init() {}
     
