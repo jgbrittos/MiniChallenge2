@@ -36,23 +36,22 @@ class Notificacao: NSObject {
         
         var dataNotificacao : NSDate = dataInicio
         
+        
         while(dataNotificacao.timeIntervalSinceDate(dataFinal) < 0){
             
+           println("Resultado do while: \(dataNotificacao.timeIntervalSinceDate(dataFinal))")
+
+            
             if(intervalo.unidade == "minuto(s)"){//multiplicar pelo intervalo
-                //println("minuto")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*intervalo.numero)) //segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*intervalo.numero)) //segundos*minutos*horas
             }else if(intervalo.unidade == "hora(s)"){
-                //println("hora")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*intervalo.numero)) //segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*intervalo.numero)) //segundos*minutos*horas
             }else if(intervalo.unidade == "dia(s)"){
-                //println("dia")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*intervalo.numero)) //segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*intervalo.numero)) //segundos*minutos*horas
             }else if(intervalo.unidade == "semana(s)"){
-               // println("semana")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*intervalo.numero))//segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*intervalo.numero))//segundos*minutos*horas
             }else if(intervalo.unidade == "mes(es)"){
-                //println("mes")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*30*intervalo.numero))//segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*30*intervalo.numero))//segundos*minutos*horas
             }
 
             criarNotificacao(dataNotificacao)
@@ -67,7 +66,7 @@ class Notificacao: NSObject {
         println("\(alerta!.dataInicio) \(alerta?.numeroDuracao) \(alerta?.unidadeDuracao)")
         
         var notificacaoLocal:UILocalNotification = UILocalNotification()
-        notificacaoLocal.alertAction = "Testing notifications on iOS8"
+        notificacaoLocal.alertAction = "Mini Pharma"
         notificacaoLocal.alertBody = "Tomar \(remedio!.nomeRemedio) Dose: \(remedio!.numeroDose) \(remedio!.unidade)"
         notificacaoLocal.fireDate = dataDoAlerta
         notificacaoLocal.category = "INVITE_CATEGORY";

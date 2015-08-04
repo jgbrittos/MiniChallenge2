@@ -28,8 +28,9 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
-        
         self.remedio = appDelegate.remedioGlobal
+        
+        
         
         if let r = self.remedio {
             self.intervalo = self.intervaloDAO.buscarPorId(r.idIntervalo) as? Intervalo
@@ -74,19 +75,28 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     
     @IBAction func salvaAlarme(sender: AnyObject) {
         
-        let alerta = Alerta(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
+        var dataDatePicker:NSDate = dataInicioPicker.date
+        var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
+        var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(dataDatePicker)
+        var dataInicioCorreta = dataDatePicker.dateByAddingTimeInterval(NSTimeInterval(intervaloFusoHorario))
+        
+        
+        
+        let alerta = Alerta(dataInicio: dataInicioCorreta, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
         
         self.alertaDAO.inserir(alerta)
-        
-        appDelegate.remedioGlobal = nil
-        
-        let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-        let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
-        self.presentViewController(telaInicial, animated: true, completion: nil)
         let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
-        //falta metodo que leva pra outra view
+        if let r = appDelegate.remedioGlobal {
+            appDelegate.remedioGlobal = nil
+        
+            let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+            let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
+            self.presentViewController(telaInicial, animated: true, completion: nil)
+        } else{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
