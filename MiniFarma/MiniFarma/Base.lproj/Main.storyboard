@@ -779,13 +779,7 @@
                             <outlet property="delegate" destination="eSy-Us-7v7" id="F4z-Wr-24A"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Visualizar Alerta" id="Ixs-E7-D2n">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="R74-Ic-P15">
-                            <connections>
-                                <action selector="editarAlerta:" destination="eSy-Us-7v7" id="4Bk-C2-blm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Visualizar Alerta" id="Ixs-E7-D2n"/>
                     <connections>
                         <outlet property="labelDataInicio" destination="art-QJ-Xsd" id="2vW-xM-54B"/>
                         <outlet property="labelDuracao" destination="Imt-WK-X6p" id="W26-CQ-7kE"/>
