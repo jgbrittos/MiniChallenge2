@@ -193,9 +193,9 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func salvaIntervalo(sender: AnyObject) {
         
         let novoIntervalo = Intervalo(numero: self.numeroIntervalo.toInt()!, unidade: self.unidadeIntervalo)
-        self.intervalos.append(novoIntervalo)
-        intervaloDAO.inserir(novoIntervalo)
-        
+        self.intervaloDAO.inserir(novoIntervalo)
+        self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
+
         self.viewComPickerViewEToolbar.hidden = true
         self.pickerViewIntervalosNaoEstaVisivel = true
         self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
