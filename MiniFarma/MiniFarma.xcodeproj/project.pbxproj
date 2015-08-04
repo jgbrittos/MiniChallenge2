@@ -373,12 +373,12 @@
 			children = (
 				45D4084E1B66C3C000FB0EF0 /* Remedio.storyboard */,
 				4514287B1B6C2F1B0070396A /* Farmacia.storyboard */,
+				45D408501B66C3D600FB0EF0 /* RemedioTableViewController.swift */,
 				45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */,
 				451428661B67B21C0070396A /* CategoriaTableViewController.swift */,
 				8F477CC81B67BED00050D94F /* FarmaciaTableViewController.swift */,
 				8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */,
 				8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */,
-				45D408501B66C3D600FB0EF0 /* RemedioTableViewController.swift */,
 				451428751B6AA0090070396A /* VisualizarFotoReceitaViewController.swift */,
 			);
 			name = "Adicionar Remedio";

@@ -31,14 +31,14 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.scrollViewTutorial)
         
         let botaoComecar = UIButton(frame: CGRectMake(0,0, 50, 50))
-        botaoComecar.center = CGPointMake(UIScreen.mainScreen().bounds.width*7/2, UIScreen.mainScreen().bounds.height-150)
+        botaoComecar.center = CGPointMake(UIScreen.mainScreen().bounds.width*7/2, UIScreen.mainScreen().bounds.height-150)//100
         botaoComecar.setImage(UIImage(named: "botaoComecar"), forState: .Normal)
         botaoComecar.addTarget(self, action: Selector("comecar"), forControlEvents: .TouchUpInside)
         
         for var i = 0; i < 5; i++ {
             var frame = CGRect()
             frame.origin.x = (self.scrollViewTutorial.frame.size.width * CGFloat(i))+16
-            frame.origin.y = self.scrollViewTutorial.frame.size.height/4.0
+            frame.origin.y = self.scrollViewTutorial.frame.size.height/6.0//4.0
             frame.size = CGSizeMake(self.scrollViewTutorial.frame.size.width-32, self.scrollViewTutorial.frame.size.height/2.0)
             
             var imagemTutorial = UIImageView(frame: frame)
@@ -54,7 +54,7 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
 
     func configuraPageControl() {
         self.controleDePaginacao = UIPageControl(frame: CGRectMake(0, 0, 100, 50))
-        self.controleDePaginacao.center = CGPointMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height-100)
+        self.controleDePaginacao.center = CGPointMake(UIScreen.mainScreen().bounds.width/2, UIScreen.mainScreen().bounds.height-100)//50
         self.controleDePaginacao.numberOfPages = 4
         self.controleDePaginacao.currentPage = 0
         self.controleDePaginacao.tintColor = UIColor.redColor()
