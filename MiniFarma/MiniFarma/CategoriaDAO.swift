@@ -51,6 +51,8 @@ class CategoriaDAO: DAO {
         
         self.bancoDeDados.open()
         
+        self.categorias = [Categoria]()
+        
         var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By id_categoria", withArgumentsInArray: nil)
         
         while(result.next()){

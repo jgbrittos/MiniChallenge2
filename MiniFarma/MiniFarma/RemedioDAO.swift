@@ -88,9 +88,6 @@ class RemedioDAO: DAO {
             
             if(result.stringForColumn("data_validade") != nil){
                 dataValidade = result.dateForColumn("data_validade")
-//                var dataValidadeFormato = NSDateFormatter()
-//                dataValidadeFormato.dateFormat = "dd-MM-yyyy"
-//                var dataValidadeDate = dataValidadeFormato.dateFromString(dataValidade as String)
             }
             if(result.stringForColumn("numero_quantidade") != nil){
                 numeroQuantidade = result.stringForColumn("numero_quantidade")

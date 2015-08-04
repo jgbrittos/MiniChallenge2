@@ -55,6 +55,8 @@ class LocalDAO: DAO {
         
         self.bancoDeDados.open()
         
+        self.locais = [Local]()
+        
         var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local Order By nome", withArgumentsInArray: nil)
         
         var idLocal = String()
