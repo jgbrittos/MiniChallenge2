@@ -37,7 +37,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         
         if let r = self.remedio {
             self.intervalo = self.intervaloDAO.buscarPorId(r.idIntervalo) as? Intervalo
-//            self.lblIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
             if self.intervalo!.numero != 0 {
                 self.lblIntervalo.text = String(self.intervalo!.numero) + " " + self.intervalo!.unidade
             }
@@ -58,34 +57,36 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         return 6
     }
     
     @IBAction func salvaAlarme(sender: AnyObject) {
         
-        let alerta = Alerta(dataInicio: dataInicioPicker.date, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
+        var dataDatePicker:NSDate = dataInicioPicker.date
+        var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
+        var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(dataDatePicker)
+        var dataInicioCorreta = dataDatePicker.dateByAddingTimeInterval(NSTimeInterval(intervaloFusoHorario))
+        
+        let alerta = Alerta(dataInicio: dataInicioCorreta, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
         
         self.alertaDAO.inserir(alerta)
-        
-        appDelegate.remedioGlobal = nil
-        
-        let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-        let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
-        self.presentViewController(telaInicial, animated: true, completion: nil)
         let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
-        //falta metodo que leva pra outra view
+        if let r = appDelegate.remedioGlobal {
+            appDelegate.remedioGlobal = nil
+        
+            let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+            let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
+            self.presentViewController(telaInicial, animated: true, completion: nil)
+        } else{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -117,10 +118,7 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     }
     
     @IBAction func cancelarAlerta(sender: AnyObject) {
-        
         self.dismissViewControllerAnimated(true, completion: nil)
-        
-        
     }
 
     func selecionaIntervaloDoAlerta(intervalo: Intervalo){

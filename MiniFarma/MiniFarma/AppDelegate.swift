@@ -21,6 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        //verifica se o app já foi aberto alguma vez
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
+            //println("App already launched")
+        }else{
+            UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
+        }
+        
         let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!
         
@@ -129,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(identifier == "ADIAR_IDENTIFICADOR"){
             println("Cliquei em adiar \(idRemedio)")
             var notificacaoLocal:UILocalNotification = UILocalNotification()
-            notificacaoLocal.alertAction = "Notificacao adiada"
+            notificacaoLocal.alertAction = "Notificação adiada"
             notificacaoLocal.alertBody = "Tomar \(remedioBuscado.nomeRemedio) Dose: \(remedioBuscado.numeroDose) \(remedioBuscado.unidade)"
             notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 300)
             notificacaoLocal.category = "INVITE_CATEGORY";

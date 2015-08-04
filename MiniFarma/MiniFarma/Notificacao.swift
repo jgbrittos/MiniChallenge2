@@ -13,7 +13,7 @@ class Notificacao: NSObject {
     var intervalo:Intervalo?
     var remedio:Remedio?
     var alerta:Alerta?
-    
+    var stringAlerta:String = ""
 
     
     
@@ -23,6 +23,23 @@ class Notificacao: NSObject {
         self.intervalo = intervalo
         super.init()
 
+        let t = [" cp"," g"," ml"]
+        let u = t[remedio.unidade]
+        
+        stringAlerta = "Tomar \(remedio.nomeRemedio) "
+        if remedio.numeroDose != -1 {
+            stringAlerta += "Dose: \(remedio.numeroDose)"+u
+        }
+//        if (remedio.unidade == 0){
+//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) cp"
+//        }else if(remedio.unidade == 1){
+//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) g"
+//        }else if(remedio.unidade == 2){
+//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) ml"
+//        }
+        
+        println(stringAlerta)
+        
         let dataInicio = alerta.dataInicio
         var dataFinal: NSDate = NSDate()
 
@@ -36,23 +53,19 @@ class Notificacao: NSObject {
         
         var dataNotificacao : NSDate = dataInicio
         
+        
         while(dataNotificacao.timeIntervalSinceDate(dataFinal) < 0){
             
             if(intervalo.unidade == "minuto(s)"){//multiplicar pelo intervalo
-                //println("minuto")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*intervalo.numero)) //segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*intervalo.numero)) //segundos*minutos*horas
             }else if(intervalo.unidade == "hora(s)"){
-                //println("hora")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*intervalo.numero)) //segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*intervalo.numero)) //segundos*minutos*horas
             }else if(intervalo.unidade == "dia(s)"){
-                //println("dia")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*intervalo.numero)) //segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*intervalo.numero)) //segundos*minutos*horas
             }else if(intervalo.unidade == "semana(s)"){
-               // println("semana")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*intervalo.numero))//segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*intervalo.numero))//segundos*minutos*horas
             }else if(intervalo.unidade == "mes(es)"){
-                //println("mes")
-                dataNotificacao = alerta.dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*30*intervalo.numero))//segundos*minutos*horas
+                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*30*intervalo.numero))//segundos*minutos*horas
             }
 
             criarNotificacao(dataNotificacao)
@@ -63,19 +76,54 @@ class Notificacao: NSObject {
     
     
     
-    func criarNotificacao(dataDoAlerta:NSDate){
-        println("\(alerta!.dataInicio) \(alerta?.numeroDuracao) \(alerta?.unidadeDuracao)")
+    func criarNotificacao(dataDoAlerta: NSDate){
+        println("\(dataDoAlerta)")
+        let segundos = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitSecond,
+            fromDate: NSDate(),
+            toDate: dataDoAlerta,
+            options: nil).second
         
-        var notificacaoLocal:UILocalNotification = UILocalNotification()
-        notificacaoLocal.alertAction = "Testing notifications on iOS8"
-        notificacaoLocal.alertBody = "Tomar \(remedio!.nomeRemedio) Dose: \(remedio!.numeroDose) \(remedio!.unidade)"
-        notificacaoLocal.fireDate = dataDoAlerta
-        notificacaoLocal.category = "INVITE_CATEGORY";
+        var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
+        
+        var segundosTotais: Int
+        if fusoHorarioLocal.secondsFromGMT < 0 {
+            segundosTotais = segundos - fusoHorarioLocal.secondsFromGMT
+        }else{
+            segundosTotais = segundos + fusoHorarioLocal.secondsFromGMT
+        }
+        
+        var notificacaoLocal : UILocalNotification = UILocalNotification()
+        notificacaoLocal.alertAction = "Mini Farma"
+        notificacaoLocal.alertBody = stringAlerta
+        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundosTotais))
         notificacaoLocal.userInfo = ["idRemedio":String(remedio!.idRemedio)]
+        notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
+        notificacaoLocal.category = "INVITE_CATEGORY";
         UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
     }
     
 
+//    func cancelLocalNotification(UNIQUE_ID: String){
+//        
+//        var notifyCancel = UILocalNotification()
+//        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
+//        
+//        for notifyCancel in notifyArray as! [UILocalNotification]{
+//            
+//            let info: [String: String] = notifyCancel.userInfo as! [String: String]
+//            
+//            if info[uniqueId] == uniqueId{
+//                
+//                UIApplication.sharedApplication().cancelLocalNotification(notifyCancel)
+//            }else{
+//                
+//                println("No Local Notification Found!")
+//            }
+//        }
+//    }
+    
+    
+    
 }
 
 
