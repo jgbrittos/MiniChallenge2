@@ -17,9 +17,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let nomeBancoDeDados: String = "Minifarma.sqlite"
     var remedioGlobal : Remedio?
     
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        
+        
+        
+        var notificationActionOk :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionOk.identifier = "ADIAR_IDENTIFICADOR"
+        notificationActionOk.title = "Adiar"
+        notificationActionOk.destructive = true
+        notificationActionOk.authenticationRequired = false
+        notificationActionOk.activationMode = UIUserNotificationActivationMode.Background
+        
+        var notificationActionCancel :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionCancel.identifier = "TOMEI_IDENTIFICADOR"
+        notificationActionCancel.title = "Tomei"
+        notificationActionCancel.destructive = false
+        notificationActionCancel.authenticationRequired = false
+        notificationActionCancel.activationMode = UIUserNotificationActivationMode.Background
+        
+        var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = "INVITE_CATEGORY"
+        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
+        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert |
+            UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>
+            ))
+        
+        
+        
         
         let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!
@@ -96,6 +126,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
     }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        let idRemedio:Int = notification.userInfo!.values.first!.integerValue as Int
+        let remedioDAO = RemedioDAO()
+        let remedioBuscado = remedioDAO.buscarPorId(idRemedio) as! Remedio
+        
+        if(identifier == "ADIAR_IDENTIFICADOR"){
+            println("Cliquei em adiar \(idRemedio)")
+            var notificacaoLocal:UILocalNotification = UILocalNotification()
+            notificacaoLocal.alertAction = "Notificacao adiada"
+            notificacaoLocal.alertBody = "Tomar \(remedioBuscado.nomeRemedio) Dose: \(remedioBuscado.numeroDose) \(remedioBuscado.unidade)"
+            notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 300)
+            notificacaoLocal.category = "INVITE_CATEGORY";
+            notificacaoLocal.userInfo = ["idRemedio":String(remedioBuscado.idRemedio)]
+            UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+    
+        }else if(identifier == "TOMEI_IDENTIFICADOR"){
+            println("Cliquei em tomei")
+            if(remedioBuscado.numeroQuantidade > 0 ){
+                remedioDAO.marcaRemedioTomado(idRemedio, novaQuantidade: (remedioBuscado.numeroQuantidade-1))
+            }
+        }
+        
+        completionHandler()
+
+    }
+    
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

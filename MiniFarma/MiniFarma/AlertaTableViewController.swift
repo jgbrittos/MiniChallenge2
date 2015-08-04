@@ -83,6 +83,10 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
         let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
         self.presentViewController(telaInicial, animated: true, completion: nil)
+        let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        //falta metodo que leva pra outra view
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
