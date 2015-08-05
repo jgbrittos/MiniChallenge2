@@ -27,16 +27,11 @@ class Notificacao: NSObject {
         let u = t[remedio.unidade]
         
         stringAlerta = "Tomar \(remedio.nomeRemedio) "
-        if remedio.numeroDose != -1 {
+
+        if remedio.numeroDose > 0 {
             stringAlerta += "Dose: \(remedio.numeroDose)"+u
         }
-//        if (remedio.unidade == 0){
-//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) cp"
-//        }else if(remedio.unidade == 1){
-//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) g"
-//        }else if(remedio.unidade == 2){
-//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) ml"
-//        }
+        
         
         println(stringAlerta)
         
