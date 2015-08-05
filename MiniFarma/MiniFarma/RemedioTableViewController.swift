@@ -80,6 +80,7 @@ SelecionaFarmaciaDelegate {
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
         self.textFieldNome.delegate = self
+        self.textFieldLocal.delegate = self
         
         //Celula de Local
         self.textFieldLocal.hidden = true
@@ -658,6 +659,17 @@ SelecionaFarmaciaDelegate {
     // MARK: - Teclado
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.textFieldNome.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        
+        if textField == self.textFieldLocal {
+            let localDeletado = self.local
+            self.localDAO.deletar(localDeletado)
+            self.locais = self.localDAO.buscarTodos() as! [Local]
+            self.pickerViewLocal.reloadAllComponents()
+        }
         return true
     }
     

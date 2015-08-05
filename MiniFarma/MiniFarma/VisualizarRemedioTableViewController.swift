@@ -95,7 +95,11 @@ class VisualizarRemedioTableViewController: UITableViewController {
 
         if self.remedio?.idLocal != 0 {
             let local = self.localDAO.buscarPorId(self.remedio!.idLocal) as? Local
-           self.labelLocal.text = local?.nome
+            if local!.nome != "" {
+               self.labelLocal.text = local!.nome
+            }else{
+                self.labelLocal.text = self.INDISPONIVEL
+            }
         }else{
            self.labelLocal.text = self.INDISPONIVEL
         }
