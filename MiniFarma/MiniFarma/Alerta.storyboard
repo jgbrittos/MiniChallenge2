@@ -95,9 +95,6 @@
                                                         <segment title="mês"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="indexMudou:" destination="mev-3R-KCw" eventType="valueChanged" id="HlO-Ys-BwL"/>
-                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>

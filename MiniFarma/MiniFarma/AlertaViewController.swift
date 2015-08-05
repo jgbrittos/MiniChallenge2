@@ -93,23 +93,11 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{
             let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
             
-            let formatadorData = NSDateFormatter()
-            formatadorData.dateFormat = "dd/MM/yyyy"
-            
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
             
             celulaAlerta.labelNome.text = remedio.nomeRemedio
-            celulaAlerta.labelDataDeValidade.text = formatadorData.stringFromDate(remedio.dataValidade)
-
-            if remedio.fotoRemedio == "sem foto" {
-                celulaAlerta.imageViewFotoRemedio?.image = UIImage(named: "semFoto")
-            }else{
-                let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-                var documentos: String = caminhos[0] as! String
-                let caminhoCompleto = documentos.stringByAppendingPathComponent(remedio.nomeRemedio+"Remedio.png")
-                celulaAlerta.imageViewFotoRemedio?.image = UIImage(contentsOfFile: caminhoCompleto)
-
-            }
+            celulaAlerta.labelDataDeValidade.text = remedio.dataEmString
+            celulaAlerta.imageViewFotoRemedio?.image = remedio.fotoRemedioUIImage
             
             return celulaAlerta
         }

@@ -31,14 +31,14 @@ class Remedio: NSObject {
         return f.stringFromDate(self.dataValidade)
     }
     
-    var fotoRemedioUIImage: UIImage {
+    var fotoRemedioUIImage: UIImage? {
         if self.fotoRemedio == "sem foto"{
-            return UIImage(named: "semFoto")!
+            return UIImage(named: "semFoto")
         }
         let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         var documentos: String = caminhos[0] as! String
         let caminhoCompleto = documentos.stringByAppendingPathComponent(self.nomeRemedio+"Remedio.png")
-        return UIImage(contentsOfFile: caminhoCompleto)!
+        return UIImage(contentsOfFile: caminhoCompleto)
     }
     
     var fotoReceitaUIImage: UIImage {

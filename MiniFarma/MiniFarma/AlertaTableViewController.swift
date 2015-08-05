@@ -21,7 +21,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     let alertaDAO = AlertaDAO()
     var intervalo: Intervalo?
     var remedio: Remedio?
-    var unidadeDuracao: Int?
     
     let intervaloDAO = IntervaloDAO()
     
@@ -33,27 +32,25 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.remedio = appDelegate.remedioGlobal
-        
-        if let r = self.remedio {
+        if let r = appDelegate.remedioGlobal {
+            self.remedio = r
             self.intervalo = self.intervaloDAO.buscarPorId(r.idIntervalo) as? Intervalo
+            
             if self.intervalo!.numero != 0 {
                 self.lblIntervalo.text = String(self.intervalo!.numero) + " " + self.intervalo!.unidade
             }
+            
             self.lblRemedio.text = r.nomeRemedio
-            self.unidadeDuracao = r.unidade
+        }else{
+            if let r = self.remedio {
+                self.lblRemedio.text = r.nomeRemedio
+            }
+        
+            if let i = self.intervalo {
+                self.lblIntervalo.text = String(self.intervalo!.numero) + " " + self.intervalo!.unidade
+            }
         }
         
-        
-        
-        if let r = self.remedio as Remedio? {
-            self.lblRemedio.text = r.nomeRemedio
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -79,7 +76,6 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         
         if let r = appDelegate.remedioGlobal {
             appDelegate.remedioGlobal = nil
-        
             let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
             let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
             self.presentViewController(telaInicial, animated: true, completion: nil)
@@ -98,31 +94,9 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         txtDuracaoQuantidade.resignFirstResponder()
         self.view.endEditing(true)
     }
-
-    @IBAction func indexMudou(sender: AnyObject) {
-        
-        switch duracaoUnidadeSegmented.selectedSegmentIndex{
-            case 0:
-                unidadeDuracao = 0
-                break
-            case 1:
-                unidadeDuracao = 1
-                break
-            case 2:
-                unidadeDuracao = 3
-                break
-            default:
-                break
-        }
-        
-    }
     
     @IBAction func cancelarAlerta(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    func selecionaIntervaloDoAlerta(intervalo: Intervalo){
-        self.intervalo = intervalo
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -138,6 +112,10 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
             
             default:break
         }
+    }
+    
+    func selecionaIntervaloDoAlerta(intervalo: Intervalo){
+        self.intervalo = intervalo
     }
     
     func selecionaRemedio(remedio: Remedio){
