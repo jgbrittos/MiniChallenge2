@@ -481,6 +481,7 @@
 				TargetAttributes = {
 					4539611E1B5BE35D0097DEDB = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = RNV6X3S2UF;
 					};
 					453961331B5BE35D0097DEDB = {
 						CreatedOnToolsVersion = 6.4;
