@@ -98,6 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>))
+        
+        var notificationNoneCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationNoneCategory.identifier = "NONE_CATEGORY"
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[notificationNoneCategory]) as Set<NSObject>))
+        
+        
     }
     
     func alteraAparenciaDaStatusENavigationBar(){

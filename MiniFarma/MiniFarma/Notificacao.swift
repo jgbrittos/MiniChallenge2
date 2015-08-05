@@ -16,7 +16,32 @@ class Notificacao: NSObject {
     var stringAlerta:String = ""
 
     
+    //Aviso de vencimento
+    init(remedio:Remedio){
+
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+
+       let dataVencimento : NSDate = cal!.dateBySettingHour(17, minute: 29, second: 0, ofDate: remedio.dataValidade, options: NSCalendarOptions())!
+
+        let segundos = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitSecond,
+            fromDate: NSDate(),
+            toDate: dataVencimento,
+            options: nil).second
+
+        var notificacaoLocal : UILocalNotification = UILocalNotification()
+        notificacaoLocal.alertAction = "Mini Farma"
+        notificacaoLocal.alertBody = "Amanhã o remédio \(remedio.nomeRemedio) irá vencer!"
+        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundos))
+        notificacaoLocal.userInfo = ["idRemedio":String(remedio.idRemedio)]
+        notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
+        notificacaoLocal.category = "NONE_CATEGORY"
+        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+        
+    }
     
+    
+    
+    //Alertas de tomar remedio
     init(remedio:Remedio, alerta:Alerta, intervalo:Intervalo){
         self.remedio = remedio
         self.alerta = alerta
@@ -96,6 +121,9 @@ class Notificacao: NSObject {
         notificacaoLocal.category = "INVITE_CATEGORY";
         UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
     }
+    
+    
+    
     
 
 //    func cancelLocalNotification(UNIQUE_ID: String){

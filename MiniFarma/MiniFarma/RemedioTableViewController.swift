@@ -241,6 +241,8 @@ SelecionaFarmaciaDelegate {
         
         let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
         
+        let notificacaoVencimento = Notificacao(remedio: remedio)
+        
         if self.idRemedio == 0 {
             self.remedioDAO.inserir(remedio)
         }else{
