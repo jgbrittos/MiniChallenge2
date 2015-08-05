@@ -92,10 +92,11 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
-        println(NSString(format:"teste"))
         
         if newState == MKAnnotationViewDragState.Ending {
             let anotacao = view.annotation
+            self.latitudeValor = anotacao.coordinate.latitude
+            self.longitudeValor = anotacao.coordinate.longitude
             println("annotation dropped at: \(anotacao.coordinate.latitude),\(anotacao.coordinate.longitude)")
         }
         

@@ -128,6 +128,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="botaoFavorito" destination="WWM-Nd-ZPO" id="a3o-yj-4bG"/>
+                        <outlet property="botaoLocalizacao" destination="m8M-er-Ofz" id="SRD-Lj-qzU"/>
                         <outlet property="txtFieldNome" destination="nr4-dj-6YG" id="YjA-zW-OuH"/>
                         <outlet property="viewMapa" destination="Ikk-P7-t6r" id="LK4-lF-jiN"/>
                     </connections>

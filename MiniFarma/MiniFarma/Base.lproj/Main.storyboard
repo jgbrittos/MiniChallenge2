@@ -290,6 +290,10 @@
                                                 <constraint firstItem="xEc-qI-rTz" firstAttribute="trailing" secondItem="7A5-Kc-aXU" secondAttribute="trailingMargin" id="yNj-Q6-yKk"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Ev0-ZG-IwF" appends="YES" id="arr-lq-gCB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="NSV-BY-fcE">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -477,6 +481,7 @@
                         <outlet property="labelPreco" destination="hrH-0x-Jay" id="hBW-ck-cCb"/>
                         <outlet property="labelQuantidade" destination="uDz-rd-npF" id="ex8-Va-n10"/>
                         <segue destination="Rle-Lo-sjT" kind="show" identifier="VisualizarFoto" id="GfL-yI-Xgp"/>
+                        <segue destination="s36-eC-kgT" kind="show" identifier="VisualizarFarmacia" id="gjd-MI-v4k"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Chj-Ne-1EF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -488,6 +493,11 @@
                 <tapGestureRecognizer id="pGi-Lc-YgH">
                     <connections>
                         <action selector="tocouNaFotoRemedio:" destination="s5H-sA-ZYX" id="hXs-IC-4Ch"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Ev0-ZG-IwF">
+                    <connections>
+                        <action selector="tocouNaCelulaFarmacia:" destination="s5H-sA-ZYX" id="igU-he-mu1"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -790,6 +800,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vm-vx-pn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2314" y="1833"/>
+        </scene>
+        <!--Localização Farmácia-->
+        <scene sceneID="FcS-CL-ltr">
+            <objects>
+                <viewController id="s36-eC-kgT" customClass="VisualizarFarmaciaViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cSu-My-Dz0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vr3-zZ-VPS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Odg-XQ-Eg0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pnA-7a-N1P">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pnA-7a-N1P" secondAttribute="trailing" id="DhA-VG-oc1"/>
+                            <constraint firstItem="pnA-7a-N1P" firstAttribute="top" secondItem="cSu-My-Dz0" secondAttribute="bottom" id="XUb-Wk-Qp9"/>
+                            <constraint firstItem="Vr3-zZ-VPS" firstAttribute="top" secondItem="pnA-7a-N1P" secondAttribute="bottom" id="nJ3-8d-JP0"/>
+                            <constraint firstItem="pnA-7a-N1P" firstAttribute="leading" secondItem="Odg-XQ-Eg0" secondAttribute="leading" id="x2k-Il-XtM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Localização Farmácia" id="ss0-20-KsK">
+                        <barButtonItem key="rightBarButtonItem" title="Abrir no Mapas" id="JMm-RA-fq6">
+                            <connections>
+                                <action selector="abrirNoMapas:" destination="s36-eC-kgT" id="1Mt-SC-ykN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapaFarmacia" destination="pnA-7a-N1P" id="QMU-gj-PW9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F75-25-AvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3038" y="1833"/>
         </scene>
         <!--Tab Bar Customizada Controller-->
         <scene sceneID="4wK-Cp-r0w">

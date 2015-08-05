@@ -45,6 +45,7 @@
 		45EAF7911B72581400881BE3 /* Alerta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF7931B72581400881BE3 /* Alerta.storyboard */; };
 		45EAF7981B725A1000881BE3 /* Farmacia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF79A1B725A1000881BE3 /* Farmacia.storyboard */; };
 		45EAF79F1B725B2A00881BE3 /* Remedio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF7A11B725B2A00881BE3 /* Remedio.storyboard */; };
+		45EAF7B11B72832C00881BE3 /* VisualizarFarmaciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */; };
 		8F1709DD1B67F311005A13B9 /* NovaFarmaciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */; };
 		8F3768671B6A68A50046F849 /* FarmaciaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */; };
 		8F477CC51B67BC630050D94F /* Farmacia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC41B67BC630050D94F /* Farmacia.swift */; };
@@ -130,6 +131,7 @@
 		45EAF7A81B725E7900881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		45EAF7A91B725E7E00881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		45EAF7AF1B727B4C00881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Alerta.strings; sourceTree = "<group>"; };
+		45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFarmaciaViewController.swift; sourceTree = "<group>"; };
 		8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovaFarmaciaViewController.swift; sourceTree = "<group>"; };
 		8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmaciaTableViewCell.swift; sourceTree = "<group>"; };
 		8F477CC41B67BC630050D94F /* Farmacia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farmacia.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */,
 				451428AF1B6F9CB70070396A /* VisualizarRemedioTableViewController.swift */,
+				45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */,
 			);
 			name = Remedio;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				8F3768671B6A68A50046F849 /* FarmaciaTableViewCell.swift in Sources */,
 				45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */,
 				45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */,
+				45EAF7B11B72832C00881BE3 /* VisualizarFarmaciaViewController.swift in Sources */,
 				8F72453F1B6C0D58003EE667 /* RemedioSimplesTableViewController.swift in Sources */,
 				451428C71B70170D0070396A /* SCLAlertView.swift in Sources */,
 				4522B7DE1B5EB85C0053DD8E /* TabBarCustomizadaController.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 class VisualizarRemedioTableViewController: UITableViewController {
 
     var remedio: Remedio?
+    var farmacia: Farmacia?
     var remedioDAO = RemedioDAO()
     var intervaloDAO = IntervaloDAO()
     var categoriaDAO = CategoriaDAO()
@@ -87,7 +88,7 @@ class VisualizarRemedioTableViewController: UITableViewController {
         }
         
         if self.remedio?.idFarmacia != 0 {
-            let farmacia = self.farmaciaDAO.buscarPorId(self.remedio!.idFarmacia) as? Farmacia
+            self.farmacia = self.farmaciaDAO.buscarPorId(self.remedio!.idFarmacia) as? Farmacia
             self.labelFarmacia.text = farmacia?.nomeFarmacia
         }else{
             self.labelFarmacia.text = self.INDISPONIVEL
@@ -151,9 +152,23 @@ class VisualizarRemedioTableViewController: UITableViewController {
         self.performSegueWithIdentifier("VisualizarFoto", sender: self.fotoDaReceita)
     }
     
+    @IBAction func tocouNaCelulaFarmacia(sender: AnyObject) {
+        self.performSegueWithIdentifier("VisualizarFarmacia", sender: self.farmacia)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController
-        visualizador.fotoASerVisualizada = sender as! UIImage
+        switch segue.identifier! {
+            case "VisualizarFoto":
+                let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController
+                visualizador.fotoASerVisualizada = sender as! UIImage
+                break
+            case "VisualizarFarmacia":
+                let visualizador = segue.destinationViewController as! VisualizarFarmaciaViewController
+                visualizador.farmaciaASerVisualizada = sender as? Farmacia
+                break
+            default:
+                println("Algo ocorreu na funcao prepareForSegue na classe VisualizarRemedioTableViewController")
+        }
     }
     
     @IBAction func editarRemedio(sender: AnyObject) {
