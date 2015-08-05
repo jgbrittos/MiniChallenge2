@@ -207,8 +207,8 @@ SelecionaFarmaciaDelegate {
         let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
         
         var preco: Double?
-        if self.textFieldPreco.text != "" {
-            preco = NSString(string: self.textFieldPreco.text).doubleValue
+        if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text) {
+            preco = n.doubleValue
         }
 
         var numeroDose = self.textFieldNumeroDose.text.toInt()
@@ -495,53 +495,6 @@ SelecionaFarmaciaDelegate {
     }
     
     func emiteAlertaParaCadastrarLocal() {
-//        var alerta:UIAlertController?
-//        
-//        alerta = UIAlertController(title: NSLocalizedString("TITULOALERTALOCAL", comment: "Titulo do alerta"),
-//            message: NSLocalizedString("MENSAGEMALERTALOCAL", comment: "Mensagem do Alerta"),
-//            preferredStyle: .Alert)
-//        alerta!.addTextFieldWithConfigurationHandler(
-//            {(textField: UITextField!) in
-//                textField.placeholder = NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta")
-//                textField.accessibilityLabel = NSLocalizedString("CATEGORIAPLACEHOLDERLOCAL_ACESSIBILIDADE_LABEL", comment: "Alerta")
-//                textField.accessibilityHint = NSLocalizedString("CATEGORIAPLACEHOLDERLOCAL_ACESSIBILIDADE_HINT", comment: "Alerta")
-//        })
-//        
-//        alerta?.accessibilityLabel = NSLocalizedString("TITULOALERTALOCAL_ACESSIBILIDADE_LABEL", comment: "Alerta")
-//        alerta?.accessibilityHint = NSLocalizedString("TITULOALERTALOCAL_ACESSIBILIDADE_HINT", comment: "Hint do alerta")
-//        
-//        
-//        alerta!.addAction(UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"), style: .Default, handler: { (action: UIAlertAction!) in
-//            
-//        }))
-//        
-//        let acaoAlerta = UIAlertAction(title: NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta"),
-//            style: UIAlertActionStyle.Default,
-//            handler: {[weak self]
-//                (paramAction:UIAlertAction!) in
-//                if let textField = alerta?.textFields{
-//                    let theTextField = textField as! [UITextField]
-//                    let textoDigitado = theTextField[0].text
-//                    
-//                    if (textoDigitado == ""){
-//                        let alertaErro: UIAlertController = UIAlertController(title: NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), message: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), preferredStyle: .Alert)
-//                        alertaErro.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-//                        self!.presentViewController(alertaErro, animated: true, completion: nil)
-//                        
-//                    }else{
-//                        let local = Local(nome: textoDigitado)
-//                        self!.localDAO.inserir(local)
-//                        self!.locais.append(local)
-//                        self!.pickerViewLocal.reloadAllComponents()
-//                    }
-//                    
-//                }
-//            })
-//        
-//        
-//        alerta?.addAction(acaoAlerta)
-//        
-//        self.presentViewController(alerta!,animated: true,completion: nil)
         
         let alerta = SCLAlertView()
         let nomeLocal = alerta.addTextField(title:NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
@@ -549,7 +502,7 @@ SelecionaFarmaciaDelegate {
             if nomeLocal.text != "" {
                 let local = Local(nome: nomeLocal.text)
                 self.localDAO.inserir(local)
-                self.locais.append(local)
+                self.locais = self.localDAO.buscarTodos() as! [Local]
                 self.pickerViewLocal.reloadAllComponents()
             }else{
                 SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), subTitle: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), closeButtonTitle: "OK")
