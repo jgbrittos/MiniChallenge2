@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Marcar como favorita"; ObjectID = "XK2-3e-Yey"; */
+"XK2-3e-Yey.text" = "Mark as favorite";
+
+/* Class = "UINavigationItem"; title = "Nova Farmácia"; ObjectID = "ndP-5f-dCw"; */
+"ndP-5f-dCw.title" = "New Pharmacy";
+
+/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "nr4-dj-6YG"; */
+"nr4-dj-6YG.placeholder" = "Pharmacy name";
