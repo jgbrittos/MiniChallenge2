@@ -92,11 +92,9 @@
 		453961341B5BE35D0097DEDB /* MiniFarmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniFarmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		453961391B5BE35D0097DEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4539613A1B5BE35D0097DEDB /* MiniFarmaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniFarmaTests.swift; sourceTree = "<group>"; };
-		4539614C1B5BE5160097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		4539614D1B5BE5160097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		453961511B5BE5370097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		453961531B5BE53B0097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		453961551B5BEDA80097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		453961561B5BEEA30097DEDB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		453961571B5BEEA30097DEDB /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		453961581B5BEEA30097DEDB /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -130,6 +128,8 @@
 		45EAF7A01B725B2A00881BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Remedio.storyboard; sourceTree = "<group>"; };
 		45EAF7A31B725B2C00881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Remedio.strings"; sourceTree = "<group>"; };
 		45EAF7A51B725B3200881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Remedio.strings; sourceTree = "<group>"; };
+		45EAF7A81B725E7900881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		45EAF7A91B725E7E00881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovaFarmaciaViewController.swift; sourceTree = "<group>"; };
 		8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmaciaTableViewCell.swift; sourceTree = "<group>"; };
 		8F477CC41B67BC630050D94F /* Farmacia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farmacia.swift; sourceTree = "<group>"; };
@@ -599,8 +599,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				453961291B5BE35D0097DEDB /* Base */,
-				4539614C1B5BE5160097DEDB /* pt-BR */,
-				453961551B5BEDA80097DEDB /* en */,
+				45EAF7A81B725E7900881BE3 /* en */,
+				45EAF7A91B725E7E00881BE3 /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

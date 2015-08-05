@@ -39,17 +39,10 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     override func viewWillAppear(animated: Bool) {
-        self.internacionalizaSegmentedControl()
         self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
         self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
         self.alertasDaVez = self.alertasAtivos
         self.tableViewAlerta.reloadData()
-    }
-    
-    //MARK:- Internacionalização
-    func internacionalizaSegmentedControl(){
-        self.segmentedControlAtividadeAlertas.setTitle(NSLocalizedString("SEGMENTEDCONTROLALERTAATIVO", comment: "Alerta ativo"), forSegmentAtIndex: 0)
-        self.segmentedControlAtividadeAlertas.setTitle(NSLocalizedString("SEGMENTEDCONTROLALERTAINATIVO", comment: "Alerta inativo"), forSegmentAtIndex: 1)
     }
     
     //MARK:- Controles da Table View

@@ -1,4 +1,114 @@
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "pFN-Zk-I23"; */
-"pFN-Zk-I23.text" = "Testing";
+/* Class = "UILabel"; text = "Quantidade"; ObjectID = "74T-Wp-94N"; */
+"74T-Wp-94N.text" = "Quantity";
 
+/* Class = "UILabel"; text = "Data de início"; ObjectID = "7TB-uB-Sim"; */
+"7TB-uB-Sim.text" = "Start date";
+
+/* Class = "UILabel"; text = "Remédio"; ObjectID = "7o1-Dj-SjB"; */
+"7o1-Dj-SjB.text" = "Medication";
+
+/* Class = "UISegmentedControl"; 9VZ-Ew-X34.segmentTitles[0] = "Ativos"; ObjectID = "9VZ-Ew-X34"; */
+"9VZ-Ew-X34.segmentTitles[0]" = "Active";
+
+/* Class = "UISegmentedControl"; 9VZ-Ew-X34.segmentTitles[1] = "Inativos"; ObjectID = "9VZ-Ew-X34"; */
+"9VZ-Ew-X34.segmentTitles[1]" = "Inactive";
+
+/* Class = "UINavigationItem"; title = "Meus Alertas"; ObjectID = "E0H-1g-p2e"; */
+"E0H-1g-p2e.title" = "My Alerts";
+
+/* Class = "UILabel"; text = "Intervalo"; ObjectID = "G0Q-B3-LT0"; */
+"G0Q-B3-LT0.text" = "Interval";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Imt-WK-X6p"; */
+"Imt-WK-X6p.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Visualizar Alerta"; ObjectID = "Ixs-E7-D2n"; */
+"Ixs-E7-D2n.title" = "View Alert";
+
+/* Class = "UILabel"; text = "Intervalo"; ObjectID = "OaQ-CQ-3ai"; */
+"OaQ-CQ-3ai.text" = "Interval";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PBL-rT-zMK"; */
+"PBL-rT-zMK.text" = "Label";
+
+/* Class = "UILabel"; text = "Categoria"; ObjectID = "PxD-CB-T5D"; */
+"PxD-CB-T5D.text" = "Category";
+
+/* Class = "UILabel"; text = "Receita"; ObjectID = "QlC-xI-uri"; */
+"QlC-xI-uri.text" = "Prescription";
+
+/* Class = "UILabel"; text = "Data"; ObjectID = "SFZ-YL-O5P"; */
+"SFZ-YL-O5P.text" = "Date";
+
+/* Class = "UINavigationItem"; title = "Visualizar Remédio"; ObjectID = "SSM-na-lrO"; */
+"SSM-na-lrO.title" = "View Medication";
+
+/* Class = "UISegmentedControl"; UDi-B8-Cyq.segmentTitles[0] = "Válidos"; ObjectID = "UDi-B8-Cyq"; */
+"UDi-B8-Cyq.segmentTitles[0]" = "Valid";
+
+/* Class = "UISegmentedControl"; UDi-B8-Cyq.segmentTitles[1] = "Vencidos"; ObjectID = "UDi-B8-Cyq"; */
+"UDi-B8-Cyq.segmentTitles[1]" = "Expired";
+
+/* Class = "UILabel"; text = "Nome"; ObjectID = "XYI-s4-Sm1"; */
+"XYI-s4-Sm1.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Foto"; ObjectID = "a1T-HV-fKo"; */
+"a1T-HV-fKo.title" = "Photo";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "art-QJ-Xsd"; */
+"art-QJ-Xsd.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ccL-k9-ERw"; */
+"ccL-k9-ERw.text" = "Label";
+
+/* Class = "UILabel"; text = "Data"; ObjectID = "eoY-iW-h6L"; */
+"eoY-iW-h6L.text" = "Date";
+
+/* Class = "UILabel"; text = "Preço"; ObjectID = "h36-jT-JZk"; */
+"h36-jT-JZk.text" = "Price";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hmr-To-bsl"; */
+"hmr-To-bsl.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hrH-0x-Jay"; */
+"hrH-0x-Jay.text" = "Label";
+
+/* Class = "UILabel"; text = "Duração"; ObjectID = "mlX-tX-LWX"; */
+"mlX-tX-LWX.text" = "Duration";
+
+/* Class = "UILabel"; text = "Local"; ObjectID = "n4x-TC-DvR"; */
+"n4x-TC-DvR.text" = "Place";
+
+/* Class = "UILabel"; text = "Dose"; ObjectID = "o4v-8m-iyi"; */
+"o4v-8m-iyi.text" = "Dose";
+
+/* Class = "UILabel"; text = "Nome"; ObjectID = "s9w-uj-h23"; */
+"s9w-uj-h23.text" = "Name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uDz-rd-npF"; */
+"uDz-rd-npF.text" = "Label";
+
+/* Class = "UILabel"; text = "Farmácia"; ObjectID = "uQK-jd-f0K"; */
+"uQK-jd-f0K.text" = "Pharmacy";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vK6-1t-uZB"; */
+"vK6-1t-uZB.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vyw-bm-rzp"; */
+"vyw-bm-rzp.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xEc-qI-rTz"; */
+"xEc-qI-rTz.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xPo-tm-Rqk"; */
+"xPo-tm-Rqk.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xfn-3K-1lI"; */
+"xfn-3K-1lI.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Meus Remédios"; ObjectID = "xw9-Xa-laJ"; */
+"xw9-Xa-laJ.title" = "My Medications";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ytR-J2-kTY"; */
+"ytR-J2-kTY.text" = "Label";
