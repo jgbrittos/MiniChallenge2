@@ -117,7 +117,32 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         var tomeiRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            //Ação para quando o usuário tomou um remédio
+            switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
+                case 0:
+                    let remedio = self.remediosValidos[indexPath.row] as Remedio
+                    
+                    if(remedio.numeroQuantidade > 0 ){
+                        self.remedioDAO.marcaRemedioTomado(remedio.idRemedio, novaQuantidade: (remedio.numeroQuantidade-1))
+                    }
+                    self.remediosValidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 0) as! [Remedio]
+                    self.dadosASeremMostrados = self.remediosValidos
+                    break
+                case 1:
+                    let remedio = self.remediosVencidos[indexPath.row] as Remedio
+                    
+                    if(remedio.numeroQuantidade > 0 ){
+                        self.remedioDAO.marcaRemedioTomado(remedio.idRemedio, novaQuantidade: (remedio.numeroQuantidade-1))
+                    }
+                    self.remediosVencidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 1) as! [Remedio]
+                    self.dadosASeremMostrados = self.remediosVencidos
+                    break
+                default:
+                    println("Algo ocorreu no método editActionsForRowAtIndexPath na classe RemediosViewController!")
+                    break
+            }
+            
+            self.tableViewRemedios.reloadData()
+            
         })
         var apagarRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
