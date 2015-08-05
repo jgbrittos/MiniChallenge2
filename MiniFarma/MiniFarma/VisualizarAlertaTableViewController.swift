@@ -18,6 +18,7 @@ class VisualizarAlertaTableViewController: UITableViewController {
     @IBOutlet weak var labelDuracao: UILabel!
     @IBOutlet weak var labelRemedio: UILabel!
     @IBOutlet weak var labelIntervalo: UILabel!
+    
     let histogramaDuracao = ["dia(s)","semana(s)","mes(s)"]
     
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class VisualizarAlertaTableViewController: UITableViewController {
 
     func mostraInformacoesDoAlerta(){
         let formatador = NSDateFormatter()
-        formatador.dateFormat = "dd/MM/yyyy"
+        formatador.dateFormat = "dd/MM/yyyy hh:mm"
         
         self.labelDataInicio.text = formatador.stringFromDate(alerta!.dataInicio)
         
