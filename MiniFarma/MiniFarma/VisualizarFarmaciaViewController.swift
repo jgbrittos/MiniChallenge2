@@ -13,7 +13,6 @@ class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
 
     var farmaciaASerVisualizada: Farmacia?
     @IBOutlet weak var mapaFarmacia: MKMapView!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

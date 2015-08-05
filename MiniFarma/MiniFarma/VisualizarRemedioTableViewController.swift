@@ -75,21 +75,33 @@ class VisualizarRemedioTableViewController: UITableViewController {
         
         if self.remedio?.idCategoria != 0 {
             let categoria = self.categoriaDAO.buscarPorId(self.remedio!.idCategoria) as? Categoria
-            self.labelCategoria.text = categoria?.nomeCategoria
+            if categoria?.nomeCategoria != ""{
+                self.labelCategoria.text = categoria?.nomeCategoria
+            }else{
+                self.labelCategoria.text = self.INDISPONIVEL
+            }
         }else{
             self.labelCategoria.text = self.INDISPONIVEL
         }
         
         if self.remedio?.idIntervalo != 0 {
             let intervalo = self.intervaloDAO.buscarPorId(self.remedio!.idIntervalo) as? Intervalo
-            self.labelIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
+            if intervalo?.numero != 0 {
+                self.labelIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
+            }else{
+                self.labelIntervalo.text = self.INDISPONIVEL    
+            }
         }else{
             self.labelIntervalo.text = self.INDISPONIVEL
         }
         
         if self.remedio?.idFarmacia != 0 {
             self.farmacia = self.farmaciaDAO.buscarPorId(self.remedio!.idFarmacia) as? Farmacia
-            self.labelFarmacia.text = farmacia?.nomeFarmacia
+            if self.farmacia?.nomeFarmacia != "" {
+                self.labelFarmacia.text = self.farmacia?.nomeFarmacia
+            }else{
+                self.labelFarmacia.text = self.INDISPONIVEL
+            }
         }else{
             self.labelFarmacia.text = self.INDISPONIVEL
         }
@@ -153,7 +165,12 @@ class VisualizarRemedioTableViewController: UITableViewController {
     }
     
     @IBAction func tocouNaCelulaFarmacia(sender: AnyObject) {
-        self.performSegueWithIdentifier("VisualizarFarmacia", sender: self.farmacia)
+        
+        if self.farmacia?.nomeFarmacia == "" {
+            SCLAlertView().showError(NSLocalizedString("ERROFARMACIAINVALIDATITULO", comment: "Alerta de erro"), subTitle: NSLocalizedString("ERROFARMACIAINVALIDAMENSAGEM", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
+        }else{
+            self.performSegueWithIdentifier("VisualizarFarmacia", sender: self.farmacia)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -79,3 +79,6 @@ FARMACIANOMEALERTA_ACESSIBILIDADE_HINT = "Campo Nome da farmácia vazio. Digite 
 
 
 BOTAOFOTOREMEDIO = "adicionar foto";
+
+ERROFARMACIAINVALIDATITULO = "Ops!";
+ERROFARMACIAINVALIDAMENSAGEM = "Não há farmácia registrada para esse medicamento";

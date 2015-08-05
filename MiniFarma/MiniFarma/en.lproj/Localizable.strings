@@ -64,3 +64,6 @@ FARMACIANOMEALERTA_ACESSIBILIDADE_HINT = "Pharmacy name textfield empty. Type a 
 
 
 BOTAOFOTOREMEDIO = "add photo";
+
+ERROFARMACIAINVALIDATITULO = "Ops!";
+ERROFARMACIAINVALIDAMENSAGEM = "There is no pharmacy registered to this medication";
