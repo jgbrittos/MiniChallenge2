@@ -11,6 +11,7 @@ import UIKit
 class VisualizarAlertaTableViewController: UITableViewController {
 
     var alerta: Alerta?
+    var remedio: Remedio?
     var intervaloDAO = IntervaloDAO()
     var remedioDAO = RemedioDAO()
     
@@ -40,8 +41,8 @@ class VisualizarAlertaTableViewController: UITableViewController {
         let intervalo = self.intervaloDAO.buscarPorId(self.alerta!.idIntervalo) as? Intervalo
         self.labelIntervalo.text = String(intervalo!.numero) + " " + intervalo!.unidade
         
-        let remedio = self.remedioDAO.buscarPorId(self.alerta!.idRemedio) as? Remedio
-        self.labelRemedio.text = remedio?.nomeRemedio
+        self.remedio = self.remedioDAO.buscarPorId(self.alerta!.idRemedio) as? Remedio
+        self.labelRemedio.text = self.remedio?.nomeRemedio
     }
     
     // MARK: - Table view data source
@@ -54,4 +55,12 @@ class VisualizarAlertaTableViewController: UITableViewController {
         return 4
     }
 
+    @IBAction func visualizarRemedio(sender: AnyObject) {
+        self.performSegueWithIdentifier("VisualizarRemedioDoAlerta", sender: nil)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
+        visualizarRemedio.remedio = self.remedio
+    }
 }

@@ -780,6 +780,10 @@
                                                 <constraint firstItem="7o1-Dj-SjB" firstAttribute="top" secondItem="Uf7-JQ-gdS" secondAttribute="topMargin" constant="3" id="zU2-bL-HEv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="iyU-Uq-1sn" appends="YES" id="5Sg-Mv-NxS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -795,9 +799,15 @@
                         <outlet property="labelDuracao" destination="Imt-WK-X6p" id="W26-CQ-7kE"/>
                         <outlet property="labelIntervalo" destination="hmr-To-bsl" id="EyA-px-6tH"/>
                         <outlet property="labelRemedio" destination="xfn-3K-1lI" id="UT0-u1-NZb"/>
+                        <segue destination="s5H-sA-ZYX" kind="show" identifier="VisualizarRemedioDoAlerta" id="dld-1y-B48"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7vm-vx-pn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iyU-Uq-1sn">
+                    <connections>
+                        <action selector="visualizarRemedio:" destination="eSy-Us-7v7" id="2yp-gs-zfx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2314" y="1833"/>
         </scene>
@@ -905,4 +915,7 @@
             <point key="canvasLocation" x="852" y="1833"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dld-1y-B48"/>
+    </inferredMetricsTieBreakers>
 </document>
