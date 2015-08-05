@@ -1,26 +1,26 @@
 
-/* Class = "UILabel"; text = "Remédio"; ObjectID = "B1r-vX-lcO"; */
+/* Class = "UILabel"; text = "Medication"; ObjectID = "B1r-vX-lcO"; */
 "B1r-vX-lcO.text" = "Medication";
 
-/* Class = "UISegmentedControl"; Osc-YQ-1KP.segmentTitles[0] = "dia"; ObjectID = "Osc-YQ-1KP"; */
+/* Class = "UISegmentedControl"; Osc-YQ-1KP.segmentTitles[0] = "day"; ObjectID = "Osc-YQ-1KP"; */
 "Osc-YQ-1KP.segmentTitles[0]" = "day";
 
-/* Class = "UISegmentedControl"; Osc-YQ-1KP.segmentTitles[1] = "sem"; ObjectID = "Osc-YQ-1KP"; */
+/* Class = "UISegmentedControl"; Osc-YQ-1KP.segmentTitles[1] = "week"; ObjectID = "Osc-YQ-1KP"; */
 "Osc-YQ-1KP.segmentTitles[1]" = "week";
 
-/* Class = "UISegmentedControl"; Osc-YQ-1KP.segmentTitles[2] = "mês"; ObjectID = "Osc-YQ-1KP"; */
+/* Class = "UISegmentedControl"; Osc-YQ-1KP.segmentTitles[2] = "month"; ObjectID = "Osc-YQ-1KP"; */
 "Osc-YQ-1KP.segmentTitles[2]" = "month";
 
-/* Class = "UINavigationItem"; title = "Remédio"; ObjectID = "YaZ-TW-dkH"; */
+/* Class = "UINavigationItem"; title = "Medication"; ObjectID = "YaZ-TW-dkH"; */
 "YaZ-TW-dkH.title" = "Medication";
 
-/* Class = "UINavigationItem"; title = "Intervalo"; ObjectID = "cTL-qX-rZo"; */
+/* Class = "UINavigationItem"; title = "Interval"; ObjectID = "cTL-qX-rZo"; */
 "cTL-qX-rZo.title" = "Interval";
 
-/* Class = "UINavigationItem"; title = "Alerta"; ObjectID = "jrw-Vn-Slb"; */
+/* Class = "UINavigationItem"; title = "Alert"; ObjectID = "jrw-Vn-Slb"; */
 "jrw-Vn-Slb.title" = "Alert";
 
-/* Class = "UILabel"; text = "Intervalo"; ObjectID = "r5i-th-jfe"; */
+/* Class = "UILabel"; text = "Interval"; ObjectID = "r5i-th-jfe"; */
 "r5i-th-jfe.text" = "Interval";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "z0Y-qJ-BzO"; */

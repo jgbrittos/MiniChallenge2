@@ -149,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else if(identifier == "TOMEI_IDENTIFICADOR"){
             println("Cliquei em tomei")
             if(remedioBuscado.numeroQuantidade > 0 ){
-                remedioDAO.marcaRemedioTomado(idRemedio, novaQuantidade: (remedioBuscado.numeroQuantidade-1))
+                remedioDAO.marcaRemedioTomado(idRemedio, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
             }
         }
         

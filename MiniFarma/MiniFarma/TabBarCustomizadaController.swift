@@ -121,7 +121,7 @@ class TabBarCustomizadaController: UITabBarController {
     }
     
     func fazBotoesApareceremAnimadamente(){
-        UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
+        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseOut , animations: {
             self.botoesNaoEstaoVisiveis = false
             
             self.view.addSubview(self.botaoAdicionaFarmacia)
@@ -140,7 +140,7 @@ class TabBarCustomizadaController: UITabBarController {
     }
     
     func fazBotoesDesaparecerem(animadamente _animadamente: Bool){
-        UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut , animations: {
+        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseOut , animations: {
             self.botoesNaoEstaoVisiveis = true
             if _animadamente {
                 self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
