@@ -67,3 +67,6 @@ ERROFARMACIA = "Error";
 MENSAGEMERROFARMACIA = "Type the pharmacy name";
 FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL = "Alert";
 FARMACIANOMEALERTA_ACESSIBILIDADE_HINT = "Pharmacy name textfield empty. Type a name.";
+
+
+BOTAOFOTOREMEDIO = "add photo";

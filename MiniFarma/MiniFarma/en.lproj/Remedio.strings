@@ -1,0 +1,99 @@
+
+/* Class = "UISegmentedControl"; 04C-EE-t7v.segmentTitles[0] = "cp"; ObjectID = "04C-EE-t7v"; */
+"04C-EE-t7v.segmentTitles[0]" = "cp";
+
+/* Class = "UISegmentedControl"; 04C-EE-t7v.segmentTitles[1] = "g"; ObjectID = "04C-EE-t7v"; */
+"04C-EE-t7v.segmentTitles[1]" = "g";
+
+/* Class = "UISegmentedControl"; 04C-EE-t7v.segmentTitles[2] = "ml"; ObjectID = "04C-EE-t7v"; */
+"04C-EE-t7v.segmentTitles[2]" = "ml";
+
+/* Class = "UILabel"; text = "Quantidade"; ObjectID = "4jS-pd-6Nk"; */
+"4jS-pd-6Nk.text" = "Quantity";
+
+/* Class = "UINavigationItem"; title = "Intervalo"; ObjectID = "5jI-7Q-hie"; */
+"5jI-7Q-hie.title" = "Interval";
+
+/* Class = "UILabel"; text = "Alerta"; ObjectID = "5rl-4A-ncd"; */
+"5rl-4A-ncd.text" = "Alert";
+
+/* Class = "UILabel"; text = "Preço"; ObjectID = "9F2-iM-cq0"; */
+"9F2-iM-cq0.text" = "Price";
+
+/* Class = "UIButton"; normalTitle = "adicionar foto"; ObjectID = "C1D-3o-u4h"; */
+"C1D-3o-u4h.normalTitle" = "add photo";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "GoW-uU-irw"; */
+"GoW-uU-irw.text" = "Title";
+
+/* Class = "UITextField"; placeholder = "Data de Validade"; ObjectID = "JZ3-8b-mAt"; */
+"JZ3-8b-mAt.placeholder" = "Expiration Date";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Mva-cg-8gI"; */
+"Mva-cg-8gI.text" = "Title";
+
+/* Class = "UILabel"; text = "Intervalo"; ObjectID = "PWz-C5-0oe"; */
+"PWz-C5-0oe.text" = "Interval";
+
+/* Class = "UILabel"; text = "Farmácia"; ObjectID = "QM6-zY-uSJ"; */
+"QM6-zY-uSJ.text" = "Pharmacy";
+
+/* Class = "UINavigationItem"; title = "Foto"; ObjectID = "SRM-nn-PEL"; */
+"SRM-nn-PEL.title" = "Photo";
+
+/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "Sdq-5v-ZYm"; */
+"Sdq-5v-ZYm.placeholder" = "Medication name";
+
+/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "YvE-wg-0aX"; */
+"YvE-wg-0aX.placeholder" = "Medication name";
+
+/* Class = "UILabel"; text = "Local"; ObjectID = "bCf-mi-LUl"; */
+"bCf-mi-LUl.text" = "Place";
+
+/* Class = "UILabel"; text = "Marcar como favorita"; ObjectID = "gLN-eN-PSk"; */
+"gLN-eN-PSk.text" = "Mark as favorite";
+
+/* Class = "UINavigationItem"; title = "Categoria"; ObjectID = "iSx-d9-GK8"; */
+"iSx-d9-GK8.title" = "Category";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "k82-yH-Amq"; */
+"k82-yH-Amq.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Adicionar Remédio"; ObjectID = "kT6-fc-XXw"; */
+"kT6-fc-XXw.title" = "New Medication";
+
+/* Class = "UITextField"; placeholder = "Data de Validade"; ObjectID = "kUy-me-Kvl"; */
+"kUy-me-Kvl.placeholder" = "Expiration date";
+
+/* Class = "UILabel"; text = "Receita"; ObjectID = "lRp-b3-l8f"; */
+"lRp-b3-l8f.text" = "Prescription";
+
+/* Class = "UINavigationItem"; title = "Farmácia"; ObjectID = "ntA-N0-6i5"; */
+"ntA-N0-6i5.title" = "Pharmacy";
+
+/* Class = "UILabel"; text = "R$"; ObjectID = "r2S-cu-Cwx"; */
+"r2S-cu-Cwx.text" = "U$";
+
+/* Class = "UINavigationItem"; title = "Nova Farmácia"; ObjectID = "uBt-WB-hd4"; */
+"uBt-WB-hd4.title" = "New Pharmacia";
+
+/* Class = "UISegmentedControl"; uN3-Uu-oxi.segmentTitles[0] = "cp"; ObjectID = "uN3-Uu-oxi"; */
+"uN3-Uu-oxi.segmentTitles[0]" = "cp";
+
+/* Class = "UISegmentedControl"; uN3-Uu-oxi.segmentTitles[1] = "g"; ObjectID = "uN3-Uu-oxi"; */
+"uN3-Uu-oxi.segmentTitles[1]" = "g";
+
+/* Class = "UISegmentedControl"; uN3-Uu-oxi.segmentTitles[2] = "ml"; ObjectID = "uN3-Uu-oxi"; */
+"uN3-Uu-oxi.segmentTitles[2]" = "ml";
+
+/* Class = "UIButton"; normalTitle = "adicionar foto"; ObjectID = "vy1-mO-YI4"; */
+"vy1-mO-YI4.normalTitle" = "add photo";
+
+/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "xCz-BN-PkF"; */
+"xCz-BN-PkF.placeholder" = "Medication name";
+
+/* Class = "UILabel"; text = "Dose"; ObjectID = "xT1-qw-H7y"; */
+"xT1-qw-H7y.text" = "Dose";
+
+/* Class = "UILabel"; text = "Categoria"; ObjectID = "yAO-60-11M"; */
+"yAO-60-11M.text" = "Category";

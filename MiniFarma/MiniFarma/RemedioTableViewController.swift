@@ -159,7 +159,7 @@ SelecionaFarmaciaDelegate {
             self.buttonTirarFotoRemedio.setTitle("", forState: .Normal)
             self.buttonTirarFotoRemedio.setBackgroundImage(self.fotoRemedio, forState: .Normal)
         }else{
-            self.buttonTirarFotoRemedio.setTitle("adicionar foto", forState: .Normal)
+            self.buttonTirarFotoRemedio.setTitle(NSLocalizedString("BOTAOFOTOREMEDIO", comment: "botao add foto"), forState: .Normal)
         }
         
     }
@@ -546,7 +546,7 @@ SelecionaFarmaciaDelegate {
                     self.presentViewController(picker, animated:true, completion:nil)
                     break
                 case 3:
-                    self.buttonTirarFotoRemedio.setTitle("adicionar foto", forState: .Normal)
+                    self.buttonTirarFotoRemedio.setTitle(NSLocalizedString("BOTAOFOTOREMEDIO", comment: "botao add foto"), forState: .Normal)
                     self.buttonTirarFotoRemedio.setBackgroundImage(nil, forState: .Normal)
                     self.fotoRemedio = nil
                     break

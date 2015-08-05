@@ -35,7 +35,6 @@
 		45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE31B61666B00E24F80 /* Intervalo.swift */; };
 		45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */; };
 		45BB4AE81B61883300E24F80 /* IntervaloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */; };
-		45D4084F1B66C3C000FB0EF0 /* Remedio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45D4084E1B66C3C000FB0EF0 /* Remedio.storyboard */; };
 		45D408511B66C3D600FB0EF0 /* RemedioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D408501B66C3D600FB0EF0 /* RemedioTableViewController.swift */; };
 		45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */; };
 		45DAB5341B5C2ECE00AA2860 /* AlertaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */; };
@@ -45,6 +44,7 @@
 		45E8CD8D1B60163400190FA1 /* Inicial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E8CD8F1B60163400190FA1 /* Inicial.storyboard */; };
 		45EAF7911B72581400881BE3 /* Alerta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF7931B72581400881BE3 /* Alerta.storyboard */; };
 		45EAF7981B725A1000881BE3 /* Farmacia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF79A1B725A1000881BE3 /* Farmacia.storyboard */; };
+		45EAF79F1B725B2A00881BE3 /* Remedio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF7A11B725B2A00881BE3 /* Remedio.storyboard */; };
 		8F1709DD1B67F311005A13B9 /* NovaFarmaciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */; };
 		8F3768671B6A68A50046F849 /* FarmaciaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */; };
 		8F477CC51B67BC630050D94F /* Farmacia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC41B67BC630050D94F /* Farmacia.swift */; };
@@ -112,7 +112,6 @@
 		45BB4AE31B61666B00E24F80 /* Intervalo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intervalo.swift; sourceTree = "<group>"; };
 		45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloDAO.swift; sourceTree = "<group>"; };
 		45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloViewController.swift; sourceTree = "<group>"; };
-		45D4084E1B66C3C000FB0EF0 /* Remedio.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Remedio.storyboard; sourceTree = "<group>"; };
 		45D408501B66C3D600FB0EF0 /* RemedioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemedioTableViewController.swift; sourceTree = "<group>"; };
 		45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemediosViewController.swift; sourceTree = "<group>"; };
 		45DAB5331B5C2ECE00AA2860 /* AlertaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertaViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +127,9 @@
 		45EAF7991B725A1000881BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Farmacia.storyboard; sourceTree = "<group>"; };
 		45EAF79C1B725A1200881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Farmacia.strings; sourceTree = "<group>"; };
 		45EAF79E1B725A1200881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Farmacia.strings"; sourceTree = "<group>"; };
+		45EAF7A01B725B2A00881BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Remedio.storyboard; sourceTree = "<group>"; };
+		45EAF7A31B725B2C00881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Remedio.strings"; sourceTree = "<group>"; };
+		45EAF7A51B725B3200881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Remedio.strings; sourceTree = "<group>"; };
 		8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovaFarmaciaViewController.swift; sourceTree = "<group>"; };
 		8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmaciaTableViewCell.swift; sourceTree = "<group>"; };
 		8F477CC41B67BC630050D94F /* Farmacia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farmacia.swift; sourceTree = "<group>"; };
@@ -375,7 +377,7 @@
 		457409B61B669A9400CC71EF /* Adicionar Remedio */ = {
 			isa = PBXGroup;
 			children = (
-				45D4084E1B66C3C000FB0EF0 /* Remedio.storyboard */,
+				45EAF7A11B725B2A00881BE3 /* Remedio.storyboard */,
 				45EAF79A1B725A1000881BE3 /* Farmacia.storyboard */,
 				45D408501B66C3D600FB0EF0 /* RemedioTableViewController.swift */,
 				45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */,
@@ -508,7 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45D4084F1B66C3C000FB0EF0 /* Remedio.storyboard in Resources */,
+				45EAF79F1B725B2A00881BE3 /* Remedio.storyboard in Resources */,
 				8FC9E8551B6129B700E46761 /* Minifarma.sqlite in Resources */,
 				4539612A1B5BE35D0097DEDB /* Main.storyboard in Resources */,
 				45E8CD8D1B60163400190FA1 /* Inicial.storyboard in Resources */,
@@ -659,6 +661,16 @@
 				45EAF79E1B725A1200881BE3 /* pt-BR */,
 			);
 			name = Farmacia.storyboard;
+			sourceTree = "<group>";
+		};
+		45EAF7A11B725B2A00881BE3 /* Remedio.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45EAF7A01B725B2A00881BE3 /* Base */,
+				45EAF7A31B725B2C00881BE3 /* pt-BR */,
+				45EAF7A51B725B3200881BE3 /* en */,
+			);
+			name = Remedio.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
