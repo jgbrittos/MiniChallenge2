@@ -247,10 +247,9 @@ SelecionaFarmaciaDelegate {
             self.remedioDAO.atualizar(remedio, comId: self.idRemedio)
         }
         
-        
         if self.switchAlerta.on {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.remedioGlobal = remedio as Remedio
+            appDelegate.remedioGlobal = self.remedioDAO.buscaUltimoInserido() as Remedio
             let storyboardAlerta = UIStoryboard(name: "Alerta", bundle: nil).instantiateInitialViewController() as! UINavigationController
             self.presentViewController(storyboardAlerta, animated: true, completion: nil)
             //ir para a tela de alerta e passar o remedio

@@ -243,9 +243,6 @@ class RemedioDAO: DAO {
             
             if(result.stringForColumn("data_validade") != nil){
                 dataValidade = result.dateForColumn("data_validade")
-//                    var dataValidadeFormato = NSDateFormatter()
-//                    dataValidadeFormato.dateFormat = "dd-MM-yyyy"
-//                    var dataValidadeDate = dataValidadeFormato.dateFromString(dataValidade as String)
             }
             if(result.stringForColumn("numero_quantidade") != nil){
                 numeroQuantidade = result.stringForColumn("numero_quantidade")
@@ -328,4 +325,79 @@ class RemedioDAO: DAO {
         return atualizadoComSucesso
     }
 
+    func buscaUltimoInserido() -> Remedio {
+        self.bancoDeDados.open()
+        
+        var todosRemedios = [Remedio]()
+        
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
+        
+        //campos opcionais
+        var dataValidade: NSDate?
+        var numeroQuantidade:NSString = ""
+        var unidade: NSString = ""
+        var preco: NSString = ""
+        var numeroDose: NSString = ""
+        var fotoRemedio: NSString = ""
+        var fotoReceita: NSString = ""
+        var vencido: NSString = ""
+        var idFarmacia: NSString = ""
+        var idCategoria: NSString = ""
+        var idLocal: NSString = ""
+        var idIntervalo: NSString = ""
+        
+        while(result.next()){
+            
+            var idRemedio: NSString = result.stringForColumn("id_remedio")
+            var nome: NSString = result.stringForColumn("nome")
+            
+            if(result.stringForColumn("data_validade") != nil){
+                dataValidade = result.dateForColumn("data_validade")
+            }
+            if(result.stringForColumn("numero_quantidade") != nil){
+                numeroQuantidade = result.stringForColumn("numero_quantidade")
+            }
+            if(result.stringForColumn("unidade") != nil){
+                unidade = result.stringForColumn("unidade")
+            }
+            if(result.stringForColumn("preco") != nil){
+                preco = result.stringForColumn("preco")
+            }
+            if(result.stringForColumn("numero_dose") != nil){
+                numeroDose = result.stringForColumn("numero_dose")
+            }
+            if(result.stringForColumn("foto_remedio") != nil){
+                fotoRemedio = result.stringForColumn("foto_remedio")
+            }
+            if(result.stringForColumn("foto_receita") != nil){
+                fotoReceita = result.stringForColumn("foto_receita")
+            }
+            if(result.stringForColumn("vencido") != nil){
+                vencido = result.stringForColumn("vencido")
+            }
+            if(result.stringForColumn("id_farmacia") != nil){
+                idFarmacia = result.stringForColumn("id_farmacia")
+            }
+            if(result.stringForColumn("id_categoria") != nil){
+                idCategoria = result.stringForColumn("id_categoria")
+            }
+            if(result.stringForColumn("id_local") != nil){
+                idLocal = result.stringForColumn("id_local")
+            }
+            if(result.stringForColumn("id_intervalo") != nil){
+                idIntervalo = result.stringForColumn("id_intervalo")
+            }
+            
+            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            
+            println("id: \(idRemedio) nome do remedio: \(nome) data: \(dataValidade) --- REMEDIO: \(remedio)")
+            
+            todosRemedios.append(remedio)
+            
+        }
+        
+        self.bancoDeDados.close()
+        
+        return todosRemedios.last!
+    }
 }
