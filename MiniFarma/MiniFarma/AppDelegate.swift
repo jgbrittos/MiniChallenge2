@@ -162,14 +162,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let info = NSUserDefaults(suiteName: "group.br.com.jgbrittos.MiniFarma")
 
         let nomeStoryboard = info?.objectForKey("storyboard") as! String
+        
         println("\(nomeStoryboard)")
         
-        let storyboard = UIStoryboard(name: nomeStoryboard, bundle: nil).instantiateInitialViewController() as! UINavigationController
-        
-        var controle = UITabBarController()
-        controle = self.window?.rootViewController as! UITabBarController
-        controle.presentViewController(storyboard, animated: true, completion: nil)
-        
+        if nomeStoryboard != "Main" {
+            let storyboard = UIStoryboard(name: nomeStoryboard, bundle: nil).instantiateInitialViewController() as! UINavigationController
+            
+            var controle = UITabBarController()
+            controle = self.window?.rootViewController as! UITabBarController
+            controle.presentViewController(storyboard, animated: true, completion: nil)
+        }
         return true
     }
     

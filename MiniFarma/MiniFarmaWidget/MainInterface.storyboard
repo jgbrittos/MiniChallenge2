@@ -17,6 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl8-sT-8yv">
+                                <rect key="frame" x="84" y="20" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="PRB-z1-eNF"/>
+                                    <constraint firstAttribute="height" constant="60" id="zKF-UU-n9o"/>
+                                </constraints>
+                                <state key="normal" image="botaoAdicionarRemedio">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addRemedio:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="0qo-tW-zvi"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed6-DD-fIe">
                                 <rect key="frame" x="16" y="20" width="60" height="60"/>
                                 <constraints>
@@ -31,7 +44,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJ2-jV-cbY">
-                                <rect key="frame" x="244" y="20" width="60" height="60"/>
+                                <rect key="frame" x="152" y="20" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Yh4-9Z-Vua"/>
                                     <constraint firstAttribute="height" constant="60" id="y0R-dD-exK"/>
@@ -43,27 +56,29 @@
                                     <action selector="addAlerta:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="DtO-Lb-e6Y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl8-sT-8yv">
-                                <rect key="frame" x="130" y="20" width="60" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9N-RZ-IZh">
+                                <rect key="frame" x="244" y="20" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="PRB-z1-eNF"/>
-                                    <constraint firstAttribute="height" constant="60" id="zKF-UU-n9o"/>
+                                    <constraint firstAttribute="width" constant="60" id="IVa-wR-Y41"/>
+                                    <constraint firstAttribute="height" constant="60" id="cxm-f4-zLj"/>
                                 </constraints>
-                                <state key="normal" image="botaoAdicionarRemedio">
+                                <state key="normal" image="iconesApp">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addRemedio:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="0qo-tW-zvi"/>
+                                    <action selector="abrirApp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="PVH-uq-u72"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="pl8-sT-8yv" firstAttribute="leading" secondItem="Ed6-DD-fIe" secondAttribute="trailing" constant="54" id="TYJ-3C-ABW"/>
+                            <constraint firstItem="B9N-RZ-IZh" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Blg-qP-Him"/>
+                            <constraint firstItem="pl8-sT-8yv" firstAttribute="leading" secondItem="Ed6-DD-fIe" secondAttribute="trailing" constant="8" id="TYJ-3C-ABW"/>
                             <constraint firstItem="pl8-sT-8yv" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="UEL-qk-9Rm"/>
                             <constraint firstItem="NJ2-jV-cbY" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="VR3-hL-qna"/>
-                            <constraint firstItem="NJ2-jV-cbY" firstAttribute="leading" secondItem="pl8-sT-8yv" secondAttribute="trailing" constant="54" id="cm6-hA-N5r"/>
+                            <constraint firstItem="NJ2-jV-cbY" firstAttribute="leading" secondItem="pl8-sT-8yv" secondAttribute="trailing" constant="8" id="cm6-hA-N5r"/>
                             <constraint firstItem="Ed6-DD-fIe" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="hlO-N3-7cp"/>
                             <constraint firstItem="Ed6-DD-fIe" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="qnY-SO-O0D"/>
+                            <constraint firstItem="B9N-RZ-IZh" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="xKA-nx-dZQ"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -72,6 +87,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="100"/>
+                    <connections>
+                        <outlet property="botaoApp" destination="B9N-RZ-IZh" id="G5N-mE-rXq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,6 +100,7 @@
         <image name="botaoAdicionarAlerta" width="49" height="49"/>
         <image name="botaoAdicionarFarmacia" width="49" height="49"/>
         <image name="botaoAdicionarRemedio" width="49" height="49"/>
+        <image name="iconesApp" width="60" height="60"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

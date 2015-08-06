@@ -12,11 +12,15 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
     
     var info = NSObject()
+    @IBOutlet weak var botaoApp: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         self.info = NSUserDefaults(suiteName: "group.br.com.jgbrittos.MiniFarma")!
+        
+        self.botaoApp.layer.masksToBounds = true
+        self.botaoApp.layer.cornerRadius = 30.0
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,6 +53,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBAction func addAlerta(sender: AnyObject) {
         println("Alerta")
         self.info.setValue("Alerta", forKey: "storyboard")
+        var url =  NSURL(string:"MiniFarmaTodayExtension://")
+        self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
+    }
+    
+    @IBAction func abrirApp(sender: AnyObject) {
+        println("Main")
+        self.info.setValue("Main", forKey: "storyboard")
         var url =  NSURL(string:"MiniFarmaTodayExtension://")
         self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
     }
