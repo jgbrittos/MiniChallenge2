@@ -46,6 +46,11 @@
 		45EAF7981B725A1000881BE3 /* Farmacia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF79A1B725A1000881BE3 /* Farmacia.storyboard */; };
 		45EAF79F1B725B2A00881BE3 /* Remedio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF7A11B725B2A00881BE3 /* Remedio.storyboard */; };
 		45EAF7B11B72832C00881BE3 /* VisualizarFarmaciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */; };
+		45EAF7BB1B72BA3400881BE3 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EAF7BA1B72BA3400881BE3 /* NotificationCenter.framework */; };
+		45EAF7C01B72BA3400881BE3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EAF7BF1B72BA3400881BE3 /* TodayViewController.swift */; };
+		45EAF7C21B72BA3400881BE3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EAF7C11B72BA3400881BE3 /* MainInterface.storyboard */; };
+		45EAF7C51B72BA3400881BE3 /* MiniFarmaWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 45EAF7B81B72BA3400881BE3 /* MiniFarmaWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		45EAF7CE1B72C76E00881BE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4539612B1B5BE35D0097DEDB /* Images.xcassets */; };
 		8F1709DD1B67F311005A13B9 /* NovaFarmaciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */; };
 		8F3768671B6A68A50046F849 /* FarmaciaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */; };
 		8F477CC51B67BC630050D94F /* Farmacia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F477CC41B67BC630050D94F /* Farmacia.swift */; };
@@ -68,7 +73,28 @@
 			remoteGlobalIDString = 4539611E1B5BE35D0097DEDB;
 			remoteInfo = MiniFarma;
 		};
+		45EAF7C31B72BA3400881BE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 453961171B5BE35D0097DEDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45EAF7B71B72BA3400881BE3;
+			remoteInfo = MiniFarmaWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		45EAF7C91B72BA3400881BE3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				45EAF7C51B72BA3400881BE3 /* MiniFarmaWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		451428641B67B21C0070396A /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
@@ -132,6 +158,13 @@
 		45EAF7AF1B727B4C00881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Alerta.strings; sourceTree = "<group>"; };
 		45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFarmaciaViewController.swift; sourceTree = "<group>"; };
 		45EAF7B31B72971700881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		45EAF7B81B72BA3400881BE3 /* MiniFarmaWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MiniFarmaWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		45EAF7BA1B72BA3400881BE3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		45EAF7BE1B72BA3400881BE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45EAF7BF1B72BA3400881BE3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		45EAF7C11B72BA3400881BE3 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		45EAF7CA1B72BBCB00881BE3 /* MiniFarma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MiniFarma.entitlements; sourceTree = "<group>"; };
+		45EAF7CB1B72BBD500881BE3 /* MiniFarmaWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MiniFarmaWidget.entitlements; sourceTree = "<group>"; };
 		8F1709DC1B67F311005A13B9 /* NovaFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovaFarmaciaViewController.swift; sourceTree = "<group>"; };
 		8F3768661B6A68A50046F849 /* FarmaciaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmaciaTableViewCell.swift; sourceTree = "<group>"; };
 		8F477CC41B67BC630050D94F /* Farmacia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Farmacia.swift; sourceTree = "<group>"; };
@@ -161,6 +194,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45EAF7B51B72BA3400881BE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45EAF7BB1B72BA3400881BE3 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +282,8 @@
 			children = (
 				453961211B5BE35D0097DEDB /* MiniFarma */,
 				453961371B5BE35D0097DEDB /* MiniFarmaTests */,
+				45EAF7BC1B72BA3400881BE3 /* MiniFarmaWidget */,
+				45EAF7B91B72BA3400881BE3 /* Frameworks */,
 				453961201B5BE35D0097DEDB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -250,6 +293,7 @@
 			children = (
 				4539611F1B5BE35D0097DEDB /* MiniFarma.app */,
 				453961341B5BE35D0097DEDB /* MiniFarmaTests.xctest */,
+				45EAF7B81B72BA3400881BE3 /* MiniFarmaWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -257,6 +301,7 @@
 		453961211B5BE35D0097DEDB /* MiniFarma */ = {
 			isa = PBXGroup;
 			children = (
+				45EAF7CA1B72BBCB00881BE3 /* MiniFarma.entitlements */,
 				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
@@ -423,6 +468,33 @@
 			name = Tutorial;
 			sourceTree = "<group>";
 		};
+		45EAF7B91B72BA3400881BE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45EAF7BA1B72BA3400881BE3 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45EAF7BC1B72BA3400881BE3 /* MiniFarmaWidget */ = {
+			isa = PBXGroup;
+			children = (
+				45EAF7CB1B72BBD500881BE3 /* MiniFarmaWidget.entitlements */,
+				45EAF7BF1B72BA3400881BE3 /* TodayViewController.swift */,
+				45EAF7C11B72BA3400881BE3 /* MainInterface.storyboard */,
+				45EAF7BD1B72BA3400881BE3 /* Supporting Files */,
+			);
+			path = MiniFarmaWidget;
+			sourceTree = "<group>";
+		};
+		45EAF7BD1B72BA3400881BE3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				45EAF7BE1B72BA3400881BE3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		8F477CC11B67BC200050D94F /* Farmacia */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,10 +514,12 @@
 				4539611B1B5BE35D0097DEDB /* Sources */,
 				4539611C1B5BE35D0097DEDB /* Frameworks */,
 				4539611D1B5BE35D0097DEDB /* Resources */,
+				45EAF7C91B72BA3400881BE3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				45EAF7C41B72BA3400881BE3 /* PBXTargetDependency */,
 			);
 			name = MiniFarma;
 			productName = MiniFarma;
@@ -470,6 +544,23 @@
 			productReference = 453961341B5BE35D0097DEDB /* MiniFarmaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		45EAF7B71B72BA3400881BE3 /* MiniFarmaWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45EAF7C61B72BA3400881BE3 /* Build configuration list for PBXNativeTarget "MiniFarmaWidget" */;
+			buildPhases = (
+				45EAF7B41B72BA3400881BE3 /* Sources */,
+				45EAF7B51B72BA3400881BE3 /* Frameworks */,
+				45EAF7B61B72BA3400881BE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiniFarmaWidget;
+			productName = MiniFarmaWidget;
+			productReference = 45EAF7B81B72BA3400881BE3 /* MiniFarmaWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -482,10 +573,24 @@
 					4539611E1B5BE35D0097DEDB = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = RNV6X3S2UF;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					453961331B5BE35D0097DEDB = {
 						CreatedOnToolsVersion = 6.4;
 						TestTargetID = 4539611E1B5BE35D0097DEDB;
+					};
+					45EAF7B71B72BA3400881BE3 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = RNV6X3S2UF;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -505,6 +610,7 @@
 			targets = (
 				4539611E1B5BE35D0097DEDB /* MiniFarma */,
 				453961331B5BE35D0097DEDB /* MiniFarmaTests */,
+				45EAF7B71B72BA3400881BE3 /* MiniFarmaWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -531,6 +637,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45EAF7B61B72BA3400881BE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45EAF7CE1B72C76E00881BE3 /* Images.xcassets in Resources */,
+				45EAF7C21B72BA3400881BE3 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +704,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45EAF7B41B72BA3400881BE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45EAF7C01B72BA3400881BE3 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -596,6 +719,11 @@
 			isa = PBXTargetDependency;
 			target = 4539611E1B5BE35D0097DEDB /* MiniFarma */;
 			targetProxy = 453961351B5BE35D0097DEDB /* PBXContainerItemProxy */;
+		};
+		45EAF7C41B72BA3400881BE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45EAF7B71B72BA3400881BE3 /* MiniFarmaWidget */;
+			targetProxy = 45EAF7C31B72BA3400881BE3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -768,6 +896,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MiniFarma/MiniFarma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MiniFarma/Info.plist;
@@ -786,6 +915,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MiniFarma/MiniFarma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MiniFarma/Info.plist;
@@ -831,6 +961,40 @@
 			};
 			name = Release;
 		};
+		45EAF7C71B72BA3400881BE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MiniFarmaWidget/MiniFarmaWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MiniFarmaWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		45EAF7C81B72BA3400881BE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MiniFarmaWidget/MiniFarmaWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MiniFarmaWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -857,6 +1021,15 @@
 			buildConfigurations = (
 				453961421B5BE35D0097DEDB /* Debug */,
 				453961431B5BE35D0097DEDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45EAF7C61B72BA3400881BE3 /* Build configuration list for PBXNativeTarget "MiniFarmaWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45EAF7C71B72BA3400881BE3 /* Debug */,
+				45EAF7C81B72BA3400881BE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

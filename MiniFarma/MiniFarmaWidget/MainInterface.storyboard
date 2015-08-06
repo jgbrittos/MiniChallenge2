@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="MiniFarmaWidget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed6-DD-fIe">
+                                <rect key="frame" x="16" y="20" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="VxB-S0-SqI"/>
+                                    <constraint firstAttribute="width" constant="60" id="tVe-yO-RQc"/>
+                                </constraints>
+                                <state key="normal" image="botaoAdicionarFarmacia">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFarmacia:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="2PP-vB-GML"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJ2-jV-cbY">
+                                <rect key="frame" x="244" y="20" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Yh4-9Z-Vua"/>
+                                    <constraint firstAttribute="height" constant="60" id="y0R-dD-exK"/>
+                                </constraints>
+                                <state key="normal" image="botaoAdicionarAlerta">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addAlerta:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="DtO-Lb-e6Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl8-sT-8yv">
+                                <rect key="frame" x="130" y="20" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="PRB-z1-eNF"/>
+                                    <constraint firstAttribute="height" constant="60" id="zKF-UU-n9o"/>
+                                </constraints>
+                                <state key="normal" image="botaoAdicionarRemedio">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addRemedio:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="0qo-tW-zvi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="pl8-sT-8yv" firstAttribute="leading" secondItem="Ed6-DD-fIe" secondAttribute="trailing" constant="54" id="TYJ-3C-ABW"/>
+                            <constraint firstItem="pl8-sT-8yv" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="UEL-qk-9Rm"/>
+                            <constraint firstItem="NJ2-jV-cbY" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="VR3-hL-qna"/>
+                            <constraint firstItem="NJ2-jV-cbY" firstAttribute="leading" secondItem="pl8-sT-8yv" secondAttribute="trailing" constant="54" id="cm6-hA-N5r"/>
+                            <constraint firstItem="Ed6-DD-fIe" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="hlO-N3-7cp"/>
+                            <constraint firstItem="Ed6-DD-fIe" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="qnY-SO-O0D"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="166"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="botaoAdicionarAlerta" width="49" height="49"/>
+        <image name="botaoAdicionarFarmacia" width="49" height="49"/>
+        <image name="botaoAdicionarRemedio" width="49" height="49"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
