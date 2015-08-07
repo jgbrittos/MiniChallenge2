@@ -98,3 +98,5 @@ MENSAGEMSUCESSOREMEDIO = "The medication %@ was successfully saved";
 MENSAGEMSUCESSOREMEDIOATUALIZADO = "The medication %@ was successfully updated";
 MENSAGEMERROREMEDIO = "Sorry, but something prevented the medication %@ to be saved";
 
+TITULOALERTAAVISO = "Attention!";
+MENSAGEMALERTAAVISO = "By not registering all the information, the application will get reduced functionalities. Do you really like to continue?";
