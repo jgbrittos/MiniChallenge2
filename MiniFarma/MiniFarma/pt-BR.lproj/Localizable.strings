@@ -82,3 +82,30 @@ BOTAOFOTOREMEDIO = "adicionar foto";
 
 ERROFARMACIAINVALIDATITULO = "Ops!";
 ERROFARMACIAINVALIDAMENSAGEM = "Não há farmácia registrada para esse medicamento";
+
+// MARK: - Alertas de confirmação e erro
+TITULOSUCESSO = "Salvo(a) com sucesso";
+TITULOERRO = "Algo ocorreu";
+
+// Adicionar Alerta
+
+MENSAGEMSUCESSO = "O alerta foi salvo com sucesso";
+MENSAGEMERRO = "Desculpe, mas algo impediu o salvamento do alerta";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
