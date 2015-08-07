@@ -88,11 +88,12 @@ TITULOSUCESSO = "Salvo(a) com sucesso";
 TITULOERRO = "Algo ocorreu";
 
 // Adicionar Alerta
+MENSAGEMSUCESSOALERTA = "O alerta foi salvo com sucesso";
+MENSAGEMERROALERTA = "Desculpe, mas algo impediu o salvamento do alerta";
 
-MENSAGEMSUCESSO = "O alerta foi salvo com sucesso";
-MENSAGEMERRO = "Desculpe, mas algo impediu o salvamento do alerta";
-
-
+// Adicionar Farmácia
+MENSAGEMSUCESSOFARMACIA = "A farmácia %@ foi salva com sucesso";
+MENSAGEMERROFARMACIA = "Desculpe, mas algo impediu o salvamento da farmácia %@";
 
 
 

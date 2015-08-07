@@ -139,9 +139,11 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
 
             let alerta = SCLAlertView()
             if farmaciaDAO.inserir(farmacia) {
-                alerta.showSuccess("Salva com sucesso", subTitle: "A farmácia \(farmacia.nomeFarmacia) foi salva com sucesso", closeButtonTitle: "OK")
+                alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add farmacia sucesso"),
+                    subTitle: NSLocalizedString(String(format: "A farmácia %@ foi salva com sucesso", arguments: [farmacia.nomeFarmacia]), comment: "add farmacia sucesso"),
+                    closeButtonTitle: "OK")
             }else{
-                alerta.showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento da farmácia \(farmacia.nomeFarmacia)", closeButtonTitle: "OK")
+                alerta.showError(NSLocalizedString("TITULOERRO", comment: "add farmacia erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento da farmácia %@", arguments: [farmacia.nomeFarmacia]), comment: "add farmacia erro"), closeButtonTitle: "OK")
             }
             
             if self.inicialOuAdicionaRemedio {

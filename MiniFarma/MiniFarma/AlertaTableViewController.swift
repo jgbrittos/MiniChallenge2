@@ -73,9 +73,9 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         
         let alertaMensagem = SCLAlertView()
         if self.alertaDAO.inserir(alerta) {
-            alertaMensagem.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add alerta sucesso"), subTitle: NSLocalizedString("MENSAGEMSUCESSO", comment: "add alerta sucesso"), closeButtonTitle: "OK")
+            alertaMensagem.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add alerta sucesso"), subTitle: NSLocalizedString("MENSAGEMSUCESSOALERTA", comment: "add alerta sucesso"), closeButtonTitle: "OK")
         }else{
-            alertaMensagem.showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERRO", comment: "add alerta erro"), closeButtonTitle: "OK")
+            alertaMensagem.showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTA", comment: "add alerta erro"), closeButtonTitle: "OK")
         }
         
         let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
