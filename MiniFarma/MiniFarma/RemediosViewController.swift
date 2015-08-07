@@ -88,10 +88,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             
             celulaRemedio.labelNome.text = remedio.nomeRemedio
             
-            let formatadorData = NSDateFormatter()
-            formatadorData.dateFormat = "dd/MM/yyyy"
-            
-            var data = formatadorData.stringFromDate(remedio.dataValidade)
+            var data = remedio.dataEmString
             
             if data == "01/01/1900"{
                 data = "data indisponível"

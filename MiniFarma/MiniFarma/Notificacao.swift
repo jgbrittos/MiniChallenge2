@@ -70,7 +70,7 @@ class Notificacao: NSObject {
         let unidade = unidades[remedio.unidade]
         
         stringAlerta = "Tomar \(remedio.nomeRemedio) "
-        if remedio.numeroDose != -1 {
+        if remedio.numeroDose > 0 {
             stringAlerta = "Tomar \(remedio.numeroDose)\(unidade) de \(remedio.nomeRemedio)"
         }
         
@@ -88,7 +88,15 @@ class Notificacao: NSObject {
         }
         
         var dataNotificacao : NSDate = dataInicio
+        var dataControle = NSDate()
+        var fusoHorarioLocal: NSTimeZone = NSTimeZone.localTimeZone()
+        var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(dataControle)
+        dataControle = dataControle.dateByAddingTimeInterval(NSTimeInterval(intervaloFusoHorario))
         
+        if dataNotificacao.compare(dataControle) == .OrderedDescending {
+            //se data de inicio maior que a data de hoje
+            self.criarNotificacao(dataNotificacao)
+        }
         
         while(dataNotificacao.timeIntervalSinceDate(dataFinal) < 0){
             
@@ -104,7 +112,7 @@ class Notificacao: NSObject {
                 dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*30*intervalo.numero))//segundos*minutos*horas
             }
 
-            criarNotificacao(dataNotificacao)
+            self.criarNotificacao(dataNotificacao)
         }
     }
     

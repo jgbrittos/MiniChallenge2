@@ -88,8 +88,14 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
             
+            var data = remedio.dataEmString
+            
+            if data == "01/01/1900"{
+                data = "data indisponível"
+            }
+            
             celulaAlerta.labelNome.text = remedio.nomeRemedio
-            celulaAlerta.labelDataDeValidade.text = remedio.dataEmString
+            celulaAlerta.labelDataDeValidade.text = data
             celulaAlerta.imageViewFotoRemedio?.image = remedio.fotoRemedioUIImage
             
             return celulaAlerta
