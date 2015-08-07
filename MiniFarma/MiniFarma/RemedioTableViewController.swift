@@ -194,6 +194,8 @@ SelecionaFarmaciaDelegate {
         if let identificador = cell.reuseIdentifier {
             if identificador == "celulaReceita" && self.fotoReceita != nil {
                 cell.accessoryType = .Checkmark
+            }else if identificador == "celulaCategoria" || identificador == "celulaIntervalo" || identificador == "celulaFarmacia"{
+                cell.accessoryType = .DisclosureIndicator
             }else{
                 cell.accessoryType = .None
             }
