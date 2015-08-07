@@ -37,20 +37,15 @@ class Remedio: NSObject {
         if self.fotoRemedio == "sem foto"{
             return UIImage(named: "semFoto")
         }
-        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var documentos: String = caminhos[0] as! String
-        let caminhoCompleto = documentos.stringByAppendingPathComponent(self.nomeRemedio+"Remedio.png")
-        return UIImage(contentsOfFile: caminhoCompleto)
+        println("\(self.fotoRemedio)")
+        return UIImage(contentsOfFile: self.fotoRemedio)
     }
     
-    var fotoReceitaUIImage: UIImage {
+    var fotoReceitaUIImage: UIImage? {
         if self.fotoReceita == "sem foto"{
             return UIImage(named: "semFoto")!
         }
-        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var documentos: String = caminhos[0] as! String
-        let caminhoCompleto = documentos.stringByAppendingPathComponent(self.nomeRemedio+"Receita.png")
-        return UIImage(contentsOfFile: caminhoCompleto)!
+        return UIImage(contentsOfFile: self.fotoReceita)
     }
     
     override init() {}

@@ -209,8 +209,9 @@ SelecionaFarmaciaDelegate {
         let numeroQuantidade = self.textFieldNumeroQuantidade.text.toInt() as Int?
         let numeroDose = self.textFieldNumeroDose.text.toInt()
         let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
-        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: nomeRemedio, eTipo: "Remedio.png")
-        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: nomeRemedio, eTipo: "Receita.png")
+
+        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: NSUUID().UUIDString+nomeRemedio, eTipo: "Remedio.png")
+        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: NSUUID().UUIDString+nomeRemedio, eTipo: "Receita.png")
         
         var preco: Double?
         if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text) {
