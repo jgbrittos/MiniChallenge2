@@ -71,7 +71,13 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         
         let alerta = Alerta(dataInicio: dataInicioCorreta, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
         
-        self.alertaDAO.inserir(alerta)
+        let alertaMensagem = SCLAlertView()
+        if self.alertaDAO.inserir(alerta) {
+            alertaMensagem.showSuccess("Salvo com sucesso", subTitle: "O alerta foi salvo com sucesso", closeButtonTitle: "OK")
+        }else{
+            alertaMensagem.showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento do alerta", closeButtonTitle: "OK")
+        }
+        
         let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
         
         if let r = appDelegate.remedioGlobal {
