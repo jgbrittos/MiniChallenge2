@@ -193,7 +193,14 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func salvaIntervalo(sender: AnyObject) {
         
         let novoIntervalo = Intervalo(numero: self.numeroIntervalo.toInt()!, unidade: self.unidadeIntervalo)
-        self.intervaloDAO.inserir(novoIntervalo)
+        
+        let alerta = SCLAlertView()
+        if self.intervaloDAO.inserir(novoIntervalo) {
+            alerta.showSuccess("Salvo com sucesso", subTitle: "O intervalo foi salvo com sucesso", closeButtonTitle: "OK")
+        }else{
+            alerta.showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento da intervalo", closeButtonTitle: "OK")
+        }
+        
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
 
         self.viewComPickerViewEToolbar.hidden = true
