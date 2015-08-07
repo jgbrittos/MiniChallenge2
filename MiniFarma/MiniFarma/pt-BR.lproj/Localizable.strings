@@ -95,7 +95,9 @@ MENSAGEMERROALERTA = "Desculpe, mas algo impediu o salvamento do alerta";
 MENSAGEMSUCESSOFARMACIA = "A farmácia %@ foi salva com sucesso";
 MENSAGEMERROFARMACIA = "Desculpe, mas algo impediu o salvamento da farmácia %@";
 
-
+// Adicionar Categoria
+MENSAGEMSUCESSOCATEGORIA = "A categoria %@ foi salva com sucesso";
+MENSAGEMERROCATEGORIA = "Desculpe, mas algo impediu o salvamento da categoria %@";
 
 
 
