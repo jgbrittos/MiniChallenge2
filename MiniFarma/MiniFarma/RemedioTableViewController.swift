@@ -467,9 +467,14 @@ SelecionaFarmaciaDelegate {
         var acao: UIActionSheet
         
         if self.fotoReceita != nil {
-            acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto","Visualizar foto")
+            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETVISUALIZAR", comment: "acao action sheet de fotos"))
         }else{
-            acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto")
+            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"))
         }
     
         acao.tag = 1
@@ -554,10 +559,16 @@ SelecionaFarmaciaDelegate {
         var acao: UIActionSheet
         
         if self.fotoRemedio != nil {
-            acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto","Visualizar foto")
+            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETVISUALIZAR", comment: "acao action sheet de fotos"))
         }else{
-            acao = UIActionSheet(title: "O que deseja fazer:", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: nil, otherButtonTitles: "Tirar foto", "Escolher foto da Galeria", "Excluir foto")
+            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
+                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"))
         }
+        
         acao.tag = 0
         self.fotoOuReceita = 0
         acao.showInView(self.view)

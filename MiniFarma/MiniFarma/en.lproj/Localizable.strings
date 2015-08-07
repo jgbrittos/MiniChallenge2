@@ -100,3 +100,10 @@ MENSAGEMERROREMEDIO = "Sorry, but something prevented the medication %@ to be sa
 
 TITULOALERTAAVISO = "Attention!";
 MENSAGEMALERTAAVISO = "By not registering all the information, the application will get reduced functionalities. Do you really like to continue?";
+
+// Action Sheet tirar fotos
+TITULOACTIONSHEET = "What do you want to do?";
+ACTIONSHEETTIRARFOTO = "Take photo";
+ACTIONSHEETESCOLHER = "Choose photo";
+ACTIONSHEETEXCLUIR = "Delete photo";
+ACTIONSHEETVISUALIZAR = "View photo";
