@@ -114,8 +114,8 @@ MENSAGEMSUCESSOREMEDIO = "O remédio %@ foi salvo com sucesso";
 MENSAGEMSUCESSOREMEDIOATUALIZADO = "O remédio %@ foi atualizado com sucesso";
 MENSAGEMERROREMEDIO = "Desculpe, mas algo impediu o salvamento do remédio %@";
 
-
-
+TITULOALERTAAVISO = "Atenção!";
+MENSAGEMALERTAAVISO = "Ao não cadastrar todas as informações, o aplicativo ficará com funcionalidades reduzidas. Deseja realmente continuar?";
 
 
 

@@ -25,6 +25,8 @@ class Remedio: NSObject {
     var idLocal: Int = 0
     var idIntervalo: Int = 0
     
+    var temInformacoesNulas: Bool = false
+    
     var dataEmString: String {
         let f = NSDateFormatter()
         f.dateFormat = "dd/MM/yyyy"
@@ -115,8 +117,7 @@ class Remedio: NSObject {
     }
     
     //Remedio criado
-    init(nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?, unidade:Int?,
-        preco:Double?, numeroDose:Int?,fotoRemedio:String?,fotoReceita:String?,
+    init(nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?, unidade:Int?, preco:Double?, numeroDose:Int?,fotoRemedio:String?,fotoReceita:String?,
         idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?){
         
         let formatador = NSDateFormatter()
@@ -131,30 +132,45 @@ class Remedio: NSObject {
             self.dataValidade = d
         }else{
             self.dataValidade = dataControle
+            self.temInformacoesNulas = true
         }
         
         if let nq = numeroQuantidade {
             self.numeroQuantidade = nq
+        }else{
+            self.temInformacoesNulas = true
         }
 
         if let u = unidade {
             self.unidade = u
+        }else{
+            self.temInformacoesNulas = true
         }
         
         if let p = preco {
             self.preco = p
+        }else{
+            self.temInformacoesNulas = true
         }
         
         if let nd = numeroDose {
             self.numeroDose = nd
+        }else{
+            self.temInformacoesNulas = true
         }
         
         if let frem = fotoRemedio {
             self.fotoRemedio = frem
+            if frem == "sem foto" {
+                self.temInformacoesNulas = true
+            }
         }
         
         if let frec = fotoReceita {
             self.fotoReceita = frec
+            if frec == "sem foto" {
+                self.temInformacoesNulas = true
+            }
         }
         
         if self.dataValidade.compare(NSDate()) == .OrderedDescending {
@@ -168,18 +184,30 @@ class Remedio: NSObject {
         
         if let idf = idFarmacia {
             self.idFarmacia = idf
+            if idf == 0 {
+                self.temInformacoesNulas = true
+            }
         }
         
         if let idc = idCategoria {
             self.idCategoria = idc
+            if idc == 0 {
+                self.temInformacoesNulas = true
+            }
         }
         
         if let idl = idLocal {
             self.idLocal = idl
+            if idl == 0 {
+                self.temInformacoesNulas = true
+            }
         }
         
         if let idi = idIntervalo {
             self.idIntervalo = idi
+            if idi == 0 {
+                self.temInformacoesNulas = true
+            }
         }
     }
 }

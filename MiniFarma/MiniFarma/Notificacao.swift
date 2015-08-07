@@ -105,9 +105,7 @@ class Notificacao: NSObject {
             }
 
             criarNotificacao(dataNotificacao)
-            
         }
-        
     }
     
     func criarNotificacao(dataDoAlerta: NSDate){

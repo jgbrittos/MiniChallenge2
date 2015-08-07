@@ -206,18 +206,17 @@ SelecionaFarmaciaDelegate {
     @IBAction func salvarRemedio(sender: AnyObject) {
         
         let nomeRemedio = self.textFieldNome.text
-        var numeroQuantidade = self.textFieldNumeroQuantidade.text.toInt() as Int?
+        let numeroQuantidade = self.textFieldNumeroQuantidade.text.toInt() as Int?
+        let numeroDose = self.textFieldNumeroDose.text.toInt()
         let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
+        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: nomeRemedio, eTipo: "Remedio.png")
+        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: nomeRemedio, eTipo: "Receita.png")
         
         var preco: Double?
         if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text) {
             preco = n.doubleValue
         }
-
-        var numeroDose = self.textFieldNumeroDose.text.toInt()
-        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: nomeRemedio, eTipo: "Remedio.png")
-        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: nomeRemedio, eTipo: "Receita.png")
-
+        
         let formatador = NSDateFormatter()
         formatador.dateFormat = "dd/MM/yyyy"
         let dataValidade = formatador.dateFromString(self.textFieldDataDeValidade.text)
@@ -252,22 +251,35 @@ SelecionaFarmaciaDelegate {
         
         if remedio.nomeRemedio == "" {
             alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio sem nome erro"), subTitle: NSLocalizedString("MENSAGEMERROREMEDIOSEMNOME", comment: "add remedio sem nome erro"), closeButtonTitle: "OK")
+        }else if remedio.temInformacoesNulas {
+            alerta.addButton(NSLocalizedString("SIMALERTA", comment: "Opção do alerta")) {
+                self.salvaRemedioNoBanco(remedio)
+            }
+            alerta.showWarning(NSLocalizedString("TITULOALERTAAVISO", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTAAVISO", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
         }else{
-            if self.idRemedio == 0 {
-                if self.remedioDAO.inserir(remedio) {
-                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
-                }else{
-                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
-                }
+            self.salvaRemedioNoBanco(remedio)
+        }
+    }
+    
+    func salvaRemedioNoBanco(remedio: Remedio){
+        if self.idRemedio == 0 {
+            if self.remedioDAO.inserir(remedio) {
+                SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
+                self.prossegueAposSalvamentoDeRemedio()
             }else{
-                if self.remedioDAO.atualizar(remedio, comId: self.idRemedio) {
-                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIOATUALIZADO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
-                }else{
-                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
-                }
+                SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
+            }
+        }else{
+            if self.remedioDAO.atualizar(remedio, comId: self.idRemedio) {
+                SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIOATUALIZADO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
+                self.prossegueAposSalvamentoDeRemedio()
+            }else{
+                SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
             }
         }
-        
+    }
+    
+    func prossegueAposSalvamentoDeRemedio() {
         if self.switchAlerta.on {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.remedioGlobal = self.remedioDAO.buscaUltimoInserido() as Remedio
