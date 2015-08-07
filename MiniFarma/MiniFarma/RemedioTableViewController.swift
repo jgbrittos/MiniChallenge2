@@ -520,9 +520,9 @@ SelecionaFarmaciaDelegate {
             if nomeLocal.text != "" {
                 let local = Local(nome: nomeLocal.text)
                 if self.localDAO.inserir(local) {
-                    SCLAlertView().showSuccess("Salvo com sucesso", subTitle: "O local \(local.nome) foi salvo com sucesso", closeButtonTitle: "OK")
+                    SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add local sucesso"), subTitle: NSLocalizedString(String(format: "O local %@ foi salvo com sucesso", arguments: [local.nome]),comment: "add local sucesso"), closeButtonTitle: "OK")
                 }else{
-                    SCLAlertView().showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento do local", closeButtonTitle: "OK")
+                    SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add local erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento do local %@", arguments: [local.nome]),comment: "add local erro"), closeButtonTitle: "OK")
                 }
                 self.locais = self.localDAO.buscarTodos() as! [Local]
                 self.pickerViewLocal.reloadAllComponents()

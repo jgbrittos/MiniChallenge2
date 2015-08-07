@@ -103,6 +103,9 @@ MENSAGEMERROCATEGORIA = "Desculpe, mas algo impediu o salvamento da categoria %@
 MENSAGEMSUCESSOINTERVALO = "O intervalo %@ foi salvo com sucesso";
 MENSAGEMERROINTERVALO = "Desculpe, mas algo impediu o salvamento do intervalo %@";
 
+// Adicionar Local
+MENSAGEMSUCESSOLOCAL = "O local %@ foi salvo com sucesso";
+MENSAGEMERROLOCAL = "Desculpe, mas algo impediu o salvamento do local %@";
 
 
 
