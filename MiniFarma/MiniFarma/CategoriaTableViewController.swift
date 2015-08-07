@@ -68,12 +68,18 @@ class CategoriaTableViewController: UITableViewController {
     
     @IBAction func adicionarClicado(sender: AnyObject) {
 
-        let alerta = SCLAlertView()
+        var alerta = SCLAlertView()
+        
         let nomeCategoria = alerta.addTextField(title:NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
+        
         alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
             if nomeCategoria.text != "" {
                 let categoria = Categoria(nomeCategoria: nomeCategoria.text)
-                self.categoriaDAO.inserir(categoria)
+                if self.categoriaDAO.inserir(categoria) {
+                    SCLAlertView().showSuccess("Salva com sucesso", subTitle: "A categoria foi salva com sucesso", closeButtonTitle: "OK")
+                }else{
+                    SCLAlertView().showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento da categoria", closeButtonTitle: "OK")
+                }
                 self.categorias = self.categoriaDAO.buscarTodos() as! [Categoria]
                 self.tableView.reloadData()
             }else{
