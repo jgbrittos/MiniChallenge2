@@ -519,7 +519,11 @@ SelecionaFarmaciaDelegate {
         alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
             if nomeLocal.text != "" {
                 let local = Local(nome: nomeLocal.text)
-                self.localDAO.inserir(local)
+                if self.localDAO.inserir(local) {
+                    SCLAlertView().showSuccess("Salvo com sucesso", subTitle: "O local \(local.nome) foi salvo com sucesso", closeButtonTitle: "OK")
+                }else{
+                    SCLAlertView().showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento do local", closeButtonTitle: "OK")
+                }
                 self.locais = self.localDAO.buscarTodos() as! [Local]
                 self.pickerViewLocal.reloadAllComponents()
             }else{
