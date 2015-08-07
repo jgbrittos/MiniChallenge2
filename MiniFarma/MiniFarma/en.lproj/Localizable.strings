@@ -75,6 +75,7 @@ TITULOERRO = "Something happened";
 // Adicionar Alerta
 MENSAGEMSUCESSOALERTA = "The alert was successfully saved";
 MENSAGEMERROALERTA = "Sorry, but something prevented the alert to be saved";
+MENSAGEMERROALERTAINVALIDO = "It is not possible to save an alert without all informations";
 
 // Adicionar Farmácia
 MENSAGEMSUCESSOFARMACIA = "The pharmacy %@ was successfully saved";

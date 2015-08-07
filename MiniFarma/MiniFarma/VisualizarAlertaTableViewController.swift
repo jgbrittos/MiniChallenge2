@@ -34,7 +34,12 @@ class VisualizarAlertaTableViewController: UITableViewController {
         let formatador = NSDateFormatter()
         formatador.dateFormat = "dd/MM/yyyy hh:mm"
         
-        self.labelDataInicio.text = formatador.stringFromDate(alerta!.dataInicio)
+        var data = alerta!.dataInicio
+        var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
+        var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(alerta!.dataInicio)
+        var dataCorreta = data.dateByAddingTimeInterval(NSTimeInterval(abs(intervaloFusoHorario)))
+        
+        self.labelDataInicio.text = formatador.stringFromDate(dataCorreta)
         
         self.labelDuracao.text = String(self.alerta!.numeroDuracao) + " " + self.histogramaDuracao[self.alerta!.unidadeDuracao]
         

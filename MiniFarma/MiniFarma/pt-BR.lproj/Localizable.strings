@@ -90,6 +90,7 @@ TITULOERRO = "Algo ocorreu";
 // Adicionar Alerta
 MENSAGEMSUCESSOALERTA = "O alerta foi salvo com sucesso";
 MENSAGEMERROALERTA = "Desculpe, mas algo impediu o salvamento do alerta";
+MENSAGEMERROALERTAINVALIDO = "Não é possível salvar o alerta sem alguma das informações";
 
 // Adicionar Farmácia
 MENSAGEMSUCESSOFARMACIA = "A farmácia %@ foi salva com sucesso";

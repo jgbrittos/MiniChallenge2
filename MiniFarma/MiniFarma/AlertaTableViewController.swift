@@ -65,32 +65,48 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
     @IBAction func salvaAlarme(sender: AnyObject) {
         
         self.txtDuracaoQuantidade.resignFirstResponder()
+        let numeroDuracao = self.txtDuracaoQuantidade.text.toInt() as Int?
+        let unidadeDuracao = self.duracaoUnidadeSegmented.selectedSegmentIndex as Int?
+        
+        var idIntervalo: Int = 0
+        if let i = self.intervalo {
+            idIntervalo = i.idIntervalo
+        }
+        
+        var idRemedio: Int = 0
+        if let r = self.remedio {
+            idRemedio = r.idRemedio
+        }
         
         var dataDatePicker:NSDate = dataInicioPicker.date
         var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
         var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(dataDatePicker)
         var dataInicioCorreta = dataDatePicker.dateByAddingTimeInterval(NSTimeInterval(intervaloFusoHorario))
         
-        let alerta = Alerta(dataInicio: dataInicioCorreta, numeroDuracao: txtDuracaoQuantidade.text.toInt()!, unidadeDuracao: self.duracaoUnidadeSegmented.selectedSegmentIndex, ativo: 1, idIntervalo: self.intervalo!.idIntervalo, idRemedio: self.remedio!.idRemedio)
+        let alerta = Alerta(dataInicio: dataInicioCorreta, numeroDuracao: numeroDuracao, unidadeDuracao: unidadeDuracao, ativo: 1, idIntervalo: idIntervalo, idRemedio: idRemedio)
         
-        let alertaMensagem = SCLAlertView()
-        if self.alertaDAO.inserir(alerta) {
-            alertaMensagem.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add alerta sucesso"), subTitle: NSLocalizedString("MENSAGEMSUCESSOALERTA", comment: "add alerta sucesso"), closeButtonTitle: "OK")
+        if alerta.temInformacoesNulas {
+            SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTAINVALIDO", comment: "add alerta erro"), closeButtonTitle: "OK")
         }else{
-            alertaMensagem.showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTA", comment: "add alerta erro"), closeButtonTitle: "OK")
+            let alertaMensagem = SCLAlertView()
+            if self.alertaDAO.inserir(alerta) {
+                alertaMensagem.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add alerta sucesso"), subTitle: NSLocalizedString("MENSAGEMSUCESSOALERTA", comment: "add alerta sucesso"), closeButtonTitle: "OK")
+                
+                let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
+                
+                if let r = appDelegate.remedioGlobal {
+                    appDelegate.remedioGlobal = nil
+                    let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+                    let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
+                    self.presentViewController(telaInicial, animated: true, completion: nil)
+                } else{
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                
+            }else{
+                alertaMensagem.showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTA", comment: "add alerta erro"), closeButtonTitle: "OK")
+            }
         }
-        
-        let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
-        
-        if let r = appDelegate.remedioGlobal {
-            appDelegate.remedioGlobal = nil
-            let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-            let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
-            self.presentViewController(telaInicial, animated: true, completion: nil)
-        } else{
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        
     }
     
     @IBAction func cancelarAlerta(sender: AnyObject) {
