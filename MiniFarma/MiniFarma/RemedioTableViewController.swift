@@ -246,10 +246,24 @@ SelecionaFarmaciaDelegate {
             let notificacaoVencimento = Notificacao(remedio: remedio)
         }
         
-        if self.idRemedio == 0 {
-            self.remedioDAO.inserir(remedio)
+        let alerta = SCLAlertView()
+        
+        if remedio.nomeRemedio == "" {
+            alerta.showError("Erro", subTitle: "Não é possível salvar um medicamento sem nome", closeButtonTitle: "OK")
         }else{
-            self.remedioDAO.atualizar(remedio, comId: self.idRemedio)
+            if self.idRemedio == 0 {
+                if self.remedioDAO.inserir(remedio) {
+                    alerta.showSuccess("Salvo com sucesso", subTitle: "O remédio \(remedio.nomeRemedio) foi salvo com sucesso", closeButtonTitle: "OK")
+                }else{
+                    alerta.showError("Algo ocorreu!", subTitle: "Desculpe, mas algo impediu o salvamento do remédio \(remedio.nomeRemedio)", closeButtonTitle: "OK")
+                }
+            }else{
+                if self.remedioDAO.atualizar(remedio, comId: self.idRemedio) {
+                    alerta.showSuccess("Salvo com sucesso", subTitle: "O remédio \(remedio.nomeRemedio) foi atualizado com sucesso", closeButtonTitle: "OK")
+                }else{
+                    alerta.showError("Algo ocorreu!", subTitle: "Desculpe, mas algo impediu o salvamento do remédio \(remedio.nomeRemedio)", closeButtonTitle: "OK")
+                }
+            }
         }
         
         if self.switchAlerta.on {
