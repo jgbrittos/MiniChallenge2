@@ -136,8 +136,13 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         
         if(txtFieldNome.text != ""){
             let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor)
-            
-            farmaciaDAO.inserir(farmacia)
+
+            let alerta = SCLAlertView()
+            if farmaciaDAO.inserir(farmacia) {
+                alerta.showSuccess("Salva com sucesso", subTitle: "A farmácia \(farmacia.nomeFarmacia) foi salva com sucesso", closeButtonTitle: "OK")
+            }else{
+                alerta.showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento da farmácia \(farmacia.nomeFarmacia)", closeButtonTitle: "OK")
+            }
             
             if self.inicialOuAdicionaRemedio {
                 self.dismissViewControllerAnimated(true, completion:nil)
