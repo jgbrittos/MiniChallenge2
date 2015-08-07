@@ -209,9 +209,10 @@ SelecionaFarmaciaDelegate {
         let numeroQuantidade = self.textFieldNumeroQuantidade.text.toInt() as Int?
         let numeroDose = self.textFieldNumeroDose.text.toInt()
         let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
-
-        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: NSUUID().UUIDString+nomeRemedio, eTipo: "Remedio.png")
-        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: NSUUID().UUIDString+nomeRemedio, eTipo: "Receita.png")
+        
+        let UUID = NSUUID().UUIDString
+        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: UUID+"_"+nomeRemedio, eTipo: "Remedio.png")
+        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: UUID+"_"+nomeRemedio, eTipo: "Receita.png")
         
         var preco: Double?
         if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text) {
@@ -300,7 +301,7 @@ SelecionaFarmaciaDelegate {
             var documentos: String = caminhos[0] as! String
             let caminhoCompleto = documentos.stringByAppendingPathComponent(nomeRemedio+tipo)
             let resultado = imagemEmDados.writeToFile(caminhoCompleto, atomically: true)
-            return caminhoCompleto
+            return nomeRemedio+tipo
         }else{
             return "sem foto"
         }
