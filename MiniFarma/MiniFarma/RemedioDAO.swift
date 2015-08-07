@@ -37,9 +37,8 @@ class RemedioDAO: DAO {
             remedio.idLocal,
             remedio.idIntervalo])
     
-        println("%@", self.bancoDeDados.lastErrorMessage())
-    
         self.bancoDeDados.close()
+        
         return inseridoComSucesso
 	}
     
@@ -50,7 +49,6 @@ class RemedioDAO: DAO {
         let remedio: Remedio = objeto as! Remedio
         
         let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(remedio.idRemedio)])
-        println("%@", self.bancoDeDados.lastErrorMessage())
         
         self.bancoDeDados.close()
         
@@ -123,8 +121,6 @@ class RemedioDAO: DAO {
             }
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
-            
-            println("id: \(idRemedio) nome do remedio: \(nome) data: \(dataValidade) --- REMEDIO: \(remedio)")
 
             self.remedios.append(remedio)
             
@@ -202,8 +198,6 @@ class RemedioDAO: DAO {
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
             
-            println("id: \(idRemedio) nome do remedio: \(nome) data: \(dataValidade) --- REMEDIO: \(remedio)")
-            
             remedioBuscado = remedio
             
         }
@@ -279,8 +273,6 @@ class RemedioDAO: DAO {
             }
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
-            
-            println("id: \(idRemedio) nome do remedio: \(nome) data: \(dataValidade) --- REMEDIO: \(remedio)")
             
             self.remedios.append(remedio)
             
@@ -398,8 +390,6 @@ class RemedioDAO: DAO {
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
             
-            println("id: \(idRemedio) nome do remedio: \(nome) data: \(dataValidade) --- REMEDIO: \(remedio)")
-            
             todosRemedios.append(remedio)
             
         }
@@ -408,5 +398,4 @@ class RemedioDAO: DAO {
         
         return todosRemedios.last!
     }
-    
 }
