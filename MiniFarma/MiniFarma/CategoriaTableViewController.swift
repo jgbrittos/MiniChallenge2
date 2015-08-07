@@ -76,9 +76,9 @@ class CategoriaTableViewController: UITableViewController {
             if nomeCategoria.text != "" {
                 let categoria = Categoria(nomeCategoria: nomeCategoria.text)
                 if self.categoriaDAO.inserir(categoria) {
-                    SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add categoria sucesso"), subTitle: NSLocalizedString(String(format: "A categoria %@ foi salva com sucesso", arguments: [categoria.nomeCategoria]),comment: "add farmacia sucesso"), closeButtonTitle: "OK")
+                    SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add categoria sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOCATEGORIA", comment: "add categoria sucesso"), arguments: [categoria.nomeCategoria]),comment: "add farmacia sucesso"), closeButtonTitle: "OK")
                 }else{
-                    SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add categoria erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento da cateogira %@", arguments: [categoria.nomeCategoria]), comment: "add categoria erro"), closeButtonTitle: "OK")
+                    SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add categoria erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROCATEGORIA", comment: "add categoria erro"), arguments: [categoria.nomeCategoria]), comment: "add categoria erro"), closeButtonTitle: "OK")
                 }
                 self.categorias = self.categoriaDAO.buscarTodos() as! [Categoria]
                 self.tableView.reloadData()

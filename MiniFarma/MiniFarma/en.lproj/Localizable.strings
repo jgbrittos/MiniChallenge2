@@ -67,3 +67,34 @@ BOTAOFOTOREMEDIO = "add photo";
 
 ERROFARMACIAINVALIDATITULO = "Ops!";
 ERROFARMACIAINVALIDAMENSAGEM = "There is no pharmacy registered to this medication";
+
+// MARK: - Alertas de confirmação e erro
+TITULOSUCESSO = "Saved successfully";
+TITULOERRO = "Something happened";
+
+// Adicionar Alerta
+MENSAGEMSUCESSOALERTA = "The alert was successfully saved";
+MENSAGEMERROALERTA = "Sorry, but something prevented the alert to be saved";
+
+// Adicionar Farmácia
+MENSAGEMSUCESSOFARMACIA = "The pharmacy %@ was successfully saved";
+MENSAGEMERROFARMACIA = "Sorry, but something prevented the pharmacy %@ to be saved";
+
+// Adicionar Categoria
+MENSAGEMSUCESSOCATEGORIA = "The category %@ was successfully saved";
+MENSAGEMERROCATEGORIA = "Sorry, but something prevented the category %@ to be saved";
+
+// Adicionar Intervalo
+MENSAGEMSUCESSOINTERVALO = "The interval %@ was successfully saved";
+MENSAGEMERROINTERVALO = "Sorry, but something prevented the interval %@ to be saved";
+
+// Adicionar Local
+MENSAGEMSUCESSOLOCAL = "The place %@ was successfully saved";
+MENSAGEMERROLOCAL = "Sorry, but something prevented the place %@ to be saved";
+
+// Adicionar Remedio
+MENSAGEMERROREMEDIOSEMNOME = "It is not possible to save a medication without name";
+MENSAGEMSUCESSOREMEDIO = "The medication %@ was successfully saved";
+MENSAGEMSUCESSOREMEDIOATUALIZADO = "The medication %@ was successfully updated";
+MENSAGEMERROREMEDIO = "Sorry, but something prevented the medication %@ to be saved";
+

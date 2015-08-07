@@ -253,15 +253,15 @@ SelecionaFarmaciaDelegate {
         }else{
             if self.idRemedio == 0 {
                 if self.remedioDAO.inserir(remedio) {
-                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: "O remédio %@ foi salvo com sucesso", arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
+                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
                 }else{
-                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento do remédio %@", arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
+                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
                 }
             }else{
                 if self.remedioDAO.atualizar(remedio, comId: self.idRemedio) {
-                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: "O remédio %@ foi atualizado com sucesso", arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
+                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIOATUALIZADO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
                 }else{
-                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento do remédio %@", arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
+                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
                 }
             }
         }
@@ -520,9 +520,9 @@ SelecionaFarmaciaDelegate {
             if nomeLocal.text != "" {
                 let local = Local(nome: nomeLocal.text)
                 if self.localDAO.inserir(local) {
-                    SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add local sucesso"), subTitle: NSLocalizedString(String(format: "O local %@ foi salvo com sucesso", arguments: [local.nome]),comment: "add local sucesso"), closeButtonTitle: "OK")
+                    SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add local sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOLOCAL", comment: "add local sucesso"), arguments: [local.nome]),comment: "add local sucesso"), closeButtonTitle: "OK")
                 }else{
-                    SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add local erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento do local %@", arguments: [local.nome]),comment: "add local erro"), closeButtonTitle: "OK")
+                    SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add local erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROLOCAL", comment: "add local erro"), arguments: [local.nome]),comment: "add local erro"), closeButtonTitle: "OK")
                 }
                 self.locais = self.localDAO.buscarTodos() as! [Local]
                 self.pickerViewLocal.reloadAllComponents()
