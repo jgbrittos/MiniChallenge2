@@ -25,11 +25,6 @@ class FarmaciaDAO: DAO {
         
         let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude) VALUES (?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia, String(farmacia.favorita),String(stringInterpolationSegment: farmacia.latitude),String(stringInterpolationSegment: farmacia.longitude)])
         
-        
-        if !inseridoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
-        
         self.bancoDeDados.close()
         
         return inseridoComSucesso
@@ -42,10 +37,6 @@ class FarmaciaDAO: DAO {
         let farmacia: Farmacia = objeto as! Farmacia
         
         let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Farmacia WHERE id_farmacia = ?", withArgumentsInArray: [String(farmacia.idFarmacia)])
-        
-        if !deletadoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
         
         self.bancoDeDados.close()
         
@@ -75,11 +66,7 @@ class FarmaciaDAO: DAO {
             latitude = resultadoBusca.stringForColumn("latitude")
             longitude = resultadoBusca.stringForColumn("longitude")
             
-            
             let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
-            
-            
-//            println("id: \(farmacia.idFarmacia) nome: \(farmacia.nomeFarmacia) --- FARMACIA: \(farmacia)")
             
             self.farmacias.append(farmacia)
         }
@@ -123,17 +110,10 @@ class FarmaciaDAO: DAO {
         
         self.bancoDeDados.open()
         
-        
         let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Farmacia SET favorita = ? WHERE id_farmacia = ?", withArgumentsInArray: [favorita,idFarmacia])
-        
-        if !atualizadoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
         
         self.bancoDeDados.close()
         
         return atualizadoComSucesso
-        
     }
-
 }

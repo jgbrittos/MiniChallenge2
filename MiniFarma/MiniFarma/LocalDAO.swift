@@ -24,10 +24,6 @@ class LocalDAO: DAO {
         
         let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Local (nome) VALUES (?)", withArgumentsInArray: [local.nome])
         
-        if !inseridoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
-        
         self.bancoDeDados.close()
         
         return inseridoComSucesso
@@ -69,8 +65,6 @@ class LocalDAO: DAO {
             
             let local = Local(idLocal: idLocal.toInt()!, nome: nome)
             
-            println("id: \(local.idLocal) nome: \(local.nome) --- INTERVALO: \(local)")
-            
             self.locais.append(local)
         }
         
@@ -96,8 +90,6 @@ class LocalDAO: DAO {
             nome = resultadoBusca.stringForColumn("nome")
             
             let local = Local(idLocal: idLocal.toInt()!, nome: nome)
-            
-            println("id: \(local.idLocal) nome: \(local.nome) --- INTERVALO: \(local)")
             
             localBuscado = local
         }

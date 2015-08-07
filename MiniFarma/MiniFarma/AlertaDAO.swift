@@ -24,11 +24,6 @@ class AlertaDAO: DAO {
         
         let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Alerta (data_inicio,numero_duracao,unidade_duracao,ativo,id_intervalo,id_remedio) VALUES (?,?,?,?,?,?)", withArgumentsInArray: [alerta.dataInicio, String(alerta.numeroDuracao), String(alerta.unidadeDuracao), String(alerta.ativo), String(alerta.idIntervalo), String(alerta.idRemedio)])
         
-        
-        if !inseridoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
-        
         self.bancoDeDados.close()
         
         return inseridoComSucesso
@@ -41,10 +36,6 @@ class AlertaDAO: DAO {
         let alerta: Alerta = objeto as! Alerta
         
         let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Alerta WHERE id_alerta = ?", withArgumentsInArray: [String(alerta.idAlerta)])
-        
-        if !deletadoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
         
         self.bancoDeDados.close()
         
@@ -79,10 +70,7 @@ class AlertaDAO: DAO {
             idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
             idRemedio = resultadoBusca.stringForColumn("id_remedio")
 
-            
             let alerta = Alerta(idAlerta: idAlerta.toInt()!, dataInicio: dataInicio, numeroDuracao: numeroDuracao.toInt()!, unidadeDuracao: unidadeDuracao.toInt()!, ativo: ativo.toInt()!, idIntervalo: idIntervalo.toInt()!, idRemedio: idRemedio.toInt()!)
-            
-            println("id: \(alerta.idAlerta) ")
             
             self.alertas.append(alerta)
         }
@@ -131,23 +119,4 @@ class AlertaDAO: DAO {
         
         return self.alertas
     }
-    
-//    func atualizaAlerta(idAlerta: Int) -> Bool {
-//        
-//        self.bancoDeDados.open()
-//        
-//        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta XXXX WHERE id_alerta = ?", withArgumentsInArray: [XXXX,idFarmacia])
-//        
-//        if !atualizadoComSucesso {
-//            println("\(self.bancoDeDados.lastErrorMessage())")
-//        }
-//        
-//        self.bancoDeDados.close()
-//        
-//        return atualizadoComSucesso
-//        
-//    }
-
-    
-    
 }

@@ -24,8 +24,6 @@ class CategoriaDAO: DAO {
         
         let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Categoria (nome) VALUES (?)", withArgumentsInArray: [categoria.nomeCategoria])
         
-        println("%@", self.bancoDeDados.lastErrorMessage())
-        
         self.bancoDeDados.close()
         
         return inseridoComSucesso
@@ -39,8 +37,6 @@ class CategoriaDAO: DAO {
         let categoria: Categoria = objeto as! Categoria
         
         let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(categoria.idCategoria)])
-        
-        println("%@", self.bancoDeDados.lastErrorMessage())
         
         self.bancoDeDados.close()
         

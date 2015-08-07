@@ -24,10 +24,6 @@ class IntervaloDAO: DAO {
         
         let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Intervalo (numero, unidade) VALUES (?,?)", withArgumentsInArray: [intervalo.numero, intervalo.unidade])
         
-        if !inseridoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
-        
         self.bancoDeDados.close()
         
         return inseridoComSucesso
@@ -40,10 +36,6 @@ class IntervaloDAO: DAO {
         let intervalo: Intervalo = objeto as! Intervalo
         
         let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Intervalo WHERE id_intervalo = ?", withArgumentsInArray: [String(intervalo.idIntervalo)])
-        
-        if !deletadoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
-        }
         
         self.bancoDeDados.close()
         
@@ -70,8 +62,6 @@ class IntervaloDAO: DAO {
             unidade = resultadoBusca.stringForColumn("unidade")
             
             let intervalo = Intervalo(idIntervalo: idIntervalo.toInt()!, numero: numero.toInt()!, unidade: unidade)
-            
-            println("id: \(intervalo.idIntervalo) numero: \(intervalo.numero) --- INTERVALO: \(intervalo)")
             
             self.intervalos.append(intervalo)
         }
@@ -100,8 +90,6 @@ class IntervaloDAO: DAO {
             unidade = resultadoBusca.stringForColumn("unidade")
             
             let intervalo = Intervalo(idIntervalo: idIntervalo.toInt()!, numero: numero.toInt()!, unidade: unidade)
-            
-            println("id: \(intervalo.idIntervalo) numero: \(intervalo.numero) --- INTERVALO: \(intervalo)")
             
             intervaloBuscado = intervalo
         }
