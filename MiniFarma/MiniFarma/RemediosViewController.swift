@@ -116,7 +116,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
                     
                     if(remedio.numeroQuantidade > 0 ){
-                        self.remedioDAO.marcaRemedioTomado(remedio.idRemedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
+                        self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
                     }
                     self.remediosValidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 0) as! [Remedio]
                     self.dadosASeremMostrados = self.remediosValidos
@@ -125,7 +125,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     let remedio = self.remediosVencidos[indexPath.row] as Remedio
                     
                     if(remedio.numeroQuantidade > 0 ){
-                        self.remedioDAO.marcaRemedioTomado(remedio.idRemedio, novaQuantidade: (remedio.numeroQuantidade-1))
+                        self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
                     }
                     self.remediosVencidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 1) as! [Remedio]
                     self.dadosASeremMostrados = self.remediosVencidos

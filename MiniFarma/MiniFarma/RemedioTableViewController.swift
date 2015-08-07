@@ -242,6 +242,10 @@ SelecionaFarmaciaDelegate {
         
         let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
         
+        if self.textFieldDataDeValidade.text != "" && self.textFieldDataDeValidade.text != "01/01/1900" {
+            let notificacaoVencimento = Notificacao(remedio: remedio)
+        }
+        
         if self.idRemedio == 0 {
             self.remedioDAO.inserir(remedio)
         }else{

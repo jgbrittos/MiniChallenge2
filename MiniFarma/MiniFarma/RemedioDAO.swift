@@ -314,17 +314,25 @@ class RemedioDAO: DAO {
         return atualizadoComSucesso
     }
     
-    func marcaRemedioTomado(idRemedio: Int, novaQuantidade : Int) -> Bool {
+    func marcaRemedioTomado(remedio: Remedio, novaQuantidade : Int) -> Bool {
         
         self.bancoDeDados.open()
         
-        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET numero_quantidade = ? WHERE id_remedio = ?", withArgumentsInArray: [String(novaQuantidade),String(idRemedio)])
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET numero_quantidade = ? WHERE id_remedio = ?", withArgumentsInArray: [String(novaQuantidade),String(remedio.idRemedio)])
         
         self.bancoDeDados.close()
         
+        self.agendaNotificacaoDeRemedioAcabando(remedio, novaQuantidade: novaQuantidade)
+        
         return atualizadoComSucesso
     }
-
+    
+    func agendaNotificacaoDeRemedioAcabando(remedio: Remedio, novaQuantidade: Int){
+        if novaQuantidade <= remedio.numeroDose {
+            let n = Notificacao(idRemedio: remedio.idRemedio, nomeRemedio: remedio.nomeRemedio, quantidadeRestante: (remedio.numeroQuantidade - remedio.numeroDose))
+        }
+    }
+    
     func buscaUltimoInserido() -> Remedio {
         self.bancoDeDados.open()
         
@@ -400,4 +408,5 @@ class RemedioDAO: DAO {
         
         return todosRemedios.last!
     }
+    
 }

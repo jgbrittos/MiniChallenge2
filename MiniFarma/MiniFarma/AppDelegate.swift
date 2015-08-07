@@ -97,7 +97,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
         notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>))
+        var notificationNoneCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationNoneCategory.identifier = "NONE_CATEGORY"
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[notificationCategory,notificationNoneCategory]) as Set<NSObject>))
     }
     
     func alteraAparenciaDaStatusENavigationBar(){
@@ -136,20 +139,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let remedioDAO = RemedioDAO()
         let remedioBuscado = remedioDAO.buscarPorId(idRemedio) as! Remedio
         
+        let unidades = [" cp"," g"," ml"]
+        let unidade = unidades[remedioBuscado.unidade]
+        
         if(identifier == "ADIAR_IDENTIFICADOR"){
             println("Cliquei em adiar \(idRemedio)")
             var notificacaoLocal:UILocalNotification = UILocalNotification()
             notificacaoLocal.alertAction = "Notificação adiada"
-            notificacaoLocal.alertBody = "Tomar \(remedioBuscado.nomeRemedio) Dose: \(remedioBuscado.numeroDose) \(remedioBuscado.unidade)"
+            notificacaoLocal.alertBody = "Tomar \(remedioBuscado.numeroDose)\(unidade) de \(remedioBuscado.nomeRemedio)"
             notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 300)
             notificacaoLocal.category = "INVITE_CATEGORY";
-            notificacaoLocal.userInfo = ["idRemedio":String(remedioBuscado.idRemedio)]
+            notificacaoLocal.userInfo = ["adiou":String(remedioBuscado.idRemedio)]
             UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
     
         }else if(identifier == "TOMEI_IDENTIFICADOR"){
             println("Cliquei em tomei")
             if(remedioBuscado.numeroQuantidade > 0 ){
-                remedioDAO.marcaRemedioTomado(idRemedio, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
+                remedioDAO.marcaRemedioTomado(remedioBuscado, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
             }
         }
         

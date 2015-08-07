@@ -14,8 +14,51 @@ class Notificacao: NSObject {
     var remedio:Remedio?
     var alerta:Alerta?
     var stringAlerta:String = ""
-
     
+    init(idRemedio: Int, nomeRemedio: String, quantidadeRestante: Int) {
+
+        var mensagem: String
+
+        if quantidadeRestante > 0 {
+            mensagem = "O remédio \(nomeRemedio) está acabando!"
+        }else{
+            mensagem = "O remédio \(nomeRemedio) acabou!"
+        }
+        
+        println("\(mensagem)")
+        
+        var notificacaoLocal : UILocalNotification = UILocalNotification()
+        notificacaoLocal.alertAction = "Mini Farma"
+        notificacaoLocal.alertBody = mensagem
+        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 30)
+        notificacaoLocal.userInfo = ["acabando":String(idRemedio)]
+        notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
+        notificacaoLocal.category = "NONE_CATEGORY"
+        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+    }
+    
+    //Aviso de vencimento
+    init(remedio:Remedio){
+
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+
+        let dataVencimento : NSDate = cal!.dateBySettingHour(12, minute: 0, second: 0, ofDate: remedio.dataValidade, options: NSCalendarOptions())!
+
+        let segundos = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitSecond,
+            fromDate: NSDate(),
+            toDate: dataVencimento,
+            options: nil).second
+
+        var notificacaoLocal : UILocalNotification = UILocalNotification()
+        notificacaoLocal.alertAction = "Mini Farma"
+        notificacaoLocal.alertBody = "Amanhã o remédio \(remedio.nomeRemedio) irá vencer!"
+        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundos))
+        notificacaoLocal.userInfo = ["vencimento":String(remedio.idRemedio)]
+        notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
+        notificacaoLocal.category = "NONE_CATEGORY"
+        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+        
+    }
     
     init(remedio:Remedio, alerta:Alerta, intervalo:Intervalo){
         self.remedio = remedio
@@ -23,20 +66,13 @@ class Notificacao: NSObject {
         self.intervalo = intervalo
         super.init()
 
-        let t = [" cp"," g"," ml"]
-        let u = t[remedio.unidade]
+        let unidades = [" cp"," g"," ml"]
+        let unidade = unidades[remedio.unidade]
         
         stringAlerta = "Tomar \(remedio.nomeRemedio) "
         if remedio.numeroDose != -1 {
-            stringAlerta += "Dose: \(remedio.numeroDose)"+u
+            stringAlerta = "Tomar \(remedio.numeroDose)\(unidade) de \(remedio.nomeRemedio)"
         }
-//        if (remedio.unidade == 0){
-//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) cp"
-//        }else if(remedio.unidade == 1){
-//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) g"
-//        }else if(remedio.unidade == 2){
-//            stringAlerta = "Tomar \(remedio.nomeRemedio) Dose: \(remedio.numeroDose) ml"
-//        }
         
         println(stringAlerta)
         
@@ -74,8 +110,6 @@ class Notificacao: NSObject {
         
     }
     
-    
-    
     func criarNotificacao(dataDoAlerta: NSDate){
         println("\(dataDoAlerta)")
         let segundos = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitSecond,
@@ -96,7 +130,7 @@ class Notificacao: NSObject {
         notificacaoLocal.alertAction = "Mini Farma"
         notificacaoLocal.alertBody = stringAlerta
         notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundosTotais))
-        notificacaoLocal.userInfo = ["idRemedio":String(remedio!.idRemedio)]
+        notificacaoLocal.userInfo = ["tomar":String(remedio!.idRemedio)]
         notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
         notificacaoLocal.category = "INVITE_CATEGORY";
         UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
@@ -125,11 +159,3 @@ class Notificacao: NSObject {
     
     
 }
-
-
-//[snippet caption="Creating Notifications in Swift"]
-//var localNotification: UILocalNotification = UILocalNotification()
-//localNotification.alertAction = "Testing notifications on iOS8"
-//localNotification.alertBody = "Woww it works!!”
-//localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
-//UIApplication.sharedApplication().scheduleLocalNotification(localNotification)

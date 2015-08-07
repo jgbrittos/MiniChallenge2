@@ -258,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				457409B41B66991400CC71EF /* DAO.swift */,
+				8F710AD11B6F9E18009E9D8C /* Notificacao.swift */,
 				451428CB1B702C7D0070396A /* Alerta */,
 				4514286D1B67B25B0070396A /* Categoria */,
 				8F477CC11B67BC200050D94F /* Farmacia */,
@@ -445,7 +446,6 @@
 				8F6610441B6BB1510099C69B /* AlertaTableViewController.swift */,
 				8F72453C1B6BFAC5003EE667 /* IntervaloTableViewController.swift */,
 				8F72453E1B6C0D58003EE667 /* RemedioSimplesTableViewController.swift */,
-				8F710AD11B6F9E18009E9D8C /* Notificacao.swift */,
 			);
 			name = AdicionarAlerta;
 			sourceTree = "<group>";
