@@ -107,8 +107,12 @@ MENSAGEMERROINTERVALO = "Desculpe, mas algo impediu o salvamento do intervalo %@
 MENSAGEMSUCESSOLOCAL = "O local %@ foi salvo com sucesso";
 MENSAGEMERROLOCAL = "Desculpe, mas algo impediu o salvamento do local %@";
 
+// Adicionar Remedio
 
-
+MENSAGEMERROREMEDIOSEMNOME = "Não é possível salvar um medicamento sem nome";
+MENSAGEMSUCESSOREMEDIO = "O remédio %@ foi salvo com sucesso";
+MENSAGEMSUCESSOREMEDIOATUALIZADO = "O remédio %@ foi atualizado com sucesso";
+MENSAGEMERROREMEDIO = "Desculpe, mas algo impediu o salvamento do remédio %@";
 
 
 

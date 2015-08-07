@@ -249,19 +249,19 @@ SelecionaFarmaciaDelegate {
         let alerta = SCLAlertView()
         
         if remedio.nomeRemedio == "" {
-            alerta.showError("Erro", subTitle: "Não é possível salvar um medicamento sem nome", closeButtonTitle: "OK")
+            alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio sem nome erro"), subTitle: NSLocalizedString("MENSAGEMERROREMEDIOSEMNOME", comment: "add remedio sem nome erro"), closeButtonTitle: "OK")
         }else{
             if self.idRemedio == 0 {
                 if self.remedioDAO.inserir(remedio) {
-                    alerta.showSuccess("Salvo com sucesso", subTitle: "O remédio \(remedio.nomeRemedio) foi salvo com sucesso", closeButtonTitle: "OK")
+                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: "O remédio %@ foi salvo com sucesso", arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
                 }else{
-                    alerta.showError("Algo ocorreu!", subTitle: "Desculpe, mas algo impediu o salvamento do remédio \(remedio.nomeRemedio)", closeButtonTitle: "OK")
+                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento do remédio %@", arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
                 }
             }else{
                 if self.remedioDAO.atualizar(remedio, comId: self.idRemedio) {
-                    alerta.showSuccess("Salvo com sucesso", subTitle: "O remédio \(remedio.nomeRemedio) foi atualizado com sucesso", closeButtonTitle: "OK")
+                    alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: "O remédio %@ foi atualizado com sucesso", arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
                 }else{
-                    alerta.showError("Algo ocorreu!", subTitle: "Desculpe, mas algo impediu o salvamento do remédio \(remedio.nomeRemedio)", closeButtonTitle: "OK")
+                    alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento do remédio %@", arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
                 }
             }
         }
