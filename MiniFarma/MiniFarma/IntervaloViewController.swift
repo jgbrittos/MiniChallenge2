@@ -196,9 +196,9 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let alerta = SCLAlertView()
         if self.intervaloDAO.inserir(novoIntervalo) {
-            alerta.showSuccess("Salvo com sucesso", subTitle: "O intervalo foi salvo com sucesso", closeButtonTitle: "OK")
+            alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add intervalo sucesso"), subTitle: NSLocalizedString(String(format: "O intervalo %@ foi salvo com sucesso", arguments: [String(novoIntervalo.numero) + " " + novoIntervalo.unidade]),comment: "add intervalo sucesso"), closeButtonTitle: "OK")
         }else{
-            alerta.showError("Algo ocorreu", subTitle: "Desculpe, mas algo impediu o salvamento da intervalo", closeButtonTitle: "OK")
+            alerta.showError(NSLocalizedString("TITULOERRO", comment: "add intervalo erro"), subTitle: NSLocalizedString(String(format: "Desculpe, mas algo impediu o salvamento do intervalo %@", arguments: [String(novoIntervalo.numero) + " " + novoIntervalo.unidade]),comment: "add intervalo erro"), closeButtonTitle: "OK")
         }
         
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
