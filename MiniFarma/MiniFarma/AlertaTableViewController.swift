@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertaTableViewController: UITableViewController,UITextFieldDelegate, SelecionaIntervaloDoAlertaDelegate, SelecionaRemedioDelegate {
+class AlertaTableViewController: UITableViewController, UITextFieldDelegate, SelecionaIntervaloDoAlertaDelegate, SelecionaRemedioDelegate {
 
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
    
@@ -64,6 +64,8 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
     
     @IBAction func salvaAlarme(sender: AnyObject) {
         
+        self.txtDuracaoQuantidade.resignFirstResponder()
+        
         var dataDatePicker:NSDate = dataInicioPicker.date
         var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
         var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(dataDatePicker)
@@ -91,21 +93,12 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
-    
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent){
-        txtDuracaoQuantidade.resignFirstResponder()
-        self.view.endEditing(true)
-    }
-    
     @IBAction func cancelarAlerta(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.txtDuracaoQuantidade.resignFirstResponder()
         switch segue.identifier! {
             case "ListarIntervalos":
                 var selecionaIntervaloDoAlerta = segue.destinationViewController as! IntervaloTableViewController
@@ -118,6 +111,11 @@ class AlertaTableViewController: UITableViewController,UITextFieldDelegate, Sele
             
             default:break
         }
+    }
+    
+    
+    @IBAction func selecionaUnidadeDuracao(sender: AnyObject) {
+        self.txtDuracaoQuantidade.resignFirstResponder()
     }
     
     func selecionaIntervaloDoAlerta(intervalo: Intervalo){
