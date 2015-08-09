@@ -72,13 +72,16 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="B9N-RZ-IZh" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="Blg-qP-Him"/>
-                            <constraint firstAttribute="centerY" secondItem="Ed6-DD-fIe" secondAttribute="centerY" id="OFA-fK-WSW"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="Ed6-DD-fIe" secondAttribute="bottom" constant="20" id="Mu8-ep-GKP"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="NJ2-jV-cbY" secondAttribute="bottom" constant="20" id="PYF-WN-aKs"/>
                             <constraint firstItem="pl8-sT-8yv" firstAttribute="leading" secondItem="Ed6-DD-fIe" secondAttribute="trailing" constant="8" id="TYJ-3C-ABW"/>
                             <constraint firstItem="pl8-sT-8yv" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="UEL-qk-9Rm"/>
                             <constraint firstItem="NJ2-jV-cbY" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="VR3-hL-qna"/>
                             <constraint firstItem="NJ2-jV-cbY" firstAttribute="leading" secondItem="pl8-sT-8yv" secondAttribute="trailing" constant="8" id="cm6-hA-N5r"/>
                             <constraint firstItem="Ed6-DD-fIe" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="hlO-N3-7cp"/>
                             <constraint firstItem="Ed6-DD-fIe" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="qnY-SO-O0D"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="pl8-sT-8yv" secondAttribute="bottom" constant="20" id="v87-Lr-ilQ"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="B9N-RZ-IZh" secondAttribute="bottom" constant="20" id="wzW-0x-uVa"/>
                             <constraint firstItem="B9N-RZ-IZh" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="20" id="xKA-nx-dZQ"/>
                         </constraints>
                     </view>
