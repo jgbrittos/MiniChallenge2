@@ -153,7 +153,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             }
             
         }else{
-            SCLAlertView().showError(NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), subTitle: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
+            SCLAlertView().showError(NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), subTitle: NSLocalizedString("MENSAGEMERROFARMACIASEMNOME", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
         }
     }
     

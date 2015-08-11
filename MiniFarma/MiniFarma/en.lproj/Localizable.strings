@@ -58,7 +58,7 @@ SIMALERTA= "Yes";
 FARMACIAALERTA_ACESSIBILIDADE_LABEL = "Alert";
 FARMACIAALERTA_ACESSIBILIDADE_HINT = "There is already a favorite pharmacy. Choose an option.";
 ERROFARMACIA = "Error";
-MENSAGEMERROFARMACIA = "Type the pharmacy name";
+MENSAGEMERROFARMACIASEMNOME = "Type the pharmacy name";
 FARMACIANOMEALERTA_ACESSIBILIDADE_LABEL = "Alert";
 FARMACIANOMEALERTA_ACESSIBILIDADE_HINT = "Pharmacy name textfield empty. Type a name.";
 
