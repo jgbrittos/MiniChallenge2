@@ -23,7 +23,7 @@ class FarmaciaDAO: DAO {
         
         let farmacia: Farmacia = objeto as! Farmacia
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude) VALUES (?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia, String(farmacia.favorita),String(stringInterpolationSegment: farmacia.latitude),String(stringInterpolationSegment: farmacia.longitude)])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude,telefone) VALUES (?,?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia, String(farmacia.favorita),String(stringInterpolationSegment: farmacia.latitude),String(stringInterpolationSegment: farmacia.longitude), String(farmacia.telefone)])
         
         self.bancoDeDados.close()
         
@@ -50,13 +50,14 @@ class FarmaciaDAO: DAO {
         
         self.farmacias = [Farmacia]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia Order By id_farmacia", withArgumentsInArray: nil)
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia Order By nome", withArgumentsInArray: nil)
         
         var idFarmacia = String()
         var nome = String()
         var favorita = String()
         var latitude = String()
         var longitude = String()
+        var telefone = String()
         
         while(resultadoBusca.next()){
             
@@ -65,8 +66,9 @@ class FarmaciaDAO: DAO {
             favorita = resultadoBusca.stringForColumn("favorita")
             latitude = resultadoBusca.stringForColumn("latitude")
             longitude = resultadoBusca.stringForColumn("longitude")
+            telefone = resultadoBusca.stringForColumn("telefone")
             
-            let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
+            let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: telefone.toInt()!)
             
             self.farmacias.append(farmacia)
         }
@@ -81,13 +83,14 @@ class FarmaciaDAO: DAO {
         
         var farmaciaBuscada = Farmacia()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia WHERE id_farmacia = ? Order By id_farmacia", withArgumentsInArray: [String(id)])
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia WHERE id_farmacia = ?", withArgumentsInArray: [String(id)])
         
         var idFarmacia = String()
         var nome = String()
         var favorita = String()
         var latitude = String()
         var longitude = String()
+        var telefone = String()
         
         while(resultadoBusca.next()){
             
@@ -96,8 +99,9 @@ class FarmaciaDAO: DAO {
             favorita = resultadoBusca.stringForColumn("favorita")
             latitude = resultadoBusca.stringForColumn("latitude")
             longitude = resultadoBusca.stringForColumn("longitude")
+            telefone = resultadoBusca.stringForColumn("telefone")
             
-            let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
+            let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: telefone.toInt()!)
             farmaciaBuscada = farmacia
         }
         

@@ -16,6 +16,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     @IBOutlet weak var viewMapa: MKMapView!
     @IBOutlet weak var botaoFavorito: UIButton!
     @IBOutlet weak var botaoLocalizacao: UIButton!
+    @IBOutlet weak var textFieldTelefone: UITextField!
     
     let pino = MKPinAnnotationView()
     let localizacaoGerenciador = CLLocationManager()
@@ -135,7 +136,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     @IBAction func salvaFarmacia(sender: AnyObject) {
         
         if(txtFieldNome.text != ""){
-            let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor)
+            let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor, telefone: textFieldTelefone.text.toInt()!)
 
             let alerta = SCLAlertView()
             if farmaciaDAO.inserir(farmacia) {

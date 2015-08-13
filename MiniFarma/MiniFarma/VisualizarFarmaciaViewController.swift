@@ -11,6 +11,8 @@ import MapKit
 
 class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var buttonLigarFarmacia: UIButton!
+    @IBOutlet weak var labelNomeFarmacia: UILabel!
     var farmaciaASerVisualizada: Farmacia?
     @IBOutlet weak var mapaFarmacia: MKMapView!
     
@@ -18,6 +20,7 @@ class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         self.mapaFarmacia.delegate = self
+        self.labelNomeFarmacia.text = farmaciaASerVisualizada?.nomeFarmacia
         
         let localizacao = CLLocationCoordinate2D(latitude: self.farmaciaASerVisualizada!.latitude, longitude: self.farmaciaASerVisualizada!.longitude)
         
@@ -46,5 +49,20 @@ class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
         var mapItem = MKMapItem(placemark: placemark)
         mapItem.name = self.farmaciaASerVisualizada?.nomeFarmacia
         mapItem.openInMapsWithLaunchOptions(options)
+    }
+    
+    @IBAction func ligarParaFarmacia(sender: AnyObject) {
+        if self.farmaciaASerVisualizada?.telefone != nil {
+            let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(self.farmaciaASerVisualizada!.telefone)]))
+            
+            //check  Call Function available only in iphone
+            if UIApplication.sharedApplication().canOpenURL(ligacao!) {
+                UIApplication.sharedApplication().openURL(ligacao!)
+            } else {
+                SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
+            }
+        }else{
+            SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
+        }
     }
 }

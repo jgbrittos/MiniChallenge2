@@ -824,14 +824,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pnA-7a-N1P">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="441"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6A-pL-P4q">
+                                <rect key="frame" x="16" y="72" width="530" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Rs3-sH-f3Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sku-pc-YBa">
+                                <rect key="frame" x="554" y="72" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="U8f-Mb-3lm"/>
+                                    <constraint firstAttribute="width" constant="30" id="sE9-jx-5pg"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="telefone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ligarParaFarmacia:" destination="s36-eC-kgT" eventType="touchUpInside" id="5tU-TA-Br3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Z6A-pL-P4q" firstAttribute="top" secondItem="cSu-My-Dz0" secondAttribute="bottom" constant="8" id="4Mh-Sq-Vsq"/>
                             <constraint firstAttribute="trailing" secondItem="pnA-7a-N1P" secondAttribute="trailing" id="DhA-VG-oc1"/>
-                            <constraint firstItem="pnA-7a-N1P" firstAttribute="top" secondItem="cSu-My-Dz0" secondAttribute="bottom" id="XUb-Wk-Qp9"/>
+                            <constraint firstItem="pnA-7a-N1P" firstAttribute="top" secondItem="cSu-My-Dz0" secondAttribute="bottom" constant="46" id="XUb-Wk-Qp9"/>
+                            <constraint firstItem="Sku-pc-YBa" firstAttribute="top" secondItem="cSu-My-Dz0" secondAttribute="bottom" constant="8" id="Xmc-8u-T2B"/>
+                            <constraint firstItem="Z6A-pL-P4q" firstAttribute="leading" secondItem="Odg-XQ-Eg0" secondAttribute="leadingMargin" id="YN3-qa-iyr"/>
+                            <constraint firstItem="Sku-pc-YBa" firstAttribute="leading" secondItem="Z6A-pL-P4q" secondAttribute="trailing" constant="8" id="Zm0-1P-43a"/>
                             <constraint firstItem="Vr3-zZ-VPS" firstAttribute="top" secondItem="pnA-7a-N1P" secondAttribute="bottom" id="nJ3-8d-JP0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sku-pc-YBa" secondAttribute="trailing" id="uvp-YW-C57"/>
                             <constraint firstItem="pnA-7a-N1P" firstAttribute="leading" secondItem="Odg-XQ-Eg0" secondAttribute="leading" id="x2k-Il-XtM"/>
                         </constraints>
                     </view>
@@ -843,6 +870,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonLigarFarmacia" destination="Sku-pc-YBa" id="QZw-ov-zRQ"/>
+                        <outlet property="labelNomeFarmacia" destination="Z6A-pL-P4q" id="mKB-RQ-bzH"/>
                         <outlet property="mapaFarmacia" destination="pnA-7a-N1P" id="QMU-gj-PW9"/>
                     </connections>
                 </viewController>
@@ -915,6 +944,9 @@
             <point key="canvasLocation" x="852" y="1833"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="telefone" width="31" height="31"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dld-1y-B48"/>
     </inferredMetricsTieBreakers>

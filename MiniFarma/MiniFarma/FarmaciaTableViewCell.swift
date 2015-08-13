@@ -12,6 +12,7 @@ class FarmaciaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imagemFavorito: UIImageView!
     @IBOutlet weak var nomeCustomizado: UILabel!
+    @IBOutlet weak var buttonLigarParaFarmacia: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
