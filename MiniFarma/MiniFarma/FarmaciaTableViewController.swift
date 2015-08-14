@@ -61,10 +61,12 @@ class FarmaciaTableViewController: UITableViewController {
         cell.buttonLigarParaFarmacia.tag = indexPath.row
         cell.buttonLigarParaFarmacia.addTarget(self, action: Selector("ligarParaFarmacia:"), forControlEvents: .TouchUpInside)
         
+        cell.imagemFavorito.tag = indexPath.row
+        cell.imagemFavorito.addTarget(self, action: Selector("alteraFavorito:"), forControlEvents: .TouchUpInside)
         if((self.farmacias[indexPath.row] as Farmacia).favorita == 1){
-            cell.imagemFavorito.image = UIImage(named: "estrelaFavorito")
+            cell.imagemFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: .Normal)
         }else{
-            cell.imagemFavorito.image = UIImage(named: "estrelaFavoritoNegativo")
+            cell.imagemFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: .Normal)
         }
         
         return cell
@@ -127,6 +129,23 @@ class FarmaciaTableViewController: UITableViewController {
         }else{
             SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
         }
+    }
+    
+    func alteraFavorito(sender: UIButton){
+        
+        let farmacia = self.farmacias[sender.tag]
+        for f in self.farmacias {
+            sender.setImage(UIImage(named: "estrelaFavorito"), forState: .Normal)
+            if f.idFarmacia == farmacia.idFarmacia {
+                self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 1)
+            }else{
+                sender.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: .Normal)
+                self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 0)
+            }
+        }
+        self.farmacias = self.farmaciaDAO.buscarTodos() as! [Farmacia]
+        self.tableView.reloadData()
+
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 class FarmaciaTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var imagemFavorito: UIImageView!
+    @IBOutlet weak var imagemFavorito: UIButton!
     @IBOutlet weak var nomeCustomizado: UILabel!
     @IBOutlet weak var buttonLigarParaFarmacia: UIButton!
     
