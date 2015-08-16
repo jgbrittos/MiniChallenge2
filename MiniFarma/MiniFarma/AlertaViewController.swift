@@ -101,15 +101,20 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return celulaBranca
         }else{
             let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
-            let alerta = self.alertasDaVez[indexPath.row] as Alerta
+            var alerta = self.alertasDaVez[indexPath.row] as Alerta
             
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
             
             var data = self.defineProximaDose(alerta)
             
+            alerta = self.alertaDAO.buscarPorId(alerta.idAlerta) as! Alerta
+            
             if alerta.ativo == 0 {
                 celulaAlerta.switchAtivaAlerta.enabled = false
+                celulaAlerta.labelNome.enabled = false
+                celulaAlerta.labelDataDeValidade.enabled = false
                 celulaAlerta.switchAtivaAlerta.on = false
+                data = NSLocalizedString("ALERTAINATIVO", comment: "inatividade")
             }else{
                 celulaAlerta.switchAtivaAlerta.enabled = true
                 celulaAlerta.switchAtivaAlerta.on = true
@@ -125,7 +130,12 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func defineProximaDose(alerta: Alerta) -> String {
-        var texto = "Próxima: "
+
+        if self.verificaSeHaNotificacaoPara(alerta) {
+            return NSLocalizedString("ALERTAINATIVO", comment: "inatividade")
+        }
+        
+        var texto = NSLocalizedString("ALERTAPROXIMADOSE", comment: "proxima dose")
         
         let dataInicio = alerta.dataInicio
         let intervalo = self.intervaloDAO.buscarPorId(alerta.idIntervalo) as! Intervalo
@@ -141,6 +151,32 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         formatador.timeZone = NSTimeZone.systemTimeZone()
         
         return texto + formatador.stringFromDate(dataProximaDose)
+    }
+    
+    func verificaSeHaNotificacaoPara(alerta: Alerta) -> Bool {
+        
+        var notificacao = UILocalNotification()
+        var arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        var contadorNotificacoes = 0
+        let idRemedio = String(alerta.idRemedio)
+        
+        for notificacao in arrayDeNotificacoes as! [UILocalNotification]{
+            
+            let info = notificacao.userInfo as! [String: AnyObject]
+            
+            if info["idRemedio"] as! String == idRemedio {
+                contadorNotificacoes++
+            }else{
+                println("Nenhuma notificacao local encontrada com esse id de remedio")
+            }
+        }
+        
+        if contadorNotificacoes > 0 {
+            return false
+        }else{
+            self.alertaDAO.atualizar(alerta, ativo: 0)
+            return true
+        }
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

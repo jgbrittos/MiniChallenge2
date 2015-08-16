@@ -56,7 +56,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFZ-YL-O5P">
-                                                    <rect key="frame" x="120" y="70" width="472" height="22"/>
+                                                    <rect key="frame" x="120" y="88" width="472" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                                                 <constraint firstItem="XYI-s4-Sm1" firstAttribute="trailing" secondItem="k7o-y5-q2c" secondAttribute="trailingMargin" constant="33" id="dGg-t0-9g6"/>
                                                 <constraint firstItem="ZEV-OC-cFM" firstAttribute="bottom" secondItem="k7o-y5-q2c" secondAttribute="bottomMargin" constant="-5" id="gFj-lZ-xoG"/>
                                                 <constraint firstItem="XYI-s4-Sm1" firstAttribute="leading" secondItem="ZEV-OC-cFM" secondAttribute="trailing" constant="8" id="j4j-4e-07V"/>
-                                                <constraint firstItem="SFZ-YL-O5P" firstAttribute="top" secondItem="XYI-s4-Sm1" secondAttribute="bottom" constant="8" id="rEU-F6-WHk"/>
+                                                <constraint firstItem="SFZ-YL-O5P" firstAttribute="top" secondItem="XYI-s4-Sm1" secondAttribute="bottom" constant="26" id="rEU-F6-WHk"/>
                                                 <constraint firstItem="ZEV-OC-cFM" firstAttribute="top" secondItem="k7o-y5-q2c" secondAttribute="topMargin" constant="5" id="ym1-FP-YBI"/>
                                             </constraints>
                                             <variation key="default">

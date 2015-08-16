@@ -22,14 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        //verifica se o app já foi aberto alguma vez
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
-            //println("App already launched")
-        }else{
-            UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
-        }
+//        //verifica se o app já foi aberto alguma vez
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        
+//        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
+//            //println("App already launched")
+//        }else{
+//            UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
+//        }
         
         let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!
@@ -78,29 +78,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func criaNotificacoesIterativas(application: UIApplication) {
-        var notificationActionOk :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        notificationActionOk.identifier = "ADIAR_IDENTIFICADOR"
-        notificationActionOk.title = "Adiar"
-        notificationActionOk.destructive = true
-        notificationActionOk.authenticationRequired = false
-        notificationActionOk.activationMode = UIUserNotificationActivationMode.Background
+        var acaoNotificacaoAdiar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        acaoNotificacaoAdiar.identifier = "ADIAR_IDENTIFICADOR"
+        acaoNotificacaoAdiar.title = NSLocalizedString("ALERTAACAOADIAR", comment: "adiar")
+        acaoNotificacaoAdiar.destructive = true
+        acaoNotificacaoAdiar.authenticationRequired = false
+        acaoNotificacaoAdiar.activationMode = UIUserNotificationActivationMode.Background
         
-        var notificationActionCancel :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        notificationActionCancel.identifier = "TOMEI_IDENTIFICADOR"
-        notificationActionCancel.title = "Tomei"
-        notificationActionCancel.destructive = false
-        notificationActionCancel.authenticationRequired = false
-        notificationActionCancel.activationMode = UIUserNotificationActivationMode.Background
+        var acaoNotificacaoTomei :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        acaoNotificacaoTomei.identifier = "TOMEI_IDENTIFICADOR"
+        acaoNotificacaoTomei.title = NSLocalizedString("ALERTAACAOTOMEI", comment: "adiar")
+        acaoNotificacaoTomei.destructive = false
+        acaoNotificacaoTomei.authenticationRequired = false
+        acaoNotificacaoTomei.activationMode = UIUserNotificationActivationMode.Background
         
-        var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-        notificationCategory.identifier = "INVITE_CATEGORY"
-        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
-        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
+        var categoriaNotificacoesComAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        categoriaNotificacoesComAcao.identifier = "ACTION_CATEGORY"
+        categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], forContext: UIUserNotificationActionContext.Default)
+        categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], forContext: UIUserNotificationActionContext.Minimal)
         
-        var notificationNoneCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-        notificationNoneCategory.identifier = "NONE_CATEGORY"
+        var categoriaNotificaoSemAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        categoriaNotificaoSemAcao.identifier = "NONE_CATEGORY"
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[notificationCategory,notificationNoneCategory]) as Set<NSObject>))
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[categoriaNotificacoesComAcao,categoriaNotificaoSemAcao]) as Set<NSObject>))
     }
     
     func alteraAparenciaDaStatusENavigationBar(){
@@ -148,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             notificacaoLocal.alertAction = "Notificação adiada"
             notificacaoLocal.alertBody = "Tomar \(remedioBuscado.numeroDose)\(unidade) de \(remedioBuscado.nomeRemedio)"
             notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 300)
-            notificacaoLocal.category = "INVITE_CATEGORY";
+            notificacaoLocal.category = "ACTION_CATEGORY";
             notificacaoLocal.userInfo = ["adiou":String(remedioBuscado.idRemedio)]
             UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
     

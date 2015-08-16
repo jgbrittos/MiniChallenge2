@@ -120,6 +120,41 @@ class AlertaDAO: DAO {
         return self.alertas
     }
     
+    override func buscarPorId(id: Int) -> AnyObject? {
+        self.bancoDeDados.open()
+        
+        var alertaBuscado = Alerta()
+        
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE id_alerta = ?", withArgumentsInArray: [String(id)])
+        
+        var idAlerta = String()
+        var dataInicio = NSDate()
+        var numeroDuracao = String()
+        var unidadeDuracao = String()
+        var ativo = String()
+        var idIntervalo = String()
+        var idRemedio = String()
+        
+        
+        while(resultadoBusca.next()){
+            
+            idAlerta = resultadoBusca.stringForColumn("id_Alerta")
+            dataInicio = resultadoBusca.dateForColumn("data_inicio")
+            numeroDuracao = resultadoBusca.stringForColumn("numero_duracao")
+            unidadeDuracao = resultadoBusca.stringForColumn("unidade_duracao")
+            ativo = resultadoBusca.stringForColumn("ativo")
+            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
+            idRemedio = resultadoBusca.stringForColumn("id_remedio")
+            
+            let alerta = Alerta(idAlerta: idAlerta.toInt()!, dataInicio: dataInicio, numeroDuracao: numeroDuracao.toInt()!, unidadeDuracao: unidadeDuracao.toInt()!, ativo: ativo.toInt()!, idIntervalo: idIntervalo.toInt()!, idRemedio: idRemedio.toInt()!)
+            
+            alertaBuscado = alerta
+        }
+        
+        self.bancoDeDados.close()
+        return alertaBuscado
+    }
+    
     func atualizar(alerta: Alerta, ativo: Int) -> Bool {
         self.bancoDeDados.open()
         

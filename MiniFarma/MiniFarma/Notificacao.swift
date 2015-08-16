@@ -104,24 +104,23 @@ class Notificacao: NSObject {
         let unidade = unidades[remedio.unidade]
         
         var dataNotificacao = dataDeInicio
-
         var dateComponets: NSDateComponents = NSCalendar.currentCalendar().components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitHour | .CalendarUnitMinute, fromDate: dataNotificacao)
-        
         dateComponets.second = 0
-        
         dataNotificacao = NSCalendar.currentCalendar().dateFromComponents(dateComponets)!
-
+        
+        self.stringAlerta = NSLocalizedString(String(format: NSLocalizedString("FRASENOTIFICACAOSIMPLES", comment: "tomar algo"), arguments: [remedio.nomeRemedio]), comment: "tomar algo")
+        if remedio.numeroDose > 0 {
+            self.stringAlerta = NSLocalizedString(String(format: NSLocalizedString("FRASENOTIFICACAOCOMPLETA", comment: "tomar x de algo"), arguments: [String(remedio.numeroDose), unidade, remedio.nomeRemedio]), comment: "tomar x de algo")
+        }
+        
         while numeroNotificacoes != 0 {
-            self.stringAlerta = "Tomar \(remedio.nomeRemedio)"
-            if remedio.numeroDose > 0 {
-                self.stringAlerta = "Tomar \(remedio.numeroDose)\(unidade) de \(remedio.nomeRemedio)"
-            }
+            
             println("\(self.stringAlerta)")
             var notificacaoLocal : UILocalNotification = UILocalNotification()
             notificacaoLocal.alertAction = NSLocalizedString("MINIFARMA", comment: "Nome")
             notificacaoLocal.alertBody = self.stringAlerta
             notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
-            notificacaoLocal.category = "INVITE_CATEGORY";
+            notificacaoLocal.category = "ACTION_CATEGORY";
             notificacaoLocal.repeatInterval = NSCalendarUnit.CalendarUnitDay
             notificacaoLocal.fireDate = dataNotificacao
             
@@ -188,7 +187,7 @@ class Notificacao: NSObject {
 //        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundosTotais))
 //        notificacaoLocal.userInfo = ["tomar":String(remedio!.idRemedio)]
 //        notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
-//        notificacaoLocal.category = "INVITE_CATEGORY";
+//        notificacaoLocal.category = "ACTION_CATEGORY";
 //        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
 //    }
 

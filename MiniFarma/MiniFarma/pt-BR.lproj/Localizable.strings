@@ -129,3 +129,11 @@ ACTIONSHEETESCOLHER = "Escolher foto da Galeria";
 ACTIONSHEETEXCLUIR = "Excluir foto";
 ACTIONSHEETVISUALIZAR = "Visualizar foto";
 
+
+FRASENOTIFICACAOSIMPLES = "Tomar %@";
+FRASENOTIFICACAOCOMPLETA = "Tomar %@%@ de %@";
+
+ALERTAINATIVO = "Alerta inativo";
+ALERTAPROXIMADOSE = "Próxima: ";
+ALERTAACAOTOMEI = "Tomei";
+ALERTAACAOADIAR = "Adiar";
