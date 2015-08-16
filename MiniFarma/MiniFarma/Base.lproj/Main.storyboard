@@ -592,6 +592,14 @@
                                                     <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lx6-Rp-QWj">
+                                                    <rect key="frame" x="510" y="49" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="thumbTintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="desativarAlertas:" destination="vea-wD-2al" eventType="valueChanged" id="4yj-hf-JCn"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eoY-iW-h6L" firstAttribute="trailing" secondItem="zvu-Rz-usu" secondAttribute="trailingMargin" constant="33" id="4i1-KP-iIr"/>
@@ -600,6 +608,8 @@
                                                 <constraint firstItem="ADd-FC-kHq" firstAttribute="leading" secondItem="zvu-Rz-usu" secondAttribute="leadingMargin" id="Jtx-Yb-ZDs"/>
                                                 <constraint firstItem="ADd-FC-kHq" firstAttribute="top" secondItem="zvu-Rz-usu" secondAttribute="topMargin" constant="5" id="Nu6-r8-gUc"/>
                                                 <constraint firstItem="s9w-uj-h23" firstAttribute="top" secondItem="zvu-Rz-usu" secondAttribute="topMargin" constant="30" id="bhb-Hy-P1W"/>
+                                                <constraint firstItem="Lx6-Rp-QWj" firstAttribute="trailing" secondItem="zvu-Rz-usu" secondAttribute="trailingMargin" id="fSy-af-gsT"/>
+                                                <constraint firstItem="Lx6-Rp-QWj" firstAttribute="top" secondItem="zvu-Rz-usu" secondAttribute="topMargin" constant="41" id="gBj-78-neC"/>
                                                 <constraint firstItem="s9w-uj-h23" firstAttribute="leading" secondItem="ADd-FC-kHq" secondAttribute="trailing" constant="8" id="kpn-ip-xFX"/>
                                                 <constraint firstItem="eoY-iW-h6L" firstAttribute="leading" secondItem="ADd-FC-kHq" secondAttribute="trailing" constant="8" id="owO-a3-O9e"/>
                                                 <constraint firstItem="s9w-uj-h23" firstAttribute="trailing" secondItem="zvu-Rz-usu" secondAttribute="trailingMargin" constant="33" id="pjp-Nt-cZa"/>
@@ -616,6 +626,7 @@
                                             <outlet property="imageViewFotoRemedio" destination="ADd-FC-kHq" id="Ihx-ae-b2Q"/>
                                             <outlet property="labelDataDeValidade" destination="eoY-iW-h6L" id="s8K-3U-f1X"/>
                                             <outlet property="labelNome" destination="s9w-uj-h23" id="8VT-R5-ziL"/>
+                                            <outlet property="switchAtivaAlerta" destination="Lx6-Rp-QWj" id="6S3-Xs-6xl"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaBranca" id="jGf-D7-FaX">

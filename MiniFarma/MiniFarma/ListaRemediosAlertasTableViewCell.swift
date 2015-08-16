@@ -11,6 +11,7 @@ import UIKit
 class ListaRemediosAlertasTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var switchAtivaAlerta: UISwitch!
     @IBOutlet weak var labelDataDeValidade: UILabel!
     @IBOutlet weak var labelNome: UILabel!
     @IBOutlet weak var imageViewFotoRemedio: UIImageView!

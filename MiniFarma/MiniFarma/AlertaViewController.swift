@@ -93,7 +93,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if data == "01/01/1900"{
                 data = "data indisponível"
             }
-            
+            celulaAlerta.switchAtivaAlerta.tag = indexPath.row
             celulaAlerta.labelNome.text = remedio.nomeRemedio
             celulaAlerta.labelDataDeValidade.text = data
             celulaAlerta.imageViewFotoRemedio?.image = remedio.fotoRemedioUIImage
@@ -147,6 +147,14 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.alertaSelecionado = self.alertasDaVez[indexPath.row]
         self.performSegueWithIdentifier("VisualizarAlerta", sender: nil)
+    }
+    
+    
+    @IBAction func desativarAlertas(sender: AnyObject) {
+        let alerta = self.alertasDaVez[sender.tag] as Alerta
+        
+        Notificacao.cancelarNotificacaoPara(alerta)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

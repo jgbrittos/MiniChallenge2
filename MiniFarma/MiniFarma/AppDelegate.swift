@@ -22,14 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        //verifica se o app já foi aberto alguma vez
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
-            //println("App already launched")
-        }else{
-            UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
-        }
+//        //verifica se o app já foi aberto alguma vez
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        
+//        if let isAppAlreadyLaunchedOnce = defaults.stringForKey("isAppAlreadyLaunchedOnce"){
+//            //println("App already launched")
+//        }else{
+//            UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
+//        }
         
         let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!

@@ -207,24 +207,22 @@ class Notificacao: NSObject {
     //            self.criarNotificacao(dataNotificacao)
     //        }
 
-//    func cancelLocalNotification(UNIQUE_ID: String){
-//        
-//        var notifyCancel = UILocalNotification()
-//        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-//        
-//        for notifyCancel in notifyArray as! [UILocalNotification]{
-//            
-//            let info: [String: String] = notifyCancel.userInfo as! [String: String]
-//            
-//            if info[uniqueId] == uniqueId{
-//                
-//                UIApplication.sharedApplication().cancelLocalNotification(notifyCancel)
-//            }else{
-//                
-//                println("No Local Notification Found!")
-//            }
-//        }
-//    }
+    static func cancelarNotificacaoPara(alerta: Alerta){
+        
+        var notificacaoCancelada = UILocalNotification()
+        var arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        
+        for notificacaoCancelada in arrayDeNotificacoes as! [UILocalNotification]{
+            
+            let info = notificacaoCancelada.userInfo as! [String: AnyObject]
+            
+            if info["idRemedio"] as! String == String(alerta.idRemedio) {
+                UIApplication.sharedApplication().cancelLocalNotification(notificacaoCancelada)
+            }else{
+                println("No Local Notification Found!")
+            }
+        }
+    }
     
     
     
