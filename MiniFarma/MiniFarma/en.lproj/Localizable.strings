@@ -5,6 +5,8 @@
   Created by João Gabriel de Britto e Silva on 19/07/15.
   Copyright (c) 2015 JGBrittoS. All rights reserved.
 */
+///MARK: - NOME
+MINIFARMA = "Mini Pharma";
 
 ///MARK: - Componentes
 TABBARREMEDIOS = "Medications";

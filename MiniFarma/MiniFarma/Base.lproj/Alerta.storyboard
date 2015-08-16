@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Alerta-->
+        <!--Alerta Table View Controller-->
         <scene sceneID="4Xb-JJ-oC6">
             <objects>
                 <tableViewController id="mev-3R-KCw" customClass="AlertaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,40 +73,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="Jij-ev-j5k" secondAttribute="bottom" id="Wq5-Eh-aOd"/>
                                                 <constraint firstItem="Jij-ev-j5k" firstAttribute="leading" secondItem="8mi-he-OdR" secondAttribute="leading" id="kVE-SA-fWw"/>
                                                 <constraint firstItem="Jij-ev-j5k" firstAttribute="top" secondItem="8mi-he-OdR" secondAttribute="top" id="wwC-aP-PJ1"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ee5-vc-oZ1">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ee5-vc-oZ1" id="8TU-Ig-qHa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-0S-nAL">
-                                                    <rect key="frame" x="8" y="8" width="285" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Osc-YQ-1KP">
-                                                    <rect key="frame" x="301" y="8" width="291" height="29"/>
-                                                    <segments>
-                                                        <segment title="dia"/>
-                                                        <segment title="sem"/>
-                                                        <segment title="mês"/>
-                                                    </segments>
-                                                    <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="selecionaUnidadeDuracao:" destination="mev-3R-KCw" eventType="valueChanged" id="5al-te-1wi"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="width" secondItem="oc7-0S-nAL" secondAttribute="width" constant="6" id="Hii-PL-d83"/>
-                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="trailing" secondItem="8TU-Ig-qHa" secondAttribute="trailingMargin" id="M1d-H4-mgO"/>
-                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="leading" secondItem="oc7-0S-nAL" secondAttribute="trailing" constant="8" id="Yr2-jq-uLI"/>
-                                                <constraint firstItem="oc7-0S-nAL" firstAttribute="leading" secondItem="8TU-Ig-qHa" secondAttribute="leadingMargin" id="jB6-D3-Z2f"/>
-                                                <constraint firstItem="oc7-0S-nAL" firstAttribute="top" secondItem="8TU-Ig-qHa" secondAttribute="topMargin" id="sbA-RB-gry"/>
-                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="top" secondItem="8TU-Ig-qHa" secondAttribute="topMargin" id="uLY-uB-itd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -184,6 +150,40 @@
                                             <segue destination="24X-57-vR0" kind="show" identifier="listarRemedio" id="CHn-Vk-SGh"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ee5-vc-oZ1">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ee5-vc-oZ1" id="8TU-Ig-qHa">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-0S-nAL">
+                                                    <rect key="frame" x="8" y="8" width="285" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Osc-YQ-1KP">
+                                                    <rect key="frame" x="301" y="8" width="291" height="29"/>
+                                                    <segments>
+                                                        <segment title="dia"/>
+                                                        <segment title="sem"/>
+                                                        <segment title="mês"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="selecionaUnidadeDuracao:" destination="mev-3R-KCw" eventType="valueChanged" id="5al-te-1wi"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="width" secondItem="oc7-0S-nAL" secondAttribute="width" constant="6" id="Hii-PL-d83"/>
+                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="trailing" secondItem="8TU-Ig-qHa" secondAttribute="trailingMargin" id="M1d-H4-mgO"/>
+                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="leading" secondItem="oc7-0S-nAL" secondAttribute="trailing" constant="8" id="Yr2-jq-uLI"/>
+                                                <constraint firstItem="oc7-0S-nAL" firstAttribute="leading" secondItem="8TU-Ig-qHa" secondAttribute="leadingMargin" id="jB6-D3-Z2f"/>
+                                                <constraint firstItem="oc7-0S-nAL" firstAttribute="top" secondItem="8TU-Ig-qHa" secondAttribute="topMargin" id="sbA-RB-gry"/>
+                                                <constraint firstItem="Osc-YQ-1KP" firstAttribute="top" secondItem="8TU-Ig-qHa" secondAttribute="topMargin" id="uLY-uB-itd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -192,7 +192,7 @@
                             <outlet property="delegate" destination="mev-3R-KCw" id="tA9-Sf-CMP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Alerta" id="jrw-Vn-Slb">
+                    <navigationItem key="navigationItem" id="jrw-Vn-Slb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2ZZ-LE-ipa">
                             <connections>
                                 <action selector="cancelarAlerta:" destination="mev-3R-KCw" id="ynn-Dy-SKa"/>

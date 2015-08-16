@@ -18,6 +18,9 @@
     <NOME_DO_COMPONENTE_EM_CAPS_LOCK> = "mensagem que explica pra que serve aquele campo selesionável"
 */
 
+///MARK: - NOME
+MINIFARMA = "Mini Farma";
+
 ///MARK: - Componentes
 TABBARREMEDIOS = "Remédios";
 TABBARALERTAS = "Alertas";

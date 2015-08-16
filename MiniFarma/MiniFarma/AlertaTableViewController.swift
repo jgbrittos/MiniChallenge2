@@ -65,8 +65,10 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
     @IBAction func salvaAlarme(sender: AnyObject) {
         
         self.txtDuracaoQuantidade.resignFirstResponder()
-        let numeroDuracao = self.txtDuracaoQuantidade.text.toInt() as Int?
-        let unidadeDuracao = self.duracaoUnidadeSegmented.selectedSegmentIndex as Int?
+        
+        //Está comentado pq ainda não é possível ter notificações com duração
+        let numeroDuracao = 1//self.txtDuracaoQuantidade.text.toInt() as Int?
+        let unidadeDuracao = 0//self.duracaoUnidadeSegmented.selectedSegmentIndex as Int?
         
         var idIntervalo: Int = 0
         if let i = self.intervalo {
