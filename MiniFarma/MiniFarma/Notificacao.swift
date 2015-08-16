@@ -126,6 +126,23 @@ class Notificacao: NSObject {
         }
     }
     
+    static func cancelarNotificacaoPara(alerta: Alerta){
+        
+        var notificacaoCancelada = UILocalNotification()
+        var arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        
+        for notificacaoCancelada in arrayDeNotificacoes as! [UILocalNotification]{
+            
+            let info = notificacaoCancelada.userInfo as! [String: AnyObject]
+            
+            if info["idRemedio"] as! String == String(alerta.idRemedio) {
+                UIApplication.sharedApplication().cancelLocalNotification(notificacaoCancelada)
+            }else{
+                println("Nenhuma notificacao local encontrada com esse id de remedio")
+            }
+        }
+    }
+    
 //    func criaNotificacoesEm(dias _dias: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
 //        //Por enquanto nao tem como ter essa :'(
 //        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
@@ -167,23 +184,4 @@ class Notificacao: NSObject {
 //        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
 //    }
 
-    static func cancelarNotificacaoPara(alerta: Alerta){
-        
-        var notificacaoCancelada = UILocalNotification()
-        var arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
-        
-        for notificacaoCancelada in arrayDeNotificacoes as! [UILocalNotification]{
-            
-            let info = notificacaoCancelada.userInfo as! [String: AnyObject]
-            
-            if info["idRemedio"] as! String == String(alerta.idRemedio) {
-                UIApplication.sharedApplication().cancelLocalNotification(notificacaoCancelada)
-            }else{
-                println("Nenhuma notificacao local encontrada com esse id de remedio")
-            }
-        }
-    }
-    
-    
-    
 }

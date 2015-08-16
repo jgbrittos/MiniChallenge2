@@ -960,13 +960,7 @@
                             <constraint firstAttribute="trailing" secondItem="892-Ym-Rah" secondAttribute="trailing" id="yM7-Gs-U7A"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Intervalo" id="5jI-7Q-hie">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZUZ-kS-16n">
-                            <connections>
-                                <action selector="adicionarIntervalo:" destination="Q7f-ww-59h" id="iGZ-Bf-qPk"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Intervalo" id="5jI-7Q-hie"/>
                     <connections>
                         <outlet property="pickerViewIntervalos" destination="irD-7a-J3f" id="LoT-Wv-VWI"/>
                         <outlet property="tableViewIntervalos" destination="zoo-63-kKF" id="gIc-fo-VRj"/>

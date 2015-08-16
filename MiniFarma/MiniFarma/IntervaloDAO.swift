@@ -49,7 +49,7 @@ class IntervaloDAO: DAO {
         
         self.intervalos = [Intervalo]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo Order By id_intervalo", withArgumentsInArray: nil)
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo Order By numero", withArgumentsInArray: nil)
         
         var idIntervalo = String()
         var numero = String()
