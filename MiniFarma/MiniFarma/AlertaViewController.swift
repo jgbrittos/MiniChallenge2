@@ -105,9 +105,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
             
-            var data = "Próxima dose: "
-            
-            
+            var data = self.defineProximaDose(alerta)
             
             if alerta.ativo == 0 {
                 celulaAlerta.switchAtivaAlerta.enabled = false
@@ -124,6 +122,25 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             return celulaAlerta
         }
+    }
+    
+    func defineProximaDose(alerta: Alerta) -> String {
+        var texto = "Próxima: "
+        
+        let dataInicio = alerta.dataInicio
+        let intervalo = self.intervaloDAO.buscarPorId(alerta.idIntervalo) as! Intervalo
+        let dataAgora = NSDate()
+        var dataProximaDose: NSDate
+        
+        do {
+            dataProximaDose = dataInicio.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo.numero))
+        }while(dataProximaDose.compare(dataAgora) == .OrderedAscending)//dataProximaDose < data de agora
+        
+        let formatador = NSDateFormatter()
+        formatador.dateFormat = "dd/MM/yyyy HH:mm"
+        formatador.timeZone = NSTimeZone.systemTimeZone()
+        
+        return texto + formatador.stringFromDate(dataProximaDose)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
