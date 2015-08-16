@@ -41,7 +41,21 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(animated: Bool) {
         self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
         self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
-        self.alertasDaVez = self.alertasAtivos
+        
+        switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
+            case 0:
+                self.alertasDaVez = self.alertasAtivos
+                break
+            case 1:
+                self.alertasDaVez = self.alertasInativos
+                break
+            default:
+                self.alertasDaVez = self.alertasAtivos
+                println("Algo ocorreu no método viewWillAppear na classe AlertaViewController!")
+                break
+        }
+        
+//        self.alertasDaVez = self.alertasAtivos
         self.tableViewAlerta.reloadData()
     }
     
@@ -85,7 +99,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return celulaBranca
         }else{
             let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
-            
+            let alerta = self.alertasDaVez[indexPath.row] as Alerta
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
             
             var data = remedio.dataEmString
@@ -93,6 +107,15 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if data == "01/01/1900"{
                 data = "data indisponível"
             }
+            
+            if alerta.ativo == 0 {
+                celulaAlerta.switchAtivaAlerta.enabled = false
+                celulaAlerta.switchAtivaAlerta.on = false
+            }else{
+                celulaAlerta.switchAtivaAlerta.enabled = true
+                celulaAlerta.switchAtivaAlerta.on = true
+            }
+            
             celulaAlerta.switchAtivaAlerta.tag = indexPath.row
             celulaAlerta.labelNome.text = remedio.nomeRemedio
             celulaAlerta.labelDataDeValidade.text = data
@@ -151,10 +174,16 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     @IBAction func desativarAlertas(sender: AnyObject) {
-        let alerta = self.alertasDaVez[sender.tag] as Alerta
+        let switchAtivo = sender as! UISwitch
+        let alerta = self.alertasDaVez[switchAtivo.tag] as Alerta
         
         Notificacao.cancelarNotificacaoPara(alerta)
         
+        self.alertaDAO.atualizar(alerta, ativo: 0)
+        
+        switchAtivo.enabled = false
+        self.alertasDaVez = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
+        self.tableViewAlerta.reloadData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

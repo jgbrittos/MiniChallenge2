@@ -74,23 +74,23 @@ class Notificacao: NSObject {
         
         println(self.stringAlerta)
         
-        switch intervalo.unidade {
-            case NSLocalizedString("UNIDADES_HORA", comment: "hora"):
-                self.criaNotificacoesEm(horas: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
-                break
-            case NSLocalizedString("UNIDADES_DIA", comment: "dia"):
-                self.criaNotificacoesEm(dias: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
-                break
-            case NSLocalizedString("UNIDADES_SEMANA", comment: "semana"):
-                self.criaNotificacoesEm(semanas: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
-                break
-            case NSLocalizedString("UNIDADES_MES", comment: "mes"):
-                self.criaNotificacoesEm(meses: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
-                break
-            default:
-                println("Algo ocorreu na funcao init 3 na classe notificacao ")
-                break
-        }
+//        switch intervalo.unidade {
+//            case NSLocalizedString("UNIDADES_HORA", comment: "hora"):
+        self.criaNotificacoesEm(horas: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
+//                break
+//            case NSLocalizedString("UNIDADES_DIA", comment: "dia"):
+//                self.criaNotificacoesEm(dias: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
+//                break
+//            case NSLocalizedString("UNIDADES_SEMANA", comment: "semana"):
+//                self.criaNotificacoesEm(semanas: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
+//                break
+//            case NSLocalizedString("UNIDADES_MES", comment: "mes"):
+//                self.criaNotificacoesEm(meses: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
+//                break
+//            default:
+//                println("Algo ocorreu na funcao init 3 na classe notificacao ")
+//                break
+//        }
 
     }
     
@@ -126,20 +126,20 @@ class Notificacao: NSObject {
         }
     }
     
-    func criaNotificacoesEm(dias _dias: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
-        //Por enquanto nao tem como ter essa :'(
-        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
-    }
-    
-    func criaNotificacoesEm(semanas _semanas: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
-        //Por enquanto nao tem como ter essa :'(
-        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
-    }
-    
-    func criaNotificacoesEm(meses _meses: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
-        //Por enquanto nao tem como ter essa :'(
-        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
-    }
+//    func criaNotificacoesEm(dias _dias: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
+//        //Por enquanto nao tem como ter essa :'(
+//        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
+//    }
+//    
+//    func criaNotificacoesEm(semanas _semanas: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
+//        //Por enquanto nao tem como ter essa :'(
+//        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
+//    }
+//    
+//    func criaNotificacoesEm(meses _meses: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
+//        //Por enquanto nao tem como ter essa :'(
+//        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
+//    }
     
 //    func criarNotificacao(dataDoAlerta: NSDate){
 //        println("\(dataDoAlerta)")
@@ -166,46 +166,6 @@ class Notificacao: NSObject {
 //        notificacaoLocal.category = "INVITE_CATEGORY";
 //        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
 //    }
-    
-    
-    //        let dataInicio = alerta.dataInicio
-    //        var dataFinal: NSDate = NSDate()
-    //
-    //        if(alerta.unidadeDuracao == 0){
-    //            dataFinal=dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*alerta.numeroDuracao))
-    //        }else if(alerta.unidadeDuracao == 1){
-    //            dataFinal=dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*alerta.numeroDuracao))
-    //        }else if(alerta.unidadeDuracao == 2){
-    //            dataFinal=dataInicio.dateByAddingTimeInterval(NSTimeInterval(60*60*24*30*alerta.numeroDuracao))
-    //        }
-    //
-    //        var dataNotificacao : NSDate = dataInicio
-    //        var dataControle = NSDate()
-    //        var fusoHorarioLocal: NSTimeZone = NSTimeZone.localTimeZone()
-    //        var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(dataControle)
-    //        dataControle = dataControle.dateByAddingTimeInterval(NSTimeInterval(intervaloFusoHorario))
-    //
-    //        if dataNotificacao.compare(dataControle) == .OrderedDescending {
-    //            //se data de inicio maior que a data de hoje
-    //            self.criarNotificacao(dataNotificacao)
-    //        }
-    //
-    //        while(dataNotificacao.timeIntervalSinceDate(dataFinal) < 0){
-    //
-    //            if(intervalo.unidade == "minuto(s)"){//multiplicar pelo intervalo
-    //                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*intervalo.numero)) //segundos*minutos*horas
-    //            }else if(intervalo.unidade == "hora(s)"){
-    //                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*intervalo.numero)) //segundos*minutos*horas
-    //            }else if(intervalo.unidade == "dia(s)"){
-    //                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*intervalo.numero)) //segundos*minutos*horas
-    //            }else if(intervalo.unidade == "semana(s)"){
-    //                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*intervalo.numero))//segundos*minutos*horas
-    //            }else if(intervalo.unidade == "mes(es)"){
-    //                dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(60*60*24*7*30*intervalo.numero))//segundos*minutos*horas
-    //            }
-    //
-    //            self.criarNotificacao(dataNotificacao)
-    //        }
 
     static func cancelarNotificacaoPara(alerta: Alerta){
         
@@ -219,7 +179,7 @@ class Notificacao: NSObject {
             if info["idRemedio"] as! String == String(alerta.idRemedio) {
                 UIApplication.sharedApplication().cancelLocalNotification(notificacaoCancelada)
             }else{
-                println("No Local Notification Found!")
+                println("Nenhuma notificacao local encontrada com esse id de remedio")
             }
         }
     }

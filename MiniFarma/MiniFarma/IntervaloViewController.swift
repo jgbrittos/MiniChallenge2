@@ -43,14 +43,18 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         //Definindo os números do picker view
         self.numerosPickerViewIntervalos = ["1","2","3","4","5","6","7","8","9","10",
             "11","12","13","14","15","16","17","18","19","20",
-            "21","22","23","24","25","26","27","28","29","30","31"] as [String]
+            "21","22","23","24"] as [String]
+//        self.numerosPickerViewIntervalos = ["1","2","3","4","5","6","7","8","9","10",
+//            "11","12","13","14","15","16","17","18","19","20",
+//            "21","22","23","24","25","26","27","28","29","30","31"] as [String]
         
         //Definindo as unidades do picker view
-        self.unidadesPickerViewIntervalos = [
-            NSLocalizedString("UNIDADES_HORA", comment: "Hora(s)"),
-            NSLocalizedString("UNIDADES_DIA", comment: "Dia(s)"),
-            NSLocalizedString("UNIDADES_SEMANA", comment: "Semana(s)"),
-            NSLocalizedString("UNIDADES_MES", comment: "Mes(es)")] as [String]
+        self.unidadesPickerViewIntervalos = [NSLocalizedString("UNIDADES_HORA", comment: "Hora(s)")] as [String]
+//        self.unidadesPickerViewIntervalos = [
+//            NSLocalizedString("UNIDADES_HORA", comment: "Hora(s)"),
+//            NSLocalizedString("UNIDADES_DIA", comment: "Dia(s)"),
+//            NSLocalizedString("UNIDADES_SEMANA", comment: "Semana(s)"),
+//            NSLocalizedString("UNIDADES_MES", comment: "Mes(es)")] as [String]
         
         //Definindo as variaveis de intervalo como o primeiro do picker view para evitar problemas
         //de o usuario não selecionar nenhuma opção e salvar vazio

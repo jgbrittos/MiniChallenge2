@@ -37,7 +37,19 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
 
         self.remediosValidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 0) as! [Remedio]
         self.remediosVencidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 1) as! [Remedio]
-        self.dadosASeremMostrados = self.remediosValidos
+        switch segmentedControlValidadeRemedios.selectedSegmentIndex {
+            case 0:
+                self.dadosASeremMostrados = self.remediosValidos
+                break
+            case 1:
+                self.dadosASeremMostrados = self.remediosVencidos
+                break
+            default:
+                self.dadosASeremMostrados = self.remediosValidos
+                println("Algo ocorreu no método viewWillAppear na classe RemediosViewController!")
+                break
+        }
+//        self.dadosASeremMostrados = self.remediosValidos
         
         self.tableViewRemedios.reloadData()
     }

@@ -119,4 +119,14 @@ class AlertaDAO: DAO {
         
         return self.alertas
     }
+    
+    func atualizar(alerta: Alerta, ativo: Int) -> Bool {
+        self.bancoDeDados.open()
+        
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta SET ativo = ? WHERE id_Alerta = ?", withArgumentsInArray: [ativo, String(alerta.idAlerta)])
+        println()
+        self.bancoDeDados.close()
+        
+        return atualizadoComSucesso
+    }
 }
