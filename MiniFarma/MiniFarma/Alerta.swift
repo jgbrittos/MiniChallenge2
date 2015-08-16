@@ -19,6 +19,13 @@ class Alerta: NSObject {
     var idRemedio: Int = 0
     var temInformacoesNulas: Bool = false
 
+    var dataInicioEmString: String {
+        let formatador = NSDateFormatter()
+        formatador.dateFormat = "dd/MM/yyyy HH:mm"
+        formatador.timeZone = NSTimeZone.systemTimeZone()
+        return formatador.stringFromDate(self.dataInicio)
+    }
+    
     override init() {}
     
     init(idAlerta:Int, dataInicio: NSDate, numeroDuracao:Int, unidadeDuracao:Int, ativo:Int,idIntervalo:Int,idRemedio:Int){

@@ -102,13 +102,12 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{
             let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
             let alerta = self.alertasDaVez[indexPath.row] as Alerta
+            
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
             
-            var data = remedio.dataEmString
+            var data = "Próxima dose: "
             
-            if data == "01/01/1900"{
-                data = "data indisponível"
-            }
+            
             
             if alerta.ativo == 0 {
                 celulaAlerta.switchAtivaAlerta.enabled = false
