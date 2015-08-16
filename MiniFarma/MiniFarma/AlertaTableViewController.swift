@@ -27,6 +27,9 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
+        self.dataInicioPicker.timeZone = NSTimeZone.systemTimeZone()//localTimeZone()
+//        self.dataInicioPicker.calendar = NSCalendar.currentCalendar()
+//        self.dataInicioPicker.locale = NSLocale(localeIdentifier: "pt-BR")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -80,12 +83,7 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
             idRemedio = r.idRemedio
         }
         
-        var dataDatePicker:NSDate = dataInicioPicker.date
-        var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
-        var intervaloFusoHorario:Int = fusoHorarioLocal.secondsFromGMTForDate(dataDatePicker)
-        var dataInicioCorreta = dataDatePicker.dateByAddingTimeInterval(NSTimeInterval(intervaloFusoHorario))
-        
-        let alerta = Alerta(dataInicio: dataInicioCorreta, numeroDuracao: numeroDuracao, unidadeDuracao: unidadeDuracao, ativo: 1, idIntervalo: idIntervalo, idRemedio: idRemedio)
+        let alerta = Alerta(dataInicio: self.dataInicioPicker.date, numeroDuracao: numeroDuracao, unidadeDuracao: unidadeDuracao, ativo: 1, idIntervalo: idIntervalo, idRemedio: idRemedio)
         
         if alerta.temInformacoesNulas {
             SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTAINVALIDO", comment: "add alerta erro"), closeButtonTitle: "OK")

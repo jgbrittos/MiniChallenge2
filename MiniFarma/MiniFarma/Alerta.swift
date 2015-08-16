@@ -35,6 +35,7 @@ class Alerta: NSObject {
         
         if let d = dataInicio as NSDate? {
             self.dataInicio = d
+            println("\(d)")
         }else{
             self.temInformacoesNulas = true
         }

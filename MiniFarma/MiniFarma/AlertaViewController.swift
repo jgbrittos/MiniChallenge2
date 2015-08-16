@@ -55,23 +55,25 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
         }
         
-//        self.alertasDaVez = self.alertasAtivos
         self.tableViewAlerta.reloadData()
     }
     
     //MARK:- Controles da Table View
     @IBAction func alteraDadosDaTabelaAlerta(sender: AnyObject) {
+        self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
+        self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
+        
         switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
-        case 0:
-            self.alertasDaVez = self.alertasAtivos
-            break
-        case 1:
-            self.alertasDaVez = self.alertasInativos
-            break
-        default:
-            self.alertasDaVez = self.alertasAtivos
-            println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
-            break
+            case 0:
+                self.alertasDaVez = self.alertasAtivos
+                break
+            case 1:
+                self.alertasDaVez = self.alertasInativos
+                break
+            default:
+                self.alertasDaVez = self.alertasAtivos
+                println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
+                break
         }
         
         self.tableViewAlerta.reloadData()
@@ -141,6 +143,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let alerta = self.alertasAtivos[indexPath.row] as Alerta
                     self.alertaDAO.deletar(alerta)
                     self.alertasAtivos.removeAtIndex(indexPath.row)
+                    Notificacao.cancelarNotificacaoPara(alerta)
                     self.alertasDaVez = self.alertasAtivos
                     break
                 case 1:
@@ -182,7 +185,21 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.alertaDAO.atualizar(alerta, ativo: 0)
         
         switchAtivo.enabled = false
-        self.alertasDaVez = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
+        switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
+            case 0:
+                self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
+                self.alertasDaVez = self.alertasAtivos
+                break
+            case 1:
+                self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
+                self.alertasDaVez = self.alertasInativos
+                break
+            default:
+                self.alertasDaVez = self.alertasAtivos
+                println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
+                break
+        }
+
         self.tableViewAlerta.reloadData()
     }
     

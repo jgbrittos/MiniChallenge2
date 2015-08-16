@@ -64,13 +64,13 @@ class Notificacao: NSObject {
         super.init()
         //por enquanto nao to usando a duracao do alerta para nada
         
-        let unidades = [" cp"," g"," ml"]
-        let unidade = unidades[remedio.unidade]
+//        let unidades = [" cp"," g"," ml"]
+//        let unidade = unidades[remedio.unidade]
         
-        self.stringAlerta = "Tomar \(remedio.nomeRemedio) "
-        if remedio.numeroDose > 0 {
-            self.stringAlerta = "Tomar \(remedio.numeroDose)\(unidade) de \(remedio.nomeRemedio)"
-        }
+//        self.stringAlerta = "Tomar \(remedio.nomeRemedio) "
+//        if remedio.numeroDose > 0 {
+//            self.stringAlerta = "Tomar \(remedio.numeroDose)\(unidade) de \(remedio.nomeRemedio)"
+//        }
         
         println(self.stringAlerta)
         
@@ -100,15 +100,23 @@ class Notificacao: NSObject {
         //numNotifi: 24, 12, 8 ,  6,  4,  3,   2,  1
         //se for numero impar, quebra a lógica, talvez validar se for impar e nao deixar :(
         
+        let unidades = [" cp"," g"," ml"]
+        let unidade = unidades[remedio.unidade]
+        
         var dataNotificacao = dataDeInicio
 
-        var dateComponets: NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute, fromDate: dataNotificacao)
+        var dateComponets: NSDateComponents = NSCalendar.currentCalendar().components(.CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitHour | .CalendarUnitMinute, fromDate: dataNotificacao)
         
         dateComponets.second = 0
         
         dataNotificacao = NSCalendar.currentCalendar().dateFromComponents(dateComponets)!
-        
+
         while numeroNotificacoes != 0 {
+            self.stringAlerta = "Tomar \(remedio.nomeRemedio)"
+            if remedio.numeroDose > 0 {
+                self.stringAlerta = "Tomar \(remedio.numeroDose)\(unidade) de \(remedio.nomeRemedio)"
+            }
+            println("\(self.stringAlerta)")
             var notificacaoLocal : UILocalNotification = UILocalNotification()
             notificacaoLocal.alertAction = NSLocalizedString("MINIFARMA", comment: "Nome")
             notificacaoLocal.alertBody = self.stringAlerta

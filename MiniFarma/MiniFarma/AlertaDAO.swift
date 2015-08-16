@@ -124,7 +124,7 @@ class AlertaDAO: DAO {
         self.bancoDeDados.open()
         
         let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta SET ativo = ? WHERE id_Alerta = ?", withArgumentsInArray: [ativo, String(alerta.idAlerta)])
-        println()
+
         self.bancoDeDados.close()
         
         return atualizadoComSucesso
