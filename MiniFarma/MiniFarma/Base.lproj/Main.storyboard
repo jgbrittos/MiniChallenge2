@@ -454,6 +454,33 @@
                                             <outletCollection property="gestureRecognizers" destination="LcD-zd-jVs" appends="YES" id="gCE-ea-fhJ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaHistorico" id="MKY-4I-Oxo">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MKY-4I-Oxo" id="R7b-kh-JY8">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Histórico" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7r2-ZD-j7c">
+                                                    <rect key="frame" x="8" y="11" width="92" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="92" id="fT0-c3-vbT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7r2-ZD-j7c" firstAttribute="leading" secondItem="R7b-kh-JY8" secondAttribute="leadingMargin" id="aRv-11-aej"/>
+                                                <constraint firstItem="7r2-ZD-j7c" firstAttribute="top" secondItem="R7b-kh-JY8" secondAttribute="topMargin" constant="3" id="e6j-E0-EnK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7r2-ZD-j7c" secondAttribute="bottom" constant="3.5" id="fsb-K4-Vax"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Gus-E8-Q5r" appends="YES" id="kn5-GV-syb"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="celulaNotas" rowHeight="150" id="PHE-az-qMM">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHE-az-qMM" id="7g1-5P-g6v">
@@ -529,6 +556,7 @@
                         <outlet property="textViewNotas" destination="Ra8-Xe-wfw" id="dCx-Pn-RBN"/>
                         <segue destination="Rle-Lo-sjT" kind="show" identifier="VisualizarFoto" id="GfL-yI-Xgp"/>
                         <segue destination="s36-eC-kgT" kind="show" identifier="VisualizarFarmacia" id="gjd-MI-v4k"/>
+                        <segue destination="wOZ-fg-17i" kind="show" identifier="VisualizaHistorico" id="bUg-zF-gkg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Chj-Ne-1EF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -547,8 +575,49 @@
                         <action selector="tocouNaCelulaFarmacia:" destination="s5H-sA-ZYX" id="igU-he-mu1"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="Gus-E8-Q5r">
+                    <connections>
+                        <action selector="tocouNaCelulaHistorico:" destination="s5H-sA-ZYX" id="r9V-g4-3YL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2314" y="1096"/>
+        </scene>
+        <!--Histórico de tomada-->
+        <scene sceneID="o92-cw-SlT">
+            <objects>
+                <tableViewController id="wOZ-fg-17i" customClass="VisualizaHistoricoTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2tZ-C9-SKN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="celula" textLabel="X5i-ty-GXA" style="IBUITableViewCellStyleDefault" id="0uJ-9F-75C">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0uJ-9F-75C" id="rGT-P2-cse">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X5i-ty-GXA">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wOZ-fg-17i" id="P5p-SF-Apg"/>
+                            <outlet property="delegate" destination="wOZ-fg-17i" id="U5I-js-nEw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Histórico de tomada" id="DUN-8O-W46"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cxc-jG-bUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3038" y="395"/>
         </scene>
         <!--Foto-->
         <scene sceneID="UzJ-M8-qJZ">
@@ -1006,6 +1075,6 @@
         <image name="telefone" width="31" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nq5-Xa-Qj6"/>
+        <segue reference="dld-1y-B48"/>
     </inferredMetricsTieBreakers>
 </document>

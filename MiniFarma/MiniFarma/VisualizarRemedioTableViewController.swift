@@ -184,6 +184,10 @@ class VisualizarRemedioTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func tocouNaCelulaHistorico(sender: AnyObject) {
+        self.performSegueWithIdentifier("VisualizaHistorico", sender: self.remedio)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
             case "VisualizarFoto":
@@ -193,6 +197,10 @@ class VisualizarRemedioTableViewController: UITableViewController {
             case "VisualizarFarmacia":
                 let visualizador = segue.destinationViewController as! VisualizarFarmaciaViewController
                 visualizador.farmaciaASerVisualizada = sender as? Farmacia
+                break
+            case "VisualizaHistorico":
+                let visualizador = segue.destinationViewController as! VisualizaHistoricoTableViewController
+                visualizador.remedio = sender as? Remedio
                 break
             default:
                 println("Algo ocorreu na funcao prepareForSegue na classe VisualizarRemedioTableViewController")

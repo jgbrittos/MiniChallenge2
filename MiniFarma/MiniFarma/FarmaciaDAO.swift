@@ -10,7 +10,6 @@ import UIKit
 
 class FarmaciaDAO: DAO {
    
-    
     var farmacias = [Farmacia]()
     
     override init(){

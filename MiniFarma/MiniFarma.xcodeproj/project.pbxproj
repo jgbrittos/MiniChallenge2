@@ -31,6 +31,9 @@
 		453961601B5BEEC20097DEDB /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */; };
 		453961621B5BEED30097DEDB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453961611B5BEED30097DEDB /* CoreLocation.framework */; };
 		4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4539616C1B5BF1950097DEDB /* InfoPlist.strings */; };
+		455E39081B81680E008DE73F /* VisualizaHistoricoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E39071B81680E008DE73F /* VisualizaHistoricoTableViewController.swift */; };
+		455E390B1B816968008DE73F /* Historico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E390A1B816968008DE73F /* Historico.swift */; };
+		455E390D1B816975008DE73F /* HistoricoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E390C1B816975008DE73F /* HistoricoDAO.swift */; };
 		457409B51B66991400CC71EF /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457409B41B66991400CC71EF /* DAO.swift */; };
 		45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE31B61666B00E24F80 /* Intervalo.swift */; };
 		45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */; };
@@ -133,6 +136,9 @@
 		453961631B5BEF740097DEDB /* FMDB-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDB-Bridging-Header.h"; sourceTree = "<group>"; };
 		4539616B1B5BF1950097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4539616D1B5BF1AE0097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		455E39071B81680E008DE73F /* VisualizaHistoricoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizaHistoricoTableViewController.swift; sourceTree = "<group>"; };
+		455E390A1B816968008DE73F /* Historico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Historico.swift; sourceTree = "<group>"; };
+		455E390C1B816975008DE73F /* HistoricoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoDAO.swift; sourceTree = "<group>"; };
 		457409B41B66991400CC71EF /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		45BB4AE31B61666B00E24F80 /* Intervalo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intervalo.swift; sourceTree = "<group>"; };
 		45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloDAO.swift; sourceTree = "<group>"; };
@@ -241,6 +247,7 @@
 				45DAB5311B5C29A400AA2860 /* RemediosViewController.swift */,
 				451428AF1B6F9CB70070396A /* VisualizarRemedioTableViewController.swift */,
 				45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */,
+				455E39071B81680E008DE73F /* VisualizaHistoricoTableViewController.swift */,
 			);
 			name = Remedio;
 			sourceTree = "<group>";
@@ -262,6 +269,7 @@
 				451428CB1B702C7D0070396A /* Alerta */,
 				4514286D1B67B25B0070396A /* Categoria */,
 				8F477CC11B67BC200050D94F /* Farmacia */,
+				455E39091B816954008DE73F /* Historico */,
 				45E0764B1B61184E00B0E7B6 /* Intervalo */,
 				451428701B690CB40070396A /* Local */,
 				451428771B6AA0150070396A /* Remedio */,
@@ -421,6 +429,15 @@
 				4539615B1B5BEEA30097DEDB /* FMResultSet.m */,
 			);
 			name = FMDB;
+			sourceTree = "<group>";
+		};
+		455E39091B816954008DE73F /* Historico */ = {
+			isa = PBXGroup;
+			children = (
+				455E390C1B816975008DE73F /* HistoricoDAO.swift */,
+				455E390A1B816968008DE73F /* Historico.swift */,
+			);
+			name = Historico;
 			sourceTree = "<group>";
 		};
 		457409B61B669A9400CC71EF /* Adicionar Remedio */ = {
@@ -659,6 +676,7 @@
 				8F6610451B6BB1510099C69B /* AlertaTableViewController.swift in Sources */,
 				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
 				451428B01B6F9CB70070396A /* VisualizarRemedioTableViewController.swift in Sources */,
+				455E39081B81680E008DE73F /* VisualizaHistoricoTableViewController.swift in Sources */,
 				8F710AD21B6F9E18009E9D8C /* Notificacao.swift in Sources */,
 				451428721B690CCA0070396A /* Local.swift in Sources */,
 				451428C91B7027130070396A /* VisualizarAlertaTableViewController.swift in Sources */,
@@ -667,6 +685,8 @@
 				451428741B690CDA0070396A /* LocalDAO.swift in Sources */,
 				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
 				8F3768671B6A68A50046F849 /* FarmaciaTableViewCell.swift in Sources */,
+				455E390B1B816968008DE73F /* Historico.swift in Sources */,
+				455E390D1B816975008DE73F /* HistoricoDAO.swift in Sources */,
 				45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */,
 				45E8CD861B5FDA2B00190FA1 /* TelaInicialViewController.swift in Sources */,
 				45EAF7B11B72832C00881BE3 /* VisualizarFarmaciaViewController.swift in Sources */,

@@ -119,10 +119,15 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        let historicoDAO = HistoricoDAO()
+        var historico = Historico()
+        
         var tomeiRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
                 case 0:
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
+                    historico = Historico(idRemedio: remedio.idRemedio, dataTomada: NSDate())
+                    historicoDAO.inserir(historico)
                     
                     if(remedio.numeroQuantidade > 0 ){
                         self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
@@ -132,6 +137,8 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     break
                 case 1:
                     let remedio = self.remediosVencidos[indexPath.row] as Remedio
+                    historico = Historico(idRemedio: remedio.idRemedio, dataTomada: NSDate())
+                    historicoDAO.inserir(historico)
                     
                     if(remedio.numeroQuantidade > 0 ){
                         self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
@@ -143,6 +150,8 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     println("Algo ocorreu no método editActionsForRowAtIndexPath na classe RemediosViewController!")
                     break
             }
+            
+            
             
             self.tableViewRemedios.reloadData()
             

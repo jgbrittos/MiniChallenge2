@@ -156,6 +156,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println("Cliquei em tomei")
             if(remedioBuscado.numeroQuantidade > 0 ){
                 remedioDAO.marcaRemedioTomado(remedioBuscado, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
+                let historicoDAO = HistoricoDAO()
+                var historico = Historico()
+                historico = Historico(idRemedio: remedioBuscado.idRemedio, dataTomada: NSDate())
+                historicoDAO.inserir(historico)
             }
         }
         
