@@ -24,6 +24,7 @@ class Remedio: NSObject {
     var idCategoria: Int = 0
     var idLocal: Int = 0
     var idIntervalo: Int = 0
+    var notas: String = ""
     
     var temInformacoesNulas: Bool = false
     
@@ -37,11 +38,9 @@ class Remedio: NSObject {
         if self.fotoRemedio == "sem foto"{
             return UIImage(named: "semFoto")
         }
-//        println("\(self.fotoRemedio)")
         let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         var documentos: String = caminhos[0] as! String
         let caminhoCompleto = documentos.stringByAppendingPathComponent(self.fotoRemedio)
-//        println("\(caminhoCompleto)")
         return UIImage(contentsOfFile: caminhoCompleto)
     }
     
@@ -49,7 +48,6 @@ class Remedio: NSObject {
         if self.fotoReceita == "sem foto"{
             return UIImage(named: "semFoto")!
         }
-        //return UIImage(contentsOfFile: self.fotoReceita)
         let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         var documentos: String = caminhos[0] as! String
         let caminhoCompleto = documentos.stringByAppendingPathComponent(self.fotoReceita)
@@ -61,7 +59,7 @@ class Remedio: NSObject {
     //Remedio do banco
     init(idRemedio:Int?, nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?,
         unidade:Int?, preco:Double?, numeroDose:Int?, fotoRemedio:String?,
-        fotoReceita:String?,vencido:Int?,idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?){
+        fotoReceita:String?,vencido:Int?,idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?, notas:String?){
         if let idr = idRemedio{
             self.idRemedio = idr
         }
@@ -117,11 +115,16 @@ class Remedio: NSObject {
         if let idi = idIntervalo {
             self.idIntervalo = idi
         }
+        
+        if let nota = notas {
+            self.notas = nota
+        }
     }
     
     //Remedio criado
-    init(nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?, unidade:Int?, preco:Double?, numeroDose:Int?,fotoRemedio:String?,fotoReceita:String?,
-        idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?){
+    init(nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?,
+        unidade:Int?, preco:Double?, numeroDose:Int?,fotoRemedio:String?,fotoReceita:String?,
+        idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?, notas: String?){
         
         let formatador = NSDateFormatter()
         formatador.dateFormat = "dd-MM-yyyy"
@@ -211,6 +214,10 @@ class Remedio: NSObject {
             if idi == 0 {
                 self.temInformacoesNulas = true
             }
+        }
+            
+        if let nota = notas {
+            self.notas = nota
         }
     }
 }

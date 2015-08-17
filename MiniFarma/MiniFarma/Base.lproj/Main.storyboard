@@ -130,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="aW9-FA-KfL">
+                            <tableViewSection headerTitle="" id="aW9-FA-KfL">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="150" id="31n-h2-vky">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -454,6 +454,52 @@
                                             <outletCollection property="gestureRecognizers" destination="LcD-zd-jVs" appends="YES" id="gCE-ea-fhJ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="celulaNotas" rowHeight="150" id="PHE-az-qMM">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHE-az-qMM" id="7g1-5P-g6v">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3f-8g-Ubf">
+                                                    <rect key="frame" x="8" y="64" width="51" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="51" id="WVh-5y-pAB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Ra8-Xe-wfw">
+                                                    <rect key="frame" x="67" y="9" width="525" height="129.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="W3f-8g-Ubf" secondAttribute="bottom" constant="56.5" id="8ZU-HG-CPE"/>
+                                                <constraint firstItem="W3f-8g-Ubf" firstAttribute="top" secondItem="7g1-5P-g6v" secondAttribute="topMargin" constant="56" id="IE0-Nf-7E4"/>
+                                                <constraint firstItem="Ra8-Xe-wfw" firstAttribute="leading" secondItem="W3f-8g-Ubf" secondAttribute="trailing" constant="8" id="Obv-pr-5Ma"/>
+                                                <constraint firstItem="Ra8-Xe-wfw" firstAttribute="top" secondItem="7g1-5P-g6v" secondAttribute="topMargin" constant="1" id="RMd-lK-tDh"/>
+                                                <constraint firstItem="Ra8-Xe-wfw" firstAttribute="bottom" secondItem="7g1-5P-g6v" secondAttribute="bottomMargin" constant="-3" id="VQW-wB-XCU"/>
+                                                <constraint firstItem="W3f-8g-Ubf" firstAttribute="leading" secondItem="7g1-5P-g6v" secondAttribute="leadingMargin" id="Yux-qg-k1m"/>
+                                                <constraint firstItem="Ra8-Xe-wfw" firstAttribute="trailing" secondItem="7g1-5P-g6v" secondAttribute="trailingMargin" id="k38-fG-7hV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ultima" rowHeight="44" id="3Rq-TK-PNf">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Rq-TK-PNf" id="MDP-Kq-nbO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -480,6 +526,7 @@
                         <outlet property="labelNome" destination="vK6-1t-uZB" id="Y4G-zC-93o"/>
                         <outlet property="labelPreco" destination="hrH-0x-Jay" id="hBW-ck-cCb"/>
                         <outlet property="labelQuantidade" destination="uDz-rd-npF" id="ex8-Va-n10"/>
+                        <outlet property="textViewNotas" destination="Ra8-Xe-wfw" id="dCx-Pn-RBN"/>
                         <segue destination="Rle-Lo-sjT" kind="show" identifier="VisualizarFoto" id="GfL-yI-Xgp"/>
                         <segue destination="s36-eC-kgT" kind="show" identifier="VisualizarFarmacia" id="gjd-MI-v4k"/>
                     </connections>

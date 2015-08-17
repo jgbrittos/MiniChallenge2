@@ -22,7 +22,7 @@ class RemedioDAO: DAO {
         
         let remedio: Remedio = objeto as! Remedio
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade, preco, numero_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade, preco, numero_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo, notas) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [
             remedio.nomeRemedio,
             remedio.dataValidade,
             remedio.numeroQuantidade,
@@ -35,7 +35,8 @@ class RemedioDAO: DAO {
             remedio.idFarmacia,
             remedio.idCategoria,
             remedio.idLocal,
-            remedio.idIntervalo])
+            remedio.idIntervalo,
+            remedio.notas])
     
         self.bancoDeDados.close()
         
@@ -77,6 +78,7 @@ class RemedioDAO: DAO {
         var idCategoria: NSString = ""
         var idLocal: NSString = ""
         var idIntervalo: NSString = ""
+        var notas: String = ""
         
         while(result.next()){
             
@@ -119,8 +121,11 @@ class RemedioDAO: DAO {
             if(result.stringForColumn("id_intervalo") != nil){
                 idIntervalo = result.stringForColumn("id_intervalo")
             }
+            if result.stringForColumn("notas") != nil {
+                notas = result.stringForColumn("notas")
+            }
             
-            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas: notas)
 
             self.remedios.append(remedio)
             
@@ -152,7 +157,8 @@ class RemedioDAO: DAO {
         var idCategoria: NSString = ""
         var idLocal: NSString = ""
         var idIntervalo: NSString = ""
-        
+        var notas: String = ""
+
         while(result.next()){
             
             var idRemedio: NSString = result.stringForColumn("id_remedio")
@@ -196,7 +202,11 @@ class RemedioDAO: DAO {
                 idIntervalo = result.stringForColumn("id_intervalo")
             }
             
-            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            if result.stringForColumn("notas") != nil {
+                notas = result.stringForColumn("notas")
+            }
+            
+            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas: notas)
             
             remedioBuscado = remedio
             
@@ -228,6 +238,7 @@ class RemedioDAO: DAO {
         var idCategoria: NSString = ""
         var idLocal: NSString = ""
         var idIntervalo: NSString = ""
+        var notas: String = ""
         
         while(result.next()){
             
@@ -272,7 +283,11 @@ class RemedioDAO: DAO {
                 idIntervalo = result.stringForColumn("id_intervalo")
             }
             
-            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            if result.stringForColumn("notas") != nil {
+                notas = result.stringForColumn("notas")
+            }
+            
+            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas : notas)
             
             self.remedios.append(remedio)
             
@@ -286,7 +301,7 @@ class RemedioDAO: DAO {
     func atualizar(remedio: Remedio, comId id: Int) -> Bool {
         self.bancoDeDados.open()
         
-        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET nome = ?, data_validade = ?, numero_quantidade = ?, unidade = ?, preco = ?, numero_dose = ?, foto_remedio = ?, foto_receita = ?, vencido = ?, id_farmacia = ?, id_categoria = ?, id_local = ?, id_intervalo = ? WHERE id_remedio = ?", withArgumentsInArray: [remedio.nomeRemedio,
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET nome = ?, data_validade = ?, numero_quantidade = ?, unidade = ?, preco = ?, numero_dose = ?, foto_remedio = ?, foto_receita = ?, vencido = ?, id_farmacia = ?, id_categoria = ?, id_local = ?, id_intervalo = ?, notas = ? WHERE id_remedio = ?", withArgumentsInArray: [remedio.nomeRemedio,
             remedio.dataValidade,
             remedio.numeroQuantidade,
             remedio.unidade,
@@ -299,6 +314,7 @@ class RemedioDAO: DAO {
             remedio.idCategoria,
             remedio.idLocal,
             remedio.idIntervalo,
+            remedio.notas,
             String(id)])
         
         self.bancoDeDados.close()
@@ -345,6 +361,7 @@ class RemedioDAO: DAO {
         var idCategoria: NSString = ""
         var idLocal: NSString = ""
         var idIntervalo: NSString = ""
+        var notas: String = ""
         
         while(result.next()){
             
@@ -387,8 +404,10 @@ class RemedioDAO: DAO {
             if(result.stringForColumn("id_intervalo") != nil){
                 idIntervalo = result.stringForColumn("id_intervalo")
             }
-            
-            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue)
+            if result.stringForColumn("notas") != nil {
+                notas = result.stringForColumn("notas")
+            }
+            let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas:notas)
             
             todosRemedios.append(remedio)
             

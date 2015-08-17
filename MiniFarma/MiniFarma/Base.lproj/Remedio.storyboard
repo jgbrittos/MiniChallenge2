@@ -508,6 +508,42 @@
                                             <outletCollection property="gestureRecognizers" destination="2W2-vm-MNp" appends="YES" id="ubr-MA-DWc"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaNotas" rowHeight="150" id="ews-Lh-lXG">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ews-Lh-lXG" id="W3I-z2-VYJ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Informações gerais" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="orV-vV-YNQ">
+                                                    <rect key="frame" x="67" y="11" width="525" height="130.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5R-Tc-w4b">
+                                                    <rect key="frame" x="8" y="64" width="51" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="51" id="Wha-bf-M8M"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="orV-vV-YNQ" firstAttribute="bottom" secondItem="W3I-z2-VYJ" secondAttribute="bottomMargin" id="0Xl-SW-qfN"/>
+                                                <constraint firstItem="f5R-Tc-w4b" firstAttribute="top" secondItem="W3I-z2-VYJ" secondAttribute="topMargin" constant="56" id="DoO-kk-tkB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="f5R-Tc-w4b" secondAttribute="bottom" constant="56.5" id="Hga-cg-WpM"/>
+                                                <constraint firstItem="orV-vV-YNQ" firstAttribute="top" secondItem="W3I-z2-VYJ" secondAttribute="topMargin" constant="3" id="Hh6-YX-dla"/>
+                                                <constraint firstItem="f5R-Tc-w4b" firstAttribute="leading" secondItem="W3I-z2-VYJ" secondAttribute="leadingMargin" id="Svn-uk-AGs"/>
+                                                <constraint firstItem="orV-vV-YNQ" firstAttribute="leading" secondItem="f5R-Tc-w4b" secondAttribute="trailing" constant="8" id="XmC-L8-3ie"/>
+                                                <constraint firstItem="orV-vV-YNQ" firstAttribute="trailing" secondItem="W3I-z2-VYJ" secondAttribute="trailingMargin" id="pEW-6K-UrN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -548,6 +584,7 @@
                         <outlet property="textFieldNumeroDose" destination="eR8-Ox-Exw" id="BeU-qb-fnt"/>
                         <outlet property="textFieldNumeroQuantidade" destination="nHK-Vo-l0G" id="zys-5t-nvX"/>
                         <outlet property="textFieldPreco" destination="s4a-Zj-LEU" id="k52-9F-iRg"/>
+                        <outlet property="textViewNotas" destination="orV-vV-YNQ" id="wx2-Eg-A16"/>
                         <segue destination="Thq-Hb-oxS" kind="show" identifier="VisualizarFotoReceita" id="Pcf-y5-mk2"/>
                         <segue destination="0pX-7n-PmH" kind="show" identifier="SelecionaFarmacia" id="54l-js-czW"/>
                     </connections>

@@ -30,6 +30,7 @@ class VisualizarRemedioTableViewController: UITableViewController {
     @IBOutlet weak var labelQuantidade: UILabel!
     @IBOutlet weak var labelDose: UILabel!
     @IBOutlet weak var labelPreco: UILabel!
+    @IBOutlet weak var textViewNotas: UITextView!
     
     var fotoDoRemedio: UIImage?
     var fotoDaReceita: UIImage?
@@ -40,7 +41,7 @@ class VisualizarRemedioTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        
+        self.textViewNotas.tintColor = UIColor(red: 0/255, green: 158/255, blue: 201/255, alpha: 1)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -134,6 +135,12 @@ class VisualizarRemedioTableViewController: UITableViewController {
         }else{
             self.labelPreco.text = self.INDISPONIVEL
         }
+        
+        if let n = self.remedio?.notas {
+            self.textViewNotas.text = n
+        }else{
+            self.textViewNotas.text = "Não há notas"
+        }
     }
 
     // MARK: - Table view data source
@@ -143,7 +150,7 @@ class VisualizarRemedioTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 11
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -153,6 +160,10 @@ class VisualizarRemedioTableViewController: UITableViewController {
             }else{
                 cell.accessoryType = .None
             }
+        }
+        
+        if cell.reuseIdentifier == "ultima" {
+            cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
         }
     }
 

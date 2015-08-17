@@ -30,6 +30,7 @@ SelecionaFarmaciaDelegate {
     @IBOutlet weak var labelDose: UILabel!
     @IBOutlet weak var labelPreco: UILabel!
     @IBOutlet weak var switchAlerta: UISwitch!
+    @IBOutlet weak var textViewNotas: UITextView!
     
     @IBOutlet weak var labelLocal: UILabel!
     @IBOutlet weak var textFieldLocal: UITextField!
@@ -136,6 +137,8 @@ SelecionaFarmaciaDelegate {
             self.labelPreco.text = self.labelMoeda.text! + String(stringInterpolationSegment: r.preco)
             self.textFieldPreco.text = String(stringInterpolationSegment: r.preco)
             
+            self.textViewNotas.text = r.notas
+            
             self.fotoReceita = r.fotoReceitaUIImage
             
             self.idRemedio = r.idRemedio
@@ -170,12 +173,12 @@ SelecionaFarmaciaDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 11
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row {
-            case 0:
+            case 0, 10:
                 return 150
             case 4:
                 return self.alturaCelulaLocal
@@ -214,13 +217,17 @@ SelecionaFarmaciaDelegate {
         let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: UUID+"_"+nomeRemedio, eTipo: "Remedio.png")
         let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: UUID+"_"+nomeRemedio, eTipo: "Receita.png")
         
-        var preco: Double?
-        if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text) {
+
+        var preco = NSString(string: self.textFieldPreco.text).doubleValue
+        if self.textFieldPreco.text == "0.0" {
+            preco = 0
+        }else if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text) {
             preco = n.doubleValue
         }
         
         let formatador = NSDateFormatter()
         formatador.dateFormat = "dd/MM/yyyy"
+        formatador.timeZone = NSTimeZone.systemTimeZone()
         let dataValidade = formatador.dateFromString(self.textFieldDataDeValidade.text)
         
         var idFarmacia: Int = 0
@@ -243,7 +250,12 @@ SelecionaFarmaciaDelegate {
             idIntervalo = i.idIntervalo
         }
         
-        let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo)
+        var notas: String = ""
+        if let n =  self.textViewNotas.text {
+            notas = n
+        }
+        
+        let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo, notas: notas)
         
         if self.textFieldDataDeValidade.text != "" && self.textFieldDataDeValidade.text != "01/01/1900" {
             let notificacaoVencimento = Notificacao(remedio: remedio)
