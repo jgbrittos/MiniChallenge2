@@ -1,9 +1,12 @@
 
+/* Class = "UITextField"; placeholder = "Telefone"; ObjectID = "MRB-cy-lIr"; */
+"MRB-cy-lIr.placeholder" = "Telefone";
+
 /* Class = "UILabel"; text = "Marcar como favorita"; ObjectID = "XK2-3e-Yey"; */
 "XK2-3e-Yey.text" = "Marcar como favorita";
 
 /* Class = "UINavigationItem"; title = "Nova Farmácia"; ObjectID = "ndP-5f-dCw"; */
 "ndP-5f-dCw.title" = "Nova Farmácia";
 
-/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "nr4-dj-6YG"; */
+/* Class = "UITextField"; placeholder = "Nome da farmácia"; ObjectID = "nr4-dj-6YG"; */
 "nr4-dj-6YG.placeholder" = "Nome da farmácia";

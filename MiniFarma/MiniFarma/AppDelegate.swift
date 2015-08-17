@@ -92,6 +92,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         acaoNotificacaoTomei.authenticationRequired = false
         acaoNotificacaoTomei.activationMode = UIUserNotificationActivationMode.Background
         
+        var acaoNotificacaoLigar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        acaoNotificacaoLigar.identifier = "LIGAR_IDENTIFICADOR"
+        acaoNotificacaoLigar.title = NSLocalizedString("ALERTAACAOLIGAR", comment: "ligar")
+        acaoNotificacaoLigar.destructive = false
+        acaoNotificacaoLigar.authenticationRequired = false
+        acaoNotificacaoLigar.activationMode = UIUserNotificationActivationMode.Background
+        
         var categoriaNotificacoesComAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         categoriaNotificacoesComAcao.identifier = "ACTION_CATEGORY"
         categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], forContext: UIUserNotificationActionContext.Default)
@@ -99,8 +106,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var categoriaNotificaoSemAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         categoriaNotificaoSemAcao.identifier = "NONE_CATEGORY"
-        
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[categoriaNotificacoesComAcao,categoriaNotificaoSemAcao]) as Set<NSObject>))
+        categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Default)
+        categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Minimal)
+        //MUDEI AQUI DE application para UIApplication.sharedApplication()
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[categoriaNotificacoesComAcao,categoriaNotificaoSemAcao]) as Set<NSObject>))
     }
     
     func alteraAparenciaDaStatusENavigationBar(){
@@ -161,10 +170,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 historico = Historico(idRemedio: remedioBuscado.idRemedio, dataTomada: NSDate())
                 historicoDAO.inserir(historico)
             }
+        }else if(identifier == "LIGAR_IDENTIFICADOR"){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UITabBarController
+            let view = self.window?.rootViewController
+            view?.presentViewController(storyboard, animated: true, completion: nil)
+            
+            let farmaciaDAO = FarmaciaDAO()
+            
+            let farmacia = farmaciaDAO.buscarPorId(remedioBuscado.idFarmacia) as! Farmacia
+            
+            if String(farmacia.telefone) != nil {
+                let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
+                
+                //check  Call Function available only in iphone
+                if UIApplication.sharedApplication().canOpenURL(ligacao!) {
+                    UIApplication.sharedApplication().openURL(ligacao!)
+                } else {
+                    SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
+                }
+            }else{
+                SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTANAOHATELEFONE", comment: "erro mensagem"), closeButtonTitle: "OK")
+            }
         }
         
         completionHandler()
 
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        println("ligar")
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {

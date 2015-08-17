@@ -116,8 +116,10 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 celulaAlerta.labelNome.enabled = false
                 celulaAlerta.labelDataDeValidade.enabled = false
                 celulaAlerta.switchAtivaAlerta.on = false
+                celulaAlerta.switchAtivaAlerta.hidden = true
                 data = NSLocalizedString("ALERTAINATIVO", comment: "inatividade")
             }else{
+                celulaAlerta.switchAtivaAlerta.hidden = false
                 celulaAlerta.switchAtivaAlerta.enabled = true
                 celulaAlerta.switchAtivaAlerta.on = true
             }

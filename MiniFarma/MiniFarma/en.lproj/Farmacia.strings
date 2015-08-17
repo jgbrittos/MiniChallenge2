@@ -1,9 +1,12 @@
 
-/* Class = "UILabel"; text = "Marcar como favorita"; ObjectID = "XK2-3e-Yey"; */
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "MRB-cy-lIr"; */
+"MRB-cy-lIr.placeholder" = "Phone number";
+
+/* Class = "UILabel"; text = "Mark as favorite"; ObjectID = "XK2-3e-Yey"; */
 "XK2-3e-Yey.text" = "Mark as favorite";
 
-/* Class = "UINavigationItem"; title = "Nova Farmácia"; ObjectID = "ndP-5f-dCw"; */
+/* Class = "UINavigationItem"; title = "New Pharmacy"; ObjectID = "ndP-5f-dCw"; */
 "ndP-5f-dCw.title" = "New Pharmacy";
 
-/* Class = "UITextField"; placeholder = "Nome"; ObjectID = "nr4-dj-6YG"; */
+/* Class = "UITextField"; placeholder = "Pharmacy name"; ObjectID = "nr4-dj-6YG"; */
 "nr4-dj-6YG.placeholder" = "Pharmacy name";

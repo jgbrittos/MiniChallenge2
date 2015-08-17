@@ -1,4 +1,10 @@
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "1AQ-s9-ii1"; */
+"1AQ-s9-ii1.text" = "Label";
+
+/* Class = "UITableViewSection"; headerTitle = "Próximas doses"; ObjectID = "5C4-lj-qFC"; */
+"5C4-lj-qFC.headerTitle" = "Próximas doses";
+
 /* Class = "UILabel"; text = "Quantidade"; ObjectID = "74T-Wp-94N"; */
 "74T-Wp-94N.text" = "Quantidade";
 
@@ -23,6 +29,9 @@
 /* Class = "UINavigationItem"; title = "Meus Alertas"; ObjectID = "E0H-1g-p2e"; */
 "E0H-1g-p2e.title" = "Meus Alertas";
 
+/* Class = "UITableViewSection"; headerTitle = "Alerta"; ObjectID = "Fgb-ri-vga"; */
+"Fgb-ri-vga.headerTitle" = "Alerta";
+
 /* Class = "UILabel"; text = "Intervalo"; ObjectID = "G0Q-B3-LT0"; */
 "G0Q-B3-LT0.text" = "Intervalo";
 
@@ -35,11 +44,17 @@
 /* Class = "UIBarButtonItem"; title = "Abrir no Mapas"; ObjectID = "JMm-RA-fq6"; */
 "JMm-RA-fq6.title" = "Abrir no Mapas";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "NUG-8m-yfA"; */
+"NUG-8m-yfA.text" = "Label";
+
 /* Class = "UILabel"; text = "Intervalo"; ObjectID = "OaQ-CQ-3ai"; */
 "OaQ-CQ-3ai.text" = "Intervalo";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "PBL-rT-zMK"; */
 "PBL-rT-zMK.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Pla-Pe-Tad"; */
+"Pla-Pe-Tad.text" = "Label";
 
 /* Class = "UILabel"; text = "Categoria"; ObjectID = "PxD-CB-T5D"; */
 "PxD-CB-T5D.text" = "Categoria";
@@ -139,3 +154,6 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "ytR-J2-kTY"; */
 "ytR-J2-kTY.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zzj-yV-EBG"; */
+"zzj-yV-EBG.text" = "Label";

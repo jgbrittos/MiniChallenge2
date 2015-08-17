@@ -137,3 +137,11 @@ ALERTAINATIVO = "Alerta inativo";
 ALERTAPROXIMADOSE = "Próxima: ";
 ALERTAACAOTOMEI = "Tomei";
 ALERTAACAOADIAR = "Adiar";
+ALERTAACAOLIGAR = "Ligar para farmácia";
+
+ALERTAREMEDIOACABANDO = "O remédio %@ está acabando!";
+ALERTAREMEDIOACABOU = "O remédio %@ acabou!";
+ALERTAREMEDIOVENCENDO = "Amanhã o remédio %@ irá vencer!";
+
+ALERTAERROLIGACAO = "Esta função só está diponível no iPhone";
+ALERTANAOHATELEFONE = "Não há telefone cadastrado";

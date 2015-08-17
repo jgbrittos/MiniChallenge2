@@ -139,11 +139,13 @@
 		455E39071B81680E008DE73F /* VisualizaHistoricoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizaHistoricoTableViewController.swift; sourceTree = "<group>"; };
 		455E390A1B816968008DE73F /* Historico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Historico.swift; sourceTree = "<group>"; };
 		455E390C1B816975008DE73F /* HistoricoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoDAO.swift; sourceTree = "<group>"; };
-		455E39101B8206C5008DE73F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		455E39111B8206CA008DE73F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		455E39201B820A70008DE73F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Remedio.strings; sourceTree = "<group>"; };
 		455E39211B820A73008DE73F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Remedio.strings"; sourceTree = "<group>"; };
 		457409B41B66991400CC71EF /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		458C84D01B826D58000F5C3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Farmacia.strings; sourceTree = "<group>"; };
+		458C84D11B826D5C000F5C3B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Farmacia.strings"; sourceTree = "<group>"; };
+		458C84D41B827757000F5C3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		458C84D51B827760000F5C3B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		45BB4AE31B61666B00E24F80 /* Intervalo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intervalo.swift; sourceTree = "<group>"; };
 		45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloDAO.swift; sourceTree = "<group>"; };
 		45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloViewController.swift; sourceTree = "<group>"; };
@@ -159,8 +161,6 @@
 		45EAF7921B72581400881BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Alerta.storyboard; sourceTree = "<group>"; };
 		45EAF7951B72581700881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Alerta.strings"; sourceTree = "<group>"; };
 		45EAF7991B725A1000881BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Farmacia.storyboard; sourceTree = "<group>"; };
-		45EAF79C1B725A1200881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Farmacia.strings; sourceTree = "<group>"; };
-		45EAF79E1B725A1200881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Farmacia.strings"; sourceTree = "<group>"; };
 		45EAF7A01B725B2A00881BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Remedio.storyboard; sourceTree = "<group>"; };
 		45EAF7AF1B727B4C00881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Alerta.strings; sourceTree = "<group>"; };
 		45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFarmaciaViewController.swift; sourceTree = "<group>"; };
@@ -752,8 +752,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				453961291B5BE35D0097DEDB /* Base */,
-				455E39101B8206C5008DE73F /* en */,
-				455E39111B8206CA008DE73F /* pt-BR */,
+				458C84D41B827757000F5C3B /* en */,
+				458C84D51B827760000F5C3B /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -810,8 +810,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				45EAF7991B725A1000881BE3 /* Base */,
-				45EAF79C1B725A1200881BE3 /* en */,
-				45EAF79E1B725A1200881BE3 /* pt-BR */,
+				458C84D01B826D58000F5C3B /* en */,
+				458C84D11B826D5C000F5C3B /* pt-BR */,
 			);
 			name = Farmacia.storyboard;
 			sourceTree = "<group>";
@@ -846,6 +846,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -890,6 +891,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -923,9 +925,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "37a688a1-2390-42b4-afae-7720312755e7";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/FMDB-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -942,8 +945,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "37a688a1-2390-42b4-afae-7720312755e7";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/FMDB-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -995,7 +999,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b82518d7-4ba6-4d1d-bca8-a62dcc645195";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1010,7 +1014,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b82518d7-4ba6-4d1d-bca8-a62dcc645195";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

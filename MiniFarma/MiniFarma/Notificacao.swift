@@ -19,10 +19,14 @@ class Notificacao: NSObject {
 
         var mensagem: String
 
+//        ALERTAREMEDIOACABANDO = "O remédio %@ está acabando!";
+//        ALERTAREMEDIOACABOU = "O remédio %@ acabou!";
+//        ALERTAREMEDIOVENCENDO = "Amanhã o remédio %@ irá vencer!";
+
         if quantidadeRestante > 0 {
-            mensagem = "O remédio \(nomeRemedio) está acabando!"
+            mensagem = NSLocalizedString(String(format: NSLocalizedString("ALERTAREMEDIOACABANDO", comment: "remedio acabando"), arguments: [nomeRemedio]), comment: "remedio acabando")//"O remédio \(nomeRemedio) está acabando!"
         }else{
-            mensagem = "O remédio \(nomeRemedio) acabou!"
+            mensagem = NSLocalizedString(String(format: NSLocalizedString("ALERTAREMEDIOACABOU", comment: "remedio acabou"), arguments: [nomeRemedio]), comment: "remedio acabando")
         }
         
         println("\(mensagem)")
@@ -30,7 +34,7 @@ class Notificacao: NSObject {
         var notificacaoLocal : UILocalNotification = UILocalNotification()
         notificacaoLocal.alertAction = "Mini Farma"
         notificacaoLocal.alertBody = mensagem
-        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 30)
+        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 5)
         notificacaoLocal.userInfo = ["acabando":String(idRemedio)]
         notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
         notificacaoLocal.category = "NONE_CATEGORY"
@@ -51,7 +55,7 @@ class Notificacao: NSObject {
 
         var notificacaoLocal : UILocalNotification = UILocalNotification()
         notificacaoLocal.alertAction = "Mini Farma"
-        notificacaoLocal.alertBody = "Amanhã o remédio \(remedio.nomeRemedio) irá vencer!"
+        notificacaoLocal.alertBody = NSLocalizedString(String(format: NSLocalizedString("ALERTAREMEDIOVENCENDO", comment: "remedio vencendo"), arguments: [remedio.nomeRemedio]), comment: "remedio vencendo")
         notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundos))
         notificacaoLocal.userInfo = ["vencimento":String(remedio.idRemedio)]
         notificacaoLocal.soundName = UILocalNotificationDefaultSoundName

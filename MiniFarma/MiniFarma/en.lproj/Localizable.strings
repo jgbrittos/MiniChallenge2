@@ -120,3 +120,11 @@ ALERTAINATIVO = "Inactive alert";
 ALERTAPROXIMADOSE = "Next: ";
 ALERTAACAOTOMEI = "Took";
 ALERTAACAOADIAR = "Delay";
+ALERTAACAOLIGAR = "Call pharmacy";
+
+ALERTAREMEDIOACABANDO = "The medication %@ is running out!";
+ALERTAREMEDIOACABOU = "The medication %@ is over!";
+ALERTAREMEDIOVENCENDO = "Tomorrow the medication %@ will expire!";
+
+ALERTAERROLIGACAO = "This function is only available in iPhone";
+ALERTANAOHATELEFONE = "There is no phone number registered";
