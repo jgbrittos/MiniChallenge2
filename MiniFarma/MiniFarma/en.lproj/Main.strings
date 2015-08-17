@@ -8,11 +8,17 @@
 /* Class = "UILabel"; text = "Medication"; ObjectID = "7o1-Dj-SjB"; */
 "7o1-Dj-SjB.text" = "Medication";
 
+/* Class = "UILabel"; text = "Historic"; ObjectID = "7r2-ZD-j7c"; */
+"7r2-ZD-j7c.text" = "Historic";
+
 /* Class = "UISegmentedControl"; 9VZ-Ew-X34.segmentTitles[0] = "Active"; ObjectID = "9VZ-Ew-X34"; */
 "9VZ-Ew-X34.segmentTitles[0]" = "Active";
 
 /* Class = "UISegmentedControl"; 9VZ-Ew-X34.segmentTitles[1] = "Inactive"; ObjectID = "9VZ-Ew-X34"; */
 "9VZ-Ew-X34.segmentTitles[1]" = "Inactive";
+
+/* Class = "UINavigationItem"; title = "Historic"; ObjectID = "DUN-8O-W46"; */
+"DUN-8O-W46.title" = "Historic";
 
 /* Class = "UINavigationItem"; title = "My Alerts"; ObjectID = "E0H-1g-p2e"; */
 "E0H-1g-p2e.title" = "My Alerts";
@@ -26,7 +32,7 @@
 /* Class = "UINavigationItem"; title = "View Alert"; ObjectID = "Ixs-E7-D2n"; */
 "Ixs-E7-D2n.title" = "View Alert";
 
-/* Class = "UIBarButtonItem"; title = "Abrir no Mapas"; ObjectID = "JMm-RA-fq6"; */
+/* Class = "UIBarButtonItem"; title = "Open in Maps"; ObjectID = "JMm-RA-fq6"; */
 "JMm-RA-fq6.title" = "Open in Maps";
 
 /* Class = "UILabel"; text = "Interval"; ObjectID = "OaQ-CQ-3ai"; */
@@ -41,11 +47,17 @@
 /* Class = "UILabel"; text = "Prescription"; ObjectID = "QlC-xI-uri"; */
 "QlC-xI-uri.text" = "Prescription";
 
+/* Class = "UITextView"; text = "General info"; ObjectID = "Ra8-Xe-wfw"; */
+"Ra8-Xe-wfw.text" = "General info";
+
 /* Class = "UILabel"; text = "Date"; ObjectID = "SFZ-YL-O5P"; */
 "SFZ-YL-O5P.text" = "Date";
 
 /* Class = "UINavigationItem"; title = "View Medication"; ObjectID = "SSM-na-lrO"; */
 "SSM-na-lrO.title" = "View Medication";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Sku-pc-YBa"; */
+"Sku-pc-YBa.normalTitle" = "Button";
 
 /* Class = "UISegmentedControl"; UDi-B8-Cyq.segmentTitles[0] = "Valid"; ObjectID = "UDi-B8-Cyq"; */
 "UDi-B8-Cyq.segmentTitles[0]" = "Valid";
@@ -53,8 +65,17 @@
 /* Class = "UISegmentedControl"; UDi-B8-Cyq.segmentTitles[1] = "Expired"; ObjectID = "UDi-B8-Cyq"; */
 "UDi-B8-Cyq.segmentTitles[1]" = "Expired";
 
+/* Class = "UILabel"; text = "Notes"; ObjectID = "W3f-8g-Ubf"; */
+"W3f-8g-Ubf.text" = "Notes";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "X5i-ty-GXA"; */
+"X5i-ty-GXA.text" = "Title";
+
 /* Class = "UILabel"; text = "Name"; ObjectID = "XYI-s4-Sm1"; */
 "XYI-s4-Sm1.text" = "Name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Z6A-pL-P4q"; */
+"Z6A-pL-P4q.text" = "Label";
 
 /* Class = "UINavigationItem"; title = "Photo"; ObjectID = "a1T-HV-fKo"; */
 "a1T-HV-fKo.title" = "Photo";
@@ -89,7 +110,7 @@
 /* Class = "UILabel"; text = "Name"; ObjectID = "s9w-uj-h23"; */
 "s9w-uj-h23.text" = "Name";
 
-/* Class = "UINavigationItem"; title = "Localização Farmácia"; ObjectID = "ss0-20-KsK"; */
+/* Class = "UINavigationItem"; title = "Pharmacy Location"; ObjectID = "ss0-20-KsK"; */
 "ss0-20-KsK.title" = "Pharmacy Location";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "uDz-rd-npF"; */

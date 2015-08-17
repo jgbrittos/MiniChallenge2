@@ -8,11 +8,17 @@
 /* Class = "UILabel"; text = "Remédio"; ObjectID = "7o1-Dj-SjB"; */
 "7o1-Dj-SjB.text" = "Remédio";
 
+/* Class = "UILabel"; text = "Histórico"; ObjectID = "7r2-ZD-j7c"; */
+"7r2-ZD-j7c.text" = "Histórico";
+
 /* Class = "UISegmentedControl"; 9VZ-Ew-X34.segmentTitles[0] = "Ativos"; ObjectID = "9VZ-Ew-X34"; */
 "9VZ-Ew-X34.segmentTitles[0]" = "Ativos";
 
 /* Class = "UISegmentedControl"; 9VZ-Ew-X34.segmentTitles[1] = "Inativos"; ObjectID = "9VZ-Ew-X34"; */
 "9VZ-Ew-X34.segmentTitles[1]" = "Inativos";
+
+/* Class = "UINavigationItem"; title = "Histórico de tomada"; ObjectID = "DUN-8O-W46"; */
+"DUN-8O-W46.title" = "Histórico de tomada";
 
 /* Class = "UINavigationItem"; title = "Meus Alertas"; ObjectID = "E0H-1g-p2e"; */
 "E0H-1g-p2e.title" = "Meus Alertas";
@@ -26,6 +32,9 @@
 /* Class = "UINavigationItem"; title = "Visualizar Alerta"; ObjectID = "Ixs-E7-D2n"; */
 "Ixs-E7-D2n.title" = "Visualizar Alerta";
 
+/* Class = "UIBarButtonItem"; title = "Abrir no Mapas"; ObjectID = "JMm-RA-fq6"; */
+"JMm-RA-fq6.title" = "Abrir no Mapas";
+
 /* Class = "UILabel"; text = "Intervalo"; ObjectID = "OaQ-CQ-3ai"; */
 "OaQ-CQ-3ai.text" = "Intervalo";
 
@@ -38,11 +47,17 @@
 /* Class = "UILabel"; text = "Receita"; ObjectID = "QlC-xI-uri"; */
 "QlC-xI-uri.text" = "Receita";
 
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Ra8-Xe-wfw"; */
+"Ra8-Xe-wfw.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
 /* Class = "UILabel"; text = "Data"; ObjectID = "SFZ-YL-O5P"; */
 "SFZ-YL-O5P.text" = "Data";
 
 /* Class = "UINavigationItem"; title = "Visualizar Remédio"; ObjectID = "SSM-na-lrO"; */
 "SSM-na-lrO.title" = "Visualizar Remédio";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Sku-pc-YBa"; */
+"Sku-pc-YBa.normalTitle" = "Button";
 
 /* Class = "UISegmentedControl"; UDi-B8-Cyq.segmentTitles[0] = "Válidos"; ObjectID = "UDi-B8-Cyq"; */
 "UDi-B8-Cyq.segmentTitles[0]" = "Válidos";
@@ -50,8 +65,17 @@
 /* Class = "UISegmentedControl"; UDi-B8-Cyq.segmentTitles[1] = "Vencidos"; ObjectID = "UDi-B8-Cyq"; */
 "UDi-B8-Cyq.segmentTitles[1]" = "Vencidos";
 
+/* Class = "UILabel"; text = "Notas"; ObjectID = "W3f-8g-Ubf"; */
+"W3f-8g-Ubf.text" = "Notas";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "X5i-ty-GXA"; */
+"X5i-ty-GXA.text" = "Title";
+
 /* Class = "UILabel"; text = "Nome"; ObjectID = "XYI-s4-Sm1"; */
 "XYI-s4-Sm1.text" = "Nome";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Z6A-pL-P4q"; */
+"Z6A-pL-P4q.text" = "Label";
 
 /* Class = "UINavigationItem"; title = "Foto"; ObjectID = "a1T-HV-fKo"; */
 "a1T-HV-fKo.title" = "Foto";
@@ -85,6 +109,9 @@
 
 /* Class = "UILabel"; text = "Nome"; ObjectID = "s9w-uj-h23"; */
 "s9w-uj-h23.text" = "Nome";
+
+/* Class = "UINavigationItem"; title = "Localização Farmácia"; ObjectID = "ss0-20-KsK"; */
+"ss0-20-KsK.title" = "Localização Farmácia";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "uDz-rd-npF"; */
 "uDz-rd-npF.text" = "Label";

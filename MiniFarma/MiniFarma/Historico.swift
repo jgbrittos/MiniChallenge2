@@ -16,7 +16,7 @@ class Historico: NSObject {
     
     var dataTomadaEmString: String {
         let f = NSDateFormatter()
-        f.dateFormat = "dd/MM/yyyy hh:mm"
+        f.dateFormat = "dd/MM/yyyy HH:mm"
         f.timeZone = NSTimeZone.systemTimeZone()
         return f.stringFromDate(self.dataTomada)
     }

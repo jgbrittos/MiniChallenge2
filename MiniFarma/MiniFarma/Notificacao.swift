@@ -61,6 +61,7 @@ class Notificacao: NSObject {
     }
     
     init(remedio:Remedio, alerta:Alerta, intervalo:Intervalo){
+        self.intervalo = intervalo
         super.init()
         //por enquanto nao to usando a duracao do alerta para nada
         
@@ -137,12 +138,13 @@ class Notificacao: NSObject {
         
         var notificacaoCancelada = UILocalNotification()
         var arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        let idRemedio = String(alerta.idRemedio)
         
         for notificacaoCancelada in arrayDeNotificacoes as! [UILocalNotification]{
             
             let info = notificacaoCancelada.userInfo as! [String: AnyObject]
             
-            if info["idRemedio"] as! String == String(alerta.idRemedio) {
+            if info["idRemedio"] as? String == idRemedio {
                 UIApplication.sharedApplication().cancelLocalNotification(notificacaoCancelada)
             }else{
                 println("Nenhuma notificacao local encontrada com esse id de remedio")

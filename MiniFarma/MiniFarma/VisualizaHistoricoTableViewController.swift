@@ -16,7 +16,7 @@ class VisualizaHistoricoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.historicos = self.historicoDAO.buscarTodos() as! [Historico]
+        self.historicos = self.historicoDAO.buscarTodosDoRemedioComId(self.remedio!.idRemedio) as! [Historico]
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
 

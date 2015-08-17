@@ -101,6 +101,8 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return celulaBranca
         }else{
             let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
+            celulaAlerta.labelNome.enabled = true
+            celulaAlerta.labelDataDeValidade.enabled = true
             var alerta = self.alertasDaVez[indexPath.row] as Alerta
             
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
@@ -140,11 +142,11 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let dataInicio = alerta.dataInicio
         let intervalo = self.intervaloDAO.buscarPorId(alerta.idIntervalo) as! Intervalo
         let dataAgora = NSDate()
-        var dataProximaDose: NSDate
+        var dataProximaDose = dataInicio
         
-        do {
-            dataProximaDose = dataInicio.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo.numero))
-        }while(dataProximaDose.compare(dataAgora) == .OrderedAscending)//dataProximaDose < data de agora
+        while(dataProximaDose.compare(dataAgora) == .OrderedAscending) { //dataProximaDose < data de agora
+            dataProximaDose = dataProximaDose.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo.numero))
+        }
         
         let formatador = NSDateFormatter()
         formatador.dateFormat = "dd/MM/yyyy HH:mm"
@@ -162,9 +164,13 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         for notificacao in arrayDeNotificacoes as! [UILocalNotification]{
             
+//            var idRemedioString: String = ""
             let info = notificacao.userInfo as! [String: AnyObject]
+//            if let i = info["idRemedio"] as? String {
+//                idRemedioString = i
+//            }
             
-            if info["idRemedio"] as! String == idRemedio {
+            if info["idRemedio"] as? String == idRemedio {
                 contadorNotificacoes++
             }else{
                 println("Nenhuma notificacao local encontrada com esse id de remedio")

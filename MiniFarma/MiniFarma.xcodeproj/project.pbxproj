@@ -139,6 +139,10 @@
 		455E39071B81680E008DE73F /* VisualizaHistoricoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizaHistoricoTableViewController.swift; sourceTree = "<group>"; };
 		455E390A1B816968008DE73F /* Historico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Historico.swift; sourceTree = "<group>"; };
 		455E390C1B816975008DE73F /* HistoricoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricoDAO.swift; sourceTree = "<group>"; };
+		455E39101B8206C5008DE73F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		455E39111B8206CA008DE73F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		455E39201B820A70008DE73F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Remedio.strings; sourceTree = "<group>"; };
+		455E39211B820A73008DE73F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Remedio.strings"; sourceTree = "<group>"; };
 		457409B41B66991400CC71EF /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		45BB4AE31B61666B00E24F80 /* Intervalo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intervalo.swift; sourceTree = "<group>"; };
 		45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervaloDAO.swift; sourceTree = "<group>"; };
@@ -158,12 +162,8 @@
 		45EAF79C1B725A1200881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Farmacia.strings; sourceTree = "<group>"; };
 		45EAF79E1B725A1200881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Farmacia.strings"; sourceTree = "<group>"; };
 		45EAF7A01B725B2A00881BE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Remedio.storyboard; sourceTree = "<group>"; };
-		45EAF7A31B725B2C00881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Remedio.strings"; sourceTree = "<group>"; };
-		45EAF7A51B725B3200881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Remedio.strings; sourceTree = "<group>"; };
-		45EAF7A91B725E7E00881BE3 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		45EAF7AF1B727B4C00881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Alerta.strings; sourceTree = "<group>"; };
 		45EAF7B01B72832C00881BE3 /* VisualizarFarmaciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizarFarmaciaViewController.swift; sourceTree = "<group>"; };
-		45EAF7B31B72971700881BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		45EAF7B81B72BA3400881BE3 /* MiniFarmaWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MiniFarmaWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		45EAF7BA1B72BA3400881BE3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		45EAF7BE1B72BA3400881BE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -752,8 +752,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				453961291B5BE35D0097DEDB /* Base */,
-				45EAF7A91B725E7E00881BE3 /* pt-BR */,
-				45EAF7B31B72971700881BE3 /* en */,
+				455E39101B8206C5008DE73F /* en */,
+				455E39111B8206CA008DE73F /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -820,8 +820,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				45EAF7A01B725B2A00881BE3 /* Base */,
-				45EAF7A31B725B2C00881BE3 /* pt-BR */,
-				45EAF7A51B725B3200881BE3 /* en */,
+				455E39201B820A70008DE73F /* en */,
+				455E39211B820A73008DE73F /* pt-BR */,
 			);
 			name = Remedio.storyboard;
 			sourceTree = "<group>";

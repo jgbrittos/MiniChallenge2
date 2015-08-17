@@ -30,6 +30,7 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
         self.dataInicioPicker.timeZone = NSTimeZone.systemTimeZone()//localTimeZone()
 //        self.dataInicioPicker.calendar = NSCalendar.currentCalendar()
 //        self.dataInicioPicker.locale = NSLocale(localeIdentifier: "pt-BR")
+//        self.dataInicioPicker.minimumDate = NSDate()
     }
 
     override func viewWillAppear(animated: Bool) {

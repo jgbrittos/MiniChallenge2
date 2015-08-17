@@ -98,4 +98,32 @@ class HistoricoDAO: DAO {
         
         return historicoBuscado
     }
+    
+    func buscarTodosDoRemedioComId(id: Int) -> [AnyObject] {
+        
+        self.bancoDeDados.open()
+        
+        self.historicos = [Historico]()
+        
+        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM HistoricoRemedio WHERE id_remedio = ? Order By dataTomada", withArgumentsInArray: [String(id)])
+        
+        var idHistorico = String()
+        var idRemedio = String()
+        var dataTomada = NSDate()
+        
+        while(resultadoBusca.next()){
+            
+            idHistorico = resultadoBusca.stringForColumn("id_historico")
+            idRemedio = resultadoBusca.stringForColumn("id_remedio")
+            dataTomada = resultadoBusca.dateForColumn("dataTomada")
+            
+            let historico = Historico(idHistorico: idHistorico.toInt()!, idRemedio: idRemedio.toInt()!, dataTomada: dataTomada)
+            
+            self.historicos.append(historico)
+        }
+        
+        self.bancoDeDados.close()
+        
+        return self.historicos
+    }
 }
