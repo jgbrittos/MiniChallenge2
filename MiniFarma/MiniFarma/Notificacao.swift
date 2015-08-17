@@ -35,7 +35,7 @@ class Notificacao: NSObject {
         notificacaoLocal.alertAction = "Mini Farma"
         notificacaoLocal.alertBody = mensagem
         notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 5)
-        notificacaoLocal.userInfo = ["acabando":String(idRemedio)]
+        notificacaoLocal.userInfo = ["acabandoOuVencendo":String(idRemedio), "ligar":"1"]
         notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
         notificacaoLocal.category = "NONE_CATEGORY"
         UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
@@ -57,7 +57,7 @@ class Notificacao: NSObject {
         notificacaoLocal.alertAction = "Mini Farma"
         notificacaoLocal.alertBody = NSLocalizedString(String(format: NSLocalizedString("ALERTAREMEDIOVENCENDO", comment: "remedio vencendo"), arguments: [remedio.nomeRemedio]), comment: "remedio vencendo")
         notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundos))
-        notificacaoLocal.userInfo = ["vencimento":String(remedio.idRemedio)]
+        notificacaoLocal.userInfo = ["acabandoOuVencendo":String(remedio.idRemedio), "ligar":"1"]
         notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
         notificacaoLocal.category = "NONE_CATEGORY"
         UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)

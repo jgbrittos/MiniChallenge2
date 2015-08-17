@@ -122,9 +122,9 @@ ALERTAACAOTOMEI = "Took";
 ALERTAACAOADIAR = "Delay";
 ALERTAACAOLIGAR = "Call pharmacy";
 
-ALERTAREMEDIOACABANDO = "The medication %@ is running out!";
-ALERTAREMEDIOACABOU = "The medication %@ is over!";
-ALERTAREMEDIOVENCENDO = "Tomorrow the medication %@ will expire!";
+ALERTAREMEDIOACABANDO = "The medication %@ is running out. Tap here to call to the pharmacy!";
+ALERTAREMEDIOACABOU = "The medication %@ is over. Tap here to call to the pharmacy!";
+ALERTAREMEDIOVENCENDO = "Tomorrow the medication %@ will expire. Tap here to call to the pharmacy!";
 
 ALERTAERROLIGACAO = "This function is only available in iPhone";
 ALERTANAOHATELEFONE = "There is no phone number registered";

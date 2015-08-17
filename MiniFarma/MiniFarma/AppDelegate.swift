@@ -106,10 +106,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var categoriaNotificaoSemAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         categoriaNotificaoSemAcao.identifier = "NONE_CATEGORY"
-        categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Default)
-        categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Minimal)
+        //categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Default)
+        //categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Minimal)
+        
         //MUDEI AQUI DE application para UIApplication.sharedApplication()
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[categoriaNotificacoesComAcao,categoriaNotificaoSemAcao]) as Set<NSObject>))
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[categoriaNotificacoesComAcao,categoriaNotificaoSemAcao]) as Set<NSObject>))
     }
     
     func alteraAparenciaDaStatusENavigationBar(){
@@ -170,10 +171,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 historico = Historico(idRemedio: remedioBuscado.idRemedio, dataTomada: NSDate())
                 historicoDAO.inserir(historico)
             }
-        }else if(identifier == "LIGAR_IDENTIFICADOR"){
-            let storyboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UITabBarController
-            let view = self.window?.rootViewController
-            view?.presentViewController(storyboard, animated: true, completion: nil)
+        }//else if(identifier == "LIGAR_IDENTIFICADOR"){
+        //    self.application(application, didReceiveLocalNotification: notification)
+        //}
+        
+        completionHandler()
+
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+        let info = notification.userInfo as! [String: AnyObject]
+        
+        if info["ligar"] as? String == "1" {
+            let idRemedio:Int = info["acabandoOuVencendo"]!.integerValue as Int
+            let remedioDAO = RemedioDAO()
+            let remedioBuscado = remedioDAO.buscarPorId(idRemedio) as! Remedio
             
             let farmaciaDAO = FarmaciaDAO()
             
@@ -184,7 +197,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 //check  Call Function available only in iphone
                 if UIApplication.sharedApplication().canOpenURL(ligacao!) {
-                    UIApplication.sharedApplication().openURL(ligacao!)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        UIApplication.sharedApplication().openURL(ligacao!)
+                    })
                 } else {
                     SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
                 }
@@ -192,13 +207,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTANAOHATELEFONE", comment: "erro mensagem"), closeButtonTitle: "OK")
             }
         }
-        
-        completionHandler()
-
-    }
-    
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        println("ligar")
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
