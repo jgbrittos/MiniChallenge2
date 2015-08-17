@@ -27,17 +27,29 @@ class VisualizaHistoricoTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.historicos.count
+        return self.historicos.count+1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
         
-        let historico = self.historicos[indexPath.row] as Historico
-
-        cell.textLabel?.text = historico.dataTomadaEmString
-
-        return cell
+        if indexPath.row == self.historicos.count {
+            let celulaBranca = self.tableView.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) as! UITableViewCell
+            
+            //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
+            celulaBranca.userInteractionEnabled = false
+            
+            //Removendo a linha de baixo da última célula
+            celulaBranca.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
+            return celulaBranca
+        }else{
+            let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+            
+            let historico = self.historicos[indexPath.row] as Historico
+            
+            cell.textLabel?.text = historico.dataTomadaEmString
+            
+            return cell
+        }
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
