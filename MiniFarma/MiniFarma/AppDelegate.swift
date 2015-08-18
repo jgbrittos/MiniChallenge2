@@ -21,39 +21,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
+        let storyboardInicial: UIStoryboard!
+        let telaInicial: UIViewController!
+        
+        self.criaNotificacoesIterativas(application)
+        self.verificarSeBancoExiste()
+        self.alteraAparenciaDaStatusENavigationBar()
+        
         //verifica se o app já foi aberto alguma vez
         let defaults = NSUserDefaults.standardUserDefaults()
         var naoEhPrimeiraVez = defaults.boolForKey("NaoEhPrimeiraVez")
         
         if naoEhPrimeiraVez {
             println("NaoEhPrimeiraVez")
+            //Tela Inicial
+            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
         }else{
             defaults.setBool(true, forKey: "NaoEhPrimeiraVez")
             naoEhPrimeiraVez = true
             UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
-        }
-        
-        let storyboardInicial: UIStoryboard!
-        let telaInicial: UIViewController!
-        
-        self.criaNotificacoesIterativas(application)
-        
-        self.verificarSeBancoExiste()
-        
-        let existeAlgoNoBanco = self.verificaSeHaAlgumRemedio()
-        
-        if !naoEhPrimeiraVez {
             //Tutorial
             storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
             telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
-        }else{
-            //Tela Inicial
-            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
         }
-        
-        self.alteraAparenciaDaStatusENavigationBar()
         
         self.window?.rootViewController = telaInicial
         self.window?.backgroundColor = UIColor.whiteColor()
@@ -123,27 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.tintColor = UIColor.whiteColor()
         navigationBarAppearace.barTintColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 68/255.0, alpha: 1)
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-    }
-    
-    func verificaSeHaAlgumRemedio() -> Bool {
-        self.bancoDeDados!.open()
-
-        var resultado: FMResultSet = self.bancoDeDados!.executeQuery("SELECT * FROM Remedio", withArgumentsInArray: nil)
-        println("%@", self.bancoDeDados!.lastErrorMessage())
-
-        var numeroDeRemedios: Int = 0//ALTERAR ESSE VALOR DE 1 PRA 0 E VICE VERSA FAZ MUDAR DE STORYBOARD INICIAL
-        while(resultado.next()){
-            numeroDeRemedios++
-        }
-        
-        self.bancoDeDados!.close()
-
-        if numeroDeRemedios == 0 {
-            return false
-        }else{
-            return true
-        }
-
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
