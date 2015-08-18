@@ -24,11 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //verifica se o app já foi aberto alguma vez
         let defaults = NSUserDefaults.standardUserDefaults()
-
-        if defaults.boolForKey("NaoEhPrimeiraVez") {
+        var naoEhPrimeiraVez = defaults.boolForKey("NaoEhPrimeiraVez")
+        
+        if naoEhPrimeiraVez {
             println("NaoEhPrimeiraVez")
         }else{
             defaults.setBool(true, forKey: "NaoEhPrimeiraVez")
+            naoEhPrimeiraVez = true
             UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
         }
         
@@ -41,14 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let existeAlgoNoBanco = self.verificaSeHaAlgumRemedio()
         
-        if existeAlgoNoBanco {
-            //Tela Inicial
-            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
-        }else{
+        if !naoEhPrimeiraVez {
             //Tutorial
             storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
             telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
+        }else{
+            //Tela Inicial
+            storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
+            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
         }
         
         self.alteraAparenciaDaStatusENavigationBar()
@@ -184,30 +186,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let info = notification.userInfo as! [String: AnyObject]
         
-        if info["ligar"] as? String == "1" {
-            let idRemedio:Int = info["acabandoOuVencendo"]!.integerValue as Int
-            let remedioDAO = RemedioDAO()
-            let remedioBuscado = remedioDAO.buscarPorId(idRemedio) as! Remedio
+        if info["categoria"] as? String == "NONE_CATEGORY"{
+            var alerta = SCLAlertView()
+            alerta.showCloseButton = false
+            alerta.showWait(NSLocalizedString("ALERTAESPERANDOLIGACAOTITULO", comment: "titulo"), subTitle: NSLocalizedString("ALERTAESPERANDOLIGACAOMENSAGEM", comment: "mensagem"), duration: NSTimeInterval(3), colorStyle: 0x00BCFE)
             
-            let farmaciaDAO = FarmaciaDAO()
-            
-            let farmacia = farmaciaDAO.buscarPorId(remedioBuscado.idFarmacia) as! Farmacia
-            
-            if String(farmacia.telefone) != nil {
-                let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
+            if info["ligar"] as? String == "1" {
+                let idRemedio:Int = info["acabandoOuVencendo"]!.integerValue as Int
+                let remedioDAO = RemedioDAO()
+                let remedioBuscado = remedioDAO.buscarPorId(idRemedio) as! Remedio
                 
-                //check  Call Function available only in iphone
-                if UIApplication.sharedApplication().canOpenURL(ligacao!) {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        UIApplication.sharedApplication().openURL(ligacao!)
-                    })
-                } else {
-                    SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
+                let farmaciaDAO = FarmaciaDAO()
+                
+                let farmacia = farmaciaDAO.buscarPorId(remedioBuscado.idFarmacia) as! Farmacia
+                
+                if String(farmacia.telefone) != nil {
+                    let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
+                    
+                    //check  Call Function available only in iphone
+                    if UIApplication.sharedApplication().canOpenURL(ligacao!) {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            UIApplication.sharedApplication().openURL(ligacao!)
+                        })
+                    } else {
+                        SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
+                    }
+                }else{
+                    SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTANAOHATELEFONE", comment: "erro mensagem"), closeButtonTitle: "OK")
                 }
-            }else{
-                SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTANAOHATELEFONE", comment: "erro mensagem"), closeButtonTitle: "OK")
             }
         }
+        
+        
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {

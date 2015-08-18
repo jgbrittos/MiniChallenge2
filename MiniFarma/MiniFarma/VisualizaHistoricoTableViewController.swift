@@ -18,6 +18,7 @@ class VisualizaHistoricoTableViewController: UITableViewController {
         super.viewDidLoad()
         self.historicos = self.historicoDAO.buscarTodosDoRemedioComId(self.remedio!.idRemedio) as! [Historico]
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.separatorColor = UIColor.clearColor()
     }
 
     // MARK: - Table view data source
@@ -43,6 +44,11 @@ class VisualizaHistoricoTableViewController: UITableViewController {
             return celulaBranca
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+
+            if indexPath.row % 2 == 0 {
+                cell.contentView.backgroundColor = UIColor(red: 0/255, green: 188/255, blue: 254/255, alpha: 0.1)
+                cell.textLabel?.backgroundColor = UIColor.clearColor()
+            }
             
             let historico = self.historicos[indexPath.row] as Historico
             

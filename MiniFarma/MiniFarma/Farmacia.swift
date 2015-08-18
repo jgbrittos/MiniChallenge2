@@ -19,20 +19,24 @@ class Farmacia: NSObject {
     
     override init (){}
     
-    init(idFarmacia:Int, nomeFarmacia:String, favorita:Int, latitude:Double, longitude:Double, telefone: Int) {
+    init(idFarmacia:Int, nomeFarmacia:String, favorita:Int, latitude:Double, longitude:Double, telefone: Int?) {
         self.idFarmacia = idFarmacia
         self.nomeFarmacia = nomeFarmacia
         self.favorita = favorita
         self.latitude = latitude
         self.longitude = longitude
-        self.telefone = telefone
+        if let t = telefone {
+            self.telefone = t
+        }
     }
     
-    init(nomeFarmacia:String, favorita:Int, latitude:Double, longitude:Double, telefone: Int) {
+    init(nomeFarmacia:String, favorita:Int, latitude:Double, longitude:Double, telefone: Int?) {
         self.nomeFarmacia = nomeFarmacia
         self.favorita = favorita
         self.latitude = latitude
         self.longitude = longitude
-        self.telefone = telefone
+        if let t = telefone {
+            self.telefone = t
+        }
     }
 }

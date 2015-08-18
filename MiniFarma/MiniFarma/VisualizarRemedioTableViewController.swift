@@ -155,8 +155,10 @@ class VisualizarRemedioTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if let identificador = cell.reuseIdentifier {
-            if identificador == "celulaReceita" && self.remedio?.fotoReceita != "sem foto" {
+            if identificador == "celulaReceita" && self.remedio?.fotoReceita != "sem foto"  {
                 cell.accessoryType = .Checkmark
+            }else if identificador == "celulaHistorico" {
+                cell.accessoryType = .DisclosureIndicator
             }else{
                 cell.accessoryType = .None
             }

@@ -139,9 +139,13 @@ ALERTAACAOTOMEI = "Tomei";
 ALERTAACAOADIAR = "Adiar";
 ALERTAACAOLIGAR = "Ligar para farmácia";
 
-ALERTAREMEDIOACABANDO = "O remédio %@ está acabando. Clique aqui para ligar para a farmácia!";
-ALERTAREMEDIOACABOU = "O remédio %@ acabou. Clique aqui para ligar para a farmácia!";
-ALERTAREMEDIOVENCENDO = "Amanhã o remédio %@ irá vencer. Clique aqui para ligar para a farmácia!";
+ALERTAREMEDIOACABANDO = "O remédio %@ está acabando.";
+ALERTAREMEDIOACABOU = "O remédio %@ acabou.";
+ALERTAREMEDIOVENCENDO = "Amanhã o remédio %@ irá vencer.";
+CLIQUEPARALIGAR = " Clique aqui para ligar para a farmácia!";
 
 ALERTAERROLIGACAO = "Esta função só está diponível no iPhone";
 ALERTANAOHATELEFONE = "Não há telefone cadastrado";
+
+ALERTAESPERANDOLIGACAOTITULO = "Por favor aguarde...";
+ALERTAESPERANDOLIGACAOMENSAGEM = "A ligação será iniciada dentro de instantes.";

@@ -24,6 +24,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let intervaloDAO = IntervaloDAO()
     
     var alertaSelecionado: Alerta?
+    var cancelarTodos = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,16 +57,19 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
         }
         
+        self.cancelarNotificacoes.enabled = false
+        self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+        
         self.tableViewAlerta.reloadData()
         
-        let notificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
-        if notificacoes.count > 0 {
-            self.cancelarNotificacoes.enabled = true
-            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
-        }else{
-            self.cancelarNotificacoes.enabled = false
-            self.cancelarNotificacoes.tintColor = UIColor.clearColor()
-        }
+//        let notificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+//        if notificacoes.count > 0 {
+//            self.cancelarNotificacoes.enabled = true
+//            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
+//        }else{
+//            self.cancelarNotificacoes.enabled = false
+//            self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+//        }
     }
     
     //MARK:- Controles da Table View
@@ -75,9 +79,11 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
             case 0:
+                self.cancelarTodos = true
                 self.alertasDaVez = self.alertasAtivos
                 break
             case 1:
+                self.cancelarTodos = false
                 self.alertasDaVez = self.alertasInativos
                 break
             default:
@@ -201,6 +207,18 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Necessário para a função editActionsForRowAtIndexPath funcionar corretamente
     }
     
+    func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+        if self.cancelarTodos {
+            self.cancelarNotificacoes.enabled = true
+            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+        self.cancelarNotificacoes.enabled = false
+        self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+    }
+    
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
 //        var tomei = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
 //            //Ação para quando o usuário tomou um remédio
@@ -253,7 +271,6 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        println(buttonIndex)
         switch buttonIndex {
             case 0:
                 println(self.alertaDAO.cancelarTodosOsAlertas())
@@ -313,6 +330,15 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
         }
 
+//        let notificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+//        if notificacoes.count > 0 {
+//            self.cancelarNotificacoes.enabled = true
+//            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
+//        }else{
+//            self.cancelarNotificacoes.enabled = false
+//            self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+//        }
+        
         self.tableViewAlerta.reloadData()
     }
     

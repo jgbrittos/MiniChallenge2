@@ -63,7 +63,7 @@ class RemedioDAO: DAO {
         
         self.remedios = [Remedio]()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By nome", withArgumentsInArray: nil)
         
         //campos opcionais
         var dataValidade: NSDate?
@@ -142,7 +142,7 @@ class RemedioDAO: DAO {
         
         var remedioBuscado = Remedio()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ? Order By id_remedio", withArgumentsInArray: [String(id)])
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(id)])
         
         //campos opcionais
         var dataValidade: NSDate?
@@ -223,7 +223,7 @@ class RemedioDAO: DAO {
         
         self.remedios = [Remedio]()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE vencido = ? Order By id_remedio", withArgumentsInArray: [String(_validade)])
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE vencido = ? Order By nome", withArgumentsInArray: [String(_validade)])
         
         //campos opcionais
         var dataValidade: NSDate?

@@ -106,7 +106,8 @@ class FarmaciaTableViewController: UITableViewController {
         ligar.backgroundColor = UIColor(red: 0/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1)
         apagar.backgroundColor = UIColor(red: 255/255.0, green: 0/255.0, blue: 73/255.0, alpha: 1)
         
-        return [apagar, ligar]
+//        return [apagar, ligar]
+        return [apagar]
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

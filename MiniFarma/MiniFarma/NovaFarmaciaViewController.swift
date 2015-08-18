@@ -136,7 +136,15 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
     @IBAction func salvaFarmacia(sender: AnyObject) {
         
         if(txtFieldNome.text != ""){
-            let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor, telefone: textFieldTelefone.text.toInt()!)
+
+            var telefone: Int
+            if let t = self.textFieldTelefone.text.toInt() {
+                telefone = t
+            }else{
+                telefone = 0
+            }
+            
+            let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor, telefone: telefone)
 
             let alerta = SCLAlertView()
             if farmaciaDAO.inserir(farmacia) {

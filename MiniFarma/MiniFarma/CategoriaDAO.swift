@@ -49,7 +49,7 @@ class CategoriaDAO: DAO {
         
         self.categorias = [Categoria]()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By id_categoria", withArgumentsInArray: nil)
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By nome", withArgumentsInArray: nil)
         
         while(result.next()){
             
@@ -72,7 +72,7 @@ class CategoriaDAO: DAO {
         
         var categoriaBuscada = Categoria()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria WHERE id_categoria = ? Order By id_categoria", withArgumentsInArray: [String(id)])
+        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(id)])
         
         while(result.next()){
             

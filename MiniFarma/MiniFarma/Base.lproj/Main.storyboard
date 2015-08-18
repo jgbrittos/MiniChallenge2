@@ -487,7 +487,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Ra8-Xe-wfw">
-                                                    <rect key="frame" x="67" y="9" width="525" height="129.5"/>
+                                                    <rect key="frame" x="67" y="9" width="525" height="130"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="tintColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -710,7 +710,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Próxima dose:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoY-iW-h6L">
-                                                    <rect key="frame" x="120" y="88" width="472" height="19.5"/>
+                                                    <rect key="frame" x="120" y="88" width="472" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -773,7 +773,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meus Alertas" id="E0H-1g-p2e">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="UTd-7w-aTS">
+                        <barButtonItem key="rightBarButtonItem" title="Cancelar todos" id="UTd-7w-aTS">
                             <connections>
                                 <action selector="cancelarTodos:" destination="vea-wD-2al" id="jfm-q6-z66"/>
                             </connections>
@@ -794,7 +794,7 @@
         <scene sceneID="I3Z-Xs-W9f">
             <objects>
                 <tableViewController id="eSy-Us-7v7" customClass="VisualizarAlertaTableViewController" customModule="MiniFarma" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ch2-Gp-F8v">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ch2-Gp-F8v">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

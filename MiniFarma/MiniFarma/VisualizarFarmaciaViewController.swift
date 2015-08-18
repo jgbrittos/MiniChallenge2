@@ -30,6 +30,9 @@ class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
         let anotacao = MKPointAnnotation()
         anotacao.coordinate = localizacao
         anotacao.title = self.farmaciaASerVisualizada?.nomeFarmacia
+        let numero = self.farmaciaASerVisualizada?.telefone
+        anotacao.subtitle = "Tel: " + String(numero!)
+        
         let pin = MKPinAnnotationView(annotation: anotacao, reuseIdentifier: "meuPin")
         pin.annotation = anotacao
         
