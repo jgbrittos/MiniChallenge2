@@ -61,15 +61,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.cancelarNotificacoes.tintColor = UIColor.clearColor()
         
         self.tableViewAlerta.reloadData()
-        
-//        let notificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
-//        if notificacoes.count > 0 {
-//            self.cancelarNotificacoes.enabled = true
-//            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
-//        }else{
-//            self.cancelarNotificacoes.enabled = false
-//            self.cancelarNotificacoes.tintColor = UIColor.clearColor()
-//        }
+
     }
     
     //MARK:- Controles da Table View
@@ -329,15 +321,6 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
                 break
         }
-
-//        let notificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
-//        if notificacoes.count > 0 {
-//            self.cancelarNotificacoes.enabled = true
-//            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
-//        }else{
-//            self.cancelarNotificacoes.enabled = false
-//            self.cancelarNotificacoes.tintColor = UIColor.clearColor()
-//        }
         
         self.tableViewAlerta.reloadData()
     }

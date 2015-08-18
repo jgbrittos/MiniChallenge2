@@ -45,16 +45,21 @@ class VisualizaHistoricoTableViewController: UITableViewController {
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
 
-            if indexPath.row % 2 == 0 {
-                cell.contentView.backgroundColor = UIColor(red: 0/255, green: 188/255, blue: 254/255, alpha: 0.1)
-                cell.textLabel?.backgroundColor = UIColor.clearColor()
-            }
-            
             let historico = self.historicos[indexPath.row] as Historico
             
             cell.textLabel?.text = historico.dataTomadaEmString
             
             return cell
+        }
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row % 2 == 0 {
+            cell.contentView.backgroundColor = UIColor(red: 0/255, green: 188/255, blue: 254/255, alpha: 0.1)
+            cell.textLabel?.backgroundColor = UIColor.clearColor()
+        }else{
+            cell.contentView.backgroundColor = UIColor.clearColor()
+            cell.textLabel?.backgroundColor = UIColor.clearColor()
         }
     }
     
