@@ -163,46 +163,5 @@ class Notificacao: NSObject {
             }
         }
     }
-    
-//    func criaNotificacoesEm(dias _dias: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
-//        //Por enquanto nao tem como ter essa :'(
-//        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
-//    }
-//    
-//    func criaNotificacoesEm(semanas _semanas: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
-//        //Por enquanto nao tem como ter essa :'(
-//        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
-//    }
-//    
-//    func criaNotificacoesEm(meses _meses: Int, comecandoEm data: NSDate, paraRemedio remedio: Remedio){
-//        //Por enquanto nao tem como ter essa :'(
-//        SCLAlertView().showWarning("Ops", subTitle: "Por enquanto não é possível ter notificações com esse intervalo", closeButtonTitle: "OK")
-//    }
-    
-//    func criarNotificacao(dataDoAlerta: NSDate){
-//        println("\(dataDoAlerta)")
-//        let segundos = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitSecond,
-//            fromDate: NSDate(),
-//            toDate: dataDoAlerta,
-//            options: nil).second
-//        
-//        var fusoHorarioLocal:NSTimeZone = NSTimeZone.localTimeZone()
-//        
-//        var segundosTotais: Int
-//        if fusoHorarioLocal.secondsFromGMT < 0 {
-//            segundosTotais = segundos - fusoHorarioLocal.secondsFromGMT
-//        }else{
-//            segundosTotais = segundos + fusoHorarioLocal.secondsFromGMT
-//        }
-//        
-//        var notificacaoLocal : UILocalNotification = UILocalNotification()
-//        notificacaoLocal.alertAction = "Mini Farma"
-//        notificacaoLocal.alertBody = stringAlerta
-//        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundosTotais))
-//        notificacaoLocal.userInfo = ["tomar":String(remedio!.idRemedio)]
-//        notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
-//        notificacaoLocal.category = "ACTION_CATEGORY";
-//        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
-//    }
 
 }
