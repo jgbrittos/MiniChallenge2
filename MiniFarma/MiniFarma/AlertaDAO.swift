@@ -164,4 +164,14 @@ class AlertaDAO: DAO {
         
         return atualizadoComSucesso
     }
+    
+    func cancelarTodosOsAlertas() -> Bool {
+        self.bancoDeDados.open()
+        
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta SET ativo = 0", withArgumentsInArray: nil)
+        
+        self.bancoDeDados.close()
+        
+        return atualizadoComSucesso
+    }
 }

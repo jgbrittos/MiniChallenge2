@@ -8,9 +8,10 @@
 
 import UIKit
 
-class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate {
 
     //MARK:- Propriedades
+    @IBOutlet weak var cancelarNotificacoes: UIBarButtonItem!
     @IBOutlet weak var tableViewAlerta: UITableView!
     @IBOutlet weak var segmentedControlAtividadeAlertas: UISegmentedControl!
     
@@ -56,6 +57,15 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         self.tableViewAlerta.reloadData()
+        
+        let notificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        if notificacoes.count > 0 {
+            self.cancelarNotificacoes.enabled = true
+            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
+        }else{
+            self.cancelarNotificacoes.enabled = false
+            self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+        }
     }
     
     //MARK:- Controles da Table View
@@ -235,6 +245,49 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.performSegueWithIdentifier("VisualizarAlerta", sender: nil)
     }
     
+    @IBAction func cancelarTodos(sender: AnyObject) {
+        
+        var acao = UIActionSheet(title: "Deseja cancelar todas os alertas?", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: "Sim")
+        
+        acao.showInView(self.view)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        println(buttonIndex)
+        switch buttonIndex {
+            case 0:
+                println(self.alertaDAO.cancelarTodosOsAlertas())
+                self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
+                self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
+                
+                switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
+                    case 0:
+                        self.alertasDaVez = self.alertasAtivos
+                        break
+                    case 1:
+                        self.alertasDaVez = self.alertasInativos
+                        break
+                    default:
+                        self.alertasDaVez = self.alertasAtivos
+                        println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
+                        break
+                }
+                
+                self.tableViewAlerta.reloadData()
+                
+                self.cancelarNotificacoes.enabled = false
+                self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+                
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                break
+            case 1:
+                //Cancelar
+                break
+            default:
+                println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+                break
+            }
+    }
     
     @IBAction func desativarAlertas(sender: AnyObject) {
         let switchAtivo = sender as! UISwitch
