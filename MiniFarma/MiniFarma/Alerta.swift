@@ -42,7 +42,7 @@ class Alerta: NSObject {
         
         if let d = dataInicio as NSDate? {
             self.dataInicio = d
-            println("\(d)")
+            print("\(d)")
         }else{
             self.temInformacoesNulas = true
         }

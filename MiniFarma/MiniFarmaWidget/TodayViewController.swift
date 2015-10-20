@@ -28,7 +28,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         completionHandler(NCUpdateResult.NewData)
     }
 
@@ -37,30 +37,30 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func addFarmacia(sender: AnyObject) {
-        println("Farmacia")
+        print("Farmacia")
         self.info.setValue("Farmacia", forKey: "storyboard")
-        var url =  NSURL(string:"MiniFarmaTodayExtension://")
+        let url =  NSURL(string:"MiniFarmaTodayExtension://")
         self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
     }
     
     @IBAction func addRemedio(sender: AnyObject) {
-        println("Remedio")
+        print("Remedio")
         self.info.setValue("Remedio", forKey: "storyboard")
-        var url =  NSURL(string:"MiniFarmaTodayExtension://")
+        let url =  NSURL(string:"MiniFarmaTodayExtension://")
         self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
     }
 
     @IBAction func addAlerta(sender: AnyObject) {
-        println("Alerta")
+        print("Alerta")
         self.info.setValue("Alerta", forKey: "storyboard")
-        var url =  NSURL(string:"MiniFarmaTodayExtension://")
+        let url =  NSURL(string:"MiniFarmaTodayExtension://")
         self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
     }
     
     @IBAction func abrirApp(sender: AnyObject) {
-        println("Main")
+        print("Main")
         self.info.setValue("Main", forKey: "storyboard")
-        var url =  NSURL(string:"MiniFarmaTodayExtension://")
+        let url =  NSURL(string:"MiniFarmaTodayExtension://")
         self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
     }
     

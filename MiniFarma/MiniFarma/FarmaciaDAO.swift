@@ -49,7 +49,7 @@ class FarmaciaDAO: DAO {
         
         self.farmacias = [Farmacia]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia Order By nome", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia Order By nome", withArgumentsInArray: nil)
         
         var idFarmacia = String()
         var nome = String()
@@ -67,7 +67,7 @@ class FarmaciaDAO: DAO {
             longitude = resultadoBusca.stringForColumn("longitude")
             telefone = resultadoBusca.stringForColumn("telefone")
             
-            let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: telefone.toInt()!)
+            let farmacia = Farmacia(idFarmacia: Int(idFarmacia)!, nomeFarmacia: nome, favorita: Int(favorita)!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: Int(telefone)!)
             
             self.farmacias.append(farmacia)
         }
@@ -82,7 +82,7 @@ class FarmaciaDAO: DAO {
         
         var farmaciaBuscada = Farmacia()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia WHERE id_farmacia = ?", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia WHERE id_farmacia = ?", withArgumentsInArray: [String(id)])
         
         var idFarmacia = String()
         var nome = String()
@@ -100,7 +100,7 @@ class FarmaciaDAO: DAO {
             longitude = resultadoBusca.stringForColumn("longitude")
             telefone = resultadoBusca.stringForColumn("telefone")
             
-            let farmacia = Farmacia(idFarmacia: idFarmacia.toInt()!, nomeFarmacia: nome, favorita: favorita.toInt()!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: telefone.toInt()!)
+            let farmacia = Farmacia(idFarmacia: Int(idFarmacia)!, nomeFarmacia: nome, favorita: Int(favorita)!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: Int(telefone)!)
             farmaciaBuscada = farmacia
         }
         

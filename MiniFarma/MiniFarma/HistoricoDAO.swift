@@ -49,7 +49,7 @@ class HistoricoDAO: DAO {
         
         self.historicos = [Historico]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM HistoricoRemedio Order By dataTomada", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM HistoricoRemedio Order By dataTomada", withArgumentsInArray: nil)
         
         var idHistorico = String()
         var idRemedio = String()
@@ -62,7 +62,7 @@ class HistoricoDAO: DAO {
             dataTomada = resultadoBusca.dateForColumn("dataTomada")
             
             
-            let historico = Historico(idHistorico: idHistorico.toInt()!, idRemedio: idRemedio.toInt()!, dataTomada: dataTomada)
+            let historico = Historico(idHistorico: Int(idHistorico)!, idRemedio: Int(idRemedio)!, dataTomada: dataTomada)
             
             self.historicos.append(historico)
         }
@@ -77,7 +77,7 @@ class HistoricoDAO: DAO {
 
         var historicoBuscado = Historico()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM HistoricoRemedio WHERE id_historico = ? Order By dataTomada", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM HistoricoRemedio WHERE id_historico = ? Order By dataTomada", withArgumentsInArray: [String(id)])
         
         var idHistorico = String()
         var idRemedio = String()
@@ -89,7 +89,7 @@ class HistoricoDAO: DAO {
             idRemedio = resultadoBusca.stringForColumn("id_remedio")
             dataTomada = resultadoBusca.dateForColumn("dataTomada")
             
-            let historico = Historico(idHistorico: idHistorico.toInt()!, idRemedio: idRemedio.toInt()!, dataTomada: dataTomada)
+            let historico = Historico(idHistorico: Int(idHistorico)!, idRemedio: Int(idRemedio)!, dataTomada: dataTomada)
             
             historicoBuscado = historico
         }
@@ -105,7 +105,7 @@ class HistoricoDAO: DAO {
         
         self.historicos = [Historico]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM HistoricoRemedio WHERE id_remedio = ? Order By dataTomada", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM HistoricoRemedio WHERE id_remedio = ? Order By dataTomada", withArgumentsInArray: [String(id)])
         
         var idHistorico = String()
         var idRemedio = String()
@@ -117,7 +117,7 @@ class HistoricoDAO: DAO {
             idRemedio = resultadoBusca.stringForColumn("id_remedio")
             dataTomada = resultadoBusca.dateForColumn("dataTomada")
             
-            let historico = Historico(idHistorico: idHistorico.toInt()!, idRemedio: idRemedio.toInt()!, dataTomada: dataTomada)
+            let historico = Historico(idHistorico: Int(idHistorico)!, idRemedio: Int(idRemedio)!, dataTomada: dataTomada)
             
             self.historicos.append(historico)
         }

@@ -94,19 +94,19 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         case 1:
             return self.unidadesPickerViewIntervalos.count
         default:
-            println("Algo ocorreu no método numberOfRowsInComponent na classe IntervaloTableViewController")
+            print("Algo ocorreu no método numberOfRowsInComponent na classe IntervaloTableViewController")
             return self.numerosPickerViewIntervalos.count
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
             return self.numerosPickerViewIntervalos[row]
         case 1:
             return self.unidadesPickerViewIntervalos[row]
         default:
-            println("Algo ocorreu no método titleForRow na classe IntervaloTableViewController")
+            print("Algo ocorreu no método titleForRow na classe IntervaloTableViewController")
             return self.numerosPickerViewIntervalos[row]
         }
     }
@@ -114,7 +114,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.numeroIntervalo = self.numerosPickerViewIntervalos[pickerView.selectedRowInComponent(0)]
         self.unidadeIntervalo = self.unidadesPickerViewIntervalos[pickerView.selectedRowInComponent(1)]
-        println("\(numeroIntervalo) \(unidadeIntervalo)")
+        print("\(numeroIntervalo) \(unidadeIntervalo)")
     }
 
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -126,7 +126,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
             case 1:
                 corDoTexto = NSAttributedString(string: self.unidadesPickerViewIntervalos[row], attributes: [NSForegroundColorAttributeName : UIColor(red: 0/255.0, green: 158/255.0, blue: 201/255.0, alpha: 1)])
             default:
-                println("Algo ocorreu na funcao attributedTitleForRow na classe IntervaloViewController")
+                print("Algo ocorreu na funcao attributedTitleForRow na classe IntervaloViewController")
         }
         
         return corDoTexto
@@ -143,7 +143,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let celulaIntervalos = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        let celulaIntervalos = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
         
         let intervalo = self.intervalos[indexPath.row]
         
@@ -195,7 +195,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func salvaIntervalo(sender: AnyObject) {
         
-        let novoIntervalo = Intervalo(numero: self.numeroIntervalo.toInt()!, unidade: self.unidadeIntervalo)
+        let novoIntervalo = Intervalo(numero: Int(self.numeroIntervalo)!, unidade: self.unidadeIntervalo)
         
         let alerta = SCLAlertView()
         if self.intervaloDAO.inserir(novoIntervalo) {

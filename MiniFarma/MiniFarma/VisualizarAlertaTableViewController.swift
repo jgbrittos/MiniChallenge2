@@ -90,7 +90,7 @@ class VisualizarAlertaTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let secao = view as! UITableViewHeaderFooterView
-        secao.textLabel.textColor = UIColor.whiteColor()
+        secao.textLabel!.textColor = UIColor.whiteColor()
         secao.backgroundView?.backgroundColor = UIColor(red: 204/255, green: 0/255, blue: 68/255, alpha: 1)
     }
 
@@ -99,7 +99,7 @@ class VisualizarAlertaTableViewController: UITableViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
+        let visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
         visualizarRemedio.remedio = self.remedio
     }
 }

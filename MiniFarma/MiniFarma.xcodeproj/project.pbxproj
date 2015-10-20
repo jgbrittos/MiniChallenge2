@@ -25,16 +25,20 @@
 		4539612F1B5BE35D0097DEDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4539612D1B5BE35D0097DEDB /* LaunchScreen.xib */; };
 		4539613B1B5BE35D0097DEDB /* MiniFarmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4539613A1B5BE35D0097DEDB /* MiniFarmaTests.swift */; };
 		453961501B5BE5370097DEDB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 453961521B5BE5370097DEDB /* Localizable.strings */; };
-		4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 453961571B5BEEA30097DEDB /* FMDatabase.m */; };
-		4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 453961591B5BEEA30097DEDB /* FMDatabaseAdditions.m */; };
-		4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4539615B1B5BEEA30097DEDB /* FMResultSet.m */; };
-		453961601B5BEEC20097DEDB /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */; };
 		453961621B5BEED30097DEDB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453961611B5BEED30097DEDB /* CoreLocation.framework */; };
 		4539616A1B5BF1950097DEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4539616C1B5BF1950097DEDB /* InfoPlist.strings */; };
 		455E39081B81680E008DE73F /* VisualizaHistoricoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E39071B81680E008DE73F /* VisualizaHistoricoTableViewController.swift */; };
 		455E390B1B816968008DE73F /* Historico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E390A1B816968008DE73F /* Historico.swift */; };
 		455E390D1B816975008DE73F /* HistoricoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455E390C1B816975008DE73F /* HistoricoDAO.swift */; };
 		457409B51B66991400CC71EF /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457409B41B66991400CC71EF /* DAO.swift */; };
+		457B8CE11BD57DD300A5D3BB /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CD71BD57DD300A5D3BB /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		457B8CE21BD57DD300A5D3BB /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CD91BD57DD300A5D3BB /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		457B8CE31BD57DD300A5D3BB /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CDB1BD57DD300A5D3BB /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		457B8CE41BD57DD300A5D3BB /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CDD1BD57DD300A5D3BB /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		457B8CE51BD57DD300A5D3BB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CE01BD57DD300A5D3BB /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		457B8CE91BD580D900A5D3BB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CE81BD580D900A5D3BB /* Util.swift */; settings = {ASSET_TAGS = (); }; };
+		457B8CEA1BD5845600A5D3BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 457B8CE61BD580B100A5D3BB /* libsqlite3.0.tbd */; };
+		457B8CEC1BD5848000A5D3BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 457B8CEB1BD5848000A5D3BB /* libsqlite3.0.tbd */; settings = {ASSET_TAGS = (); }; };
 		45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE31B61666B00E24F80 /* Intervalo.swift */; };
 		45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */; };
 		45BB4AE81B61883300E24F80 /* IntervaloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */; };
@@ -125,13 +129,6 @@
 		4539614D1B5BE5160097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		453961511B5BE5370097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		453961531B5BE53B0097DEDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		453961561B5BEEA30097DEDB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		453961571B5BEEA30097DEDB /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		453961581B5BEEA30097DEDB /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		453961591B5BEEA30097DEDB /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		4539615A1B5BEEA30097DEDB /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		4539615B1B5BEEA30097DEDB /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		453961611B5BEED30097DEDB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		453961631B5BEF740097DEDB /* FMDB-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDB-Bridging-Header.h"; sourceTree = "<group>"; };
 		4539616B1B5BF1950097DEDB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -142,6 +139,20 @@
 		455E39201B820A70008DE73F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Remedio.strings; sourceTree = "<group>"; };
 		455E39211B820A73008DE73F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Remedio.strings"; sourceTree = "<group>"; };
 		457409B41B66991400CC71EF /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		457B8CD61BD57DD300A5D3BB /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		457B8CD71BD57DD300A5D3BB /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		457B8CD81BD57DD300A5D3BB /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		457B8CD91BD57DD300A5D3BB /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		457B8CDA1BD57DD300A5D3BB /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		457B8CDB1BD57DD300A5D3BB /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		457B8CDC1BD57DD300A5D3BB /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		457B8CDD1BD57DD300A5D3BB /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		457B8CDE1BD57DD300A5D3BB /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		457B8CDF1BD57DD300A5D3BB /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		457B8CE01BD57DD300A5D3BB /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		457B8CE61BD580B100A5D3BB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		457B8CE81BD580D900A5D3BB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		457B8CEB1BD5848000A5D3BB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libsqlite3.0.tbd; sourceTree = "<group>"; };
 		458C84D01B826D58000F5C3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Farmacia.strings; sourceTree = "<group>"; };
 		458C84D11B826D5C000F5C3B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Farmacia.strings"; sourceTree = "<group>"; };
 		458C84D41B827757000F5C3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -190,9 +201,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457B8CEA1BD5845600A5D3BB /* libsqlite3.0.tbd in Frameworks */,
 				8F633D471B694472000C07C1 /* MapKit.framework in Frameworks */,
+				457B8CEC1BD5848000A5D3BB /* libsqlite3.0.tbd in Frameworks */,
 				453961621B5BEED30097DEDB /* CoreLocation.framework in Frameworks */,
-				453961601B5BEEC20097DEDB /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +324,7 @@
 			children = (
 				45EAF7CA1B72BBCB00881BE3 /* MiniFarma.entitlements */,
 				453961241B5BE35D0097DEDB /* AppDelegate.swift */,
+				457B8CE81BD580D900A5D3BB /* Util.swift */,
 				45E8CD821B5FD92F00190FA1 /* Tutorial */,
 				453961461B5BE3B00097DEDB /* Lista Inicial */,
 				457409B61B669A9400CC71EF /* Adicionar Remedio */,
@@ -410,10 +423,10 @@
 		4539614B1B5BE4D70097DEDB /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				457B8CEB1BD5848000A5D3BB /* libsqlite3.0.tbd */,
 				451428C61B70170D0070396A /* SCLAlertView.swift */,
 				8F633D461B694472000C07C1 /* MapKit.framework */,
 				453961611B5BEED30097DEDB /* CoreLocation.framework */,
-				4539615F1B5BEEC20097DEDB /* libsqlite3.0.dylib */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -421,12 +434,17 @@
 		453961661B5BF06D0097DEDB /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
-				453961561B5BEEA30097DEDB /* FMDatabase.h */,
-				453961571B5BEEA30097DEDB /* FMDatabase.m */,
-				453961581B5BEEA30097DEDB /* FMDatabaseAdditions.h */,
-				453961591B5BEEA30097DEDB /* FMDatabaseAdditions.m */,
-				4539615A1B5BEEA30097DEDB /* FMResultSet.h */,
-				4539615B1B5BEEA30097DEDB /* FMResultSet.m */,
+				457B8CD61BD57DD300A5D3BB /* FMDatabase.h */,
+				457B8CD71BD57DD300A5D3BB /* FMDatabase.m */,
+				457B8CD81BD57DD300A5D3BB /* FMDatabaseAdditions.h */,
+				457B8CD91BD57DD300A5D3BB /* FMDatabaseAdditions.m */,
+				457B8CDA1BD57DD300A5D3BB /* FMDatabasePool.h */,
+				457B8CDB1BD57DD300A5D3BB /* FMDatabasePool.m */,
+				457B8CDC1BD57DD300A5D3BB /* FMDatabaseQueue.h */,
+				457B8CDD1BD57DD300A5D3BB /* FMDatabaseQueue.m */,
+				457B8CDE1BD57DD300A5D3BB /* FMDB.h */,
+				457B8CDF1BD57DD300A5D3BB /* FMResultSet.h */,
+				457B8CE01BD57DD300A5D3BB /* FMResultSet.m */,
 			);
 			name = FMDB;
 			sourceTree = "<group>";
@@ -488,6 +506,7 @@
 		45EAF7B91B72BA3400881BE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				457B8CE61BD580B100A5D3BB /* libsqlite3.0.tbd */,
 				45EAF7BA1B72BA3400881BE3 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -584,7 +603,9 @@
 		453961171B5BE35D0097DEDB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = JGBrittoS;
 				TargetAttributes = {
 					4539611E1B5BE35D0097DEDB = {
@@ -674,16 +695,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F6610451B6BB1510099C69B /* AlertaTableViewController.swift in Sources */,
-				4539615C1B5BEEA30097DEDB /* FMDatabase.m in Sources */,
+				457B8CE11BD57DD300A5D3BB /* FMDatabase.m in Sources */,
 				451428B01B6F9CB70070396A /* VisualizarRemedioTableViewController.swift in Sources */,
 				455E39081B81680E008DE73F /* VisualizaHistoricoTableViewController.swift in Sources */,
 				8F710AD21B6F9E18009E9D8C /* Notificacao.swift in Sources */,
 				451428721B690CCA0070396A /* Local.swift in Sources */,
 				451428C91B7027130070396A /* VisualizarAlertaTableViewController.swift in Sources */,
 				453961251B5BE35D0097DEDB /* AppDelegate.swift in Sources */,
+				457B8CE21BD57DD300A5D3BB /* FMDatabaseAdditions.m in Sources */,
 				451428691B67B21C0070396A /* CategoriaTableViewController.swift in Sources */,
 				451428741B690CDA0070396A /* LocalDAO.swift in Sources */,
-				4539615D1B5BEEA30097DEDB /* FMDatabaseAdditions.m in Sources */,
 				8F3768671B6A68A50046F849 /* FarmaciaTableViewCell.swift in Sources */,
 				455E390B1B816968008DE73F /* Historico.swift in Sources */,
 				455E390D1B816975008DE73F /* HistoricoDAO.swift in Sources */,
@@ -703,14 +724,17 @@
 				8F477CC91B67BED00050D94F /* FarmaciaTableViewController.swift in Sources */,
 				451428681B67B21C0070396A /* CategoriaDAO.swift in Sources */,
 				45DAB5321B5C29A400AA2860 /* RemediosViewController.swift in Sources */,
+				457B8CE51BD57DD300A5D3BB /* FMResultSet.m in Sources */,
 				8F1709DD1B67F311005A13B9 /* NovaFarmaciaViewController.swift in Sources */,
+				457B8CE91BD580D900A5D3BB /* Util.swift in Sources */,
 				457409B51B66991400CC71EF /* DAO.swift in Sources */,
 				45DAB5381B5C335100AA2860 /* Alerta.swift in Sources */,
 				451428671B67B21C0070396A /* Categoria.swift in Sources */,
 				4514287A1B6BE2640070396A /* ListaRemediosAlertasTableViewCell.swift in Sources */,
 				8FC9E8571B6132CD00E46761 /* RemedioDAO.swift in Sources */,
 				45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */,
-				4539615E1B5BEEA30097DEDB /* FMResultSet.m in Sources */,
+				457B8CE41BD57DD300A5D3BB /* FMDatabaseQueue.m in Sources */,
+				457B8CE31BD57DD300A5D3BB /* FMDatabasePool.m in Sources */,
 				45D408511B66C3D600FB0EF0 /* RemedioTableViewController.swift in Sources */,
 				45BB4AE81B61883300E24F80 /* IntervaloViewController.swift in Sources */,
 			);
@@ -851,6 +875,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -917,13 +942,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MiniFarma/MiniFarma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joao Gabriel de Britto e Silva (826K39F28T)";
 				INFOPLIST_FILE = MiniFarma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MiniFarma",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "37a688a1-2390-42b4-afae-7720312755e7";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/FMDB-Bridging-Header.h";
@@ -937,13 +968,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MiniFarma/MiniFarma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joao Gabriel de Britto e Silva (826K39F28T)";
 				INFOPLIST_FILE = MiniFarma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MiniFarma",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "37a688a1-2390-42b4-afae-7720312755e7";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/FMDB-Bridging-Header.h";
@@ -965,6 +1002,7 @@
 				);
 				INFOPLIST_FILE = MiniFarmaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniFarma.app/MiniFarma";
 			};
@@ -980,6 +1018,7 @@
 				);
 				INFOPLIST_FILE = MiniFarmaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniFarma.app/MiniFarma";
 			};
@@ -998,8 +1037,9 @@
 				INFOPLIST_FILE = MiniFarmaWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.MiniFarma.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b82518d7-4ba6-4d1d-bca8-a62dcc645195";
+				PROVISIONING_PROFILE = "42315f53-887a-47ba-9ae6-3d518d1d76d0";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1013,8 +1053,9 @@
 				INFOPLIST_FILE = MiniFarmaWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.MiniFarma.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b82518d7-4ba6-4d1d-bca8-a62dcc645195";
+				PROVISIONING_PROFILE = "42315f53-887a-47ba-9ae6-3d518d1d76d0";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

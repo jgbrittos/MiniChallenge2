@@ -49,7 +49,7 @@ class AlertaDAO: DAO {
         
         self.alertas = [Alerta]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta Order By id_alerta", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta Order By id_alerta", withArgumentsInArray: nil)
     
         var idAlerta = String()
         var dataInicio = NSDate()
@@ -70,7 +70,7 @@ class AlertaDAO: DAO {
             idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
             idRemedio = resultadoBusca.stringForColumn("id_remedio")
 
-            let alerta = Alerta(idAlerta: idAlerta.toInt()!, dataInicio: dataInicio, numeroDuracao: numeroDuracao.toInt()!, unidadeDuracao: unidadeDuracao.toInt()!, ativo: ativo.toInt()!, idIntervalo: idIntervalo.toInt()!, idRemedio: idRemedio.toInt()!)
+            let alerta = Alerta(idAlerta: Int(idAlerta)!, dataInicio: dataInicio, numeroDuracao: Int(numeroDuracao)!, unidadeDuracao: Int(unidadeDuracao)!, ativo: Int(ativo)!, idIntervalo: Int(idIntervalo)!, idRemedio: Int(idRemedio)!)
             
             self.alertas.append(alerta)
         }
@@ -86,7 +86,7 @@ class AlertaDAO: DAO {
         
         self.alertas = [Alerta]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE ativo = ? Order By id_alerta", withArgumentsInArray: [String(_ativos)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE ativo = ? Order By id_alerta", withArgumentsInArray: [String(_ativos)])
         
         var idAlerta = String()
         var dataInicio = NSDate()
@@ -108,9 +108,9 @@ class AlertaDAO: DAO {
             idRemedio = resultadoBusca.stringForColumn("id_remedio")
             
             
-            let alerta = Alerta(idAlerta: idAlerta.toInt()!, dataInicio: dataInicio, numeroDuracao: numeroDuracao.toInt()!, unidadeDuracao: unidadeDuracao.toInt()!, ativo: ativo.toInt()!, idIntervalo: idIntervalo.toInt()!, idRemedio: idRemedio.toInt()!)
+            let alerta = Alerta(idAlerta: Int(idAlerta)!, dataInicio: dataInicio, numeroDuracao: Int(numeroDuracao)!, unidadeDuracao: Int(unidadeDuracao)!, ativo: Int(ativo)!, idIntervalo: Int(idIntervalo)!, idRemedio: Int(idRemedio)!)
             
-            println("id: \(alerta.idAlerta) ")
+            print("id: \(alerta.idAlerta) ")
             
             self.alertas.append(alerta)
         }
@@ -125,7 +125,7 @@ class AlertaDAO: DAO {
         
         var alertaBuscado = Alerta()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE id_alerta = ?", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE id_alerta = ?", withArgumentsInArray: [String(id)])
         
         var idAlerta = String()
         var dataInicio = NSDate()
@@ -146,7 +146,7 @@ class AlertaDAO: DAO {
             idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
             idRemedio = resultadoBusca.stringForColumn("id_remedio")
             
-            let alerta = Alerta(idAlerta: idAlerta.toInt()!, dataInicio: dataInicio, numeroDuracao: numeroDuracao.toInt()!, unidadeDuracao: unidadeDuracao.toInt()!, ativo: ativo.toInt()!, idIntervalo: idIntervalo.toInt()!, idRemedio: idRemedio.toInt()!)
+            let alerta = Alerta(idAlerta: Int(idAlerta)!, dataInicio: dataInicio, numeroDuracao: Int(numeroDuracao)!, unidadeDuracao: Int(unidadeDuracao)!, ativo: Int(ativo)!, idIntervalo: Int(idIntervalo)!, idRemedio: Int(idRemedio)!)
             
             alertaBuscado = alerta
         }

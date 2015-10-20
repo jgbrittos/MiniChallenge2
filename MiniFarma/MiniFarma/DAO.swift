@@ -16,7 +16,7 @@ class DAO: NSObject {
     override init(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.caminhoBancoDeDados = appDelegate.caminhoBancoDeDados as String
-        self.bancoDeDados = FMDatabase.databaseWithPath(self.caminhoBancoDeDados as String) as! FMDatabase
+        self.bancoDeDados = FMDatabase(path:self.caminhoBancoDeDados as String) as FMDatabase
     }
     
     func inserir(objeto: AnyObject?) -> Bool {

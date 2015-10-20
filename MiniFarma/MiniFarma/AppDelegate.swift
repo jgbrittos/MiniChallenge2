@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var naoEhPrimeiraVez = defaults.boolForKey("NaoEhPrimeiraVez")
         
         if naoEhPrimeiraVez {
-            println("NaoEhPrimeiraVez")
+            print("NaoEhPrimeiraVez")
             //Tela Inicial
             storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
             telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
@@ -54,62 +54,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func verificarSeBancoExiste() {
-        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var diretorioDocumentos: NSString = caminhos[0] as! NSString
+//        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+//        let diretorioDocumentos: NSString = caminhos[0] as NSString
         
-        self.caminhoBancoDeDados = diretorioDocumentos.stringByAppendingPathComponent(self.nomeBancoDeDados)
+        self.caminhoBancoDeDados = Util.getPath(self.nomeBancoDeDados)
         
-        var gerenciadorDeArquivos: NSFileManager = NSFileManager.defaultManager()
+        let gerenciadorDeArquivos: NSFileManager = NSFileManager.defaultManager()
         
-        var bancoExisteNoLocal: Bool = gerenciadorDeArquivos.fileExistsAtPath(self.caminhoBancoDeDados as String)
-        
-        if(!bancoExisteNoLocal) {
-            var caminhoBancoDeDadosNoApp: NSString = NSBundle.mainBundle().resourcePath!.stringByAppendingPathComponent(self.nomeBancoDeDados)
-            gerenciadorDeArquivos.copyItemAtPath(caminhoBancoDeDadosNoApp as String, toPath: self.caminhoBancoDeDados as String, error: nil)
+        if !gerenciadorDeArquivos.fileExistsAtPath(self.caminhoBancoDeDados) {
+            
+            let documentsURL = NSBundle.mainBundle().resourceURL
+            
+            let fromPath = documentsURL!.URLByAppendingPathComponent(self.nomeBancoDeDados)
+            
+            do {
+                try gerenciadorDeArquivos.copyItemAtPath(fromPath.path!, toPath: self.caminhoBancoDeDados)
+            } catch let error1 as NSError {
+                print("\(error1)")
+            }
         }
         
-        self.bancoDeDados = FMDatabase.databaseWithPath(self.caminhoBancoDeDados as String) as? FMDatabase
+        self.bancoDeDados = FMDatabase(path:self.caminhoBancoDeDados) as FMDatabase
     }
     
     func criaNotificacoesIterativas(application: UIApplication) {
-        var acaoNotificacaoAdiar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        let acaoNotificacaoAdiar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         acaoNotificacaoAdiar.identifier = "ADIAR_IDENTIFICADOR"
         acaoNotificacaoAdiar.title = NSLocalizedString("ALERTAACAOADIAR", comment: "adiar")
         acaoNotificacaoAdiar.destructive = true
         acaoNotificacaoAdiar.authenticationRequired = false
         acaoNotificacaoAdiar.activationMode = UIUserNotificationActivationMode.Background
         
-        var acaoNotificacaoTomei :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        let acaoNotificacaoTomei :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         acaoNotificacaoTomei.identifier = "TOMEI_IDENTIFICADOR"
         acaoNotificacaoTomei.title = NSLocalizedString("ALERTAACAOTOMEI", comment: "adiar")
         acaoNotificacaoTomei.destructive = false
         acaoNotificacaoTomei.authenticationRequired = false
         acaoNotificacaoTomei.activationMode = UIUserNotificationActivationMode.Background
         
-        var acaoNotificacaoLigar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        let acaoNotificacaoLigar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         acaoNotificacaoLigar.identifier = "LIGAR_IDENTIFICADOR"
         acaoNotificacaoLigar.title = NSLocalizedString("ALERTAACAOLIGAR", comment: "ligar")
         acaoNotificacaoLigar.destructive = false
         acaoNotificacaoLigar.authenticationRequired = false
         acaoNotificacaoLigar.activationMode = UIUserNotificationActivationMode.Background
         
-        var categoriaNotificacoesComAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        let categoriaNotificacoesComAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         categoriaNotificacoesComAcao.identifier = "ACTION_CATEGORY"
         categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], forContext: UIUserNotificationActionContext.Default)
         categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], forContext: UIUserNotificationActionContext.Minimal)
         
-        var categoriaNotificaoSemAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        let categoriaNotificaoSemAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         categoriaNotificaoSemAcao.identifier = "NONE_CATEGORY"
         //categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Default)
         //categoriaNotificaoSemAcao.setActions([acaoNotificacaoLigar], forContext: UIUserNotificationActionContext.Minimal)
         
         //MUDEI AQUI DE application para UIApplication.sharedApplication()
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: NSSet(array:[categoriaNotificacoesComAcao,categoriaNotificaoSemAcao]) as Set<NSObject>))
+
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType([.Alert, .Badge, .Sound]), categories: Set([categoriaNotificacoesComAcao, categoriaNotificaoSemAcao])))
     }
     
     func alteraAparenciaDaStatusENavigationBar(){
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-        var navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.translucent = false
         navigationBarAppearace.tintColor = UIColor.whiteColor()
         navigationBarAppearace.barTintColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 68/255.0, alpha: 1)
@@ -126,8 +133,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let unidade = unidades[remedioBuscado.unidade]
         
         if(identifier == "ADIAR_IDENTIFICADOR"){
-            println("Cliquei em adiar \(idRemedio)")
-            var notificacaoLocal:UILocalNotification = UILocalNotification()
+            print("Cliquei em adiar \(idRemedio)")
+            let notificacaoLocal:UILocalNotification = UILocalNotification()
             notificacaoLocal.alertAction = "Notificação adiada"
             notificacaoLocal.alertBody = "Tomar \(remedioBuscado.numeroDose)\(unidade) de \(remedioBuscado.nomeRemedio)"
             notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 300)
@@ -136,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
     
         }else if(identifier == "TOMEI_IDENTIFICADOR"){
-            println("Cliquei em tomei")
+            print("Cliquei em tomei")
             if(remedioBuscado.numeroQuantidade > 0 ){
                 remedioDAO.marcaRemedioTomado(remedioBuscado, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
                 let historicoDAO = HistoricoDAO()
@@ -157,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let info = notification.userInfo as! [String: AnyObject]
         
         if info["categoria"] as? String == "NONE_CATEGORY"{
-            var alerta = SCLAlertView()
+            let alerta = SCLAlertView()
             alerta.showCloseButton = false
             alerta.showWait(NSLocalizedString("ALERTAESPERANDOLIGACAOTITULO", comment: "titulo"), subTitle: NSLocalizedString("ALERTAESPERANDOLIGACAOMENSAGEM", comment: "mensagem"), duration: NSTimeInterval(3), colorStyle: 0x00BCFE)
             
@@ -196,7 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let nomeStoryboard = info?.objectForKey("storyboard") as! String
         
-        println("\(nomeStoryboard)")
+        print("\(nomeStoryboard)")
         
         if nomeStoryboard != "Main" {
             let storyboard = UIStoryboard(name: nomeStoryboard, bundle: nil).instantiateInitialViewController() as! UINavigationController

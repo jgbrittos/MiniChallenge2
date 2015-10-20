@@ -51,7 +51,7 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
             }
         
             if let i = self.intervalo {
-                self.lblIntervalo.text = String(self.intervalo!.numero) + " " + self.intervalo!.unidade
+                self.lblIntervalo.text = String(i.numero) + " " + i.unidade
             }
         }
         
@@ -71,7 +71,7 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
         self.txtDuracaoQuantidade.resignFirstResponder()
         
         //Está comentado pq ainda não é possível ter notificações com duração
-        let numeroDuracao = self.txtDuracaoQuantidade.text.toInt() as Int?
+        let numeroDuracao = Int(self.txtDuracaoQuantidade.text!) as Int?
         let unidadeDuracao = self.duracaoUnidadeSegmented.selectedSegmentIndex as Int?
         
         var idIntervalo: Int = 0
@@ -93,9 +93,9 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
             if self.alertaDAO.inserir(alerta) {
                 alertaMensagem.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add alerta sucesso"), subTitle: NSLocalizedString("MENSAGEMSUCESSOALERTA", comment: "add alerta sucesso"), closeButtonTitle: "OK")
                 
-                let notificacao = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
+                _ = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
                 
-                if let r = appDelegate.remedioGlobal {
+                if let _ = appDelegate.remedioGlobal {
                     appDelegate.remedioGlobal = nil
                     let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
                     let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
@@ -118,11 +118,11 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
         self.txtDuracaoQuantidade.resignFirstResponder()
         switch segue.identifier! {
             case "ListarIntervalos":
-                var selecionaIntervaloDoAlerta = segue.destinationViewController as! IntervaloTableViewController
+                let selecionaIntervaloDoAlerta = segue.destinationViewController as! IntervaloTableViewController
                 selecionaIntervaloDoAlerta.delegate = self
                 break
             case "listarRemedio":
-                var selecionaRemedioDoAlerta = segue.destinationViewController as! RemedioSimplesTableViewController
+                let selecionaRemedioDoAlerta = segue.destinationViewController as! RemedioSimplesTableViewController
                 selecionaRemedioDoAlerta.delegate = self
             break
             

@@ -53,7 +53,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
             default:
                 self.alertasDaVez = self.alertasAtivos
-                println("Algo ocorreu no método viewWillAppear na classe AlertaViewController!")
+                print("Algo ocorreu no método viewWillAppear na classe AlertaViewController!")
                 break
         }
         
@@ -80,7 +80,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
             default:
                 self.alertasDaVez = self.alertasAtivos
-                println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
+                print("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
                 break
         }
         
@@ -99,7 +99,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.row == self.alertasDaVez.count {
-            let celulaBranca = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) as! UITableViewCell
+            let celulaBranca = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) 
             
             //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
             celulaBranca.userInteractionEnabled = false
@@ -147,7 +147,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return NSLocalizedString("ALERTAINATIVO", comment: "inatividade")
         }
         
-        var texto = NSLocalizedString("ALERTAPROXIMADOSE", comment: "proxima dose")
+        let texto = NSLocalizedString("ALERTAPROXIMADOSE", comment: "proxima dose")
         
         let dataInicio = alerta.dataInicio
         let intervalo = self.intervaloDAO.buscarPorId(alerta.idIntervalo) as! Intervalo
@@ -167,12 +167,12 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func verificaSeHaNotificacaoPara(alerta: Alerta) -> Bool {
         
-        var notificacao = UILocalNotification()
-        var arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        //_ = UILocalNotification()
+        let arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
         var contadorNotificacoes = 0
         let idRemedio = String(alerta.idRemedio)
         
-        for notificacao in arrayDeNotificacoes as! [UILocalNotification]{
+        for notificacao in arrayDeNotificacoes! {
             
 //            var idRemedioString: String = ""
             let info = notificacao.userInfo as! [String: AnyObject]
@@ -183,7 +183,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if info["idRemedio"] as? String == idRemedio {
                 contadorNotificacoes++
             }else{
-                println("Nenhuma notificacao local encontrada com esse id de remedio")
+                print("Nenhuma notificacao local encontrada com esse id de remedio")
             }
         }
         
@@ -211,12 +211,12 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.cancelarNotificacoes.tintColor = UIColor.clearColor()
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
 //        var tomei = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
 //            //Ação para quando o usuário tomou um remédio
 //        })
         
-        var apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
             //Ação para quando o usuário quer apagar um remédio
             switch self.segmentedControlAtividadeAlertas.selectedSegmentIndex {
                 case 0:
@@ -233,7 +233,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.alertasDaVez = self.alertasInativos
                     break
                 default:
-                    println("Algo ocorreu no método editActionsForRowAtIndexPath na classe AlertaViewController!")
+                    print("Algo ocorreu no método editActionsForRowAtIndexPath na classe AlertaViewController!")
                     break
             }
             self.tableViewAlerta.reloadData()
@@ -257,7 +257,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func cancelarTodos(sender: AnyObject) {
         
-        var acao = UIActionSheet(title: "Deseja cancelar todas os alertas?", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: "Sim")
+        let acao = UIActionSheet(title: "Deseja cancelar todas os alertas?", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: "Sim")
         
         acao.showInView(self.view)
     }
@@ -265,7 +265,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         switch buttonIndex {
             case 0:
-                println(self.alertaDAO.cancelarTodosOsAlertas())
+                print(self.alertaDAO.cancelarTodosOsAlertas())
                 self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
                 self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
                 
@@ -278,7 +278,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         break
                     default:
                         self.alertasDaVez = self.alertasAtivos
-                        println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
+                        print("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
                         break
                 }
                 
@@ -293,7 +293,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 //Cancelar
                 break
             default:
-                println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+                print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
                 break
             }
     }
@@ -318,7 +318,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
             default:
                 self.alertasDaVez = self.alertasAtivos
-                println("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
+                print("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
                 break
         }
         
@@ -326,7 +326,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var visualizarAlerta = segue.destinationViewController as! VisualizarAlertaTableViewController
+        let visualizarAlerta = segue.destinationViewController as! VisualizarAlertaTableViewController
         visualizarAlerta.alerta = self.alertaSelecionado
     }
 }

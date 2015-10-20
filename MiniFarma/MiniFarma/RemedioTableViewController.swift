@@ -158,7 +158,7 @@ SelecionaFarmaciaDelegate {
             self.labelFarmacia.text = String(f.nomeFarmacia)
         }
         
-        if let foto = self.fotoRemedio as UIImage? {
+        if let _ = self.fotoRemedio as UIImage? {
             self.buttonTirarFotoRemedio.setTitle("", forState: .Normal)
             self.buttonTirarFotoRemedio.setBackgroundImage(self.fotoRemedio, forState: .Normal)
         }else{
@@ -209,26 +209,32 @@ SelecionaFarmaciaDelegate {
     @IBAction func salvarRemedio(sender: AnyObject) {
         
         let nomeRemedio = self.textFieldNome.text
-        let numeroQuantidade = self.textFieldNumeroQuantidade.text.toInt() as Int?
-        let numeroDose = self.textFieldNumeroDose.text.toInt()
+        let numeroQuantidade = Int(self.textFieldNumeroQuantidade.text!) as Int?
+        let numeroDose = Int(self.textFieldNumeroDose.text!)
         let unidade = self.segmentedControlUnidadeQuantidade.selectedSegmentIndex
         
         let UUID = NSUUID().UUIDString
-        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: UUID+"_"+nomeRemedio, eTipo: "Remedio.png")
-        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: UUID+"_"+nomeRemedio, eTipo: "Receita.png")
+        let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: UUID+"_"+nomeRemedio!, eTipo: "Remedio.png")
+        let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: UUID+"_"+nomeRemedio!, eTipo: "Receita.png")
         
 
-        var preco = NSString(string: self.textFieldPreco.text).doubleValue
+        var preco = NSString(string: self.textFieldPreco.text!).doubleValue
         if self.textFieldPreco.text == "0.0" {
             preco = 0
-        }else if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text) {
+        }else if let n = NSNumberFormatter().numberFromString(self.textFieldPreco.text!) {
             preco = n.doubleValue
         }
         
         let formatador = NSDateFormatter()
-        formatador.dateFormat = "dd/MM/yyyy"
+        
+        if NSLocale.currentLocale().localeIdentifier == "pt_BR" {
+            formatador.dateFormat = "dd/MM/y"
+        }else{
+            formatador.dateFormat = "MM/dd/y"
+        }
+        
         formatador.timeZone = NSTimeZone.systemTimeZone()
-        let dataValidade = formatador.dateFromString(self.textFieldDataDeValidade.text)
+        let dataValidade = formatador.dateFromString(self.textFieldDataDeValidade.text!)
         
         var idFarmacia: Int = 0
         if let f = self.farmacia {
@@ -257,8 +263,8 @@ SelecionaFarmaciaDelegate {
         
         let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo, notas: notas)
         
-        if self.textFieldDataDeValidade.text != "" && self.textFieldDataDeValidade.text != "01/01/1900" {
-            let notificacaoVencimento = Notificacao(remedio: remedio)
+        if self.textFieldDataDeValidade.text != "" && self.textFieldDataDeValidade.text != "01/01/1900" {//AQUI VAI TER UM ERRO POR CAUSA DA DATA QUE NAO ESTA NO MESMO FORMATO
+            _ = Notificacao(remedio: remedio)
         }
         
         let alerta = SCLAlertView()
@@ -307,12 +313,12 @@ SelecionaFarmaciaDelegate {
     }
     
     func salvarFoto(foto: UIImage?, comNomeDoRemedio nomeRemedio: String, eTipo tipo: String) -> String {
-        if let f = foto {
-            let imagemEmDados = NSData(data:UIImagePNGRepresentation(foto))
+        if let _ = foto {
+            let imagemEmDados = NSData(data:UIImagePNGRepresentation(foto!)!)
             let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-            var documentos: String = caminhos[0] as! String
-            let caminhoCompleto = documentos.stringByAppendingPathComponent(nomeRemedio+tipo)
-            let resultado = imagemEmDados.writeToFile(caminhoCompleto, atomically: true)
+            let documentos: String = caminhos[0]
+            let caminhoCompleto = documentos + nomeRemedio + tipo
+            _ = imagemEmDados.writeToFile(caminhoCompleto, atomically: true)
             return nomeRemedio+tipo
         }else{
             return "sem foto"
@@ -332,9 +338,9 @@ SelecionaFarmaciaDelegate {
     
     func alterouOValorDoDatePicker(sender:UIDatePicker) {
         
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         
-        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         
@@ -351,7 +357,7 @@ SelecionaFarmaciaDelegate {
         return self.locais.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.locais[row].nome
     }
     
@@ -415,7 +421,7 @@ SelecionaFarmaciaDelegate {
             self.ocultaCelulasDe(true, quantidade: false, dose: true, preco: true)
         }else{
             if self.textFieldNumeroQuantidade.text != "" {
-                self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+                self.labelQuantidade.text = self.textFieldNumeroQuantidade.text! + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
             }else{
                 self.labelQuantidade.text = ""
             }
@@ -438,7 +444,7 @@ SelecionaFarmaciaDelegate {
             self.ocultaCelulasDe(true, quantidade: true, dose: false, preco: true)
         }else{
             if self.textFieldNumeroDose.text != "" {
-                self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+                self.labelDose.text = self.textFieldNumeroDose.text! + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
             }else{
                 self.labelDose.text = ""
             }
@@ -461,7 +467,7 @@ SelecionaFarmaciaDelegate {
             self.ocultaCelulasDe(true, quantidade: true, dose: true, preco: false)
         }else{
             if self.textFieldPreco.text != "" {
-                self.labelPreco.text = self.labelMoeda.text! + self.textFieldPreco.text
+                self.labelPreco.text = self.labelMoeda.text! + self.textFieldPreco.text!
             }else{
                 self.labelPreco.text = ""
             }
@@ -505,7 +511,7 @@ SelecionaFarmaciaDelegate {
         
         if quantidade {
             if self.textFieldNumeroQuantidade.text != "" {
-                self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+                self.labelQuantidade.text = self.textFieldNumeroQuantidade.text! + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
             }else{
                 self.labelQuantidade.text = ""
             }
@@ -517,7 +523,7 @@ SelecionaFarmaciaDelegate {
         
         if dose {
             if self.textFieldNumeroDose.text != "" {
-                self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+                self.labelDose.text = self.textFieldNumeroDose.text! + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
             }else{
                 self.labelDose.text = ""
             }
@@ -529,7 +535,7 @@ SelecionaFarmaciaDelegate {
         
         if preco {
             if self.textFieldPreco.text != "" {
-                self.labelPreco.text = self.labelMoeda.text! + self.textFieldPreco.text
+                self.labelPreco.text = self.labelMoeda.text! + self.textFieldPreco.text!
             }else{
                 self.labelPreco.text = ""
             }
@@ -548,10 +554,10 @@ SelecionaFarmaciaDelegate {
     func emiteAlertaParaCadastrarLocal() {
         
         let alerta = SCLAlertView()
-        let nomeLocal = alerta.addTextField(title:NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
+        let nomeLocal = alerta.addTextField(NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
         alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
             if nomeLocal.text != "" {
-                let local = Local(nome: nomeLocal.text)
+                let local = Local(nome: nomeLocal.text!)
                 if self.localDAO.inserir(local) {
                     SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add local sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOLOCAL", comment: "add local sucesso"), arguments: [local.nome]),comment: "add local sucesso"), closeButtonTitle: "OK")
                 }else{
@@ -615,7 +621,7 @@ SelecionaFarmaciaDelegate {
                     self.performSegueWithIdentifier("VisualizarFotoReceita", sender: self.fotoRemedio)
                     break
                 default:
-                    println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+                    print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
                     break
             }
         }else{//Receita
@@ -641,13 +647,13 @@ SelecionaFarmaciaDelegate {
                     self.performSegueWithIdentifier("VisualizarFotoReceita", sender: self.fotoReceita)
                     break
                 default:
-                    println("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+                    print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
                     break
             }
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 
         switch self.fotoOuReceita {
             case 0:
@@ -657,7 +663,7 @@ SelecionaFarmaciaDelegate {
                 self.fotoReceita = info[UIImagePickerControllerEditedImage] as? UIImage
                 break
             default:
-                println("Algo ocorreu na funcao didFinishPickingMediaWithInfo na classe RemedioTableViewController")
+                print("Algo ocorreu na funcao didFinishPickingMediaWithInfo na classe RemedioTableViewController")
                 break
         }
         
@@ -671,7 +677,7 @@ SelecionaFarmaciaDelegate {
         self.segmentedControlUnidadeDose.selectedSegmentIndex = indiceUnidadeQuantidade
         
         if self.textFieldNumeroDose.text != "" {
-            self.labelDose.text = self.textFieldNumeroDose.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
+            self.labelDose.text = self.textFieldNumeroDose.text! + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeDose.selectedSegmentIndex]
         }else{
             self.labelDose.text = ""
         }
@@ -682,7 +688,7 @@ SelecionaFarmaciaDelegate {
         self.segmentedControlUnidadeQuantidade.selectedSegmentIndex = indiceUnidadeDose
         
         if self.textFieldNumeroQuantidade.text != "" {
-            self.labelQuantidade.text = self.textFieldNumeroQuantidade.text + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
+            self.labelQuantidade.text = self.textFieldNumeroQuantidade.text! + self.histogramaUnidadesRemedio[self.segmentedControlUnidadeQuantidade.selectedSegmentIndex]
         }else{
             self.labelQuantidade.text = ""
         }
@@ -692,15 +698,15 @@ SelecionaFarmaciaDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
             case "SelecionaCategoria":
-                var selecionaCategoria = segue.destinationViewController as! CategoriaTableViewController
+                let selecionaCategoria = segue.destinationViewController as! CategoriaTableViewController
                 selecionaCategoria.delegate = self
                 break
             case "SelecionaIntervalo":
-                var selecionaIntervalo = segue.destinationViewController as! IntervaloViewController
+                let selecionaIntervalo = segue.destinationViewController as! IntervaloViewController
                 selecionaIntervalo.delegate = self
                 break
             case "SelecionaFarmacia":
-                var selecionaFarmacia = segue.destinationViewController as! FarmaciaTableViewController
+                let selecionaFarmacia = segue.destinationViewController as! FarmaciaTableViewController
                 selecionaFarmacia.delegate = self
                 break
             case "VisualizarFotoReceita":
@@ -708,7 +714,7 @@ SelecionaFarmaciaDelegate {
                 visualizador.fotoASerVisualizada = sender as! UIImage
                 break
             default:
-                println("Algo ocorreu na função prepareForSegue da classe RemedioTableViewController")
+                print("Algo ocorreu na função prepareForSegue da classe RemedioTableViewController")
                 break
         }
     }

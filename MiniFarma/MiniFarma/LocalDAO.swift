@@ -38,7 +38,7 @@ class LocalDAO: DAO {
         let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Local WHERE id_local = ?", withArgumentsInArray: [String(local.idLocal)])
         
         if !deletadoComSucesso {
-            println("\(self.bancoDeDados.lastErrorMessage())")
+            print("\(self.bancoDeDados.lastErrorMessage())")
         }
         
         self.bancoDeDados.close()
@@ -53,7 +53,7 @@ class LocalDAO: DAO {
         
         self.locais = [Local]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local Order By nome", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local Order By nome", withArgumentsInArray: nil)
         
         var idLocal = String()
         var nome = String()
@@ -63,7 +63,7 @@ class LocalDAO: DAO {
             idLocal = resultadoBusca.stringForColumn("id_local")
             nome = resultadoBusca.stringForColumn("nome")
             
-            let local = Local(idLocal: idLocal.toInt()!, nome: nome)
+            let local = Local(idLocal: Int(idLocal)!, nome: nome)
             
             self.locais.append(local)
         }
@@ -79,7 +79,7 @@ class LocalDAO: DAO {
         
         var localBuscado = Local()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local WHERE id_local = ?", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local WHERE id_local = ?", withArgumentsInArray: [String(id)])
         
         var idLocal = String()
         var nome = String()
@@ -89,7 +89,7 @@ class LocalDAO: DAO {
             idLocal = resultadoBusca.stringForColumn("id_local")
             nome = resultadoBusca.stringForColumn("nome")
             
-            let local = Local(idLocal: idLocal.toInt()!, nome: nome)
+            let local = Local(idLocal: Int(idLocal)!, nome: nome)
             
             localBuscado = local
         }

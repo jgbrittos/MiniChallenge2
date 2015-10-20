@@ -30,7 +30,11 @@ class Remedio: NSObject {
     
     var dataEmString: String {
         let f = NSDateFormatter()
-        f.dateFormat = "dd/MM/yyyy"
+        if NSLocale.currentLocale().localeIdentifier == "pt_BR" {
+            f.dateFormat = "dd/MM/y"
+        }else{
+            f.dateFormat = "MM/dd/y"
+        }
         return f.stringFromDate(self.dataValidade)
     }
     
@@ -39,8 +43,8 @@ class Remedio: NSObject {
             return UIImage(named: "semFoto")
         }
         let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var documentos: String = caminhos[0] as! String
-        let caminhoCompleto = documentos.stringByAppendingPathComponent(self.fotoRemedio)
+        let documentos: String = caminhos[0] 
+        let caminhoCompleto = documentos + self.fotoRemedio
         return UIImage(contentsOfFile: caminhoCompleto)
     }
     
@@ -49,8 +53,8 @@ class Remedio: NSObject {
             return UIImage(named: "semFoto")!
         }
         let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        var documentos: String = caminhos[0] as! String
-        let caminhoCompleto = documentos.stringByAppendingPathComponent(self.fotoReceita)
+        let documentos: String = caminhos[0] 
+        let caminhoCompleto = documentos + self.fotoReceita
         return UIImage(contentsOfFile: caminhoCompleto)
     }
     
@@ -127,7 +131,13 @@ class Remedio: NSObject {
         idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?, notas: String?){
         
         let formatador = NSDateFormatter()
-        formatador.dateFormat = "dd-MM-yyyy"
+        
+        if NSLocale.currentLocale().localeIdentifier == "pt_BR" {
+            formatador.dateFormat = "dd/MM/y"
+        }else{
+            formatador.dateFormat = "MM/dd/y"
+        }
+
         let dataControle = formatador.dateFromString("01/01/1900")!
             
         if let n = nomeRemedio {

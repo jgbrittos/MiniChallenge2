@@ -64,8 +64,8 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         localizacaoGerenciador.distanceFilter = kCLDistanceFilterNone
         localizacaoGerenciador.desiredAccuracy = kCLLocationAccuracyBest
         
-        latitudeValor = localizacaoGerenciador.location.coordinate.latitude
-        longitudeValor = localizacaoGerenciador.location.coordinate.longitude
+        latitudeValor = localizacaoGerenciador.location!.coordinate.latitude
+        longitudeValor = localizacaoGerenciador.location!.coordinate.longitude
         
         let localizacao = CLLocationCoordinate2D(latitude: latitudeValor, longitude: longitudeValor)
 
@@ -85,20 +85,20 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!{
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
         pino.animatesDrop = true
         pino.draggable = true
         
         return pino
     }
     
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
         
         if newState == MKAnnotationViewDragState.Ending {
             let anotacao = view.annotation
-            self.latitudeValor = anotacao.coordinate.latitude
-            self.longitudeValor = anotacao.coordinate.longitude
-            println("annotation dropped at: \(anotacao.coordinate.latitude),\(anotacao.coordinate.longitude)")
+            self.latitudeValor = anotacao!.coordinate.latitude
+            self.longitudeValor = anotacao!.coordinate.longitude
+            print("annotation dropped at: \(anotacao!.coordinate.latitude),\(anotacao!.coordinate.longitude)")
         }
         
     }
@@ -138,13 +138,13 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         if(txtFieldNome.text != ""){
 
             var telefone: Int
-            if let t = self.textFieldTelefone.text.toInt() {
+            if let t = Int(self.textFieldTelefone.text!) {
                 telefone = t
             }else{
                 telefone = 0
             }
             
-            let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor, telefone: telefone)
+            let farmacia = Farmacia(nomeFarmacia: txtFieldNome.text!, favorita: favorito, latitude: latitudeValor, longitude: longitudeValor, telefone: telefone)
 
             let alerta = SCLAlertView()
             if farmaciaDAO.inserir(farmacia) {
@@ -171,7 +171,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         return true
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         txtFieldNome.resignFirstResponder()
         self.view.endEditing(true)
     }

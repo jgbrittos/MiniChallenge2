@@ -61,7 +61,7 @@ class VisualizarRemedioTableViewController: UITableViewController {
         
         self.labelNome.text = self.remedio?.nomeRemedio
         
-        if let d = self.remedio?.dataValidade {
+        if let _ = self.remedio?.dataValidade {
             
             let dataString = self.remedio?.dataEmString
             
@@ -205,7 +205,7 @@ class VisualizarRemedioTableViewController: UITableViewController {
                 visualizador.remedio = sender as? Remedio
                 break
             default:
-                println("Algo ocorreu na funcao prepareForSegue na classe VisualizarRemedioTableViewController")
+                print("Algo ocorreu na funcao prepareForSegue na classe VisualizarRemedioTableViewController")
         }
     }
     

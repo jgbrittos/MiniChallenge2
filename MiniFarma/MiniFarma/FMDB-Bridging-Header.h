@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 JGBrittoS. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "FMDatabase.h"
+//#import <UIKit/UIKit.h>
+#import "FMDB.h"
 
-@interface FMDB_Bridging_Header : UIViewController
+//@interface FMDB_Bridging_Header : UIViewController
 
-@end
+//@end

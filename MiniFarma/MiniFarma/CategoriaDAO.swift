@@ -49,14 +49,14 @@ class CategoriaDAO: DAO {
         
         self.categorias = [Categoria]()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By nome", withArgumentsInArray: nil)
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By nome", withArgumentsInArray: nil)
         
         while(result.next()){
             
-            var idCategoria: String = result.stringForColumn("id_categoria")
-            var nome: String = result.stringForColumn("nome")
+            let idCategoria: String = result.stringForColumn("id_categoria")
+            let nome: String = result.stringForColumn("nome")
             
-            var categoria = Categoria(idCategoria: idCategoria.toInt()!, nomeCategoria: nome)
+            let categoria = Categoria(idCategoria: Int(idCategoria)!, nomeCategoria: nome)
             
             self.categorias.append(categoria)
         }
@@ -72,14 +72,14 @@ class CategoriaDAO: DAO {
         
         var categoriaBuscada = Categoria()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(id)])
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(id)])
         
         while(result.next()){
             
-            var idCategoria: String = result.stringForColumn("id_categoria")
-            var nome: String = result.stringForColumn("nome")
+            let idCategoria: String = result.stringForColumn("id_categoria")
+            let nome: String = result.stringForColumn("nome")
             
-            var categoria = Categoria(idCategoria: idCategoria.toInt()!, nomeCategoria: nome)
+            let categoria = Categoria(idCategoria: Int(idCategoria)!, nomeCategoria: nome)
             
             categoriaBuscada = categoria
         }

@@ -63,7 +63,7 @@ class RemedioDAO: DAO {
         
         self.remedios = [Remedio]()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By nome", withArgumentsInArray: nil)
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By nome", withArgumentsInArray: nil)
         
         //campos opcionais
         var dataValidade: NSDate?
@@ -82,8 +82,8 @@ class RemedioDAO: DAO {
         
         while(result.next()){
             
-            var idRemedio: NSString = result.stringForColumn("id_remedio")
-            var nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.stringForColumn("id_remedio")
+            let nome: NSString = result.stringForColumn("nome")
             
             if(result.stringForColumn("data_validade") != nil){
                 dataValidade = result.dateForColumn("data_validade")
@@ -142,7 +142,7 @@ class RemedioDAO: DAO {
         
         var remedioBuscado = Remedio()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(id)])
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(id)])
         
         //campos opcionais
         var dataValidade: NSDate?
@@ -161,8 +161,8 @@ class RemedioDAO: DAO {
 
         while(result.next()){
             
-            var idRemedio: NSString = result.stringForColumn("id_remedio")
-            var nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.stringForColumn("id_remedio")
+            let nome: NSString = result.stringForColumn("nome")
             
             
             if(result.stringForColumn("data_validade") != nil){
@@ -223,7 +223,7 @@ class RemedioDAO: DAO {
         
         self.remedios = [Remedio]()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE vencido = ? Order By nome", withArgumentsInArray: [String(_validade)])
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE vencido = ? Order By nome", withArgumentsInArray: [String(_validade)])
         
         //campos opcionais
         var dataValidade: NSDate?
@@ -242,8 +242,8 @@ class RemedioDAO: DAO {
         
         while(result.next()){
             
-            var idRemedio: NSString = result.stringForColumn("id_remedio")
-            var nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.stringForColumn("id_remedio")
+            let nome: NSString = result.stringForColumn("nome")
             
             
             if(result.stringForColumn("data_validade") != nil){
@@ -337,7 +337,7 @@ class RemedioDAO: DAO {
     
     func agendaNotificacaoDeRemedioAcabando(remedio: Remedio, novaQuantidade: Int){
         if novaQuantidade <= remedio.numeroDose {
-            let n = Notificacao(idRemedio: remedio.idRemedio, nomeRemedio: remedio.nomeRemedio, quantidadeRestante: (remedio.numeroQuantidade - remedio.numeroDose))
+            _ = Notificacao(idRemedio: remedio.idRemedio, nomeRemedio: remedio.nomeRemedio, quantidadeRestante: (remedio.numeroQuantidade - remedio.numeroDose))
         }
     }
     
@@ -346,7 +346,7 @@ class RemedioDAO: DAO {
         
         var todosRemedios = [Remedio]()
         
-        var result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
         
         //campos opcionais
         var dataValidade: NSDate?
@@ -365,8 +365,8 @@ class RemedioDAO: DAO {
         
         while(result.next()){
             
-            var idRemedio: NSString = result.stringForColumn("id_remedio")
-            var nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.stringForColumn("id_remedio")
+            let nome: NSString = result.stringForColumn("nome")
             
             if(result.stringForColumn("data_validade") != nil){
                 dataValidade = result.dateForColumn("data_validade")

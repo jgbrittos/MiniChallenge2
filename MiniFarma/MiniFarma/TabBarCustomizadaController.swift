@@ -31,15 +31,15 @@ class TabBarCustomizadaController: UITabBarController {
         super.viewDidLoad()
         
         //Customizando a tab bar
-        let abas = self.tabBar.items as! [UITabBarItem]
-        abas.first?.image = UIImage(named: "listaRemediosNegativo")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        abas.first?.selectedImage = UIImage(named: "listaRemedios")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        abas.last?.image = UIImage(named: "listaAlertasNegativo")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        abas.last?.selectedImage = UIImage(named: "listaAlertas")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        let abas = self.tabBar.items as [UITabBarItem]?
+        abas!.first?.image = UIImage(named: "listaRemediosNegativo")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        abas!.first?.selectedImage = UIImage(named: "listaRemedios")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        abas!.last?.image = UIImage(named: "listaAlertasNegativo")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        abas!.last?.selectedImage = UIImage(named: "listaAlertas")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("dispositivoIraRotacionar:"), name:UIDeviceOrientationDidChangeNotification, object: nil)
-        println("\(informacaoDeOutraTela?.numero) \(informacaoDeOutraTela?.unidade)")
+        print("\(informacaoDeOutraTela?.numero) \(informacaoDeOutraTela?.unidade)")
         self.criaBotoesDeOpcoes()
     }
 
@@ -102,13 +102,13 @@ class TabBarCustomizadaController: UITabBarController {
     
     //MARK:- Internacionalização
     func internacionalizaTabBar(){
-        let abas = self.tabBar.items as! [UITabBarItem]
+        let abas = self.tabBar.items as [UITabBarItem]?
         
-        abas.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "Aba remédios")
-        abas.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "Aba remédios")
+        abas!.first?.accessibilityLabel = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_LABEL", comment: "Aba remédios")
+        abas!.first?.accessibilityHint = NSLocalizedString("TABBARREMEDIOS_ACESSIBILIDADE_HINT", comment: "Aba remédios")
         
-        abas.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "Aba alertas")
-        abas.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "Aba alertas")
+        abas!.last?.accessibilityLabel = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_LABEL", comment: "Aba alertas")
+        abas!.last?.accessibilityHint = NSLocalizedString("TABBARALERTAS_ACESSIBILIDADE_HINT", comment: "Aba alertas")
     }
     
     //MARK:- Ação do Botão '+'

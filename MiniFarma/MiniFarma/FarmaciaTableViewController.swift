@@ -44,7 +44,7 @@ class FarmaciaTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if(editingStyle == .Delete){
-            let sucesso: Bool = farmaciaDAO.deletar(self.farmacias[indexPath.row])
+            _ = farmaciaDAO.deletar(self.farmacias[indexPath.row])
             
             self.farmacias.removeAtIndex(indexPath.row)
             
@@ -78,32 +78,32 @@ class FarmaciaTableViewController: UITableViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let farmacia = self.farmacias[indexPath.row] as Farmacia
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//        let farmacia = self.farmacias[indexPath.row] as Farmacia
         
-        var ligar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Ligar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            if String(farmacia.telefone) != nil {
-                let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
-                
-                //check  Call Function available only in iphone
-                if UIApplication.sharedApplication().canOpenURL(ligacao!) {
-                    UIApplication.sharedApplication().openURL(ligacao!)
-                } else {
-                    SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
-                }
-            }else{
-                SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
-            }
-        })
-        var apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            let sucesso: Bool = self.farmaciaDAO.deletar(self.farmacias[indexPath.row])
+//        let ligar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Ligar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+//            if String(farmacia.telefone) != nil {
+//                let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
+//                
+//                //check  Call Function available only in iphone
+//                if UIApplication.sharedApplication().canOpenURL(ligacao!) {
+//                    UIApplication.sharedApplication().openURL(ligacao!)
+//                } else {
+//                    SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
+//                }
+//            }else{
+//                SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
+//            }
+//        })
+        let apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+            _ = self.farmaciaDAO.deletar(self.farmacias[indexPath.row])
             
             self.farmacias.removeAtIndex(indexPath.row)
             
             self.tableView.reloadData()
         })
         
-        ligar.backgroundColor = UIColor(red: 0/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1)
+//        ligar.backgroundColor = UIColor(red: 0/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1)
         apagar.backgroundColor = UIColor(red: 255/255.0, green: 0/255.0, blue: 73/255.0, alpha: 1)
         
 //        return [apagar, ligar]

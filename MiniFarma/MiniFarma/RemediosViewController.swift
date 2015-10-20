@@ -46,7 +46,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                 break
             default:
                 self.dadosASeremMostrados = self.remediosValidos
-                println("Algo ocorreu no método viewWillAppear na classe RemediosViewController!")
+                print("Algo ocorreu no método viewWillAppear na classe RemediosViewController!")
                 break
         }
 //        self.dadosASeremMostrados = self.remediosValidos
@@ -66,7 +66,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                 break
             default:
                 self.dadosASeremMostrados = self.remediosValidos
-                println("Algo ocorreu no método alteraDadosDaTabelaRemedios na classe RemediosViewController!")
+                print("Algo ocorreu no método alteraDadosDaTabelaRemedios na classe RemediosViewController!")
                 break
         }
 
@@ -85,7 +85,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         if indexPath.row == self.dadosASeremMostrados.count {
-            let celulaBranca = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) as! UITableViewCell
+            let celulaBranca = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) 
 
             //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
             celulaBranca.userInteractionEnabled = false
@@ -118,11 +118,11 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         //Necessário para a função editActionsForRowAtIndexPath funcionar corretamente
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let historicoDAO = HistoricoDAO()
         var historico = Historico()
         
-        var tomeiRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let tomeiRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
             switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
                 case 0:
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
@@ -147,7 +147,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     self.dadosASeremMostrados = self.remediosVencidos
                     break
                 default:
-                    println("Algo ocorreu no método editActionsForRowAtIndexPath na classe RemediosViewController!")
+                    print("Algo ocorreu no método editActionsForRowAtIndexPath na classe RemediosViewController!")
                     break
             }
             
@@ -156,13 +156,16 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             self.tableViewRemedios.reloadData()
             
         })
-        var apagarRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let apagarRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
             switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
                 case 0:
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
                     
                     let gerenciadorDeArquivos = NSFileManager()
-                    gerenciadorDeArquivos.removeItemAtPath(remedio.fotoRemedio, error: nil)
+                    do {
+                        try gerenciadorDeArquivos.removeItemAtPath(remedio.fotoRemedio)
+                    } catch _ {
+                    }
                     
                     self.remedioDAO.deletar(remedio)
                     self.remediosValidos.removeAtIndex(indexPath.row)
@@ -172,14 +175,17 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     let remedio = self.remediosVencidos[indexPath.row] as Remedio
                     
                     let gerenciadorDeArquivos = NSFileManager()
-                    gerenciadorDeArquivos.removeItemAtPath(remedio.fotoReceita, error: nil)
+                    do {
+                        try gerenciadorDeArquivos.removeItemAtPath(remedio.fotoReceita)
+                    } catch _ {
+                    }
                     
                     self.remedioDAO.deletar(remedio)
                     self.remediosVencidos.removeAtIndex(indexPath.row)
                     self.dadosASeremMostrados = self.remediosVencidos
                     break
                 default:
-                    println("Algo ocorreu no método editActionsForRowAtIndexPath na classe RemediosViewController!")
+                    print("Algo ocorreu no método editActionsForRowAtIndexPath na classe RemediosViewController!")
                     break
             }
             
@@ -202,7 +208,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
+        let visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
         visualizarRemedio.remedio = self.remedioSelecionado
     }
 }

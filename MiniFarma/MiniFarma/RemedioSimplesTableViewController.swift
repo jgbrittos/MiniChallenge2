@@ -49,7 +49,7 @@ class RemedioSimplesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let celulaRemedios = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        let celulaRemedios = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
         
         let remedio = self.remedios[indexPath.row]
         

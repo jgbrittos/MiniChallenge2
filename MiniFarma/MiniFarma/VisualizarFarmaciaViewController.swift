@@ -42,14 +42,14 @@ class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
 
     @IBAction func abrirNoMapas(sender: AnyObject) {
         let regionDistance:CLLocationDistance = 10000
-        var coordinates = CLLocationCoordinate2D(latitude: self.farmaciaASerVisualizada!.latitude, longitude: self.farmaciaASerVisualizada!.longitude)
+        let coordinates = CLLocationCoordinate2D(latitude: self.farmaciaASerVisualizada!.latitude, longitude: self.farmaciaASerVisualizada!.longitude)
         let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
-        var options = [
+        let options = [
             MKLaunchOptionsMapCenterKey: NSValue(MKCoordinate: regionSpan.center),
             MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan: regionSpan.span)
         ]
-        var placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-        var mapItem = MKMapItem(placemark: placemark)
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = self.farmaciaASerVisualizada?.nomeFarmacia
         mapItem.openInMapsWithLaunchOptions(options)
     }

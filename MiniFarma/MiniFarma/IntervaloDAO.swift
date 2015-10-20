@@ -49,7 +49,7 @@ class IntervaloDAO: DAO {
         
         self.intervalos = [Intervalo]()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo Order By numero", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo Order By numero", withArgumentsInArray: nil)
         
         var idIntervalo = String()
         var numero = String()
@@ -61,7 +61,7 @@ class IntervaloDAO: DAO {
             numero = resultadoBusca.stringForColumn("numero")
             unidade = resultadoBusca.stringForColumn("unidade")
             
-            let intervalo = Intervalo(idIntervalo: idIntervalo.toInt()!, numero: numero.toInt()!, unidade: unidade)
+            let intervalo = Intervalo(idIntervalo: Int(idIntervalo)!, numero: Int(numero)!, unidade: unidade)
             
             self.intervalos.append(intervalo)
         }
@@ -77,7 +77,7 @@ class IntervaloDAO: DAO {
         
         var intervaloBuscado = Intervalo()
         
-        var resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo WHERE id_intervalo = ? Order By id_intervalo", withArgumentsInArray: [id])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo WHERE id_intervalo = ? Order By id_intervalo", withArgumentsInArray: [id])
         
         var idIntervalo = String()
         var numero = String()
@@ -89,7 +89,7 @@ class IntervaloDAO: DAO {
             numero = resultadoBusca.stringForColumn("numero")
             unidade = resultadoBusca.stringForColumn("unidade")
             
-            let intervalo = Intervalo(idIntervalo: idIntervalo.toInt()!, numero: numero.toInt()!, unidade: unidade)
+            let intervalo = Intervalo(idIntervalo: Int(idIntervalo)!, numero: Int(numero)!, unidade: unidade)
             
             intervaloBuscado = intervalo
         }

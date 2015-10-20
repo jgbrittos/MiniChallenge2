@@ -38,7 +38,7 @@ class CategoriaTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let celula = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+        let celula = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
 
         celula.textLabel?.text = (self.categorias[indexPath.row] as Categoria).nomeCategoria
 
@@ -51,7 +51,7 @@ class CategoriaTableViewController: UITableViewController {
             let sucesso: Bool = categoriaDAO.deletar(self.categorias[indexPath.row])
             
             if(sucesso){
-                println("Categoria deletada com sucesso")
+                print("Categoria deletada com sucesso")
             }
             
             self.categorias.removeAtIndex(indexPath.row)
@@ -68,13 +68,13 @@ class CategoriaTableViewController: UITableViewController {
     
     @IBAction func adicionarClicado(sender: AnyObject) {
 
-        var alerta = SCLAlertView()
+        let alerta = SCLAlertView()
         
-        let nomeCategoria = alerta.addTextField(title:NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
+        let nomeCategoria = alerta.addTextField(NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
         
         alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
             if nomeCategoria.text != "" {
-                let categoria = Categoria(nomeCategoria: nomeCategoria.text)
+                let categoria = Categoria(nomeCategoria: nomeCategoria.text!)
                 if self.categoriaDAO.inserir(categoria) {
                     SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add categoria sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOCATEGORIA", comment: "add categoria sucesso"), arguments: [categoria.nomeCategoria]),comment: "add farmacia sucesso"), closeButtonTitle: "OK")
                 }else{

@@ -34,7 +34,7 @@ class VisualizaHistoricoTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.row == self.historicos.count {
-            let celulaBranca = self.tableView.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) as! UITableViewCell
+            let celulaBranca = self.tableView.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) 
             
             //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
             celulaBranca.userInteractionEnabled = false
@@ -43,7 +43,7 @@ class VisualizaHistoricoTableViewController: UITableViewController {
             celulaBranca.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
             return celulaBranca
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
 
             let historico = self.historicos[indexPath.row] as Historico
             

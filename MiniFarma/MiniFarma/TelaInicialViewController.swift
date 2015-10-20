@@ -18,7 +18,7 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
         
         self.configuraPageControl()
         
-        var gradient: CAGradientLayer = CAGradientLayer()
+        let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = UIScreen.mainScreen().bounds
         gradient.colors = [UIColor(red: 0/255.0, green: 188/255.0, blue: 254/255.0, alpha: 1).CGColor,
             UIColor(red: 0/255.0, green: 158/255.0, blue: 201/255.0, alpha: 1).CGColor]
@@ -41,7 +41,7 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
             frame.origin.y = self.scrollViewTutorial.frame.size.height/6.0//4.0
             frame.size = CGSizeMake(self.scrollViewTutorial.frame.size.width-32, self.scrollViewTutorial.frame.size.height/2.0)
             
-            var imagemTutorial = UIImageView(frame: frame)
+            let imagemTutorial = UIImageView(frame: frame)
             imagemTutorial.contentMode = .ScaleAspectFit
             imagemTutorial.image = UIImage(named: "Tutorial"+String(i+1))
             
