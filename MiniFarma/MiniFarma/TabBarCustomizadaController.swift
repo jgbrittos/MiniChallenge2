@@ -38,7 +38,7 @@ class TabBarCustomizadaController: UITabBarController {
         abas!.last?.selectedImage = UIImage(named: "listaAlertas")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("dispositivoIraRotacionar:"), name:UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TabBarCustomizadaController.dispositivoIraRotacionar(_:)), name:UIDeviceOrientationDidChangeNotification, object: nil)
         print("\(informacaoDeOutraTela?.numero) \(informacaoDeOutraTela?.unidade)")
         self.criaBotoesDeOpcoes()
     }
@@ -47,7 +47,7 @@ class TabBarCustomizadaController: UITabBarController {
         super.viewWillAppear(animated)
         self.internacionalizaTabBar()
         self.botaoMaisOpcoes.frame = CGRectMake(0.0, 0.0, 70, 70)
-        self.botaoMaisOpcoes.addTarget(self, action: Selector("fazAnimacaoDeBotoesDeOpcoes:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.botaoMaisOpcoes.addTarget(self, action: #selector(TabBarCustomizadaController.fazAnimacaoDeBotoesDeOpcoes(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoMaisOpcoes.setBackgroundImage(UIImage(named: "botaoMais"), forState:UIControlState.Normal)
         self.botaoMaisOpcoes.center = CGPointMake(UIScreen.mainScreen().bounds.width/2.0, 0)
         self.botaoMaisOpcoes.layer.zPosition = 1
@@ -82,20 +82,20 @@ class TabBarCustomizadaController: UITabBarController {
         
         self.botaoAdicionaFarmacia.frame = tamanhoPadraoBotao
         self.botaoAdicionaFarmacia.center = self.centroInicialPadrao
-        self.botaoAdicionaFarmacia.addTarget(self, action: Selector("chamaStoryboardFarmacia:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.botaoAdicionaFarmacia.addTarget(self, action: #selector(TabBarCustomizadaController.chamaStoryboardFarmacia(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoAdicionaFarmacia.setBackgroundImage(UIImage(named: "botaoAdicionarFarmacia"), forState:UIControlState.Normal)
 //        self.botaoAdicionaFarmacia.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         
         self.botaoAdicionaRemedio.frame = tamanhoPadraoBotao
         self.botaoAdicionaRemedio.center = self.centroInicialPadrao
-        self.botaoAdicionaRemedio.addTarget(self, action: Selector("chamaStoryboardRemedio:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.botaoAdicionaRemedio.addTarget(self, action: #selector(TabBarCustomizadaController.chamaStoryboardRemedio(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.botaoAdicionaRemedio.setBackgroundImage(UIImage(named: "botaoAdicionarRemedio"), forState:UIControlState.Normal)
 //        self.botaoAdicionaRemedio.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
         
         self.botaoAdicionaAlerta.frame = tamanhoPadraoBotao
         self.botaoAdicionaAlerta.center = self.centroInicialPadrao
         self.botaoAdicionaAlerta.setBackgroundImage(UIImage(named: "botaoAdicionarAlerta"), forState:UIControlState.Normal)
-        self.botaoAdicionaAlerta.addTarget(self, action: Selector("chamaStoryboardAlerta:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.botaoAdicionaAlerta.addTarget(self, action: #selector(TabBarCustomizadaController.chamaStoryboardAlerta(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 //        self.botaoAdicionaAlerta.setBackgroundImage(UIImage(named: ""), forState:UIControlState.Highlighted)
     }

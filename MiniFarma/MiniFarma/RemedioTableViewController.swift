@@ -102,7 +102,7 @@ SelecionaFarmaciaDelegate {
         //PickerView de Local
         self.pickerViewLocal.delegate = self
         self.textFieldLocal.inputView = self.pickerViewLocal
-        self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
+//        self.pickerViewLocal.targetForAction(Selector("alterouOValorDoPickerViewLocal:"), withSender: self)
         self.locais = self.localDAO.buscarTodos() as! [Local]
 
         self.switchAlerta.on = false
@@ -217,7 +217,6 @@ SelecionaFarmaciaDelegate {
         let fotoRemedio = self.salvarFoto(self.fotoRemedio, comNomeDoRemedio: UUID+"_"+nomeRemedio!, eTipo: "Remedio.png")
         let fotoReceita = self.salvarFoto(self.fotoReceita, comNomeDoRemedio: UUID+"_"+nomeRemedio!, eTipo: "Receita.png")
         
-
         var preco = NSString(string: self.textFieldPreco.text!).doubleValue
         if self.textFieldPreco.text == "0.0" {
             preco = 0
@@ -317,8 +316,8 @@ SelecionaFarmaciaDelegate {
             let imagemEmDados = NSData(data:UIImagePNGRepresentation(foto!)!)
             let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
             let documentos: String = caminhos[0]
-            let caminhoCompleto = documentos + nomeRemedio + tipo
-            _ = imagemEmDados.writeToFile(caminhoCompleto, atomically: true)
+            let caminhoCompleto = documentos + "/" + nomeRemedio + tipo
+            imagemEmDados.writeToFile(caminhoCompleto, atomically: true)
             return nomeRemedio+tipo
         }else{
             return "sem foto"
@@ -333,7 +332,7 @@ SelecionaFarmaciaDelegate {
         
         sender.inputView = datePickerDataDeValidade
         
-        datePickerDataDeValidade.addTarget(self, action: Selector("alterouOValorDoDatePicker:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerDataDeValidade.addTarget(self, action: #selector(RemedioTableViewController.alterouOValorDoDatePicker), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     func alterouOValorDoDatePicker(sender:UIDatePicker) {

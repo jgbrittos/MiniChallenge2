@@ -47,7 +47,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         for Farmacia in farmacias{
             
             if Farmacia.favorita == 1{
-                existeFavorita++
+                existeFavorita += 1
                 farmaciaFavoritaId = Farmacia.idFarmacia
             }
         }

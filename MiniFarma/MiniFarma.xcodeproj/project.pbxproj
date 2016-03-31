@@ -36,9 +36,9 @@
 		457B8CE31BD57DD300A5D3BB /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CDB1BD57DD300A5D3BB /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		457B8CE41BD57DD300A5D3BB /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CDD1BD57DD300A5D3BB /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		457B8CE51BD57DD300A5D3BB /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CE01BD57DD300A5D3BB /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		457B8CE91BD580D900A5D3BB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CE81BD580D900A5D3BB /* Util.swift */; settings = {ASSET_TAGS = (); }; };
+		457B8CE91BD580D900A5D3BB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B8CE81BD580D900A5D3BB /* Util.swift */; };
 		457B8CEA1BD5845600A5D3BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 457B8CE61BD580B100A5D3BB /* libsqlite3.0.tbd */; };
-		457B8CEC1BD5848000A5D3BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 457B8CEB1BD5848000A5D3BB /* libsqlite3.0.tbd */; settings = {ASSET_TAGS = (); }; };
+		457B8CEC1BD5848000A5D3BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 457B8CEB1BD5848000A5D3BB /* libsqlite3.0.tbd */; };
 		45BB4AE41B61666B00E24F80 /* Intervalo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE31B61666B00E24F80 /* Intervalo.swift */; };
 		45BB4AE61B61667300E24F80 /* IntervaloDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE51B61667300E24F80 /* IntervaloDAO.swift */; };
 		45BB4AE81B61883300E24F80 /* IntervaloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4AE71B61883300E24F80 /* IntervaloViewController.swift */; };
@@ -946,7 +946,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MiniFarma/MiniFarma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joao Gabriel de Britto e Silva (826K39F28T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MiniFarma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -956,7 +956,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "37a688a1-2390-42b4-afae-7720312755e7";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/FMDB-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -972,7 +972,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MiniFarma/MiniFarma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joao Gabriel de Britto e Silva (826K39F28T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MiniFarma/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -982,7 +982,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "37a688a1-2390-42b4-afae-7720312755e7";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/FMDB-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1029,7 +1029,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MiniFarmaWidget/MiniFarmaWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joao Gabriel de Britto e Silva (826K39F28T)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1039,7 +1039,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.MiniFarma.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "42315f53-887a-47ba-9ae6-3d518d1d76d0";
+				PROVISIONING_PROFILE = "b82518d7-4ba6-4d1d-bca8-a62dcc645195";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1049,13 +1049,13 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MiniFarmaWidget/MiniFarmaWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Joao Gabriel de Britto e Silva (826K39F28T)";
 				INFOPLIST_FILE = MiniFarmaWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.jgbrittos.MiniFarma.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "42315f53-887a-47ba-9ae6-3d518d1d76d0";
+				PROVISIONING_PROFILE = "b82518d7-4ba6-4d1d-bca8-a62dcc645195";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

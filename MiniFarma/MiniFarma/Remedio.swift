@@ -44,7 +44,7 @@ class Remedio: NSObject {
         }
         let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentos: String = caminhos[0] 
-        let caminhoCompleto = documentos + self.fotoRemedio
+        let caminhoCompleto = documentos + "/" + self.fotoRemedio
         return UIImage(contentsOfFile: caminhoCompleto)
     }
     

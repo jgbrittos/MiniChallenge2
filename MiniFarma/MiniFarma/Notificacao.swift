@@ -142,7 +142,7 @@ class Notificacao: NSObject {
             
             print("\(dataNotificacao) \(numeroNotificacoes)")
             dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(3600 * _horas))
-            numeroNotificacoes--
+            numeroNotificacoes -= 1
         }
     }
     

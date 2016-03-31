@@ -59,10 +59,10 @@ class FarmaciaTableViewController: UITableViewController {
         cell.nomeCustomizado.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
 
         cell.buttonLigarParaFarmacia.tag = indexPath.row
-        cell.buttonLigarParaFarmacia.addTarget(self, action: Selector("ligarParaFarmacia:"), forControlEvents: .TouchUpInside)
+        cell.buttonLigarParaFarmacia.addTarget(self, action: #selector(FarmaciaTableViewController.ligarParaFarmacia(_:)), forControlEvents: .TouchUpInside)
         
         cell.imagemFavorito.tag = indexPath.row
-        cell.imagemFavorito.addTarget(self, action: Selector("alteraFavorito:"), forControlEvents: .TouchUpInside)
+        cell.imagemFavorito.addTarget(self, action: #selector(FarmaciaTableViewController.alteraFavorito(_:)), forControlEvents: .TouchUpInside)
         if((self.farmacias[indexPath.row] as Farmacia).favorita == 1){
             cell.imagemFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: .Normal)
         }else{

@@ -33,9 +33,9 @@ class TelaInicialViewController: UIViewController, UIScrollViewDelegate {
         let botaoComecar = UIButton(frame: CGRectMake(0,0, 50, 50))
         botaoComecar.center = CGPointMake(UIScreen.mainScreen().bounds.width*7/2, UIScreen.mainScreen().bounds.height-150)//100
         botaoComecar.setImage(UIImage(named: "botaoComecar"), forState: .Normal)
-        botaoComecar.addTarget(self, action: Selector("comecar"), forControlEvents: .TouchUpInside)
+        botaoComecar.addTarget(self, action: #selector(TelaInicialViewController.comecar), forControlEvents: .TouchUpInside)
         
-        for var i = 0; i < 5; i++ {
+        for i in 0 ..< 5 {
             var frame = CGRect()
             frame.origin.x = (self.scrollViewTutorial.frame.size.width * CGFloat(i))+16
             frame.origin.y = self.scrollViewTutorial.frame.size.height/6.0//4.0

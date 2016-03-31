@@ -181,7 +181,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            }
             
             if info["idRemedio"] as? String == idRemedio {
-                contadorNotificacoes++
+                contadorNotificacoes += 1
             }else{
                 print("Nenhuma notificacao local encontrada com esse id de remedio")
             }
