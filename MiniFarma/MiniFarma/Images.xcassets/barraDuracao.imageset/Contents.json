@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Rectangle 32 Copy 3 + Duração + Imported Layers Copy Copy@1x.png"
+      "filename" : "Rectangle_32_Copy_3___Dura__o___Imported_Layers_Copy_Copy_3x.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "Rectangle 32 Copy 3 + Duração + Imported Layers Copy Copy@2x.png"
+      "filename" : "Rectangle_32_Copy_3___Dura__o___Imported_Layers_Copy_Copy_3x@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "Rectangle 32 Copy 3 + Duração + Imported Layers Copy Copy@3x.png"
+      "filename" : "Rectangle_32_Copy_3___Dura__o___Imported_Layers_Copy_Copy_3x@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

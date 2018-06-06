@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Rectangle 32 Copy 2 + Data de início + Imported Layers Copy Copy@1x.png"
+      "filename" : "Rectangle_32_Copy_2___Data_de_ini_cio___Imported_Layers_Copy_Copy_3x_2.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Rectangle_32_Copy_2___Data_de_ini_cio___Imported_Layers_Copy_Copy_3x_2@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Rectangle_32_Copy_2___Data_de_ini_cio___Imported_Layers_Copy_Copy_3x_2@3x.png",
       "scale" : "3x"
     }
   ],
