@@ -260,7 +260,7 @@ SelecionaFarmaciaDelegate {
             notas = n
         }
         
-        let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade as! NSDate as Date, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo, notas: notas)
+        let remedio = Remedio(nomeRemedio: nomeRemedio, dataValidade: dataValidade! as NSDate as Date, numeroQuantidade: numeroQuantidade, unidade: unidade, preco: preco, numeroDose: numeroDose, fotoRemedio: fotoRemedio, fotoReceita: fotoReceita, idFarmacia: idFarmacia, idCategoria: idCategoria, idLocal: idLocal, idIntervalo: idIntervalo, notas: notas)
         
         if self.textFieldDataDeValidade.text != "" && self.textFieldDataDeValidade.text != "01/01/1900" {//AQUI VAI TER UM ERRO POR CAUSA DA DATA QUE NAO ESTA NO MESMO FORMATO
             _ = Notificacao(remedio: remedio)
