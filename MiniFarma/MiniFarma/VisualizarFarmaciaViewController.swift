@@ -40,27 +40,27 @@ class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
     }
 
 
-    @IBAction func abrirNoMapas(sender: AnyObject) {
+    @IBAction func abrirNoMapas(_ sender: AnyObject) {
         let regionDistance:CLLocationDistance = 10000
         let coordinates = CLLocationCoordinate2D(latitude: self.farmaciaASerVisualizada!.latitude, longitude: self.farmaciaASerVisualizada!.longitude)
         let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
         let options = [
-            MKLaunchOptionsMapCenterKey: NSValue(MKCoordinate: regionSpan.center),
-            MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan: regionSpan.span)
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
         ]
         let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = self.farmaciaASerVisualizada?.nomeFarmacia
-        mapItem.openInMapsWithLaunchOptions(options)
+        mapItem.openInMaps(launchOptions: options)
     }
     
-    @IBAction func ligarParaFarmacia(sender: AnyObject) {
+    @IBAction func ligarParaFarmacia(_ sender: AnyObject) {
         if self.farmaciaASerVisualizada?.telefone != nil {
-            let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(self.farmaciaASerVisualizada!.telefone)]))
+            let ligacao = URL(string: String(format: "tel:%@", arguments: [String(self.farmaciaASerVisualizada!.telefone)]))
             
             //check  Call Function available only in iphone
-            if UIApplication.sharedApplication().canOpenURL(ligacao!) {
-                UIApplication.sharedApplication().openURL(ligacao!)
+            if UIApplication.shared.canOpenURL(ligacao!) {
+                UIApplication.shared.openURL(ligacao!)
             } else {
                 SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
             }

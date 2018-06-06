@@ -16,26 +16,26 @@ class FarmaciaDAO: DAO {
         super.init()
     }
     
-    override func inserir(objeto: AnyObject?) -> Bool {
+    override func inserir(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let farmacia: Farmacia = objeto as! Farmacia
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude,telefone) VALUES (?,?,?,?,?)", withArgumentsInArray: [farmacia.nomeFarmacia, String(farmacia.favorita),String(stringInterpolationSegment: farmacia.latitude),String(stringInterpolationSegment: farmacia.longitude), String(farmacia.telefone)])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Farmacia (nome,favorita,latitude,longitude,telefone) VALUES (?,?,?,?,?)", withArgumentsIn: [farmacia.nomeFarmacia, String(farmacia.favorita),String(stringInterpolationSegment: farmacia.latitude),String(stringInterpolationSegment: farmacia.longitude), String(farmacia.telefone)])
         
         self.bancoDeDados.close()
         
         return inseridoComSucesso
     }
     
-    override func deletar(objeto: AnyObject?) -> Bool {
+    override func deletar(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let farmacia: Farmacia = objeto as! Farmacia
         
-        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Farmacia WHERE id_farmacia = ?", withArgumentsInArray: [String(farmacia.idFarmacia)])
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Farmacia WHERE id_farmacia = ?", withArgumentsIn: [String(farmacia.idFarmacia)])
         
         self.bancoDeDados.close()
         
@@ -49,7 +49,7 @@ class FarmaciaDAO: DAO {
         
         self.farmacias = [Farmacia]()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia Order By nome", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia Order By nome", withArgumentsIn: nil)
         
         var idFarmacia = String()
         var nome = String()
@@ -60,12 +60,12 @@ class FarmaciaDAO: DAO {
         
         while(resultadoBusca.next()){
             
-            idFarmacia = resultadoBusca.stringForColumn("id_Farmacia")
-            nome = resultadoBusca.stringForColumn("nome")
-            favorita = resultadoBusca.stringForColumn("favorita")
-            latitude = resultadoBusca.stringForColumn("latitude")
-            longitude = resultadoBusca.stringForColumn("longitude")
-            telefone = resultadoBusca.stringForColumn("telefone")
+            idFarmacia = resultadoBusca.string(forColumn: "id_Farmacia")
+            nome = resultadoBusca.string(forColumn: "nome")
+            favorita = resultadoBusca.string(forColumn: "favorita")
+            latitude = resultadoBusca.string(forColumn: "latitude")
+            longitude = resultadoBusca.string(forColumn: "longitude")
+            telefone = resultadoBusca.string(forColumn: "telefone")
             
             let farmacia = Farmacia(idFarmacia: Int(idFarmacia)!, nomeFarmacia: nome, favorita: Int(favorita)!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: Int(telefone)!)
             
@@ -77,12 +77,12 @@ class FarmaciaDAO: DAO {
         return self.farmacias
     }
 
-    override func buscarPorId(id: Int) -> AnyObject? {
+    override func buscarPorId(_ id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
         var farmaciaBuscada = Farmacia()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia WHERE id_farmacia = ?", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Farmacia WHERE id_farmacia = ?", withArgumentsIn: [String(id)])
         
         var idFarmacia = String()
         var nome = String()
@@ -93,12 +93,12 @@ class FarmaciaDAO: DAO {
         
         while(resultadoBusca.next()){
             
-            idFarmacia = resultadoBusca.stringForColumn("id_Farmacia")
-            nome = resultadoBusca.stringForColumn("nome")
-            favorita = resultadoBusca.stringForColumn("favorita")
-            latitude = resultadoBusca.stringForColumn("latitude")
-            longitude = resultadoBusca.stringForColumn("longitude")
-            telefone = resultadoBusca.stringForColumn("telefone")
+            idFarmacia = resultadoBusca.string(forColumn: "id_Farmacia")
+            nome = resultadoBusca.string(forColumn: "nome")
+            favorita = resultadoBusca.string(forColumn: "favorita")
+            latitude = resultadoBusca.string(forColumn: "latitude")
+            longitude = resultadoBusca.string(forColumn: "longitude")
+            telefone = resultadoBusca.string(forColumn: "telefone")
             
             let farmacia = Farmacia(idFarmacia: Int(idFarmacia)!, nomeFarmacia: nome, favorita: Int(favorita)!, latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue, telefone: Int(telefone)!)
             farmaciaBuscada = farmacia
@@ -109,11 +109,11 @@ class FarmaciaDAO: DAO {
         return farmaciaBuscada
     }
     
-    func atualizaFarmaciaFavorita(idFarmacia: Int, favorita:Int) -> Bool {
+    func atualizaFarmaciaFavorita(_ idFarmacia: Int, favorita:Int) -> Bool {
         
         self.bancoDeDados.open()
         
-        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Farmacia SET favorita = ? WHERE id_farmacia = ?", withArgumentsInArray: [favorita,idFarmacia])
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Farmacia SET favorita = ? WHERE id_farmacia = ?", withArgumentsIn: [favorita,idFarmacia])
         
         self.bancoDeDados.close()
         

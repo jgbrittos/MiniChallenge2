@@ -12,7 +12,7 @@ class Remedio: NSObject {
     
     var idRemedio:Int = 0
     var nomeRemedio:String = ""
-    var dataValidade = NSDate()
+    var dataValidade = Date()
     var numeroQuantidade:Int = 0
     var unidade: Int = 0
     var preco: Double = 0
@@ -29,20 +29,20 @@ class Remedio: NSObject {
     var temInformacoesNulas: Bool = false
     
     var dataEmString: String {
-        let f = NSDateFormatter()
-        if NSLocale.currentLocale().localeIdentifier == "pt_BR" {
+        let f = DateFormatter()
+        if Locale.current.identifier == "pt_BR" {
             f.dateFormat = "dd/MM/y"
         }else{
             f.dateFormat = "MM/dd/y"
         }
-        return f.stringFromDate(self.dataValidade)
+        return f.string(from: self.dataValidade)
     }
     
     var fotoRemedioUIImage: UIImage? {
         if self.fotoRemedio == "sem foto"{
             return UIImage(named: "semFoto")
         }
-        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let caminhos = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentos: String = caminhos[0] 
         let caminhoCompleto = documentos + "/" + self.fotoRemedio
         return UIImage(contentsOfFile: caminhoCompleto)
@@ -52,7 +52,7 @@ class Remedio: NSObject {
         if self.fotoReceita == "sem foto"{
             return UIImage(named: "semFoto")!
         }
-        let caminhos = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let caminhos = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentos: String = caminhos[0] 
         let caminhoCompleto = documentos + self.fotoReceita
         return UIImage(contentsOfFile: caminhoCompleto)
@@ -61,7 +61,7 @@ class Remedio: NSObject {
     override init() {}
     
     //Remedio do banco
-    init(idRemedio:Int?, nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?,
+    init(idRemedio:Int?, nomeRemedio:String?, dataValidade:Date?, numeroQuantidade: Int?,
         unidade:Int?, preco:Double?, numeroDose:Int?, fotoRemedio:String?,
         fotoReceita:String?,vencido:Int?,idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?, notas:String?){
         if let idr = idRemedio{
@@ -126,19 +126,19 @@ class Remedio: NSObject {
     }
     
     //Remedio criado
-    init(nomeRemedio:String?, dataValidade:NSDate?, numeroQuantidade: Int?,
+    init(nomeRemedio:String?, dataValidade:Date?, numeroQuantidade: Int?,
         unidade:Int?, preco:Double?, numeroDose:Int?,fotoRemedio:String?,fotoReceita:String?,
         idFarmacia:Int?, idCategoria:Int?, idLocal:Int?,idIntervalo:Int?, notas: String?){
         
-        let formatador = NSDateFormatter()
+        let formatador = DateFormatter()
         
-        if NSLocale.currentLocale().localeIdentifier == "pt_BR" {
+        if Locale.current.identifier == "pt_BR" {
             formatador.dateFormat = "dd/MM/y"
         }else{
             formatador.dateFormat = "MM/dd/y"
         }
 
-        let dataControle = formatador.dateFromString("01/01/1900")!
+        let dataControle = formatador.date(from: "01/01/1900")!
             
         if let n = nomeRemedio {
             self.nomeRemedio = n
@@ -189,10 +189,10 @@ class Remedio: NSObject {
             }
         }
         
-        if self.dataValidade.compare(NSDate()) == .OrderedDescending {
+        if self.dataValidade.compare(Date()) == .orderedDescending {
             //se data de validade maior que a data de hoje
             self.vencido = 0
-        }else if self.dataValidade.compare(dataControle) == .OrderedSame {
+        }else if self.dataValidade.compare(dataControle) == .orderedSame {
             self.vencido = 0
         }else{
             self.vencido = 1

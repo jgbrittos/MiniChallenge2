@@ -11,7 +11,7 @@ import UIKit
 class Alerta: NSObject {
    
     var idAlerta : Int = 0
-    var dataInicio = NSDate()
+    var dataInicio = Date()
     var numeroDuracao: Int = 0
     var unidadeDuracao: Int = 0
     var ativo: Int = 0
@@ -20,15 +20,15 @@ class Alerta: NSObject {
     var temInformacoesNulas: Bool = false
 
     var dataInicioEmString: String {
-        let formatador = NSDateFormatter()
+        let formatador = DateFormatter()
         formatador.dateFormat = "dd/MM/yyyy HH:mm"
-        formatador.timeZone = NSTimeZone.systemTimeZone()
-        return formatador.stringFromDate(self.dataInicio)
+        formatador.timeZone = TimeZone.current
+        return formatador.string(from: self.dataInicio)
     }
     
     override init() {}
     
-    init(idAlerta:Int, dataInicio: NSDate, numeroDuracao:Int, unidadeDuracao:Int, ativo:Int,idIntervalo:Int,idRemedio:Int){
+    init(idAlerta:Int, dataInicio: Date, numeroDuracao:Int, unidadeDuracao:Int, ativo:Int,idIntervalo:Int,idRemedio:Int){
         self.idAlerta = idAlerta
         self.dataInicio = dataInicio
         self.numeroDuracao = numeroDuracao
@@ -38,9 +38,9 @@ class Alerta: NSObject {
         self.idRemedio = idRemedio
     }
     
-    init(dataInicio: NSDate?, numeroDuracao:Int?, unidadeDuracao:Int?, ativo:Int?, idIntervalo:Int?, idRemedio:Int?){
+    init(dataInicio: Date?, numeroDuracao:Int?, unidadeDuracao:Int?, ativo:Int?, idIntervalo:Int?, idRemedio:Int?){
         
-        if let d = dataInicio as NSDate? {
+        if let d = dataInicio as Date? {
             self.dataInicio = d
             print("\(d)")
         }else{

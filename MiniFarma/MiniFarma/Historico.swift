@@ -12,24 +12,24 @@ class Historico: NSObject {
     
     var idHistorico: Int = 0
     var idRemedio:Int = 0
-    var dataTomada = NSDate()
+    var dataTomada = Date()
     
     var dataTomadaEmString: String {
-        let f = NSDateFormatter()
+        let f = DateFormatter()
         f.dateFormat = "dd/MM/yyyy HH:mm"
-        f.timeZone = NSTimeZone.systemTimeZone()
-        return f.stringFromDate(self.dataTomada)
+        f.timeZone = TimeZone.current
+        return f.string(from: self.dataTomada)
     }
     
     override init (){}
     
-    init(idHistorico: Int, idRemedio: Int, dataTomada: NSDate) {
+    init(idHistorico: Int, idRemedio: Int, dataTomada: Date) {
         self.idHistorico = idHistorico
         self.idRemedio = idRemedio
         self.dataTomada = dataTomada
     }
     
-    init(idRemedio: Int, dataTomada: NSDate) {
+    init(idRemedio: Int, dataTomada: Date) {
         self.idRemedio = idRemedio
         self.dataTomada = dataTomada
     }

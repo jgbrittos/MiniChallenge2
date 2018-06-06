@@ -42,33 +42,33 @@ class Notificacao: NSObject {
         let notificacaoLocal : UILocalNotification = UILocalNotification()
         notificacaoLocal.alertAction = "Mini Farma"
         notificacaoLocal.alertBody = mensagem
-        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 5)
+        notificacaoLocal.fireDate = Date(timeIntervalSinceNow: 5)
         notificacaoLocal.userInfo = ["acabandoOuVencendo":String(idRemedio), "ligar":"1", "categoria":categoria]
         notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
         notificacaoLocal.category = categoria
-        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+        UIApplication.shared.scheduleLocalNotification(notificacaoLocal)
     }
     
     //Aviso de vencimento
     init(remedio:Remedio){
 
-        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
 
-        let dataVencimento : NSDate = cal!.dateBySettingHour(12, minute: 0, second: 0, ofDate: remedio.dataValidade, options: NSCalendarOptions())!
+        let dataVencimento : Date = (cal as NSCalendar).date(bySettingHour: 12, minute: 0, second: 0, of: remedio.dataValidade as Date, options: NSCalendar.Options())!
 
-        let segundos = NSCalendar.currentCalendar().components(NSCalendarUnit.Second,
-            fromDate: NSDate(),
-            toDate: dataVencimento,
+        let segundos = (Calendar.current as NSCalendar).components(NSCalendar.Unit.second,
+            from: Date(),
+            to: dataVencimento,
             options: []).second
 
         let notificacaoLocal : UILocalNotification = UILocalNotification()
         notificacaoLocal.alertAction = "Mini Farma"
         notificacaoLocal.alertBody = NSLocalizedString(String(format: NSLocalizedString("ALERTAREMEDIOVENCENDO", comment: "remedio vencendo"), arguments: [remedio.nomeRemedio]), comment: "remedio vencendo")
-        notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: NSTimeInterval(segundos))
+        notificacaoLocal.fireDate = Date(timeIntervalSinceNow: TimeInterval(segundos!))
         notificacaoLocal.userInfo = ["acabandoOuVencendo":String(remedio.idRemedio), "ligar":"1", "categoria":"NONE_CATEGORY"]
         notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
         notificacaoLocal.category = "NONE_CATEGORY"
-        UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+        UIApplication.shared.scheduleLocalNotification(notificacaoLocal)
         
     }
     
@@ -89,7 +89,7 @@ class Notificacao: NSObject {
         
 //        switch intervalo.unidade {
 //            case NSLocalizedString("UNIDADES_HORA", comment: "hora"):
-        self.criaNotificacoesEm(horas: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
+        self.criaNotificacoesEm(horas: intervalo.numero, comecandoEm: alerta.dataInicio as Date, paraRemedio: remedio)
 //                break
 //            case NSLocalizedString("UNIDADES_DIA", comment: "dia"):
 //                self.criaNotificacoesEm(dias: intervalo.numero, comecandoEm: alerta.dataInicio, paraRemedio: remedio)
@@ -107,7 +107,7 @@ class Notificacao: NSObject {
 
     }
     
-    func criaNotificacoesEm(horas _horas: Int, comecandoEm dataDeInicio: NSDate, paraRemedio remedio: Remedio){
+    func criaNotificacoesEm(horas _horas: Int, comecandoEm dataDeInicio: Date, paraRemedio remedio: Remedio){
         var numeroNotificacoes = 24 / _horas
         //intervalo: 1h, 2h, 3h, 4h, 6h, 8h, 12h, 24h
         //numNotifi: 24, 12, 8 ,  6,  4,  3,   2,  1
@@ -117,9 +117,9 @@ class Notificacao: NSObject {
         let unidade = unidades[remedio.unidade]
         
         var dataNotificacao = dataDeInicio
-        let dateComponets: NSDateComponents = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour, .Minute], fromDate: dataNotificacao)
+        var dateComponets: DateComponents = (Calendar.current as NSCalendar).components([.day, .month, .year, .hour, .minute], from: dataNotificacao)
         dateComponets.second = 0
-        dataNotificacao = NSCalendar.currentCalendar().dateFromComponents(dateComponets)!
+        dataNotificacao = Calendar.current.date(from: dateComponets)!
         
         self.stringAlerta = NSLocalizedString(String(format: NSLocalizedString("FRASENOTIFICACAOSIMPLES", comment: "tomar algo"), arguments: [remedio.nomeRemedio]), comment: "tomar algo")
         if remedio.numeroDose > 0 {
@@ -134,22 +134,22 @@ class Notificacao: NSObject {
             notificacaoLocal.alertBody = self.stringAlerta
             notificacaoLocal.soundName = UILocalNotificationDefaultSoundName
             notificacaoLocal.category = "ACTION_CATEGORY";
-            notificacaoLocal.repeatInterval = NSCalendarUnit.Day
+            notificacaoLocal.repeatInterval = NSCalendar.Unit.day
             notificacaoLocal.fireDate = dataNotificacao
             
             notificacaoLocal.userInfo = ["idRemedio": String(remedio.idRemedio), "idNotificacao": numeroNotificacoes]
-            UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+            UIApplication.shared.scheduleLocalNotification(notificacaoLocal)
             
             print("\(dataNotificacao) \(numeroNotificacoes)")
-            dataNotificacao = dataNotificacao.dateByAddingTimeInterval(NSTimeInterval(3600 * _horas))
+            dataNotificacao = dataNotificacao.addingTimeInterval(TimeInterval(3600 * _horas))
             numeroNotificacoes -= 1
         }
     }
     
-    static func cancelarNotificacaoPara(alerta: Alerta){
+    static func cancelarNotificacaoPara(_ alerta: Alerta){
         
         _ = UILocalNotification()
-        let arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        let arrayDeNotificacoes = UIApplication.shared.scheduledLocalNotifications
         let idRemedio = String(alerta.idRemedio)
         
         for notificacaoCancelada in (arrayDeNotificacoes as [UILocalNotification]?)! {
@@ -157,7 +157,7 @@ class Notificacao: NSObject {
             let info = notificacaoCancelada.userInfo as! [String: AnyObject]
             
             if info["idRemedio"] as? String == idRemedio {
-                UIApplication.sharedApplication().cancelLocalNotification(notificacaoCancelada)
+                UIApplication.shared.cancelLocalNotification(notificacaoCancelada)
             }else{
                 print("Nenhuma notificacao local encontrada com esse id de remedio")
             }

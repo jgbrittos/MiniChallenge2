@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var remedioGlobal: Remedio?
     var remedioEditavel: Remedio?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboardInicial: UIStoryboard!
         let telaInicial: UIViewController!
         
@@ -29,25 +29,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.alteraAparenciaDaStatusENavigationBar()
         
         //verifica se o app já foi aberto alguma vez
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var naoEhPrimeiraVez = defaults.boolForKey("NaoEhPrimeiraVez")
+        let defaults = UserDefaults.standard
+        var naoEhPrimeiraVez = defaults.bool(forKey: "NaoEhPrimeiraVez")
         
         if naoEhPrimeiraVez {
             print("NaoEhPrimeiraVez")
             //Tela Inicial
             storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
-            telaInicial = storyboardInicial.instantiateViewControllerWithIdentifier("TabBarInicial") as! TabBarCustomizadaController
+            telaInicial = storyboardInicial.instantiateViewController(withIdentifier: "TabBarInicial") as! TabBarCustomizadaController
         }else{
-            defaults.setBool(true, forKey: "NaoEhPrimeiraVez")
+            defaults.set(true, forKey: "NaoEhPrimeiraVez")
             naoEhPrimeiraVez = true
-            UIApplication.sharedApplication().cancelAllLocalNotifications() //deleta todas notificacoes antigas
+            UIApplication.shared.cancelAllLocalNotifications() //deleta todas notificacoes antigas
             //Tutorial
             storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
             telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
         }
         
         self.window?.rootViewController = telaInicial
-        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         
         return true
@@ -59,16 +59,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.caminhoBancoDeDados = Util.getPath(self.nomeBancoDeDados)
         
-        let gerenciadorDeArquivos: NSFileManager = NSFileManager.defaultManager()
+        let gerenciadorDeArquivos: FileManager = FileManager.default
         
-        if !gerenciadorDeArquivos.fileExistsAtPath(self.caminhoBancoDeDados) {
+        if !gerenciadorDeArquivos.fileExists(atPath: self.caminhoBancoDeDados) {
             
-            let documentsURL = NSBundle.mainBundle().resourceURL
+            let documentsURL = Bundle.main.resourceURL
             
-            let fromPath = documentsURL!.URLByAppendingPathComponent(self.nomeBancoDeDados)
+            let fromPath = documentsURL!.appendingPathComponent(self.nomeBancoDeDados)
             
             do {
-                try gerenciadorDeArquivos.copyItemAtPath(fromPath.path!, toPath: self.caminhoBancoDeDados)
+                try gerenciadorDeArquivos.copyItem(atPath: fromPath.path, toPath: self.caminhoBancoDeDados)
             } catch let error1 as NSError {
                 print("\(error1)")
             }
@@ -77,32 +77,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.bancoDeDados = FMDatabase(path:self.caminhoBancoDeDados) as FMDatabase
     }
     
-    func criaNotificacoesIterativas(application: UIApplication) {
+    func criaNotificacoesIterativas(_ application: UIApplication) {
         let acaoNotificacaoAdiar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         acaoNotificacaoAdiar.identifier = "ADIAR_IDENTIFICADOR"
         acaoNotificacaoAdiar.title = NSLocalizedString("ALERTAACAOADIAR", comment: "adiar")
-        acaoNotificacaoAdiar.destructive = true
-        acaoNotificacaoAdiar.authenticationRequired = false
-        acaoNotificacaoAdiar.activationMode = UIUserNotificationActivationMode.Background
+        acaoNotificacaoAdiar.isDestructive = true
+        acaoNotificacaoAdiar.isAuthenticationRequired = false
+        acaoNotificacaoAdiar.activationMode = UIUserNotificationActivationMode.background
         
         let acaoNotificacaoTomei :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         acaoNotificacaoTomei.identifier = "TOMEI_IDENTIFICADOR"
         acaoNotificacaoTomei.title = NSLocalizedString("ALERTAACAOTOMEI", comment: "adiar")
-        acaoNotificacaoTomei.destructive = false
-        acaoNotificacaoTomei.authenticationRequired = false
-        acaoNotificacaoTomei.activationMode = UIUserNotificationActivationMode.Background
+        acaoNotificacaoTomei.isDestructive = false
+        acaoNotificacaoTomei.isAuthenticationRequired = false
+        acaoNotificacaoTomei.activationMode = UIUserNotificationActivationMode.background
         
         let acaoNotificacaoLigar :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         acaoNotificacaoLigar.identifier = "LIGAR_IDENTIFICADOR"
         acaoNotificacaoLigar.title = NSLocalizedString("ALERTAACAOLIGAR", comment: "ligar")
-        acaoNotificacaoLigar.destructive = false
-        acaoNotificacaoLigar.authenticationRequired = false
-        acaoNotificacaoLigar.activationMode = UIUserNotificationActivationMode.Background
+        acaoNotificacaoLigar.isDestructive = false
+        acaoNotificacaoLigar.isAuthenticationRequired = false
+        acaoNotificacaoLigar.activationMode = UIUserNotificationActivationMode.background
         
         let categoriaNotificacoesComAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         categoriaNotificacoesComAcao.identifier = "ACTION_CATEGORY"
-        categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], forContext: UIUserNotificationActionContext.Default)
-        categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], forContext: UIUserNotificationActionContext.Minimal)
+        categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], for: UIUserNotificationActionContext.default)
+        categoriaNotificacoesComAcao.setActions([acaoNotificacaoAdiar,acaoNotificacaoTomei], for: UIUserNotificationActionContext.minimal)
         
         let categoriaNotificaoSemAcao:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         categoriaNotificaoSemAcao.identifier = "NONE_CATEGORY"
@@ -111,21 +111,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MUDEI AQUI DE application para UIApplication.sharedApplication()
 
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType([.Alert, .Badge, .Sound]), categories: Set([categoriaNotificacoesComAcao, categoriaNotificaoSemAcao])))
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: UIUserNotificationType([.alert, .badge, .sound]), categories: Set([categoriaNotificacoesComAcao, categoriaNotificaoSemAcao])))
     }
     
     func alteraAparenciaDaStatusENavigationBar(){
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
         let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.translucent = false
-        navigationBarAppearace.tintColor = UIColor.whiteColor()
+        navigationBarAppearace.isTranslucent = false
+        navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.barTintColor = UIColor(red: 204/255.0, green: 0/255.0, blue: 68/255.0, alpha: 1)
-        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
     }
     
-    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
         
-        let idRemedio:Int = notification.userInfo!.values.first!.integerValue as Int
+        let idRemedio:Int = (notification.userInfo!.values.first! as AnyObject).intValue as Int
         let remedioDAO = RemedioDAO()
         let remedioBuscado = remedioDAO.buscarPorId(idRemedio) as! Remedio
         
@@ -137,10 +137,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let notificacaoLocal:UILocalNotification = UILocalNotification()
             notificacaoLocal.alertAction = "Notificação adiada"
             notificacaoLocal.alertBody = "Tomar \(remedioBuscado.numeroDose)\(unidade) de \(remedioBuscado.nomeRemedio)"
-            notificacaoLocal.fireDate = NSDate(timeIntervalSinceNow: 300)
+            notificacaoLocal.fireDate = Date(timeIntervalSinceNow: 300)
             notificacaoLocal.category = "ACTION_CATEGORY";
             notificacaoLocal.userInfo = ["adiou":String(remedioBuscado.idRemedio)]
-            UIApplication.sharedApplication().scheduleLocalNotification(notificacaoLocal)
+            UIApplication.shared.scheduleLocalNotification(notificacaoLocal)
     
         }else if(identifier == "TOMEI_IDENTIFICADOR"){
             print("Cliquei em tomei")
@@ -148,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 remedioDAO.marcaRemedioTomado(remedioBuscado, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
                 let historicoDAO = HistoricoDAO()
                 var historico = Historico()
-                historico = Historico(idRemedio: remedioBuscado.idRemedio, dataTomada: NSDate())
+                historico = Historico(idRemedio: remedioBuscado.idRemedio, dataTomada: Date())
                 historicoDAO.inserir(historico)
             }
         }//else if(identifier == "LIGAR_IDENTIFICADOR"){
@@ -159,17 +159,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
         
         let info = notification.userInfo as! [String: AnyObject]
         
         if info["categoria"] as? String == "NONE_CATEGORY"{
             let alerta = SCLAlertView()
             alerta.showCloseButton = false
-            alerta.showWait(NSLocalizedString("ALERTAESPERANDOLIGACAOTITULO", comment: "titulo"), subTitle: NSLocalizedString("ALERTAESPERANDOLIGACAOMENSAGEM", comment: "mensagem"), duration: NSTimeInterval(3), colorStyle: 0x00BCFE)
+            alerta.showWait(NSLocalizedString("ALERTAESPERANDOLIGACAOTITULO", comment: "titulo"), subTitle: NSLocalizedString("ALERTAESPERANDOLIGACAOMENSAGEM", comment: "mensagem"), duration: TimeInterval(3), colorStyle: 0x00BCFE)
             
             if info["ligar"] as? String == "1" {
-                let idRemedio:Int = info["acabandoOuVencendo"]!.integerValue as Int
+                let idRemedio:Int = info["acabandoOuVencendo"]!.intValue as Int
                 let remedioDAO = RemedioDAO()
                 let remedioBuscado = remedioDAO.buscarPorId(idRemedio) as! Remedio
                 
@@ -178,12 +178,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let farmacia = farmaciaDAO.buscarPorId(remedioBuscado.idFarmacia) as! Farmacia
                 
                 if String(farmacia.telefone) != nil {
-                    let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
+                    let ligacao = URL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
                     
                     //check  Call Function available only in iphone
-                    if UIApplication.sharedApplication().canOpenURL(ligacao!) {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            UIApplication.sharedApplication().openURL(ligacao!)
+                    if UIApplication.shared.canOpenURL(ligacao!) {
+                        DispatchQueue.main.async(execute: {
+                            UIApplication.shared.openURL(ligacao!)
                         })
                     } else {
                         SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
@@ -197,11 +197,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         
-        let info = NSUserDefaults(suiteName: "group.br.com.jgbrittos.MiniFarma")
+        let info = UserDefaults(suiteName: "group.br.com.jgbrittos.MiniFarma")
 
-        let nomeStoryboard = info?.objectForKey("storyboard") as! String
+        let nomeStoryboard = info?.object(forKey: "storyboard") as! String
         
         print("\(nomeStoryboard)")
         
@@ -210,30 +210,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             var controle = UITabBarController()
             controle = self.window?.rootViewController as! UITabBarController
-            controle.presentViewController(storyboard, animated: true, completion: nil)
+            controle.present(storyboard, animated: true, completion: nil)
         }
         return true
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 

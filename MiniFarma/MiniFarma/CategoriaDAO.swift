@@ -16,13 +16,13 @@ class CategoriaDAO: DAO {
         super.init()
     }
     
-    override func inserir(objeto: AnyObject?) -> Bool {
+    override func inserir(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let categoria: Categoria = objeto as! Categoria
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Categoria (nome) VALUES (?)", withArgumentsInArray: [categoria.nomeCategoria])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Categoria (nome) VALUES (?)", withArgumentsIn: [categoria.nomeCategoria])
         
         self.bancoDeDados.close()
         
@@ -30,13 +30,13 @@ class CategoriaDAO: DAO {
 
     }
     
-    override func deletar(objeto: AnyObject?) -> Bool {
+    override func deletar(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let categoria: Categoria = objeto as! Categoria
         
-        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(categoria.idCategoria)])
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Categoria WHERE id_categoria = ?", withArgumentsIn: [String(categoria.idCategoria)])
         
         self.bancoDeDados.close()
         
@@ -49,12 +49,12 @@ class CategoriaDAO: DAO {
         
         self.categorias = [Categoria]()
         
-        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By nome", withArgumentsInArray: nil)
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria Order By nome", withArgumentsIn: nil)
         
         while(result.next()){
             
-            let idCategoria: String = result.stringForColumn("id_categoria")
-            let nome: String = result.stringForColumn("nome")
+            let idCategoria: String = result.string(forColumn: "id_categoria")
+            let nome: String = result.string(forColumn: "nome")
             
             let categoria = Categoria(idCategoria: Int(idCategoria)!, nomeCategoria: nome)
             
@@ -67,17 +67,17 @@ class CategoriaDAO: DAO {
         
     }
 
-    override func buscarPorId(id: Int) -> AnyObject? {
+    override func buscarPorId(_ id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
         var categoriaBuscada = Categoria()
         
-        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria WHERE id_categoria = ?", withArgumentsInArray: [String(id)])
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Categoria WHERE id_categoria = ?", withArgumentsIn: [String(id)])
         
         while(result.next()){
             
-            let idCategoria: String = result.stringForColumn("id_categoria")
-            let nome: String = result.stringForColumn("nome")
+            let idCategoria: String = result.string(forColumn: "id_categoria")
+            let nome: String = result.string(forColumn: "nome")
             
             let categoria = Categoria(idCategoria: Int(idCategoria)!, nomeCategoria: nome)
             

@@ -31,7 +31,7 @@ class VisualizarAlertaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
 
         self.mostraInformacoesDoAlerta()
     }
@@ -54,52 +54,52 @@ class VisualizarAlertaTableViewController: UITableViewController {
         let proximaDose = self.defineProximaDose(self.alerta!)
         let intervalo = self.intervalo!.numero
         
-        let formatador = NSDateFormatter()
+        let formatador = DateFormatter()
         formatador.dateFormat = "dd/MM/yyyy HH:mm"
-        formatador.timeZone = NSTimeZone.systemTimeZone()
+        formatador.timeZone = TimeZone.current
         
-        self.proximaDose1.text = formatador.stringFromDate(proximaDose)
-        self.proximaDose2.text = formatador.stringFromDate(proximaDose.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo)))
-        self.proximaDose3.text = formatador.stringFromDate(proximaDose.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo * 2)))
-        self.proximaDose4.text = formatador.stringFromDate(proximaDose.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo * 3)))
+        self.proximaDose1.text = formatador.string(from: proximaDose)
+        self.proximaDose2.text = formatador.string(from: proximaDose.addingTimeInterval(TimeInterval(3600 * intervalo)))
+        self.proximaDose3.text = formatador.string(from: proximaDose.addingTimeInterval(TimeInterval(3600 * intervalo * 2)))
+        self.proximaDose4.text = formatador.string(from: proximaDose.addingTimeInterval(TimeInterval(3600 * intervalo * 3)))
     }
     
-    func defineProximaDose(alerta: Alerta) -> NSDate {
+    func defineProximaDose(_ alerta: Alerta) -> Date {
 
         let dataInicio = alerta.dataInicio
         let intervalo = self.intervaloDAO.buscarPorId(alerta.idIntervalo) as! Intervalo
-        let dataAgora = NSDate()
+        let dataAgora = Date()
         var dataProximaDose = dataInicio
         
-        while(dataProximaDose.compare(dataAgora) == .OrderedAscending) { //dataProximaDose < data de agora
-            dataProximaDose = dataProximaDose.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo.numero))
+        while(dataProximaDose.compare(dataAgora) == .orderedAscending) { //dataProximaDose < data de agora
+            dataProximaDose = dataProximaDose.addingTimeInterval(TimeInterval(3600 * intervalo.numero))
         }
         
-        return dataProximaDose
+        return dataProximaDose as Date
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let secao = view as! UITableViewHeaderFooterView
-        secao.textLabel!.textColor = UIColor.whiteColor()
+        secao.textLabel!.textColor = UIColor.white
         secao.backgroundView?.backgroundColor = UIColor(red: 204/255, green: 0/255, blue: 68/255, alpha: 1)
     }
 
-    @IBAction func visualizarRemedio(sender: AnyObject) {
-        self.performSegueWithIdentifier("VisualizarRemedioDoAlerta", sender: nil)
+    @IBAction func visualizarRemedio(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "VisualizarRemedioDoAlerta", sender: nil)
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let visualizarRemedio = segue.destination as! VisualizarRemedioTableViewController
         visualizarRemedio.remedio = self.remedio
     }
 }

@@ -29,10 +29,10 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.dataSource = self
         
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
-        self.tableViewRemedios.tableFooterView = UIView(frame: CGRectZero)
+        self.tableViewRemedios.tableFooterView = UIView(frame: CGRect.zero)
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         self.remediosValidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 0) as! [Remedio]
@@ -55,7 +55,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     //MARK:- Controles da Table View
-    @IBAction func alteraDadosDaTabelaRemedios(sender: AnyObject) {
+    @IBAction func alteraDadosDaTabelaRemedios(_ sender: AnyObject) {
         self.dadosASeremMostrados = [Remedio]()
         switch segmentedControlValidadeRemedios.selectedSegmentIndex {
             case 0:
@@ -73,28 +73,28 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableViewRemedios.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Adiciona-se uma linha a mais para o botão '+' não ficar em cima da última célula
         return self.dadosASeremMostrados.count+1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.row == self.dadosASeremMostrados.count {
-            let celulaBranca = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) 
+            let celulaBranca = self.tableViewRemedios.dequeueReusableCell(withIdentifier: "celulaBranca", for:indexPath) 
 
             //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
-            celulaBranca.userInteractionEnabled = false
+            celulaBranca.isUserInteractionEnabled = false
             
             //Removendo a linha de baixo da última célula
             celulaBranca.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
             return celulaBranca
         }else{
-            let celulaRemedio = self.tableViewRemedios.dequeueReusableCellWithIdentifier("celulaRemedio", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
+            let celulaRemedio = self.tableViewRemedios.dequeueReusableCell(withIdentifier: "celulaRemedio", for:indexPath) as! ListaRemediosAlertasTableViewCell
             
             let remedio = self.dadosASeremMostrados[indexPath.row]
             
@@ -114,19 +114,19 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //Necessário para a função editActionsForRowAtIndexPath funcionar corretamente
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let historicoDAO = HistoricoDAO()
         var historico = Historico()
         
-        let tomeiRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+        let tomeiRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Tomei" , handler: {(action:UITableViewRowAction, indexPath:IndexPath) -> Void in
             switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
                 case 0:
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
-                    historico = Historico(idRemedio: remedio.idRemedio, dataTomada: NSDate())
+                    historico = Historico(idRemedio: remedio.idRemedio, dataTomada: Date())
                     historicoDAO.inserir(historico)
                     
                     if(remedio.numeroQuantidade > 0 ){
@@ -137,7 +137,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     break
                 case 1:
                     let remedio = self.remediosVencidos[indexPath.row] as Remedio
-                    historico = Historico(idRemedio: remedio.idRemedio, dataTomada: NSDate())
+                    historico = Historico(idRemedio: remedio.idRemedio, dataTomada: Date())
                     historicoDAO.inserir(historico)
                     
                     if(remedio.numeroQuantidade > 0 ){
@@ -156,32 +156,32 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
             self.tableViewRemedios.reloadData()
             
         })
-        let apagarRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+        let apagarRemedio = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:IndexPath) -> Void in
             switch self.segmentedControlValidadeRemedios.selectedSegmentIndex {
                 case 0:
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
                     
-                    let gerenciadorDeArquivos = NSFileManager()
+                    let gerenciadorDeArquivos = FileManager()
                     do {
-                        try gerenciadorDeArquivos.removeItemAtPath(remedio.fotoRemedio)
+                        try gerenciadorDeArquivos.removeItem(atPath: remedio.fotoRemedio)
                     } catch _ {
                     }
                     
                     self.remedioDAO.deletar(remedio)
-                    self.remediosValidos.removeAtIndex(indexPath.row)
+                    self.remediosValidos.remove(at: indexPath.row)
                     self.dadosASeremMostrados = self.remediosValidos
                     break
                 case 1:
                     let remedio = self.remediosVencidos[indexPath.row] as Remedio
                     
-                    let gerenciadorDeArquivos = NSFileManager()
+                    let gerenciadorDeArquivos = FileManager()
                     do {
-                        try gerenciadorDeArquivos.removeItemAtPath(remedio.fotoReceita)
+                        try gerenciadorDeArquivos.removeItem(atPath: remedio.fotoReceita)
                     } catch _ {
                     }
                     
                     self.remedioDAO.deletar(remedio)
-                    self.remediosVencidos.removeAtIndex(indexPath.row)
+                    self.remediosVencidos.remove(at: indexPath.row)
                     self.dadosASeremMostrados = self.remediosVencidos
                     break
                 default:
@@ -198,17 +198,17 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
         return [apagarRemedio, tomeiRemedio]
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.remedioSelecionado = self.dadosASeremMostrados[indexPath.row]
-        self.performSegueWithIdentifier("VisualizarRemedio", sender: nil)
+        self.performSegue(withIdentifier: "VisualizarRemedio", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let visualizarRemedio = segue.destinationViewController as! VisualizarRemedioTableViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let visualizarRemedio = segue.destination as! VisualizarRemedioTableViewController
         visualizarRemedio.remedio = self.remedioSelecionado
     }
 }

@@ -19,54 +19,54 @@ class CategoriaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         self.categorias = categoriaDAO.buscarTodos() as! [Categoria]
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.categorias.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let celula = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let celula = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath) 
 
         celula.textLabel?.text = (self.categorias[indexPath.row] as Categoria).nomeCategoria
 
         return celula
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if(editingStyle == .Delete){
+        if(editingStyle == .delete){
             let sucesso: Bool = categoriaDAO.deletar(self.categorias[indexPath.row])
             
             if(sucesso){
                 print("Categoria deletada com sucesso")
             }
             
-            self.categorias.removeAtIndex(indexPath.row)
+            self.categorias.remove(at: indexPath.row)
             
             tableView.reloadData()
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.categoriaSelecionada = self.categorias[indexPath.row]
         self.delegate?.selecionaCategoria(self.categoriaSelecionada!)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func adicionarClicado(sender: AnyObject) {
+    @IBAction func adicionarClicado(_ sender: AnyObject) {
 
         let alerta = SCLAlertView()
         
@@ -92,5 +92,5 @@ class CategoriaTableViewController: UITableViewController {
 
 //MARK: - Protocolo
 protocol SelecionaCategoriaDelegate {
-    func selecionaCategoria(categoria: Categoria)
+    func selecionaCategoria(_ categoria: Categoria)
 }

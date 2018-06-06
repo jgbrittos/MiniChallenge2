@@ -11,29 +11,29 @@ import UIKit
 class Util: NSObject {
 
     
-    class func getPath(fileName: String) -> String {
-        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+    class func getPath(_ fileName: String) -> String {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        let fileURL = documentsURL.URLByAppendingPathComponent(fileName)
+        let fileURL = documentsURL.appendingPathComponent(fileName)
         
-        return fileURL.path!
+        return fileURL.path
     }
     
-    class func copyFile(fileName: NSString) {
+    class func copyFile(_ fileName: NSString) {
         
         let dbPath: String = getPath(fileName as String)
         
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         
-        if !fileManager.fileExistsAtPath(dbPath) {
-            let documentsURL = NSBundle.mainBundle().resourceURL
+        if !fileManager.fileExists(atPath: dbPath) {
+            let documentsURL = Bundle.main.resourceURL
             
-            let fromPath = documentsURL!.URLByAppendingPathComponent(fileName as String)
+            let fromPath = documentsURL!.appendingPathComponent(fileName as String)
             
             var error : NSError?
             
             do {
-                try fileManager.copyItemAtPath(fromPath.path!, toPath: dbPath)
+                try fileManager.copyItem(atPath: fromPath.path, toPath: dbPath)
             } catch let error1 as NSError {
                 error = error1
             }
@@ -49,7 +49,7 @@ class Util: NSObject {
             }
             
             alert.delegate = nil
-            alert.addButtonWithTitle("Ok")
+            alert.addButton(withTitle: "Ok")
             alert.show()
         }
     }

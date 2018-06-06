@@ -57,8 +57,8 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func atualizaLocalizacao(sender: AnyObject) {
-        botaoLocalizacao.highlighted = true
+    @IBAction func atualizaLocalizacao(_ sender: AnyObject) {
+        botaoLocalizacao.isHighlighted = true
         botaoLocalizacao.imageView?.image = UIImage(named: "estrelaFavorito")
         
         localizacaoGerenciador.distanceFilter = kCLDistanceFilterNone
@@ -79,22 +79,22 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         let pin = MKPinAnnotationView(annotation: anotacao, reuseIdentifier: "meuPin")
         pin.annotation = anotacao
         pin.animatesDrop = true
-        pin.draggable = true
+        pin.isDraggable = true
         
         viewMapa.addAnnotation(anotacao)
         
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         pino.animatesDrop = true
-        pino.draggable = true
+        pino.isDraggable = true
         
         return pino
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState){
         
-        if newState == MKAnnotationViewDragState.Ending {
+        if newState == MKAnnotationViewDragState.ending {
             let anotacao = view.annotation
             self.latitudeValor = anotacao!.coordinate.latitude
             self.longitudeValor = anotacao!.coordinate.longitude
@@ -103,7 +103,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         
     }
 
-    @IBAction func favoritoClicado(sender: AnyObject) {
+    @IBAction func favoritoClicado(_ sender: AnyObject) {
         
         switch self.favorito {
             case 0:
@@ -112,7 +112,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
                     let alerta = SCLAlertView()
                     alerta.addButton(NSLocalizedString("SIMALERTA", comment: "Opção do alerta")) {
                         self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
-                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+                        self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), for: UIControlState())
                         self.existeFavorita = 0
                         self.favorito = 1
                     }
@@ -120,12 +120,12 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
                 }
                 
                 if self.existeFavorita == 0 {
-                    self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: UIControlState.Normal)
+                    self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), for: UIControlState())
                     self.favorito = 1
                 }
                 break
             case 1:
-                botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: UIControlState.Normal)
+                botaoFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), for: UIControlState())
                 self.favorito = 0
                 break
             default:
@@ -133,7 +133,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         }
     }
 
-    @IBAction func salvaFarmacia(sender: AnyObject) {
+    @IBAction func salvaFarmacia(_ sender: AnyObject) {
         
         if(txtFieldNome.text != ""){
 
@@ -156,9 +156,9 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             }
             
             if self.inicialOuAdicionaRemedio {
-                self.dismissViewControllerAnimated(true, completion:nil)
+                self.dismiss(animated: true, completion:nil)
             }else{
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             }
             
         }else{
@@ -166,18 +166,18 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         self.view.endEditing(true)
         return true
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         txtFieldNome.resignFirstResponder()
         self.view.endEditing(true)
     }
     
-    @IBAction func cancelarAdicaoDeFarmacia(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelarAdicaoDeFarmacia(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

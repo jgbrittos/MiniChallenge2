@@ -16,26 +16,26 @@ class LocalDAO: DAO {
         super.init()
     }
     
-    override func inserir(objeto: AnyObject?) -> Bool {
+    override func inserir(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let local: Local = objeto as! Local
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Local (nome) VALUES (?)", withArgumentsInArray: [local.nome])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Local (nome) VALUES (?)", withArgumentsIn: [local.nome])
         
         self.bancoDeDados.close()
         
         return inseridoComSucesso
     }
     
-    override func deletar(objeto: AnyObject?) -> Bool {
+    override func deletar(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let local: Local = objeto as! Local
         
-        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Local WHERE id_local = ?", withArgumentsInArray: [String(local.idLocal)])
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Local WHERE id_local = ?", withArgumentsIn: [String(local.idLocal)])
         
         if !deletadoComSucesso {
             print("\(self.bancoDeDados.lastErrorMessage())")
@@ -53,15 +53,15 @@ class LocalDAO: DAO {
         
         self.locais = [Local]()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local Order By nome", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local Order By nome", withArgumentsIn: nil)
         
         var idLocal = String()
         var nome = String()
         
         while(resultadoBusca.next()){
             
-            idLocal = resultadoBusca.stringForColumn("id_local")
-            nome = resultadoBusca.stringForColumn("nome")
+            idLocal = resultadoBusca.string(forColumn: "id_local")
+            nome = resultadoBusca.string(forColumn: "nome")
             
             let local = Local(idLocal: Int(idLocal)!, nome: nome)
             
@@ -74,20 +74,20 @@ class LocalDAO: DAO {
         
     }
     
-    override func buscarPorId(id: Int) -> AnyObject? {
+    override func buscarPorId(_ id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
         var localBuscado = Local()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local WHERE id_local = ?", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Local WHERE id_local = ?", withArgumentsIn: [String(id)])
         
         var idLocal = String()
         var nome = String()
         
         while(resultadoBusca.next()){
             
-            idLocal = resultadoBusca.stringForColumn("id_local")
-            nome = resultadoBusca.stringForColumn("nome")
+            idLocal = resultadoBusca.string(forColumn: "id_local")
+            nome = resultadoBusca.string(forColumn: "nome")
             
             let local = Local(idLocal: Int(idLocal)!, nome: nome)
             

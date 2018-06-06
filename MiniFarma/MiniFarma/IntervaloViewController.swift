@@ -35,10 +35,10 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         self.view.addSubview(self.viewComPickerViewEToolbar)
-        self.viewComPickerViewEToolbar.hidden = true
+        self.viewComPickerViewEToolbar.isHidden = true
         
         //Customizando a cor do Checkmark
-        UITableViewCell.appearance().tintColor = UIColor.redColor()
+        UITableViewCell.appearance().tintColor = UIColor.red
         
         //Definindo os números do picker view
         self.numerosPickerViewIntervalos = ["1","2","3","4","5","6","7","8","9","10",
@@ -72,22 +72,22 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
 //        self.intervaloSelecionado = self.intervalos[0] as Intervalo
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
-        self.tableViewIntervalos.tableFooterView = UIView(frame: CGRectZero)
+        self.tableViewIntervalos.tableFooterView = UIView(frame: CGRect.zero)
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //Precisa ser antes da view carregar para dar tempo do picker view existir antes de setar
         //que ele deve comecar o seletor no começo
         
     }
     
     //MARK:- PickerView de Intervalos
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
             return self.numerosPickerViewIntervalos.count
@@ -99,7 +99,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
             return self.numerosPickerViewIntervalos[row]
@@ -111,13 +111,13 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.numeroIntervalo = self.numerosPickerViewIntervalos[pickerView.selectedRowInComponent(0)]
-        self.unidadeIntervalo = self.unidadesPickerViewIntervalos[pickerView.selectedRowInComponent(1)]
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.numeroIntervalo = self.numerosPickerViewIntervalos[pickerView.selectedRow(inComponent: 0)]
+        self.unidadeIntervalo = self.unidadesPickerViewIntervalos[pickerView.selectedRow(inComponent: 1)]
         print("\(numeroIntervalo) \(unidadeIntervalo)")
     }
 
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var corDoTexto: NSAttributedString?
         
         switch component {
@@ -133,17 +133,17 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.intervalos.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let celulaIntervalos = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
+        let celulaIntervalos = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath) 
         
         let intervalo = self.intervalos[indexPath.row]
         
@@ -158,42 +158,42 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         return celulaIntervalos
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let intervalo = self.intervalos[indexPath.row]
-            self.intervalos.removeAtIndex(indexPath.row)
+            self.intervalos.remove(at: indexPath.row)
             intervaloDAO.deletar(intervalo)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.intervaloSelecionado = self.intervalos[indexPath.row]
         self.delegate?.selecionaIntervalo(self.intervaloSelecionado!)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK:- Controles da view
-    @IBAction func adicionarIntervalo(sender: AnyObject) {
+    @IBAction func adicionarIntervalo(_ sender: AnyObject) {
         self.pickerViewIntervalos.selectRow(0, inComponent: 0, animated: true)
         self.pickerViewIntervalos.selectRow(0, inComponent: 1, animated: true)
         
         if self.pickerViewIntervalosNaoEstaVisivel {
             self.tableViewIntervalos.frame.size.height -= CGFloat(self.viewComPickerViewEToolbar.frame.height)
             self.pickerViewIntervalosNaoEstaVisivel = false
-            self.viewComPickerViewEToolbar.hidden = false
+            self.viewComPickerViewEToolbar.isHidden = false
         }else{
             self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
             self.pickerViewIntervalosNaoEstaVisivel = true
-            self.viewComPickerViewEToolbar.hidden = true
+            self.viewComPickerViewEToolbar.isHidden = true
         }
     }
     
-    @IBAction func salvaIntervalo(sender: AnyObject) {
+    @IBAction func salvaIntervalo(_ sender: AnyObject) {
         
         let novoIntervalo = Intervalo(numero: Int(self.numeroIntervalo)!, unidade: self.unidadeIntervalo)
         
@@ -206,16 +206,16 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
 
-        self.viewComPickerViewEToolbar.hidden = true
+        self.viewComPickerViewEToolbar.isHidden = true
         self.pickerViewIntervalosNaoEstaVisivel = true
         self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
         self.tableViewIntervalos.reloadData()
     }
     
-    @IBAction func cancelarAdicaoIntervalo(sender: AnyObject) {
+    @IBAction func cancelarAdicaoIntervalo(_ sender: AnyObject) {
         self.tableViewIntervalos.frame.size.height += CGFloat(self.viewComPickerViewEToolbar.frame.height)
         self.pickerViewIntervalosNaoEstaVisivel = true
-        self.viewComPickerViewEToolbar.hidden = true
+        self.viewComPickerViewEToolbar.isHidden = true
     }
 
 }
@@ -223,5 +223,5 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
 // MARK: - Protocolo
 
 protocol SelecionaIntervaloDelegate{
-    func selecionaIntervalo(intervalo: Intervalo)
+    func selecionaIntervalo(_ intervalo: Intervalo)
 }

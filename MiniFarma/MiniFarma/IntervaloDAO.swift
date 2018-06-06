@@ -16,26 +16,26 @@ class IntervaloDAO: DAO {
         super.init()
     }
     
-    override func inserir(objeto: AnyObject?) -> Bool {
+    override func inserir(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let intervalo: Intervalo = objeto as! Intervalo
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Intervalo (numero, unidade) VALUES (?,?)", withArgumentsInArray: [intervalo.numero, intervalo.unidade])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Intervalo (numero, unidade) VALUES (?,?)", withArgumentsIn: [intervalo.numero, intervalo.unidade])
         
         self.bancoDeDados.close()
         
         return inseridoComSucesso
     }
     
-    override func deletar(objeto: AnyObject?) -> Bool {
+    override func deletar(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let intervalo: Intervalo = objeto as! Intervalo
         
-        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Intervalo WHERE id_intervalo = ?", withArgumentsInArray: [String(intervalo.idIntervalo)])
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Intervalo WHERE id_intervalo = ?", withArgumentsIn: [String(intervalo.idIntervalo)])
         
         self.bancoDeDados.close()
         
@@ -49,7 +49,7 @@ class IntervaloDAO: DAO {
         
         self.intervalos = [Intervalo]()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo Order By numero", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo Order By numero", withArgumentsIn: nil)
         
         var idIntervalo = String()
         var numero = String()
@@ -57,9 +57,9 @@ class IntervaloDAO: DAO {
         
         while(resultadoBusca.next()){
             
-            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
-            numero = resultadoBusca.stringForColumn("numero")
-            unidade = resultadoBusca.stringForColumn("unidade")
+            idIntervalo = resultadoBusca.string(forColumn: "id_intervalo")
+            numero = resultadoBusca.string(forColumn: "numero")
+            unidade = resultadoBusca.string(forColumn: "unidade")
             
             let intervalo = Intervalo(idIntervalo: Int(idIntervalo)!, numero: Int(numero)!, unidade: unidade)
             
@@ -72,12 +72,12 @@ class IntervaloDAO: DAO {
         
     }
     
-    override func buscarPorId(id: Int) -> AnyObject? {
+    override func buscarPorId(_ id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
         var intervaloBuscado = Intervalo()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo WHERE id_intervalo = ? Order By id_intervalo", withArgumentsInArray: [id])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Intervalo WHERE id_intervalo = ? Order By id_intervalo", withArgumentsIn: [id])
         
         var idIntervalo = String()
         var numero = String()
@@ -85,9 +85,9 @@ class IntervaloDAO: DAO {
         
         while(resultadoBusca.next()){
             
-            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
-            numero = resultadoBusca.stringForColumn("numero")
-            unidade = resultadoBusca.stringForColumn("unidade")
+            idIntervalo = resultadoBusca.string(forColumn: "id_intervalo")
+            numero = resultadoBusca.string(forColumn: "numero")
+            unidade = resultadoBusca.string(forColumn: "unidade")
             
             let intervalo = Intervalo(idIntervalo: Int(idIntervalo)!, numero: Int(numero)!, unidade: unidade)
             

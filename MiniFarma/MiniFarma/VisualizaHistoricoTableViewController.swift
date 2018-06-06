@@ -17,33 +17,33 @@ class VisualizaHistoricoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.historicos = self.historicoDAO.buscarTodosDoRemedioComId(self.remedio!.idRemedio) as! [Historico]
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
-        self.tableView.separatorColor = UIColor.clearColor()
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.tableView.separatorColor = UIColor.clear
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.historicos.count+1
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == self.historicos.count {
-            let celulaBranca = self.tableView.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) 
+            let celulaBranca = self.tableView.dequeueReusableCell(withIdentifier: "celulaBranca", for:indexPath) 
             
             //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
-            celulaBranca.userInteractionEnabled = false
+            celulaBranca.isUserInteractionEnabled = false
             
             //Removendo a linha de baixo da última célula
             celulaBranca.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
             return celulaBranca
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
+            let cell = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath) 
 
             let historico = self.historicos[indexPath.row] as Historico
             
@@ -53,26 +53,26 @@ class VisualizaHistoricoTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == 0 || indexPath.row % 2 == 0 || indexPath.row == self.historicos.count {
-            cell.contentView.backgroundColor = UIColor.clearColor()
-            cell.textLabel?.backgroundColor = UIColor.clearColor()
+            cell.contentView.backgroundColor = UIColor.clear
+            cell.textLabel?.backgroundColor = UIColor.clear
         }else{
             cell.contentView.backgroundColor = UIColor(red: 0/255, green: 188/255, blue: 254/255, alpha: 0.1)
-            cell.textLabel?.backgroundColor = UIColor.clearColor()
+            cell.textLabel?.backgroundColor = UIColor.clear
         }
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let historico = self.historicos[indexPath.row]
-            self.historicos.removeAtIndex(indexPath.row)
+            self.historicos.remove(at: indexPath.row)
             self.historicoDAO.deletar(historico)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 

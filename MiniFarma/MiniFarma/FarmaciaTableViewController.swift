@@ -20,10 +20,10 @@ class FarmaciaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.farmacias = farmaciaDAO.buscarTodos() as! [Farmacia]
         self.tableView.reloadData()
@@ -33,52 +33,52 @@ class FarmaciaTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.farmacias.count
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if(editingStyle == .Delete){
+        if(editingStyle == .delete){
             _ = farmaciaDAO.deletar(self.farmacias[indexPath.row])
             
-            self.farmacias.removeAtIndex(indexPath.row)
+            self.farmacias.remove(at: indexPath.row)
             
             tableView.reloadData()
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Celula", forIndexPath: indexPath) as! FarmaciaTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Celula", for: indexPath) as! FarmaciaTableViewCell
         
         cell.nomeCustomizado.text = (self.farmacias[indexPath.row] as Farmacia).nomeFarmacia
 
         cell.buttonLigarParaFarmacia.tag = indexPath.row
-        cell.buttonLigarParaFarmacia.addTarget(self, action: #selector(FarmaciaTableViewController.ligarParaFarmacia(_:)), forControlEvents: .TouchUpInside)
+        cell.buttonLigarParaFarmacia.addTarget(self, action: #selector(FarmaciaTableViewController.ligarParaFarmacia(_:)), for: .touchUpInside)
         
         cell.imagemFavorito.tag = indexPath.row
-        cell.imagemFavorito.addTarget(self, action: #selector(FarmaciaTableViewController.alteraFavorito(_:)), forControlEvents: .TouchUpInside)
+        cell.imagemFavorito.addTarget(self, action: #selector(FarmaciaTableViewController.alteraFavorito(_:)), for: .touchUpInside)
         if((self.farmacias[indexPath.row] as Farmacia).favorita == 1){
-            cell.imagemFavorito.setImage(UIImage(named: "estrelaFavorito"), forState: .Normal)
+            cell.imagemFavorito.setImage(UIImage(named: "estrelaFavorito"), for: UIControlState())
         }else{
-            cell.imagemFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: .Normal)
+            cell.imagemFavorito.setImage(UIImage(named: "estrelaFavoritoNegativo"), for: UIControlState())
         }
         
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.farmaciaSelecionada = self.farmacias[indexPath.row]
         self.delegate?.selecionaFarmacia(self.farmaciaSelecionada!)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //        let farmacia = self.farmacias[indexPath.row] as Farmacia
         
 //        let ligar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Ligar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
@@ -95,10 +95,10 @@ class FarmaciaTableViewController: UITableViewController {
 //                SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
 //            }
 //        })
-        let apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+        let apagar = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:IndexPath) -> Void in
             _ = self.farmaciaDAO.deletar(self.farmacias[indexPath.row])
             
-            self.farmacias.removeAtIndex(indexPath.row)
+            self.farmacias.remove(at: indexPath.row)
             
             self.tableView.reloadData()
         })
@@ -110,20 +110,20 @@ class FarmaciaTableViewController: UITableViewController {
         return [apagar]
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let novaFarmacia = segue.destinationViewController as! NovaFarmaciaViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let novaFarmacia = segue.destination as! NovaFarmaciaViewController
         novaFarmacia.inicialOuAdicionaRemedio = false
     }
     
-    func ligarParaFarmacia(sender: UIButton) {
+    func ligarParaFarmacia(_ sender: UIButton) {
         let farmacia = self.farmacias[sender.tag]
         
         if String(farmacia.telefone) != nil {
-            let ligacao = NSURL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
+            let ligacao = URL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
             
             //check  Call Function available only in iphone
-            if UIApplication.sharedApplication().canOpenURL(ligacao!) {
-                UIApplication.sharedApplication().openURL(ligacao!)
+            if UIApplication.shared.canOpenURL(ligacao!) {
+                UIApplication.shared.openURL(ligacao!)
             } else {
                 SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
             }
@@ -132,15 +132,15 @@ class FarmaciaTableViewController: UITableViewController {
         }
     }
     
-    func alteraFavorito(sender: UIButton){
+    func alteraFavorito(_ sender: UIButton){
         
         let farmacia = self.farmacias[sender.tag]
         for f in self.farmacias {
-            sender.setImage(UIImage(named: "estrelaFavorito"), forState: .Normal)
+            sender.setImage(UIImage(named: "estrelaFavorito"), for: UIControlState())
             if f.idFarmacia == farmacia.idFarmacia {
                 self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 1)
             }else{
-                sender.setImage(UIImage(named: "estrelaFavoritoNegativo"), forState: .Normal)
+                sender.setImage(UIImage(named: "estrelaFavoritoNegativo"), for: UIControlState())
                 self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 0)
             }
         }
@@ -153,6 +153,6 @@ class FarmaciaTableViewController: UITableViewController {
 // MARK: - Protocolo
 
 protocol SelecionaFarmaciaDelegate {
-    func selecionaFarmacia(farmacia: Farmacia)
+    func selecionaFarmacia(_ farmacia: Farmacia)
     
 }

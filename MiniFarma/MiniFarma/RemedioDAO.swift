@@ -16,13 +16,13 @@ class RemedioDAO: DAO {
         super.init()
     }
  
-    override func inserir(objeto: AnyObject?) -> Bool {
+    override func inserir(_ objeto: AnyObject?) -> Bool {
     
         self.bancoDeDados.open()
         
         let remedio: Remedio = objeto as! Remedio
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade, preco, numero_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo, notas) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsInArray: [
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Remedio (nome, data_validade, numero_quantidade, unidade, preco, numero_dose, foto_remedio, foto_receita, vencido, id_farmacia, id_categoria, id_local, id_intervalo, notas) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", withArgumentsIn: [
             remedio.nomeRemedio,
             remedio.dataValidade,
             remedio.numeroQuantidade,
@@ -43,13 +43,13 @@ class RemedioDAO: DAO {
         return inseridoComSucesso
 	}
     
-    override func deletar(objeto: AnyObject?) -> Bool {
+    override func deletar(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let remedio: Remedio = objeto as! Remedio
         
-        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(remedio.idRemedio)])
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Remedio WHERE id_remedio = ?", withArgumentsIn: [String(remedio.idRemedio)])
         
         self.bancoDeDados.close()
         
@@ -63,10 +63,10 @@ class RemedioDAO: DAO {
         
         self.remedios = [Remedio]()
         
-        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By nome", withArgumentsInArray: nil)
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By nome", withArgumentsIn: nil)
         
         //campos opcionais
-        var dataValidade: NSDate?
+        var dataValidade: Date?
         var numeroQuantidade:NSString = ""
         var unidade: NSString = ""
         var preco: NSString = ""
@@ -82,47 +82,47 @@ class RemedioDAO: DAO {
         
         while(result.next()){
             
-            let idRemedio: NSString = result.stringForColumn("id_remedio")
-            let nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.string(forColumn: "id_remedio") as! NSString
+            let nome: NSString = result.string(forColumn: "nome") as! NSString
             
-            if(result.stringForColumn("data_validade") != nil){
-                dataValidade = result.dateForColumn("data_validade")
+            if(result.string(forColumn: "data_validade") != nil){
+                dataValidade = result.date(forColumn: "data_validade")
             }
-            if(result.stringForColumn("numero_quantidade") != nil){
-                numeroQuantidade = result.stringForColumn("numero_quantidade")
+            if(result.string(forColumn: "numero_quantidade") != nil){
+                numeroQuantidade = result.string(forColumn: "numero_quantidade") as! NSString
             }
-            if(result.stringForColumn("unidade") != nil){
-                unidade = result.stringForColumn("unidade")
+            if(result.string(forColumn: "unidade") != nil){
+                unidade = result.string(forColumn: "unidade") as! NSString
             }
-            if(result.stringForColumn("preco") != nil){
-                preco = result.stringForColumn("preco")
+            if(result.string(forColumn: "preco") != nil){
+                preco = result.string(forColumn: "preco") as! NSString
             }
-            if(result.stringForColumn("numero_dose") != nil){
-                numeroDose = result.stringForColumn("numero_dose")
+            if(result.string(forColumn: "numero_dose") != nil){
+                numeroDose = result.string(forColumn: "numero_dose") as! NSString
             }
-            if(result.stringForColumn("foto_remedio") != nil){
-                fotoRemedio = result.stringForColumn("foto_remedio")
+            if(result.string(forColumn: "foto_remedio") != nil){
+                fotoRemedio = result.string(forColumn: "foto_remedio") as! NSString
             }
-            if(result.stringForColumn("foto_receita") != nil){
-                fotoReceita = result.stringForColumn("foto_receita")
+            if(result.string(forColumn: "foto_receita") != nil){
+                fotoReceita = result.string(forColumn: "foto_receita") as! NSString
             }
-            if(result.stringForColumn("vencido") != nil){
-                vencido = result.stringForColumn("vencido")
+            if(result.string(forColumn: "vencido") != nil){
+                vencido = result.string(forColumn: "vencido") as! NSString
             }
-            if(result.stringForColumn("id_farmacia") != nil){
-                idFarmacia = result.stringForColumn("id_farmacia")
+            if(result.string(forColumn: "id_farmacia") != nil){
+                idFarmacia = result.string(forColumn: "id_farmacia") as! NSString
             }
-            if(result.stringForColumn("id_categoria") != nil){
-                idCategoria = result.stringForColumn("id_categoria")
+            if(result.string(forColumn: "id_categoria") != nil){
+                idCategoria = result.string(forColumn: "id_categoria") as! NSString
             }
-            if(result.stringForColumn("id_local") != nil){
-                idLocal = result.stringForColumn("id_local")
+            if(result.string(forColumn: "id_local") != nil){
+                idLocal = result.string(forColumn: "id_local") as! NSString
             }
-            if(result.stringForColumn("id_intervalo") != nil){
-                idIntervalo = result.stringForColumn("id_intervalo")
+            if(result.string(forColumn: "id_intervalo") != nil){
+                idIntervalo = result.string(forColumn: "id_intervalo") as! NSString
             }
-            if result.stringForColumn("notas") != nil {
-                notas = result.stringForColumn("notas")
+            if result.string(forColumn: "notas") != nil {
+                notas = result.string(forColumn: "notas")
             }
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas: notas)
@@ -137,15 +137,15 @@ class RemedioDAO: DAO {
         
     }
     
-    override func buscarPorId(id: Int) -> AnyObject? {
+    override func buscarPorId(_ id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
         var remedioBuscado = Remedio()
         
-        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ?", withArgumentsInArray: [String(id)])
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE id_remedio = ?", withArgumentsIn: [String(id)])
         
         //campos opcionais
-        var dataValidade: NSDate?
+        var dataValidade: Date?
         var numeroQuantidade:NSString = ""
         var unidade: NSString = ""
         var preco: NSString = ""
@@ -161,49 +161,49 @@ class RemedioDAO: DAO {
 
         while(result.next()){
             
-            let idRemedio: NSString = result.stringForColumn("id_remedio")
-            let nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.string(forColumn: "id_remedio") as! NSString
+            let nome: NSString = result.string(forColumn: "nome") as! NSString
             
             
-            if(result.stringForColumn("data_validade") != nil){
-                dataValidade = result.dateForColumn("data_validade")
+            if(result.string(forColumn: "data_validade") != nil){
+                dataValidade = result.date(forColumn: "data_validade")
             }
-            if(result.stringForColumn("numero_quantidade") != nil){
-                numeroQuantidade = result.stringForColumn("numero_quantidade")
+            if(result.string(forColumn: "numero_quantidade") != nil){
+                numeroQuantidade = result.string(forColumn: "numero_quantidade") as! NSString
             }
-            if(result.stringForColumn("unidade") != nil){
-                unidade = result.stringForColumn("unidade")
+            if(result.string(forColumn: "unidade") != nil){
+                unidade = result.string(forColumn: "unidade") as! NSString
             }
-            if(result.stringForColumn("preco") != nil){
-                preco = result.stringForColumn("preco")
+            if(result.string(forColumn: "preco") != nil){
+                preco = result.string(forColumn: "preco") as! NSString
             }
-            if(result.stringForColumn("numero_dose") != nil){
-                numeroDose = result.stringForColumn("numero_dose")
+            if(result.string(forColumn: "numero_dose") != nil){
+                numeroDose = result.string(forColumn: "numero_dose") as! NSString
             }
-            if(result.stringForColumn("foto_remedio") != nil){
-                fotoRemedio = result.stringForColumn("foto_remedio")
+            if(result.string(forColumn: "foto_remedio") != nil){
+                fotoRemedio = result.string(forColumn: "foto_remedio") as! NSString
             }
-            if(result.stringForColumn("foto_receita") != nil){
-                fotoReceita = result.stringForColumn("foto_receita")
+            if(result.string(forColumn: "foto_receita") != nil){
+                fotoReceita = result.string(forColumn: "foto_receita") as! NSString
             }
-            if(result.stringForColumn("vencido") != nil){
-                vencido = result.stringForColumn("vencido")
+            if(result.string(forColumn: "vencido") != nil){
+                vencido = result.string(forColumn: "vencido") as! NSString
             }
-            if(result.stringForColumn("id_farmacia") != nil){
-                idFarmacia = result.stringForColumn("id_farmacia")
+            if(result.string(forColumn: "id_farmacia") != nil){
+                idFarmacia = result.string(forColumn: "id_farmacia") as! NSString
             }
-            if(result.stringForColumn("id_categoria") != nil){
-                idCategoria = result.stringForColumn("id_categoria")
+            if(result.string(forColumn: "id_categoria") != nil){
+                idCategoria = result.string(forColumn: "id_categoria") as! NSString
             }
-            if(result.stringForColumn("id_local") != nil){
-                idLocal = result.stringForColumn("id_local")
+            if(result.string(forColumn: "id_local") != nil){
+                idLocal = result.string(forColumn: "id_local") as! NSString
             }
-            if(result.stringForColumn("id_intervalo") != nil){
-                idIntervalo = result.stringForColumn("id_intervalo")
+            if(result.string(forColumn: "id_intervalo") != nil){
+                idIntervalo = result.string(forColumn: "id_intervalo") as! NSString
             }
             
-            if result.stringForColumn("notas") != nil {
-                notas = result.stringForColumn("notas")
+            if result.string(forColumn: "notas") != nil {
+                notas = result.string(forColumn: "notas")
             }
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas: notas)
@@ -223,10 +223,10 @@ class RemedioDAO: DAO {
         
         self.remedios = [Remedio]()
         
-        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE vencido = ? Order By nome", withArgumentsInArray: [String(_validade)])
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio WHERE vencido = ? Order By nome", withArgumentsIn: [String(_validade)])
         
         //campos opcionais
-        var dataValidade: NSDate?
+        var dataValidade: Date?
         var numeroQuantidade:NSString = ""
         var unidade: NSString = ""
         var preco: NSString = ""
@@ -242,49 +242,49 @@ class RemedioDAO: DAO {
         
         while(result.next()){
             
-            let idRemedio: NSString = result.stringForColumn("id_remedio")
-            let nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.string(forColumn: "id_remedio") as! NSString
+            let nome: NSString = result.string(forColumn: "nome") as! NSString
             
             
-            if(result.stringForColumn("data_validade") != nil){
-                dataValidade = result.dateForColumn("data_validade")
+            if(result.string(forColumn: "data_validade") != nil){
+                dataValidade = result.date(forColumn: "data_validade")
             }
-            if(result.stringForColumn("numero_quantidade") != nil){
-                numeroQuantidade = result.stringForColumn("numero_quantidade")
+            if(result.string(forColumn: "numero_quantidade") != nil){
+                numeroQuantidade = result.string(forColumn: "numero_quantidade") as! NSString
             }
-            if(result.stringForColumn("unidade") != nil){
-                unidade = result.stringForColumn("unidade")
+            if(result.string(forColumn: "unidade") != nil){
+                unidade = result.string(forColumn: "unidade") as! NSString
             }
-            if(result.stringForColumn("preco") != nil){
-                preco = result.stringForColumn("preco")
+            if(result.string(forColumn: "preco") != nil){
+                preco = result.string(forColumn: "preco") as! NSString
             }
-            if(result.stringForColumn("numero_dose") != nil){
-                numeroDose = result.stringForColumn("numero_dose")
+            if(result.string(forColumn: "numero_dose") != nil){
+                numeroDose = result.string(forColumn: "numero_dose") as! NSString
             }
-            if(result.stringForColumn("foto_remedio") != nil){
-                fotoRemedio = result.stringForColumn("foto_remedio")
+            if(result.string(forColumn: "foto_remedio") != nil){
+                fotoRemedio = result.string(forColumn: "foto_remedio") as! NSString
             }
-            if(result.stringForColumn("foto_receita") != nil){
-                fotoReceita = result.stringForColumn("foto_receita")
+            if(result.string(forColumn: "foto_receita") != nil){
+                fotoReceita = result.string(forColumn: "foto_receita") as! NSString
             }
-            if(result.stringForColumn("vencido") != nil){
-                vencido = result.stringForColumn("vencido")
+            if(result.string(forColumn: "vencido") != nil){
+                vencido = result.string(forColumn: "vencido") as! NSString
             }
-            if(result.stringForColumn("id_farmacia") != nil){
-                idFarmacia = result.stringForColumn("id_farmacia")
+            if(result.string(forColumn: "id_farmacia") != nil){
+                idFarmacia = result.string(forColumn: "id_farmacia") as! NSString
             }
-            if(result.stringForColumn("id_categoria") != nil){
-                idCategoria = result.stringForColumn("id_categoria")
+            if(result.string(forColumn: "id_categoria") != nil){
+                idCategoria = result.string(forColumn: "id_categoria") as! NSString
             }
-            if(result.stringForColumn("id_local") != nil){
-                idLocal = result.stringForColumn("id_local")
+            if(result.string(forColumn: "id_local") != nil){
+                idLocal = result.string(forColumn: "id_local") as! NSString
             }
-            if(result.stringForColumn("id_intervalo") != nil){
-                idIntervalo = result.stringForColumn("id_intervalo")
+            if(result.string(forColumn: "id_intervalo") != nil){
+                idIntervalo = result.string(forColumn: "id_intervalo") as! NSString
             }
             
-            if result.stringForColumn("notas") != nil {
-                notas = result.stringForColumn("notas")
+            if result.string(forColumn: "notas") != nil {
+                notas = result.string(forColumn: "notas")
             }
             
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas : notas)
@@ -298,10 +298,10 @@ class RemedioDAO: DAO {
         return self.remedios
     }
 
-    func atualizar(remedio: Remedio, comId id: Int) -> Bool {
+    func atualizar(_ remedio: Remedio, comId id: Int) -> Bool {
         self.bancoDeDados.open()
         
-        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET nome = ?, data_validade = ?, numero_quantidade = ?, unidade = ?, preco = ?, numero_dose = ?, foto_remedio = ?, foto_receita = ?, vencido = ?, id_farmacia = ?, id_categoria = ?, id_local = ?, id_intervalo = ?, notas = ? WHERE id_remedio = ?", withArgumentsInArray: [remedio.nomeRemedio,
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET nome = ?, data_validade = ?, numero_quantidade = ?, unidade = ?, preco = ?, numero_dose = ?, foto_remedio = ?, foto_receita = ?, vencido = ?, id_farmacia = ?, id_categoria = ?, id_local = ?, id_intervalo = ?, notas = ? WHERE id_remedio = ?", withArgumentsIn: [remedio.nomeRemedio,
             remedio.dataValidade,
             remedio.numeroQuantidade,
             remedio.unidade,
@@ -322,11 +322,11 @@ class RemedioDAO: DAO {
         return atualizadoComSucesso
     }
     
-    func marcaRemedioTomado(remedio: Remedio, novaQuantidade : Int) -> Bool {
+    func marcaRemedioTomado(_ remedio: Remedio, novaQuantidade : Int) -> Bool {
         
         self.bancoDeDados.open()
         
-        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET numero_quantidade = ? WHERE id_remedio = ?", withArgumentsInArray: [String(novaQuantidade),String(remedio.idRemedio)])
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Remedio SET numero_quantidade = ? WHERE id_remedio = ?", withArgumentsIn: [String(novaQuantidade),String(remedio.idRemedio)])
         
         self.bancoDeDados.close()
         
@@ -335,7 +335,7 @@ class RemedioDAO: DAO {
         return atualizadoComSucesso
     }
     
-    func agendaNotificacaoDeRemedioAcabando(remedio: Remedio, novaQuantidade: Int){
+    func agendaNotificacaoDeRemedioAcabando(_ remedio: Remedio, novaQuantidade: Int){
         if novaQuantidade <= remedio.numeroDose {
             _ = Notificacao(idRemedio: remedio.idRemedio, nomeRemedio: remedio.nomeRemedio, quantidadeRestante: (remedio.numeroQuantidade - remedio.numeroDose))
         }
@@ -346,10 +346,10 @@ class RemedioDAO: DAO {
         
         var todosRemedios = [Remedio]()
         
-        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsInArray: nil)
+        let result: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Remedio Order By id_remedio", withArgumentsIn: nil)
         
         //campos opcionais
-        var dataValidade: NSDate?
+        var dataValidade: Date?
         var numeroQuantidade:NSString = ""
         var unidade: NSString = ""
         var preco: NSString = ""
@@ -365,47 +365,47 @@ class RemedioDAO: DAO {
         
         while(result.next()){
             
-            let idRemedio: NSString = result.stringForColumn("id_remedio")
-            let nome: NSString = result.stringForColumn("nome")
+            let idRemedio: NSString = result.string(forColumn: "id_remedio") as! NSString
+            let nome: NSString = result.string(forColumn: "nome") as! NSString
             
-            if(result.stringForColumn("data_validade") != nil){
-                dataValidade = result.dateForColumn("data_validade")
+            if(result.string(forColumn: "data_validade") != nil){
+                dataValidade = result.date(forColumn: "data_validade")
             }
-            if(result.stringForColumn("numero_quantidade") != nil){
-                numeroQuantidade = result.stringForColumn("numero_quantidade")
+            if(result.string(forColumn: "numero_quantidade") != nil){
+                numeroQuantidade = result.string(forColumn: "numero_quantidade") as! NSString
             }
-            if(result.stringForColumn("unidade") != nil){
-                unidade = result.stringForColumn("unidade")
+            if(result.string(forColumn: "unidade") != nil){
+                unidade = result.string(forColumn: "unidade") as! NSString
             }
-            if(result.stringForColumn("preco") != nil){
-                preco = result.stringForColumn("preco")
+            if(result.string(forColumn: "preco") != nil){
+                preco = result.string(forColumn: "preco") as! NSString
             }
-            if(result.stringForColumn("numero_dose") != nil){
-                numeroDose = result.stringForColumn("numero_dose")
+            if(result.string(forColumn: "numero_dose") != nil){
+                numeroDose = result.string(forColumn: "numero_dose") as! NSString
             }
-            if(result.stringForColumn("foto_remedio") != nil){
-                fotoRemedio = result.stringForColumn("foto_remedio")
+            if(result.string(forColumn: "foto_remedio") != nil){
+                fotoRemedio = result.string(forColumn: "foto_remedio") as! NSString
             }
-            if(result.stringForColumn("foto_receita") != nil){
-                fotoReceita = result.stringForColumn("foto_receita")
+            if(result.string(forColumn: "foto_receita") != nil){
+                fotoReceita = result.string(forColumn: "foto_receita") as! NSString
             }
-            if(result.stringForColumn("vencido") != nil){
-                vencido = result.stringForColumn("vencido")
+            if(result.string(forColumn: "vencido") != nil){
+                vencido = result.string(forColumn: "vencido") as! NSString
             }
-            if(result.stringForColumn("id_farmacia") != nil){
-                idFarmacia = result.stringForColumn("id_farmacia")
+            if(result.string(forColumn: "id_farmacia") != nil){
+                idFarmacia = result.string(forColumn: "id_farmacia") as! NSString
             }
-            if(result.stringForColumn("id_categoria") != nil){
-                idCategoria = result.stringForColumn("id_categoria")
+            if(result.string(forColumn: "id_categoria") != nil){
+                idCategoria = result.string(forColumn: "id_categoria") as! NSString
             }
-            if(result.stringForColumn("id_local") != nil){
-                idLocal = result.stringForColumn("id_local")
+            if(result.string(forColumn: "id_local") != nil){
+                idLocal = result.string(forColumn: "id_local") as! NSString
             }
-            if(result.stringForColumn("id_intervalo") != nil){
-                idIntervalo = result.stringForColumn("id_intervalo")
+            if(result.string(forColumn: "id_intervalo") != nil){
+                idIntervalo = result.string(forColumn: "id_intervalo") as! NSString
             }
-            if result.stringForColumn("notas") != nil {
-                notas = result.stringForColumn("notas")
+            if result.string(forColumn: "notas") != nil {
+                notas = result.string(forColumn: "notas")
             }
             let remedio:Remedio = Remedio(idRemedio: idRemedio.integerValue, nomeRemedio: nome as String, dataValidade: dataValidade!, numeroQuantidade: numeroQuantidade.integerValue, unidade: unidade.integerValue, preco: preco.doubleValue, numeroDose: numeroDose.integerValue, fotoRemedio: fotoRemedio as String, fotoReceita: fotoReceita as String, vencido: vencido.integerValue, idFarmacia: idFarmacia.integerValue, idCategoria: idCategoria.integerValue, idLocal: idLocal.integerValue, idIntervalo: idIntervalo.integerValue, notas:notas)
             

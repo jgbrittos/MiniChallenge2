@@ -37,10 +37,10 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.alertasDaVez = self.alertasAtivos
         
         //Fazendo com que a table view mostre apenas as linhas de dados e nenhuma a mais
-        self.tableViewAlerta.tableFooterView = UIView(frame: CGRectZero)
+        self.tableViewAlerta.tableFooterView = UIView(frame: CGRect.zero)
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
         self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
         
@@ -57,15 +57,15 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
         }
         
-        self.cancelarNotificacoes.enabled = false
-        self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+        self.cancelarNotificacoes.isEnabled = false
+        self.cancelarNotificacoes.tintColor = UIColor.clear
         
         self.tableViewAlerta.reloadData()
 
     }
     
     //MARK:- Controles da Table View
-    @IBAction func alteraDadosDaTabelaAlerta(sender: AnyObject) {
+    @IBAction func alteraDadosDaTabelaAlerta(_ sender: AnyObject) {
         self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
         self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
         
@@ -87,30 +87,30 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableViewAlerta.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Adiciona-se uma linha a mais para o botão '+' não ficar em cima da última célula
         return self.alertasDaVez.count+1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == self.alertasDaVez.count {
-            let celulaBranca = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaBranca", forIndexPath:indexPath) 
+            let celulaBranca = self.tableViewAlerta.dequeueReusableCell(withIdentifier: "celulaBranca", for:indexPath) 
             
             //Removendo interação do usuário, para o mesmo não pensar que a célula a mais é bug
-            celulaBranca.userInteractionEnabled = false
+            celulaBranca.isUserInteractionEnabled = false
             
             //Removendo a linha de baixo da última célula
             celulaBranca.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0)
             return celulaBranca
         }else{
-            let celulaAlerta = self.tableViewAlerta.dequeueReusableCellWithIdentifier("celulaAlerta", forIndexPath:indexPath) as! ListaRemediosAlertasTableViewCell
-            celulaAlerta.labelNome.enabled = true
-            celulaAlerta.labelDataDeValidade.enabled = true
+            let celulaAlerta = self.tableViewAlerta.dequeueReusableCell(withIdentifier: "celulaAlerta", for:indexPath) as! ListaRemediosAlertasTableViewCell
+            celulaAlerta.labelNome.isEnabled = true
+            celulaAlerta.labelDataDeValidade.isEnabled = true
             var alerta = self.alertasDaVez[indexPath.row] as Alerta
             
             let remedio = self.remedioDAO.buscarPorId(self.alertasDaVez[indexPath.row].idRemedio) as! Remedio
@@ -120,16 +120,16 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             alerta = self.alertaDAO.buscarPorId(alerta.idAlerta) as! Alerta
             
             if alerta.ativo == 0 {
-                celulaAlerta.switchAtivaAlerta.enabled = false
-                celulaAlerta.labelNome.enabled = false
-                celulaAlerta.labelDataDeValidade.enabled = false
-                celulaAlerta.switchAtivaAlerta.on = false
-                celulaAlerta.switchAtivaAlerta.hidden = true
+                celulaAlerta.switchAtivaAlerta.isEnabled = false
+                celulaAlerta.labelNome.isEnabled = false
+                celulaAlerta.labelDataDeValidade.isEnabled = false
+                celulaAlerta.switchAtivaAlerta.isOn = false
+                celulaAlerta.switchAtivaAlerta.isHidden = true
                 data = NSLocalizedString("ALERTAINATIVO", comment: "inatividade")
             }else{
-                celulaAlerta.switchAtivaAlerta.hidden = false
-                celulaAlerta.switchAtivaAlerta.enabled = true
-                celulaAlerta.switchAtivaAlerta.on = true
+                celulaAlerta.switchAtivaAlerta.isHidden = false
+                celulaAlerta.switchAtivaAlerta.isEnabled = true
+                celulaAlerta.switchAtivaAlerta.isOn = true
             }
             
             celulaAlerta.switchAtivaAlerta.tag = indexPath.row
@@ -141,7 +141,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func defineProximaDose(alerta: Alerta) -> String {
+    func defineProximaDose(_ alerta: Alerta) -> String {
 
         if self.verificaSeHaNotificacaoPara(alerta) {
             return NSLocalizedString("ALERTAINATIVO", comment: "inatividade")
@@ -151,24 +151,24 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let dataInicio = alerta.dataInicio
         let intervalo = self.intervaloDAO.buscarPorId(alerta.idIntervalo) as! Intervalo
-        let dataAgora = NSDate()
+        let dataAgora = Date()
         var dataProximaDose = dataInicio
         
-        while(dataProximaDose.compare(dataAgora) == .OrderedAscending) { //dataProximaDose < data de agora
-            dataProximaDose = dataProximaDose.dateByAddingTimeInterval(NSTimeInterval(3600 * intervalo.numero))
+        while(dataProximaDose.compare(dataAgora) == .orderedAscending) { //dataProximaDose < data de agora
+            dataProximaDose = dataProximaDose.addingTimeInterval(TimeInterval(3600 * intervalo.numero))
         }
         
-        let formatador = NSDateFormatter()
+        let formatador = DateFormatter()
         formatador.dateFormat = "dd/MM/yyyy HH:mm"
-        formatador.timeZone = NSTimeZone.systemTimeZone()
+        formatador.timeZone = TimeZone.current
         
-        return texto + formatador.stringFromDate(dataProximaDose)
+        return texto + formatador.string(from: dataProximaDose as Date)
     }
     
-    func verificaSeHaNotificacaoPara(alerta: Alerta) -> Bool {
+    func verificaSeHaNotificacaoPara(_ alerta: Alerta) -> Bool {
         
         //_ = UILocalNotification()
-        let arrayDeNotificacoes = UIApplication.sharedApplication().scheduledLocalNotifications
+        let arrayDeNotificacoes = UIApplication.shared.scheduledLocalNotifications
         var contadorNotificacoes = 0
         let idRemedio = String(alerta.idRemedio)
         
@@ -195,41 +195,41 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //Necessário para a função editActionsForRowAtIndexPath funcionar corretamente
     }
     
-    func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         if self.cancelarTodos {
-            self.cancelarNotificacoes.enabled = true
-            self.cancelarNotificacoes.tintColor = UIColor.whiteColor()
+            self.cancelarNotificacoes.isEnabled = true
+            self.cancelarNotificacoes.tintColor = UIColor.white
         }
     }
     
-    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
-        self.cancelarNotificacoes.enabled = false
-        self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        self.cancelarNotificacoes.isEnabled = false
+        self.cancelarNotificacoes.tintColor = UIColor.clear
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //        var tomei = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Tomei" , handler: {(action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
 //            //Ação para quando o usuário tomou um remédio
 //        })
         
-        let apagar = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+        let apagar = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Apagar" , handler: {(action:UITableViewRowAction, indexPath:IndexPath) -> Void in
             //Ação para quando o usuário quer apagar um remédio
             switch self.segmentedControlAtividadeAlertas.selectedSegmentIndex {
                 case 0:
                     let alerta = self.alertasAtivos[indexPath.row] as Alerta
                     self.alertaDAO.deletar(alerta)
-                    self.alertasAtivos.removeAtIndex(indexPath.row)
+                    self.alertasAtivos.remove(at: indexPath.row)
                     Notificacao.cancelarNotificacaoPara(alerta)
                     self.alertasDaVez = self.alertasAtivos
                     break
                 case 1:
                     let alerta = self.alertasInativos[indexPath.row] as Alerta
                     self.alertaDAO.deletar(alerta)
-                    self.alertasInativos.removeAtIndex(indexPath.row)
+                    self.alertasInativos.remove(at: indexPath.row)
                     self.alertasDaVez = self.alertasInativos
                     break
                 default:
@@ -246,23 +246,23 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return [apagar]
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.alertaSelecionado = self.alertasDaVez[indexPath.row]
-        self.performSegueWithIdentifier("VisualizarAlerta", sender: nil)
+        self.performSegue(withIdentifier: "VisualizarAlerta", sender: nil)
     }
     
-    @IBAction func cancelarTodos(sender: AnyObject) {
+    @IBAction func cancelarTodos(_ sender: AnyObject) {
         
         let acao = UIActionSheet(title: "Deseja cancelar todas os alertas?", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: "Sim")
         
-        acao.showInView(self.view)
+        acao.show(in: self.view)
     }
     
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         switch buttonIndex {
             case 0:
                 print(self.alertaDAO.cancelarTodosOsAlertas())
@@ -284,10 +284,10 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 self.tableViewAlerta.reloadData()
                 
-                self.cancelarNotificacoes.enabled = false
-                self.cancelarNotificacoes.tintColor = UIColor.clearColor()
+                self.cancelarNotificacoes.isEnabled = false
+                self.cancelarNotificacoes.tintColor = UIColor.clear
                 
-                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                UIApplication.shared.cancelAllLocalNotifications()
                 break
             case 1:
                 //Cancelar
@@ -298,7 +298,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
     }
     
-    @IBAction func desativarAlertas(sender: AnyObject) {
+    @IBAction func desativarAlertas(_ sender: AnyObject) {
         let switchAtivo = sender as! UISwitch
         let alerta = self.alertasDaVez[switchAtivo.tag] as Alerta
         
@@ -306,7 +306,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.alertaDAO.atualizar(alerta, ativo: 0)
         
-        switchAtivo.enabled = false
+        switchAtivo.isEnabled = false
         switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
             case 0:
                 self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
@@ -325,8 +325,8 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tableViewAlerta.reloadData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let visualizarAlerta = segue.destinationViewController as! VisualizarAlertaTableViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let visualizarAlerta = segue.destination as! VisualizarAlertaTableViewController
         visualizarAlerta.alerta = self.alertaSelecionado
     }
 }

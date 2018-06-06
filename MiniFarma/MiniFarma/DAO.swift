@@ -14,12 +14,12 @@ class DAO: NSObject {
     var caminhoBancoDeDados = String()
     
     override init(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.caminhoBancoDeDados = appDelegate.caminhoBancoDeDados as String
         self.bancoDeDados = FMDatabase(path:self.caminhoBancoDeDados as String) as FMDatabase
     }
     
-    func inserir(objeto: AnyObject?) -> Bool {
+    func inserir(_ objeto: AnyObject?) -> Bool {
         //Sobrescrever
         return false
     }
@@ -29,7 +29,7 @@ class DAO: NSObject {
 //        return false
 //    }
     
-    func deletar(objeto: AnyObject?) -> Bool {
+    func deletar(_ objeto: AnyObject?) -> Bool {
         //Sobrescrever
         return false
     }
@@ -39,7 +39,7 @@ class DAO: NSObject {
         return Array<AnyObject>()
     }
     
-    func buscarPorId(id: Int) -> AnyObject? {
+    func buscarPorId(_ id: Int) -> AnyObject? {
         //Sobrescrever
         return nil
     }

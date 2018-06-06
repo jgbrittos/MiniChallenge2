@@ -16,26 +16,26 @@ class AlertaDAO: DAO {
         super.init()
     }
     
-    override func inserir(objeto: AnyObject?) -> Bool {
+    override func inserir(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let alerta: Alerta = objeto as! Alerta
         
-        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Alerta (data_inicio,numero_duracao,unidade_duracao,ativo,id_intervalo,id_remedio) VALUES (?,?,?,?,?,?)", withArgumentsInArray: [alerta.dataInicio, String(alerta.numeroDuracao), String(alerta.unidadeDuracao), String(alerta.ativo), String(alerta.idIntervalo), String(alerta.idRemedio)])
+        let inseridoComSucesso = self.bancoDeDados.executeUpdate("INSERT INTO Alerta (data_inicio,numero_duracao,unidade_duracao,ativo,id_intervalo,id_remedio) VALUES (?,?,?,?,?,?)", withArgumentsIn: [alerta.dataInicio, String(alerta.numeroDuracao), String(alerta.unidadeDuracao), String(alerta.ativo), String(alerta.idIntervalo), String(alerta.idRemedio)])
         
         self.bancoDeDados.close()
         
         return inseridoComSucesso
     }
     
-    override func deletar(objeto: AnyObject?) -> Bool {
+    override func deletar(_ objeto: AnyObject?) -> Bool {
         
         self.bancoDeDados.open()
         
         let alerta: Alerta = objeto as! Alerta
         
-        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Alerta WHERE id_alerta = ?", withArgumentsInArray: [String(alerta.idAlerta)])
+        let deletadoComSucesso = self.bancoDeDados.executeUpdate("DELETE FROM Alerta WHERE id_alerta = ?", withArgumentsIn: [String(alerta.idAlerta)])
         
         self.bancoDeDados.close()
         
@@ -49,10 +49,10 @@ class AlertaDAO: DAO {
         
         self.alertas = [Alerta]()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta Order By id_alerta", withArgumentsInArray: nil)
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta Order By id_alerta", withArgumentsIn: nil)
     
         var idAlerta = String()
-        var dataInicio = NSDate()
+        var dataInicio = Date()
         var numeroDuracao = String()
         var unidadeDuracao = String()
         var ativo = String()
@@ -62,13 +62,13 @@ class AlertaDAO: DAO {
         
         while(resultadoBusca.next()){
             
-            idAlerta = resultadoBusca.stringForColumn("id_Alerta")
-            dataInicio = resultadoBusca.dateForColumn("data_inicio")
-            numeroDuracao = resultadoBusca.stringForColumn("numero_duracao")
-            unidadeDuracao = resultadoBusca.stringForColumn("unidade_duracao")
-            ativo = resultadoBusca.stringForColumn("ativo")
-            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
-            idRemedio = resultadoBusca.stringForColumn("id_remedio")
+            idAlerta = resultadoBusca.string(forColumn: "id_Alerta")
+            dataInicio = resultadoBusca.date(forColumn: "data_inicio")
+            numeroDuracao = resultadoBusca.string(forColumn: "numero_duracao")
+            unidadeDuracao = resultadoBusca.string(forColumn: "unidade_duracao")
+            ativo = resultadoBusca.string(forColumn: "ativo")
+            idIntervalo = resultadoBusca.string(forColumn: "id_intervalo")
+            idRemedio = resultadoBusca.string(forColumn: "id_remedio")
 
             let alerta = Alerta(idAlerta: Int(idAlerta)!, dataInicio: dataInicio, numeroDuracao: Int(numeroDuracao)!, unidadeDuracao: Int(unidadeDuracao)!, ativo: Int(ativo)!, idIntervalo: Int(idIntervalo)!, idRemedio: Int(idRemedio)!)
             
@@ -86,10 +86,10 @@ class AlertaDAO: DAO {
         
         self.alertas = [Alerta]()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE ativo = ? Order By id_alerta", withArgumentsInArray: [String(_ativos)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE ativo = ? Order By id_alerta", withArgumentsIn: [String(_ativos)])
         
         var idAlerta = String()
-        var dataInicio = NSDate()
+        var dataInicio = Date()
         var numeroDuracao = String()
         var unidadeDuracao = String()
         var ativo = String()
@@ -99,13 +99,13 @@ class AlertaDAO: DAO {
         
         while(resultadoBusca.next()){
             
-            idAlerta = resultadoBusca.stringForColumn("id_Alerta")
-            dataInicio = resultadoBusca.dateForColumn("data_inicio")
-            numeroDuracao = resultadoBusca.stringForColumn("numero_duracao")
-            unidadeDuracao = resultadoBusca.stringForColumn("unidade_duracao")
-            ativo = resultadoBusca.stringForColumn("ativo")
-            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
-            idRemedio = resultadoBusca.stringForColumn("id_remedio")
+            idAlerta = resultadoBusca.string(forColumn: "id_Alerta")
+            dataInicio = resultadoBusca.date(forColumn: "data_inicio")
+            numeroDuracao = resultadoBusca.string(forColumn: "numero_duracao")
+            unidadeDuracao = resultadoBusca.string(forColumn: "unidade_duracao")
+            ativo = resultadoBusca.string(forColumn: "ativo")
+            idIntervalo = resultadoBusca.string(forColumn: "id_intervalo")
+            idRemedio = resultadoBusca.string(forColumn: "id_remedio")
             
             
             let alerta = Alerta(idAlerta: Int(idAlerta)!, dataInicio: dataInicio, numeroDuracao: Int(numeroDuracao)!, unidadeDuracao: Int(unidadeDuracao)!, ativo: Int(ativo)!, idIntervalo: Int(idIntervalo)!, idRemedio: Int(idRemedio)!)
@@ -120,15 +120,15 @@ class AlertaDAO: DAO {
         return self.alertas
     }
     
-    override func buscarPorId(id: Int) -> AnyObject? {
+    override func buscarPorId(_ id: Int) -> AnyObject? {
         self.bancoDeDados.open()
         
         var alertaBuscado = Alerta()
         
-        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE id_alerta = ?", withArgumentsInArray: [String(id)])
+        let resultadoBusca: FMResultSet = self.bancoDeDados.executeQuery("SELECT * FROM Alerta WHERE id_alerta = ?", withArgumentsIn: [String(id)])
         
         var idAlerta = String()
-        var dataInicio = NSDate()
+        var dataInicio = Date()
         var numeroDuracao = String()
         var unidadeDuracao = String()
         var ativo = String()
@@ -138,13 +138,13 @@ class AlertaDAO: DAO {
         
         while(resultadoBusca.next()){
             
-            idAlerta = resultadoBusca.stringForColumn("id_Alerta")
-            dataInicio = resultadoBusca.dateForColumn("data_inicio")
-            numeroDuracao = resultadoBusca.stringForColumn("numero_duracao")
-            unidadeDuracao = resultadoBusca.stringForColumn("unidade_duracao")
-            ativo = resultadoBusca.stringForColumn("ativo")
-            idIntervalo = resultadoBusca.stringForColumn("id_intervalo")
-            idRemedio = resultadoBusca.stringForColumn("id_remedio")
+            idAlerta = resultadoBusca.string(forColumn: "id_Alerta")
+            dataInicio = resultadoBusca.date(forColumn: "data_inicio")
+            numeroDuracao = resultadoBusca.string(forColumn: "numero_duracao")
+            unidadeDuracao = resultadoBusca.string(forColumn: "unidade_duracao")
+            ativo = resultadoBusca.string(forColumn: "ativo")
+            idIntervalo = resultadoBusca.string(forColumn: "id_intervalo")
+            idRemedio = resultadoBusca.string(forColumn: "id_remedio")
             
             let alerta = Alerta(idAlerta: Int(idAlerta)!, dataInicio: dataInicio, numeroDuracao: Int(numeroDuracao)!, unidadeDuracao: Int(unidadeDuracao)!, ativo: Int(ativo)!, idIntervalo: Int(idIntervalo)!, idRemedio: Int(idRemedio)!)
             
@@ -155,10 +155,10 @@ class AlertaDAO: DAO {
         return alertaBuscado
     }
     
-    func atualizar(alerta: Alerta, ativo: Int) -> Bool {
+    func atualizar(_ alerta: Alerta, ativo: Int) -> Bool {
         self.bancoDeDados.open()
         
-        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta SET ativo = ? WHERE id_Alerta = ?", withArgumentsInArray: [ativo, String(alerta.idAlerta)])
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta SET ativo = ? WHERE id_Alerta = ?", withArgumentsIn: [ativo, String(alerta.idAlerta)])
 
         self.bancoDeDados.close()
         
@@ -168,7 +168,7 @@ class AlertaDAO: DAO {
     func cancelarTodosOsAlertas() -> Bool {
         self.bancoDeDados.open()
         
-        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta SET ativo = 0", withArgumentsInArray: nil)
+        let atualizadoComSucesso = self.bancoDeDados.executeUpdate("UPDATE Alerta SET ativo = 0", withArgumentsIn: nil)
         
         self.bancoDeDados.close()
         

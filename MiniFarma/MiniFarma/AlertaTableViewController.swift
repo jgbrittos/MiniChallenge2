@@ -10,7 +10,7 @@ import UIKit
 
 class AlertaTableViewController: UITableViewController, UITextFieldDelegate, SelecionaIntervaloDoAlertaDelegate, SelecionaRemedioDelegate {
 
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
    
     @IBOutlet weak var dataInicioPicker: UIDatePicker!
     @IBOutlet weak var txtDuracaoQuantidade: UITextField!
@@ -27,13 +27,13 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtDuracaoQuantidade.delegate = self
-        self.dataInicioPicker.timeZone = NSTimeZone.systemTimeZone()//localTimeZone()
+        self.dataInicioPicker.timeZone = TimeZone.current//localTimeZone()
 //        self.dataInicioPicker.calendar = NSCalendar.currentCalendar()
 //        self.dataInicioPicker.locale = NSLocale(localeIdentifier: "pt-BR")
 //        self.dataInicioPicker.minimumDate = NSDate()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let r = appDelegate.remedioGlobal {
@@ -58,15 +58,15 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
     }
 
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
     
-    @IBAction func salvaAlarme(sender: AnyObject) {
+    @IBAction func salvaAlarme(_ sender: AnyObject) {
         
         self.txtDuracaoQuantidade.resignFirstResponder()
         
@@ -99,9 +99,9 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
                     appDelegate.remedioGlobal = nil
                     let storyboardInicial = UIStoryboard(name: "Main", bundle: nil)
                     let telaInicial = storyboardInicial.instantiateInitialViewController() as! UITabBarController
-                    self.presentViewController(telaInicial, animated: true, completion: nil)
+                    self.present(telaInicial, animated: true, completion: nil)
                 } else{
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
                 
             }else{
@@ -110,19 +110,19 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
         }
     }
     
-    @IBAction func cancelarAlerta(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelarAlerta(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.txtDuracaoQuantidade.resignFirstResponder()
         switch segue.identifier! {
             case "ListarIntervalos":
-                let selecionaIntervaloDoAlerta = segue.destinationViewController as! IntervaloTableViewController
+                let selecionaIntervaloDoAlerta = segue.destination as! IntervaloTableViewController
                 selecionaIntervaloDoAlerta.delegate = self
                 break
             case "listarRemedio":
-                let selecionaRemedioDoAlerta = segue.destinationViewController as! RemedioSimplesTableViewController
+                let selecionaRemedioDoAlerta = segue.destination as! RemedioSimplesTableViewController
                 selecionaRemedioDoAlerta.delegate = self
             break
             
@@ -131,15 +131,15 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
     }
     
     
-    @IBAction func selecionaUnidadeDuracao(sender: AnyObject) {
+    @IBAction func selecionaUnidadeDuracao(_ sender: AnyObject) {
         self.txtDuracaoQuantidade.resignFirstResponder()
     }
     
-    func selecionaIntervaloDoAlerta(intervalo: Intervalo){
+    func selecionaIntervaloDoAlerta(_ intervalo: Intervalo){
         self.intervalo = intervalo
     }
     
-    func selecionaRemedio(remedio: Remedio){
+    func selecionaRemedio(_ remedio: Remedio){
         self.remedio = remedio
     }
 }

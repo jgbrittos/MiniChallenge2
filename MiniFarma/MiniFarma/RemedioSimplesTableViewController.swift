@@ -24,7 +24,7 @@ class RemedioSimplesTableViewController: UITableViewController {
 
         self.remedios = remedioDAO.buscarTodos() as! [Remedio]
         
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     
     }
 
@@ -35,21 +35,21 @@ class RemedioSimplesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.remedios.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let celulaRemedios = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
+        let celulaRemedios = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath) 
         
         let remedio = self.remedios[indexPath.row]
         
@@ -59,10 +59,10 @@ class RemedioSimplesTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.remedioSelecionado = self.remedios[indexPath.row]
         self.delegate?.selecionaRemedio(self.remedioSelecionado!)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -131,5 +131,5 @@ class RemedioSimplesTableViewController: UITableViewController {
 }
 
 protocol SelecionaRemedioDelegate {
-    func selecionaRemedio(remedio:Remedio)
+    func selecionaRemedio(_ remedio:Remedio)
 }

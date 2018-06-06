@@ -40,11 +40,11 @@ class VisualizarRemedioTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.textViewNotas.tintColor = UIColor(red: 0/255, green: 158/255, blue: 201/255, alpha: 1)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.remedio = self.remedioDAO.buscarPorId(self.remedio!.idRemedio) as? Remedio
         
@@ -145,22 +145,22 @@ class VisualizarRemedioTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 12
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let identificador = cell.reuseIdentifier {
             if identificador == "celulaReceita" && self.remedio?.fotoReceita != "sem foto"  {
-                cell.accessoryType = .Checkmark
+                cell.accessoryType = .checkmark
             }else if identificador == "celulaHistorico" {
-                cell.accessoryType = .DisclosureIndicator
+                cell.accessoryType = .disclosureIndicator
             }else{
-                cell.accessoryType = .None
+                cell.accessoryType = .none
             }
         }
         
@@ -169,39 +169,39 @@ class VisualizarRemedioTableViewController: UITableViewController {
         }
     }
 
-    @IBAction func tocouNaFotoRemedio(sender: AnyObject) {
-        self.performSegueWithIdentifier("VisualizarFoto", sender: self.fotoDoRemedio)
+    @IBAction func tocouNaFotoRemedio(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "VisualizarFoto", sender: self.fotoDoRemedio)
     }
     
-    @IBAction func tocouNaCelulaReceita(sender: AnyObject) {
-        self.performSegueWithIdentifier("VisualizarFoto", sender: self.fotoDaReceita)
+    @IBAction func tocouNaCelulaReceita(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "VisualizarFoto", sender: self.fotoDaReceita)
     }
     
-    @IBAction func tocouNaCelulaFarmacia(sender: AnyObject) {
+    @IBAction func tocouNaCelulaFarmacia(_ sender: AnyObject) {
         
         if self.farmacia?.nomeFarmacia == "" {
             SCLAlertView().showError(NSLocalizedString("ERROFARMACIAINVALIDATITULO", comment: "Alerta de erro"), subTitle: NSLocalizedString("ERROFARMACIAINVALIDAMENSAGEM", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
         }else{
-            self.performSegueWithIdentifier("VisualizarFarmacia", sender: self.farmacia)
+            self.performSegue(withIdentifier: "VisualizarFarmacia", sender: self.farmacia)
         }
     }
     
-    @IBAction func tocouNaCelulaHistorico(sender: AnyObject) {
-        self.performSegueWithIdentifier("VisualizaHistorico", sender: self.remedio)
+    @IBAction func tocouNaCelulaHistorico(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "VisualizaHistorico", sender: self.remedio)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
             case "VisualizarFoto":
-                let visualizador = segue.destinationViewController as! VisualizarFotoReceitaViewController
+                let visualizador = segue.destination as! VisualizarFotoReceitaViewController
                 visualizador.fotoASerVisualizada = sender as! UIImage
                 break
             case "VisualizarFarmacia":
-                let visualizador = segue.destinationViewController as! VisualizarFarmaciaViewController
+                let visualizador = segue.destination as! VisualizarFarmaciaViewController
                 visualizador.farmaciaASerVisualizada = sender as? Farmacia
                 break
             case "VisualizaHistorico":
-                let visualizador = segue.destinationViewController as! VisualizaHistoricoTableViewController
+                let visualizador = segue.destination as! VisualizaHistoricoTableViewController
                 visualizador.remedio = sender as? Remedio
                 break
             default:
@@ -209,12 +209,12 @@ class VisualizarRemedioTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func editarRemedio(sender: AnyObject) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    @IBAction func editarRemedio(_ sender: AnyObject) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.remedioEditavel = self.remedio
         
         let storyboardRemedio = UIStoryboard(name: "Remedio", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        self.presentViewController(storyboardRemedio, animated: true, completion: nil)
+        self.present(storyboardRemedio, animated: true, completion: nil)
     }
     
 }

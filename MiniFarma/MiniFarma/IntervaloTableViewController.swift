@@ -21,10 +21,10 @@ class IntervaloTableViewController: UITableViewController {
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]
 
         
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
@@ -36,17 +36,17 @@ class IntervaloTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.intervalos.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let celulaIntervalos = tableView.dequeueReusableCellWithIdentifier("celula", forIndexPath: indexPath) 
+        let celulaIntervalos = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath) 
         
         let intervalo = self.intervalos[indexPath.row]
         
@@ -55,15 +55,15 @@ class IntervaloTableViewController: UITableViewController {
         return celulaIntervalos
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.intervaloSelecionado = self.intervalos[indexPath.row]
         self.delegate?.selecionaIntervaloDoAlerta(self.intervaloSelecionado!)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
 
 //MARK: - Protocolo
 protocol SelecionaIntervaloDoAlertaDelegate {
-    func selecionaIntervaloDoAlerta(intervalo: Intervalo)
+    func selecionaIntervaloDoAlerta(_ intervalo: Intervalo)
 }

@@ -17,7 +17,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
-        self.info = NSUserDefaults(suiteName: "group.br.com.jgbrittos.MiniFarma")!
+        self.info = UserDefaults(suiteName: "group.br.com.jgbrittos.MiniFarma")!
         
         self.botaoApp.layer.masksToBounds = true
         self.botaoApp.layer.cornerRadius = 30.0
@@ -28,40 +28,40 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        completionHandler(NCUpdateResult.NewData)
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+        completionHandler(NCUpdateResult.newData)
     }
 
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
     }
     
-    @IBAction func addFarmacia(sender: AnyObject) {
+    @IBAction func addFarmacia(_ sender: AnyObject) {
         print("Farmacia")
         self.info.setValue("Farmacia", forKey: "storyboard")
-        let url =  NSURL(string:"MiniFarmaTodayExtension://")
-        self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
+        let url =  URL(string:"MiniFarmaTodayExtension://")
+        self.extensionContext?.open(url!, completionHandler:{(success: Bool) -> Void in })
     }
     
-    @IBAction func addRemedio(sender: AnyObject) {
+    @IBAction func addRemedio(_ sender: AnyObject) {
         print("Remedio")
         self.info.setValue("Remedio", forKey: "storyboard")
-        let url =  NSURL(string:"MiniFarmaTodayExtension://")
-        self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
+        let url =  URL(string:"MiniFarmaTodayExtension://")
+        self.extensionContext?.open(url!, completionHandler:{(success: Bool) -> Void in })
     }
 
-    @IBAction func addAlerta(sender: AnyObject) {
+    @IBAction func addAlerta(_ sender: AnyObject) {
         print("Alerta")
         self.info.setValue("Alerta", forKey: "storyboard")
-        let url =  NSURL(string:"MiniFarmaTodayExtension://")
-        self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
+        let url =  URL(string:"MiniFarmaTodayExtension://")
+        self.extensionContext?.open(url!, completionHandler:{(success: Bool) -> Void in })
     }
     
-    @IBAction func abrirApp(sender: AnyObject) {
+    @IBAction func abrirApp(_ sender: AnyObject) {
         print("Main")
         self.info.setValue("Main", forKey: "storyboard")
-        let url =  NSURL(string:"MiniFarmaTodayExtension://")
-        self.extensionContext?.openURL(url!, completionHandler:{(success: Bool) -> Void in })
+        let url =  URL(string:"MiniFarmaTodayExtension://")
+        self.extensionContext?.open(url!, completionHandler:{(success: Bool) -> Void in })
     }
     
 }
