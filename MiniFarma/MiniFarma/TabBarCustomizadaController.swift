@@ -39,7 +39,7 @@ class TabBarCustomizadaController: UITabBarController {
         
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(TabBarCustomizadaController.dispositivoIraRotacionar(_:)), name:NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        print("\(informacaoDeOutraTela?.numero) \(informacaoDeOutraTela?.unidade)")
+        print("\(String(describing: informacaoDeOutraTela?.numero)) \(String(describing: informacaoDeOutraTela?.unidade))")
         self.criaBotoesDeOpcoes()
     }
 

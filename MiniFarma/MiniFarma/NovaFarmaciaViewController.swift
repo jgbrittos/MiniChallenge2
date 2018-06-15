@@ -110,13 +110,13 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
                 if self.existeFavorita > 0{
                 
                     let alerta = SCLAlertView()
-                    alerta.addButton(NSLocalizedString("SIMALERTA", comment: "Opção do alerta")) {
-                        self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
+                    _ = alerta.addButton(NSLocalizedString("SIMALERTA", comment: "Opção do alerta")) {
+                        _ = self.farmaciaDAO.atualizaFarmaciaFavorita(self.farmaciaFavoritaId, favorita: 0)
                         self.botaoFavorito.setImage(UIImage(named: "estrelaFavorito"), for: UIControlState())
                         self.existeFavorita = 0
                         self.favorito = 1
                     }
-                    alerta.showEdit(NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTA", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
+                    _ = alerta.showEdit(NSLocalizedString("TITULOALERTA", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTA", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
                 }
                 
                 if self.existeFavorita == 0 {
@@ -148,11 +148,11 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
 
             let alerta = SCLAlertView()
             if farmaciaDAO.inserir(farmacia) {
-                alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add farmacia sucesso"),
+                _ = alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add farmacia sucesso"),
                     subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOFARMACIA", comment: "add farmacia sucesso"), arguments: [farmacia.nomeFarmacia]), comment: "add farmacia sucesso"),
                     closeButtonTitle: "OK")
             }else{
-                alerta.showError(NSLocalizedString("TITULOERRO", comment: "add farmacia erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "add farmacia erro"), arguments: [farmacia.nomeFarmacia]), comment: "add farmacia erro"), closeButtonTitle: "OK")
+                _ = alerta.showError(NSLocalizedString("TITULOERRO", comment: "add farmacia erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROFARMACIA", comment: "add farmacia erro"), arguments: [farmacia.nomeFarmacia]), comment: "add farmacia erro"), closeButtonTitle: "OK")
             }
             
             if self.inicialOuAdicionaRemedio {
@@ -162,7 +162,7 @@ class NovaFarmaciaViewController: UIViewController,CLLocationManagerDelegate,MKM
             }
             
         }else{
-            SCLAlertView().showError(NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), subTitle: NSLocalizedString("MENSAGEMERROFARMACIASEMNOME", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
+            _ = SCLAlertView().showError(NSLocalizedString("ERROFARMACIA", comment: "Alerta de erro"), subTitle: NSLocalizedString("MENSAGEMERROFARMACIASEMNOME", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
         }
     }
     

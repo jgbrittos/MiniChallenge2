@@ -180,7 +180,7 @@ class VisualizarRemedioTableViewController: UITableViewController {
     @IBAction func tocouNaCelulaFarmacia(_ sender: AnyObject) {
         
         if self.farmacia?.nomeFarmacia == "" {
-            SCLAlertView().showError(NSLocalizedString("ERROFARMACIAINVALIDATITULO", comment: "Alerta de erro"), subTitle: NSLocalizedString("ERROFARMACIAINVALIDAMENSAGEM", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
+            _ = SCLAlertView().showError(NSLocalizedString("ERROFARMACIAINVALIDATITULO", comment: "Alerta de erro"), subTitle: NSLocalizedString("ERROFARMACIAINVALIDAMENSAGEM", comment: "Mensagem do alerta de erro"), closeButtonTitle: "OK")
         }else{
             self.performSegue(withIdentifier: "VisualizarFarmacia", sender: self.farmacia)
         }

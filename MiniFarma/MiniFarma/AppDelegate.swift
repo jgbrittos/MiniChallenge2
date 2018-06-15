@@ -145,11 +145,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else if(identifier == "TOMEI_IDENTIFICADOR"){
             print("Cliquei em tomei")
             if(remedioBuscado.numeroQuantidade > 0 ){
-                remedioDAO.marcaRemedioTomado(remedioBuscado, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
+                _ = remedioDAO.marcaRemedioTomado(remedioBuscado, novaQuantidade: (remedioBuscado.numeroQuantidade - remedioBuscado.numeroDose))
                 let historicoDAO = HistoricoDAO()
                 var historico = Historico()
                 historico = Historico(idRemedio: remedioBuscado.idRemedio, dataTomada: Date())
-                historicoDAO.inserir(historico)
+                _ = historicoDAO.inserir(historico)
             }
         }//else if(identifier == "LIGAR_IDENTIFICADOR"){
         //    self.application(application, didReceiveLocalNotification: notification)
@@ -166,7 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if info["categoria"] as? String == "NONE_CATEGORY"{
             let alerta = SCLAlertView()
             alerta.showCloseButton = false
-            alerta.showWait(NSLocalizedString("ALERTAESPERANDOLIGACAOTITULO", comment: "titulo"), subTitle: NSLocalizedString("ALERTAESPERANDOLIGACAOMENSAGEM", comment: "mensagem"), duration: TimeInterval(3), colorStyle: 0x00BCFE)
+            _ = alerta.showWait(NSLocalizedString("ALERTAESPERANDOLIGACAOTITULO", comment: "titulo"), subTitle: NSLocalizedString("ALERTAESPERANDOLIGACAOMENSAGEM", comment: "mensagem"), duration: TimeInterval(3), colorStyle: 0x00BCFE)
             
             if info["ligar"] as? String == "1" {
                 let idRemedio:Int = info["acabandoOuVencendo"]!.intValue as Int
@@ -177,7 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let farmacia = farmaciaDAO.buscarPorId(remedioBuscado.idFarmacia) as! Farmacia
                 
-                if String(farmacia.telefone) != nil {
+                if String(farmacia.telefone) != "" {
                     let ligacao = URL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
                     
                     //check  Call Function available only in iphone
@@ -186,10 +186,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             UIApplication.shared.openURL(ligacao!)
                         })
                     } else {
-                        SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
+                        _ = SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
                     }
                 }else{
-                    SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTANAOHATELEFONE", comment: "erro mensagem"), closeButtonTitle: "OK")
+                    _ = SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTANAOHATELEFONE", comment: "erro mensagem"), closeButtonTitle: "OK")
                 }
             }
         }

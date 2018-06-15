@@ -190,7 +190,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if contadorNotificacoes > 0 {
             return false
         }else{
-            self.alertaDAO.atualizar(alerta, ativo: 0)
+            _ = self.alertaDAO.atualizar(alerta, ativo: 0)
             return true
         }
     }
@@ -221,14 +221,14 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
             switch self.segmentedControlAtividadeAlertas.selectedSegmentIndex {
                 case 0:
                     let alerta = self.alertasAtivos[indexPath.row] as Alerta
-                    self.alertaDAO.deletar(alerta)
+                    _ = self.alertaDAO.deletar(alerta)
                     self.alertasAtivos.remove(at: indexPath.row)
                     Notificacao.cancelarNotificacaoPara(alerta)
                     self.alertasDaVez = self.alertasAtivos
                     break
                 case 1:
                     let alerta = self.alertasInativos[indexPath.row] as Alerta
-                    self.alertaDAO.deletar(alerta)
+                    _ = self.alertaDAO.deletar(alerta)
                     self.alertasInativos.remove(at: indexPath.row)
                     self.alertasDaVez = self.alertasInativos
                     break
@@ -304,7 +304,7 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         Notificacao.cancelarNotificacaoPara(alerta)
         
-        self.alertaDAO.atualizar(alerta, ativo: 0)
+        _ = self.alertaDAO.atualizar(alerta, ativo: 0)
         
         switchAtivo.isEnabled = false
         switch segmentedControlAtividadeAlertas.selectedSegmentIndex {

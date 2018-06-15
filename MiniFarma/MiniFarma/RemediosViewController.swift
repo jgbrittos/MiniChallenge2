@@ -127,10 +127,10 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                 case 0:
                     let remedio = self.remediosValidos[indexPath.row] as Remedio
                     historico = Historico(idRemedio: remedio.idRemedio, dataTomada: Date())
-                    historicoDAO.inserir(historico)
+                    _ = historicoDAO.inserir(historico)
                     
                     if(remedio.numeroQuantidade > 0 ){
-                        self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
+                        _ = self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
                     }
                     self.remediosValidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 0) as! [Remedio]
                     self.dadosASeremMostrados = self.remediosValidos
@@ -138,10 +138,10 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                 case 1:
                     let remedio = self.remediosVencidos[indexPath.row] as Remedio
                     historico = Historico(idRemedio: remedio.idRemedio, dataTomada: Date())
-                    historicoDAO.inserir(historico)
+                    _ = historicoDAO.inserir(historico)
                     
                     if(remedio.numeroQuantidade > 0 ){
-                        self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
+                        _ = self.remedioDAO.marcaRemedioTomado(remedio, novaQuantidade: (remedio.numeroQuantidade - remedio.numeroDose))
                     }
                     self.remediosVencidos = self.remedioDAO.buscarTodosComDataDeValidade(valido: 1) as! [Remedio]
                     self.dadosASeremMostrados = self.remediosVencidos
@@ -167,7 +167,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     } catch _ {
                     }
                     
-                    self.remedioDAO.deletar(remedio)
+                    _ = self.remedioDAO.deletar(remedio)
                     self.remediosValidos.remove(at: indexPath.row)
                     self.dadosASeremMostrados = self.remediosValidos
                     break
@@ -180,7 +180,7 @@ class RemediosViewController: UIViewController, UITableViewDelegate, UITableView
                     } catch _ {
                     }
                     
-                    self.remedioDAO.deletar(remedio)
+                    _ = self.remedioDAO.deletar(remedio)
                     self.remediosVencidos.remove(at: indexPath.row)
                     self.dadosASeremMostrados = self.remediosVencidos
                     break

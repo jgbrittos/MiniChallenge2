@@ -62,10 +62,10 @@ class VisualizarFarmaciaViewController: UIViewController, MKMapViewDelegate {
             if UIApplication.shared.canOpenURL(ligacao!) {
                 UIApplication.shared.openURL(ligacao!)
             } else {
-                SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
+                _ = SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
             }
         }else{
-            SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
+            _ = SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
         }
     }
 }

@@ -87,11 +87,11 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
         let alerta = Alerta(dataInicio: self.dataInicioPicker.date, numeroDuracao: numeroDuracao, unidadeDuracao: unidadeDuracao, ativo: 1, idIntervalo: idIntervalo, idRemedio: idRemedio)
         
         if alerta.temInformacoesNulas {
-            SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTAINVALIDO", comment: "add alerta erro"), closeButtonTitle: "OK")
+            _ = SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTAINVALIDO", comment: "add alerta erro"), closeButtonTitle: "OK")
         }else{
             let alertaMensagem = SCLAlertView()
             if self.alertaDAO.inserir(alerta) {
-                alertaMensagem.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add alerta sucesso"), subTitle: NSLocalizedString("MENSAGEMSUCESSOALERTA", comment: "add alerta sucesso"), closeButtonTitle: "OK")
+                _ = alertaMensagem.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add alerta sucesso"), subTitle: NSLocalizedString("MENSAGEMSUCESSOALERTA", comment: "add alerta sucesso"), closeButtonTitle: "OK")
                 
                 _ = Notificacao(remedio: remedio!, alerta: alerta, intervalo: intervalo!)
                 
@@ -105,7 +105,7 @@ class AlertaTableViewController: UITableViewController, UITextFieldDelegate, Sel
                 }
                 
             }else{
-                alertaMensagem.showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTA", comment: "add alerta erro"), closeButtonTitle: "OK")
+                _ = alertaMensagem.showError(NSLocalizedString("TITULOERRO", comment: "add alerta erro"), subTitle: NSLocalizedString("MENSAGEMERROALERTA", comment: "add alerta erro"), closeButtonTitle: "OK")
             }
         }
     }

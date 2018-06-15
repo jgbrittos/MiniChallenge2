@@ -166,7 +166,7 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         if editingStyle == .delete {
             let intervalo = self.intervalos[indexPath.row]
             self.intervalos.remove(at: indexPath.row)
-            intervaloDAO.deletar(intervalo)
+            _ = intervaloDAO.deletar(intervalo)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -199,9 +199,9 @@ class IntervaloViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let alerta = SCLAlertView()
         if self.intervaloDAO.inserir(novoIntervalo) {
-            alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add intervalo sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOINTERVALO", comment: "add intervalo sucesso"), arguments: [String(novoIntervalo.numero) + " " + novoIntervalo.unidade]),comment: "add intervalo sucesso"), closeButtonTitle: "OK")
+            _ = alerta.showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add intervalo sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOINTERVALO", comment: "add intervalo sucesso"), arguments: [String(novoIntervalo.numero) + " " + novoIntervalo.unidade]),comment: "add intervalo sucesso"), closeButtonTitle: "OK")
         }else{
-            alerta.showError(NSLocalizedString("TITULOERRO", comment: "add intervalo erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROINTERVALO", comment: "add intervalo erro"), arguments: [String(novoIntervalo.numero) + " " + novoIntervalo.unidade]),comment: "add intervalo erro"), closeButtonTitle: "OK")
+            _ = alerta.showError(NSLocalizedString("TITULOERRO", comment: "add intervalo erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROINTERVALO", comment: "add intervalo erro"), arguments: [String(novoIntervalo.numero) + " " + novoIntervalo.unidade]),comment: "add intervalo erro"), closeButtonTitle: "OK")
         }
         
         self.intervalos = intervaloDAO.buscarTodos() as! [Intervalo]

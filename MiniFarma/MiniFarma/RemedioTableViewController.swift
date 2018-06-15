@@ -269,12 +269,12 @@ SelecionaFarmaciaDelegate {
         let alerta = SCLAlertView()
         
         if remedio.nomeRemedio == "" {
-            alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio sem nome erro"), subTitle: NSLocalizedString("MENSAGEMERROREMEDIOSEMNOME", comment: "add remedio sem nome erro"), closeButtonTitle: "OK")
+            _ = alerta.showError(NSLocalizedString("TITULOERRO", comment: "add remedio sem nome erro"), subTitle: NSLocalizedString("MENSAGEMERROREMEDIOSEMNOME", comment: "add remedio sem nome erro"), closeButtonTitle: "OK")
         }else if remedio.temInformacoesNulas {
-            alerta.addButton(NSLocalizedString("SIMALERTA", comment: "Opção do alerta")) {
+            _ = alerta.addButton(NSLocalizedString("SIMALERTA", comment: "Opção do alerta")) {
                 self.salvaRemedioNoBanco(remedio)
             }
-            alerta.showWarning(NSLocalizedString("TITULOALERTAAVISO", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTAAVISO", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
+            _ = alerta.showWarning(NSLocalizedString("TITULOALERTAAVISO", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTAAVISO", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
         }else{
             self.salvaRemedioNoBanco(remedio)
         }
@@ -283,17 +283,17 @@ SelecionaFarmaciaDelegate {
     func salvaRemedioNoBanco(_ remedio: Remedio){
         if self.idRemedio == 0 {
             if self.remedioDAO.inserir(remedio) {
-                SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
+                _ = SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
                 self.prossegueAposSalvamentoDeRemedio()
             }else{
-                SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
+                _ = SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
             }
         }else{
             if self.remedioDAO.atualizar(remedio, comId: self.idRemedio) {
-                SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIOATUALIZADO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
+                _ = SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add remedio sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOREMEDIOATUALIZADO", comment: "add remedio sucesso"), arguments: [remedio.nomeRemedio]),comment: "add remedio sucesso"), closeButtonTitle: "OK")
                 self.prossegueAposSalvamentoDeRemedio()
             }else{
-                SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
+                _ = SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add remedio erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROREMEDIO", comment: "add remedio erro"), arguments: [remedio.nomeRemedio]),comment: "add remedio erro"), closeButtonTitle: "OK")
             }
         }
     }
@@ -406,7 +406,7 @@ SelecionaFarmaciaDelegate {
             self.celulaLocalOculta = true
             self.alturaCelulaLocal = 44
         }
-        self.tableView(self.tableView, heightForRowAt: IndexPath(row: 4, section: 0))
+        _ = self.tableView(self.tableView, heightForRowAt: IndexPath(row: 4, section: 0))
         self.tableView.reloadData()
     }
     
@@ -429,7 +429,7 @@ SelecionaFarmaciaDelegate {
             self.celulaQuantidadeOculta = true
             self.alturaCelulaQuantidade = 44
         }
-        self.tableView(self.tableView, heightForRowAt: IndexPath(row: 5, section: 0))
+        _ = self.tableView(self.tableView, heightForRowAt: IndexPath(row: 5, section: 0))
         self.tableView.reloadData()
     }
 
@@ -452,7 +452,7 @@ SelecionaFarmaciaDelegate {
             self.celulaDoseOculta = true
             self.alturaCelulaDose = 44
         }
-        self.tableView(self.tableView, heightForRowAt: IndexPath(row: 6, section: 0))
+        _ = self.tableView(self.tableView, heightForRowAt: IndexPath(row: 6, section: 0))
         self.tableView.reloadData()
     }
     
@@ -475,7 +475,7 @@ SelecionaFarmaciaDelegate {
             self.celulaPrecoOculta = true
             self.alturaCelulaPreco = 44
         }
-        self.tableView(self.tableView, heightForRowAt: IndexPath(row: 7, section: 0))
+        _ = self.tableView(self.tableView, heightForRowAt: IndexPath(row: 7, section: 0))
         self.tableView.reloadData()
     }
 
@@ -554,21 +554,21 @@ SelecionaFarmaciaDelegate {
         
         let alerta = SCLAlertView()
         let nomeLocal = alerta.addTextField(NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
-        alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
+        _ = alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
             if nomeLocal.text != "" {
                 let local = Local(nome: nomeLocal.text!)
                 if self.localDAO.inserir(local) {
-                    SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add local sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOLOCAL", comment: "add local sucesso"), arguments: [local.nome]),comment: "add local sucesso"), closeButtonTitle: "OK")
+                    _ = SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add local sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOLOCAL", comment: "add local sucesso"), arguments: [local.nome]),comment: "add local sucesso"), closeButtonTitle: "OK")
                 }else{
-                    SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add local erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROLOCAL", comment: "add local erro"), arguments: [local.nome]),comment: "add local erro"), closeButtonTitle: "OK")
+                    _ = SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add local erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROLOCAL", comment: "add local erro"), arguments: [local.nome]),comment: "add local erro"), closeButtonTitle: "OK")
                 }
                 self.locais = self.localDAO.buscarTodos() as! [Local]
                 self.pickerViewLocal.reloadAllComponents()
             }else{
-                SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), subTitle: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), closeButtonTitle: "OK")
+                _ = SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), subTitle: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), closeButtonTitle: "OK")
             }
         }
-        alerta.showEdit(NSLocalizedString("TITULOALERTALOCAL", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTALOCAL", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
+        _ = alerta.showEdit(NSLocalizedString("TITULOALERTALOCAL", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTALOCAL", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
     }
     
     // MARK: - Foto do remédio
@@ -732,7 +732,7 @@ SelecionaFarmaciaDelegate {
         
         if textField == self.textFieldLocal {
             let localDeletado = self.local
-            self.localDAO.deletar(localDeletado)
+            _ = self.localDAO.deletar(localDeletado)
             self.locais = self.localDAO.buscarTodos() as! [Local]
             self.pickerViewLocal.reloadAllComponents()
         }

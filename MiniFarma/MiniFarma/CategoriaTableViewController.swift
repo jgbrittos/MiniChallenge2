@@ -72,21 +72,21 @@ class CategoriaTableViewController: UITableViewController {
         
         let nomeCategoria = alerta.addTextField(NSLocalizedString("CATEGORIAPLACEHOLDER", comment: "Alerta"))
         
-        alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
+        _ = alerta.addButton(NSLocalizedString("CADASTRARBOTAO", comment: "Botão de cadastrar do alerta")) {
             if nomeCategoria.text != "" {
                 let categoria = Categoria(nomeCategoria: nomeCategoria.text!)
                 if self.categoriaDAO.inserir(categoria) {
-                    SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add categoria sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOCATEGORIA", comment: "add categoria sucesso"), arguments: [categoria.nomeCategoria]),comment: "add farmacia sucesso"), closeButtonTitle: "OK")
+                    _ = SCLAlertView().showSuccess(NSLocalizedString("TITULOSUCESSO", comment: "add categoria sucesso"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMSUCESSOCATEGORIA", comment: "add categoria sucesso"), arguments: [categoria.nomeCategoria]),comment: "add farmacia sucesso"), closeButtonTitle: "OK")
                 }else{
-                    SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add categoria erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROCATEGORIA", comment: "add categoria erro"), arguments: [categoria.nomeCategoria]), comment: "add categoria erro"), closeButtonTitle: "OK")
+                    _ = SCLAlertView().showError(NSLocalizedString("TITULOERRO", comment: "add categoria erro"), subTitle: NSLocalizedString(String(format: NSLocalizedString("MENSAGEMERROCATEGORIA", comment: "add categoria erro"), arguments: [categoria.nomeCategoria]), comment: "add categoria erro"), closeButtonTitle: "OK")
                 }
                 self.categorias = self.categoriaDAO.buscarTodos() as! [Categoria]
                 self.tableView.reloadData()
             }else{
-                SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), subTitle: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), closeButtonTitle: "OK")
+                _ = SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "Erro Alerta"), subTitle: NSLocalizedString("MENSAGEMALERTAERRO", comment: "Mensagem do alerta"), closeButtonTitle: "OK")
             }
         }
-        alerta.showEdit(NSLocalizedString("TITULOALERTACATEGORIA", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTACATEGORIA", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
+        _ = alerta.showEdit(NSLocalizedString("TITULOALERTACATEGORIA", comment: "Titulo do alerta"), subTitle:NSLocalizedString("MENSAGEMALERTACATEGORIA", comment: "Mensagem do Alerta"), closeButtonTitle:NSLocalizedString("CANCELARBOTAO", comment: "Botão de cancelar"))
     }
 }
 

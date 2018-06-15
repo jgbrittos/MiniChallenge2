@@ -200,5 +200,7 @@
 
 - (void)databasePool:(FMDatabasePool*)pool didAddDatabase:(FMDatabase*)database;
 
+-(void)dealloc;
+
 @end
 

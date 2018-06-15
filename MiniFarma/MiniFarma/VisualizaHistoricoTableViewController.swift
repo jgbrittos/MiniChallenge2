@@ -71,7 +71,7 @@ class VisualizaHistoricoTableViewController: UITableViewController {
         if editingStyle == .delete {
             let historico = self.historicos[indexPath.row]
             self.historicos.remove(at: indexPath.row)
-            self.historicoDAO.deletar(historico)
+            _ = self.historicoDAO.deletar(historico)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

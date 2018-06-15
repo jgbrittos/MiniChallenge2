@@ -118,17 +118,17 @@ class FarmaciaTableViewController: UITableViewController {
     func ligarParaFarmacia(_ sender: UIButton) {
         let farmacia = self.farmacias[sender.tag]
         
-        if String(farmacia.telefone) != nil {
+        if String(farmacia.telefone) != "" {
             let ligacao = URL(string: String(format: "tel:%@", arguments: [String(farmacia.telefone)]))
             
             //check  Call Function available only in iphone
             if UIApplication.shared.canOpenURL(ligacao!) {
                 UIApplication.shared.openURL(ligacao!)
             } else {
-                SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
+                _ = SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
             }
         }else{
-            SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
+            _ = SCLAlertView().showError("Erro", subTitle: "Não há telefone cadastrado para esta farmácia", closeButtonTitle: "OK")
         }
     }
     
@@ -138,10 +138,10 @@ class FarmaciaTableViewController: UITableViewController {
         for f in self.farmacias {
             sender.setImage(UIImage(named: "estrelaFavorito"), for: UIControlState())
             if f.idFarmacia == farmacia.idFarmacia {
-                self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 1)
+                _ = self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 1)
             }else{
                 sender.setImage(UIImage(named: "estrelaFavoritoNegativo"), for: UIControlState())
-                self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 0)
+                _ = self.farmaciaDAO.atualizaFarmaciaFavorita(f.idFarmacia, favorita: 0)
             }
         }
         self.farmacias = self.farmaciaDAO.buscarTodos() as! [Farmacia]

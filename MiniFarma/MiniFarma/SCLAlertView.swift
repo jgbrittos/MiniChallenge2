@@ -462,7 +462,7 @@ open class SCLAlertView: UIViewController {
         // Done button
         if showCloseButton {
             let txt = completeText != nil ? completeText! : "Done"
-            addButton(txt, target:self, selector:#selector(SCLAlertView.hideView))
+            _ = addButton(txt, target:self, selector:#selector(SCLAlertView.hideView))
         }
 
         // Alert view colour and images

@@ -1080,6 +1080,8 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
 - (void)reset;
 
+-(void)dealloc;
+
 @end
 
 #pragma clang diagnostic pop
