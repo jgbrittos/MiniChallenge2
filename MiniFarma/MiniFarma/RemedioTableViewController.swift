@@ -481,22 +481,59 @@ SelecionaFarmaciaDelegate {
 
     @IBAction func tocouNaCelulaDeReceita(_ sender: AnyObject) {
         self.textFieldDataDeValidade.resignFirstResponder()
-        var acao: UIActionSheet
+        var acao: UIAlertController
         
         if self.fotoReceita != nil {
-            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETVISUALIZAR", comment: "acao action sheet de fotos"))
+            acao = UIAlertController(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), message: "", preferredStyle: .actionSheet)
+            
+            let cancelarAcao = UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), style: .cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let tirarFotoAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            let escolherAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let excluirAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let visualizarAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETVISUALIZAR", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            acao.addAction(cancelarAcao)
+            acao.addAction(tirarFotoAcao)
+            acao.addAction(escolherAcao)
+            acao.addAction(excluirAcao)
+            acao.addAction(visualizarAcao)
+            
         }else{
-            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"))
+            acao = UIAlertController(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), message: "", preferredStyle: .actionSheet)
+            
+            let cancelarAcao = UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), style: .cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let tirarFotoAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            let escolherAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let excluirAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            acao.addAction(cancelarAcao)
+            acao.addAction(tirarFotoAcao)
+            acao.addAction(escolherAcao)
+            acao.addAction(excluirAcao)
         }
-    
-        acao.tag = 1
+        //acao.tag = 1
         self.fotoOuReceita = 1
-        acao.show(in: self.view)
+        self.present(acao, animated: true, completion: nil)
     }
 
     func ocultaCelulasDe(_ local: Bool, quantidade: Bool, dose:Bool, preco:Bool){
@@ -573,84 +610,125 @@ SelecionaFarmaciaDelegate {
     
     // MARK: - Foto do remédio
     @IBAction func tirarFotoDoRemedio(_ sender: AnyObject) {
-        var acao: UIActionSheet
+        var acao: UIAlertController
         
         if self.fotoRemedio != nil {
-            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETVISUALIZAR", comment: "acao action sheet de fotos"))
+            
+            acao = UIAlertController(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), message: "", preferredStyle: .actionSheet)
+            
+            let cancelarAcao = UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), style: .cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let tirarFotoAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            let escolherAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let excluirAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let visualizarAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETVISUALIZAR", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            acao.addAction(cancelarAcao)
+            acao.addAction(tirarFotoAcao)
+            acao.addAction(escolherAcao)
+            acao.addAction(excluirAcao)
+            acao.addAction(visualizarAcao)
+            
         }else{
-            acao = UIActionSheet(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), delegate: self, cancelButtonTitle: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), destructiveButtonTitle: nil, otherButtonTitles: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"),
-                NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"))
+            acao = UIAlertController(title: NSLocalizedString("TITULOACTIONSHEET", comment: "titulo action sheet de fotos"), message: "", preferredStyle: .actionSheet)
+            
+            let cancelarAcao = UIAlertAction(title: NSLocalizedString("CANCELARBOTAO", comment: "titulo action sheet de fotos"), style: .cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let tirarFotoAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETTIRARFOTO", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            let escolherAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETESCOLHER", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            let excluirAcao = UIAlertAction(title: NSLocalizedString("ACTIONSHEETEXCLUIR", comment: "acao action sheet de fotos"), style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+            })
+            
+            acao.addAction(cancelarAcao)
+            acao.addAction(tirarFotoAcao)
+            acao.addAction(escolherAcao)
+            acao.addAction(excluirAcao)
         }
         
-        acao.tag = 0
+        //acao.tag = 0
         self.fotoOuReceita = 0
-        acao.show(in: self.view)
+        self.present(acao, animated: true, completion: nil)
     }
     
-    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
-        
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = true
-        if actionSheet.tag == 0 {//Remédio
-            switch buttonIndex {
-                case 0:
-                    //Cancelar
-                    break
-                case 1:
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        picker.sourceType = .camera
-                    }
-                    self.present(picker, animated:true, completion:nil)
-                    break
-                case 2:
-                    picker.sourceType = .photoLibrary
-                    self.present(picker, animated:true, completion:nil)
-                    break
-                case 3:
-                    self.buttonTirarFotoRemedio.setTitle(NSLocalizedString("BOTAOFOTOREMEDIO", comment: "botao add foto"), for: UIControlState())
-                    self.buttonTirarFotoRemedio.setBackgroundImage(nil, for: UIControlState())
-                    self.fotoRemedio = nil
-                    break
-                case 4:
-                    self.performSegue(withIdentifier: "VisualizarFotoReceita", sender: self.fotoRemedio)
-                    break
-                default:
-                    print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
-                    break
-            }
-        }else{//Receita
-            switch buttonIndex {
-                case 0:
-                    //Cancelar
-                    break
-                case 1:
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        picker.sourceType = .camera
-                    }
-                    self.present(picker, animated:true, completion:nil)
-                    break
-                case 2:
-                    picker.sourceType = .photoLibrary
-                    self.present(picker, animated:true, completion:nil)
-                    break
-                case 3:
-                    self.fotoReceita = nil
-                    self.tableView.reloadData()
-                    break
-                case 4:
-                    self.performSegue(withIdentifier: "VisualizarFotoReceita", sender: self.fotoReceita)
-                    break
-                default:
-                    print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
-                    break
-            }
-        }
-    }
+    
+    
+//    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
+//
+//        let picker = UIImagePickerController()
+//        picker.delegate = self
+//        picker.allowsEditing = true
+//        if actionSheet.tag == 0 {//Remédio
+//            switch buttonIndex {
+//                case 0:
+//                    //Cancelar
+//                    break
+//                case 1:
+//                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//                        picker.sourceType = .camera
+//                    }
+//                    self.present(picker, animated:true, completion:nil)
+//                    break
+//                case 2:
+//                    picker.sourceType = .photoLibrary
+//                    self.present(picker, animated:true, completion:nil)
+//                    break
+//                case 3:
+//                    self.buttonTirarFotoRemedio.setTitle(NSLocalizedString("BOTAOFOTOREMEDIO", comment: "botao add foto"), for: UIControlState())
+//                    self.buttonTirarFotoRemedio.setBackgroundImage(nil, for: UIControlState())
+//                    self.fotoRemedio = nil
+//                    break
+//                case 4:
+//                    self.performSegue(withIdentifier: "VisualizarFotoReceita", sender: self.fotoRemedio)
+//                    break
+//                default:
+//                    print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+//                    break
+//            }
+//        }else{//Receita
+//            switch buttonIndex {
+//                case 0:
+//                    //Cancelar
+//                    break
+//                case 1:
+//                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//                        picker.sourceType = .camera
+//                    }
+//                    self.present(picker, animated:true, completion:nil)
+//                    break
+//                case 2:
+//                    picker.sourceType = .photoLibrary
+//                    self.present(picker, animated:true, completion:nil)
+//                    break
+//                case 3:
+//                    self.fotoReceita = nil
+//                    self.tableView.reloadData()
+//                    break
+//                case 4:
+//                    self.performSegue(withIdentifier: "VisualizarFotoReceita", sender: self.fotoReceita)
+//                    break
+//                default:
+//                    print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+//                    break
+//            }
+//        }
+//    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 

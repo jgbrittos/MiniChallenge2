@@ -257,46 +257,56 @@ class AlertaViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func cancelarTodos(_ sender: AnyObject) {
         
-        let acao = UIActionSheet(title: "Deseja cancelar todas os alertas?", delegate: self, cancelButtonTitle: "Cancelar", destructiveButtonTitle: "Sim")
+        let acao = UIAlertController(title: "Deseja cancelar todas os alertas?", message: "", preferredStyle: .actionSheet)
         
-        acao.show(in: self.view)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        let confirmAction = UIAlertAction(title: "Sim", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        acao.addAction(cancelAction)
+        acao.addAction(confirmAction)
+        
+        self.present(acao, animated: true, completion: nil)
     }
     
-    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
-        switch buttonIndex {
-            case 0:
-                print(self.alertaDAO.cancelarTodosOsAlertas())
-                self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
-                self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
-                
-                switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
-                    case 0:
-                        self.alertasDaVez = self.alertasAtivos
-                        break
-                    case 1:
-                        self.alertasDaVez = self.alertasInativos
-                        break
-                    default:
-                        self.alertasDaVez = self.alertasAtivos
-                        print("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
-                        break
-                }
-                
-                self.tableViewAlerta.reloadData()
-                
-                self.cancelarNotificacoes.isEnabled = false
-                self.cancelarNotificacoes.tintColor = UIColor.clear
-                
-                UIApplication.shared.cancelAllLocalNotifications()
-                break
-            case 1:
-                //Cancelar
-                break
-            default:
-                print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
-                break
-            }
-    }
+//    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
+//        switch buttonIndex {
+//            case 0:
+//                print(self.alertaDAO.cancelarTodosOsAlertas())
+//                self.alertasAtivos = self.alertaDAO.buscarTodos(ativos: 1) as! [Alerta]
+//                self.alertasInativos = self.alertaDAO.buscarTodos(ativos: 0) as! [Alerta]
+//                
+//                switch segmentedControlAtividadeAlertas.selectedSegmentIndex {
+//                    case 0:
+//                        self.alertasDaVez = self.alertasAtivos
+//                        break
+//                    case 1:
+//                        self.alertasDaVez = self.alertasInativos
+//                        break
+//                    default:
+//                        self.alertasDaVez = self.alertasAtivos
+//                        print("Algo ocorreu no método alteraDadosDaTabelaAlerta na classe AlertaViewController!")
+//                        break
+//                }
+//                
+//                self.tableViewAlerta.reloadData()
+//                
+//                self.cancelarNotificacoes.isEnabled = false
+//                self.cancelarNotificacoes.tintColor = UIColor.clear
+//                
+//                UIApplication.shared.cancelAllLocalNotifications()
+//                break
+//            case 1:
+//                //Cancelar
+//                break
+//            default:
+//                print("Algo ocorreu na funcao clickedButtonAtIndex na classe RemedioTableViewController")
+//                break
+//            }
+//    }
     
     @IBAction func desativarAlertas(_ sender: AnyObject) {
         let switchAtivo = sender as! UISwitch

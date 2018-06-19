@@ -38,19 +38,32 @@ class Util: NSObject {
                 error = error1
             }
             
-            let alert: UIAlertView = UIAlertView()
+            //Nao consegue mostrar UIAlertController nesta classe
+            
+            var alertController: UIAlertController
+            
             
             if (error != nil) {
-                alert.title = "Error Occured"
-                alert.message = error?.localizedDescription
+                alertController = UIAlertController(title: "Error Occured",
+                                                        message: error?.localizedDescription,
+                                                        preferredStyle: .actionSheet)
             } else {
-                alert.title = "Successfully Copy"
-                alert.message = "Your database copy successfully"
+                alertController = UIAlertController(title: "Successfully Copy",
+                                                        message: "Your database copy successfully",
+                                                        preferredStyle: .actionSheet)
             }
             
-            alert.delegate = nil
-            alert.addButton(withTitle: "Ok")
-            alert.show()
+            let okAction = UIAlertAction(title: "OK",
+                                            style: .destructive,
+                                            handler: { (action:UIAlertAction!) in
+                                                print ("OK")
+            })
+            alertController.addAction(okAction)
+    
+            
+//            self.present(alertController,
+//                         animated: true,
+//                         completion:nil)
         }
     }
     
