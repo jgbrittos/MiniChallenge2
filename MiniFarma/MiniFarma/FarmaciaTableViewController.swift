@@ -123,7 +123,7 @@ class FarmaciaTableViewController: UITableViewController {
             
             //check  Call Function available only in iphone
             if UIApplication.shared.canOpenURL(ligacao!) {
-                UIApplication.shared.openURL(ligacao!)
+                UIApplication.shared.open(ligacao!, options: [:], completionHandler: nil)
             } else {
                 _ = SCLAlertView().showError("Erro", subTitle: "Esta função só está diponível no iPhone", closeButtonTitle: "OK")
             }

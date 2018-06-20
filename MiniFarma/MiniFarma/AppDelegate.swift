@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,7 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             defaults.set(true, forKey: "NaoEhPrimeiraVez")
             naoEhPrimeiraVez = true
-            UIApplication.shared.cancelAllLocalNotifications() //deleta todas notificacoes antigas
+            //Remove todas as notificações
+            let center = UNUserNotificationCenter.current()
+            center.removeAllDeliveredNotifications()
+            center.removeAllPendingNotificationRequests()
+            
             //Tutorial
             storyboardInicial = UIStoryboard(name: "Inicial", bundle: nil)
             telaInicial = storyboardInicial.instantiateInitialViewController() as! UINavigationController
@@ -183,7 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //check  Call Function available only in iphone
                     if UIApplication.shared.canOpenURL(ligacao!) {
                         DispatchQueue.main.async(execute: {
-                            UIApplication.shared.openURL(ligacao!)
+                            UIApplication.shared.open(ligacao!, options: [:], completionHandler: nil)
                         })
                     } else {
                         _ = SCLAlertView().showError(NSLocalizedString("ERROALERTA", comment: "erro"), subTitle: NSLocalizedString("ALERTAERROLIGACAO", comment: "erro mensagem"), closeButtonTitle: "OK")
